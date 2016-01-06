@@ -3,13 +3,7 @@ using System.Collections;
 
 public class SongController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public delegate SongData GiveNextSongEvent();
+    public event GiveNextSongEvent GiveNextSong;
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
