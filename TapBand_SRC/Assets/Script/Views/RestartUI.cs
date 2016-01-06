@@ -10,41 +10,24 @@ public class RestartUI : MonoBehaviour {
     public delegate bool RestartEnabledEvent();
     public event RestartEnabledEvent RestartEnabled;
 
-    public GameObject restartPanelButton,restartPanel,restartButton;
-	
-	public void Start()
-	{
-		OnUnRestart();
-	}
-	
-	public void OnRestart()
-	{
-		restartPanel.SetActive (true);
-		restartPanelButton.SetActive (false);
-		Time.timeScale=0;
-	}
-	
-	public void OnUnRestart()
-	{ 
-		restartPanel.SetActive (false);
-		restartPanelButton.SetActive (true);
-        restartButton.GetComponent<Button>().interactable = false;
-		Time.timeScale=1;
-	}
-	
+    public GameObject restartPanel, restartButton;
+    
 	public void RestartLevel()
 	{
-        NewLevel();
-        OnUnRestart();
+        if (NewLevel != null)
+            NewLevel();
     }
 
-    void OnGui()
+    void OnGUI()
     {
         if (restartPanel.activeInHierarchy)
         {
             if (RestartEnabled != null)
             {
                 restartButton.GetComponent<Button>().interactable = RestartEnabled();
+            } else
+            {
+                restartButton.GetComponent<Button>().interactable = false;
             }
         }
     }

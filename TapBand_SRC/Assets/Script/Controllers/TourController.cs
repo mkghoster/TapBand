@@ -32,7 +32,7 @@ public class TourController : MonoBehaviour {
         hud.tour.GetComponent<Text>().text = "Tour: " + GameState.instance.Tour.CurrentTour.level;
     }
 
-    public bool NewTourStartIsAvailable()
+    private bool NewTourStartIsAvailable()
     {
         return GameState.instance.Currency.NumberOfFans > GameState.instance.Tour.CurrentTour.fanRequirementToSkip;
     }

@@ -151,6 +151,31 @@ public class RawGameDataLoader : IGameDataLoader
         }
     }
 
+    private void TryLoadEnum<TEnum>(int rowIndex, string columnName, out TEnum data) where TEnum : struct, IConvertible
+    {
+        if (!IsCellExist(rowIndex, columnName) || string.IsNullOrEmpty(currentRows[rowIndex][columnName]))
+        {
+            data = default(TEnum);
+            AbortWithErrorMessage(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
+        }
+        else
+        {
+            string enumString = currentRows[rowIndex][columnName];
+            data = GetEnumFromString<TEnum>(enumString);
+        }
+    }
+
+    public T GetEnumFromString<T>(string value) where T : struct, IConvertible
+    {
+        if (!typeof(T).IsEnum)
+        {
+            throw new ArgumentException("T must be an enumerated type");
+        }
+
+        return (T)Enum.Parse(typeof(T), value);
+    }
+    
+
     #endregion
 
     public GameData LoadGameData()
@@ -158,7 +183,8 @@ public class RawGameDataLoader : IGameDataLoader
         GameData gameData = new GameData();
         gameData.SongDataList = LoadSongData();
         gameData.TourDataList = LoadTourData();
-        gameData.ConcertDataList = LoadConcertData ();
+        gameData.ConcertDataList = LoadConcertData();
+        gameData.MerchDataList = LoadMerchData();
         // TODO: continue
 		return gameData;
 	}
@@ -235,4 +261,29 @@ public class RawGameDataLoader : IGameDataLoader
 	
 	}
 
+    private List<MerchData> LoadMerchData()
+    {
+        currentSheet = "MerchData";
+        currentRows = dataReader.GetRows(currentSheet);
+
+        List<MerchData> merchDataList = new List<MerchData>();
+
+        int rowNum = currentRows.Count;
+        for (int i = 0; i < rowNum; i++)
+        {
+            MerchData merchDataObject = new MerchData();
+
+            TryLoadInt(i, "ID", out merchDataObject.id);
+            TryLoadEnum(i, "MerchType", out merchDataObject.merchType);
+            TryLoadInt(i, "Level", out merchDataObject.level);
+            TryLoadString(i, "Name", out merchDataObject.name);
+            TryLoadInt(i, "UpgradeCost", out merchDataObject.upgradeCost);
+            TryLoadInt(i, "CoinPerSecond", out merchDataObject.coinPerSecond);
+            TryLoadInt(i, "TimeLimit", out merchDataObject.timeLimit);
+
+            merchDataList.Add(merchDataObject);
+        }
+
+        return merchDataList;
+    }
 }
