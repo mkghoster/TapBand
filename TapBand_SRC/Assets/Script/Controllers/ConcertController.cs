@@ -3,13 +3,30 @@ using System.Collections;
 
 public class ConcertController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+	private HudUI hud;
 	
+	
+	void Awake()
+	{
+		hud = (HudUI)FindObjectOfType (typeof(HudUI));
 	}
 	
-	// Update is called once per frame
-	void Update () {
 	
+	void OnEnable()
+	{
+		hud.NewConcert += DisplayNewConcert;
 	}
+	void OnDisable()
+	{
+		hud.NewConcert -= DisplayNewConcert;
+	}
+	
+
+	
+	private string DisplayNewConcert()
+	{
+		return GameState.instance.Concert.CurrentConcert.name;
+	}
+	
+
 }

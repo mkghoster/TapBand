@@ -27,10 +27,10 @@ public class TourController : MonoBehaviour {
         restart.RestartEnabled -= NewTourStartIsAvailable;
     }
 
-    private void DisplayNewTour()
+    private string DisplayNewTour()
     {
-        hud.tour.GetComponent<Text>().text = "Tour: " + GameState.instance.Tour.CurrentTour.level;
-    }
+		return GameState.instance.Tour.CurrentTour.level.ToString();
+	}
 
     private bool NewTourStartIsAvailable()
     {

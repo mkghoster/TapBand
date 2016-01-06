@@ -27,7 +27,7 @@ public class GameState : LoadableData {
     private TourState tourState;
     private MerchState merchState;
     // TODO folytatni, pl:
-    // private ConcertState concertState;
+    private ConcertState concertState;
 
     public TourState Tour
     {
@@ -68,6 +68,19 @@ public class GameState : LoadableData {
         }
     }
 
+	public ConcertState Concert
+	{
+		get
+		{
+			return concertState;
+		}
+		
+		set
+		{
+			concertState = value;
+		}
+	}
+
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {
@@ -77,6 +90,7 @@ public class GameState : LoadableData {
         this.tourState = gd.tourState == null ? new TourState() : gd.tourState;
         this.currencyState = gd.currencyState == null ? new CurrencyState() : gd.currencyState;
         this.merchState = gd.merchState == null ? new MerchState() : gd.merchState;
+		this.concertState = gd.concertState == null ? new ConcertState() : gd.concertState;
     }
 
     public override string GetFileName()

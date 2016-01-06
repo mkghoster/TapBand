@@ -7,7 +7,7 @@ public class HudUI : MonoBehaviour {
     public float heightOfBar = 25f;
     public float startingVerticalPos = 60f;
 
-    public delegate void NewTourEvent();
+    public delegate string NewTourEvent();
     public event NewTourEvent NewTour;
 
     public delegate void NewCoinEvent();
@@ -16,20 +16,31 @@ public class HudUI : MonoBehaviour {
     public delegate void NewFansEvent();
     public event NewFansEvent NewFans;
 
+	public delegate string NewConcertEvent();
+	public event NewConcertEvent NewConcert;
+
+	public delegate string NewSongEvent();
+	public event NewSongEvent NewSong;
+
     public GameObject coin;
     public GameObject fan;
     public GameObject tour;
+	public GameObject concert;
+	public GameObject song;
     
     void Start () {
         coin = GameObject.Find("CoinText");
         fan = GameObject.Find("FanText");
         tour = GameObject.Find("TourText");
+		concert = GameObject.Find("ConcertText");
+		song = GameObject.Find("SongText");
     }
 	
     void OnGUI()
     {
-        if (NewTour != null) {
-            NewTour();
+        if (NewTour != null) 
+		{
+            tour.GetComponent<Text>().text = "Tour: " + NewTour();
         }
         if (NewCoin != null)
         {
@@ -39,6 +50,14 @@ public class HudUI : MonoBehaviour {
         {
             NewFans();
         }
+		if( NewConcert != null)
+		{
+			concert.GetComponent<Text>().text = NewConcert();
+		}
+		if( NewSong != null)
+		{
+			song.GetComponent<Text>().text = NewSong();
+		}
         
         
         // TODO : finish for all the UI elements

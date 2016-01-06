@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameStateHolder : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameStateHolder : MonoBehaviour
         GameState.instance.TryLoadFromAssets(Application.persistentDataPath);
 
         LoadDefaults();
+		LoadConnectionsInGameData();
     }
 
     void OnDestroy()
@@ -26,5 +28,28 @@ public class GameStateHolder : MonoBehaviour
             TourData firstTour = GameData.instance.TourDataList[0];
             GameState.instance.Tour.CurrentTourID = firstTour.id;
         }
+
+		if (GameState.instance.Concert.CurrentConcertID == 0) 
+		{
+			ConcertData firstConcert = GameData.instance.ConcertDataList[0];
+			GameState.instance.Concert.CurrentConcertID = firstConcert.id;
+		}
+
+
     }
+
+	private void LoadConnectionsInGameData()
+	{
+		foreach (ConcertData cd in GameData.instance.ConcertDataList)
+		{
+			cd.songList = GetAllSongForConcert(cd.id);
+		}
+
+	}
+
+	private List<SongData> GetAllSongForConcert(int concertID)
+	{
+		return GameData.instance.SongDataList.FindAll (x => x.id == concertID);
+	}
+
 }

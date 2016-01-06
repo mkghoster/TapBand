@@ -8,4 +8,7 @@ public class ConcertData
 	public string name;
     public int fanReward;
     public int coinReward;
+
+	public List<SongData> songList; 
+
 }
