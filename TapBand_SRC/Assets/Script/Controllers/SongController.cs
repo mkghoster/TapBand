@@ -24,12 +24,16 @@ public class SongController : MonoBehaviour {
     {
         tapController.OnTap += IncomingTapStrength;
         hudUI.NewSong += GetSongName;
+        hudUI.TapPassed += TapPassed;
+        hudUI.TimePassed += TimePassed;
     }
 
     void OnDisable()
     {
         tapController.OnTap -= IncomingTapStrength;
         hudUI.NewSong -= GetSongName;
+        hudUI.TapPassed -= TapPassed;
+        hudUI.TimePassed -= TimePassed;
     }
 
     void Update()
@@ -57,6 +61,16 @@ public class SongController : MonoBehaviour {
         }
     }
 	
+    private float TapPassed()
+    {
+        return actualTapAmount;
+    }
+
+    private float TimePassed()
+    {
+        return bossBattleCountDown;
+    }
+
     private void IncomingTapStrength(float tapStrength)
     {
         if (currentSong != null)

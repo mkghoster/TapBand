@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class HudUI : MonoBehaviour {
 
-    public float heightOfBar = 25f;
-    public float startingVerticalPos = 60f;
+    public float heightOfBar;
+    public float startingVerticalPos;
 
     public delegate string NewTourEvent();
     public event NewTourEvent NewTour;
@@ -21,6 +21,10 @@ public class HudUI : MonoBehaviour {
 
 	public delegate string NewSongEvent();
 	public event NewSongEvent NewSong;
+
+    public delegate float ProcessEvent();
+    public event ProcessEvent TimePassed;
+    public event ProcessEvent TapPassed;
 
     public GameObject coin;
     public GameObject fan;
@@ -58,27 +62,30 @@ public class HudUI : MonoBehaviour {
 		{
 			song.GetComponent<Text>().text = NewSong();
 		}
-        
-        
+
+
         // TODO : finish for all the UI elements
 
-        GUI.color = Color.yellow;
-        GUI.Box(
-            new Rect(
-                Screen.width / 4,
-                startingVerticalPos,
-                //GameState.instance.tapDuringSong * 5 + 50f,
-                60f,
-                heightOfBar), "Force");
+        if (TapPassed != null)
+        {
+            GUI.color = Color.yellow;
+            GUI.Box(
+                new Rect(
+                    Screen.width / 4,
+                    startingVerticalPos,
+                    TapPassed() * 5 + 50f,
+                    heightOfBar), "Tap");
+        }
 
-        GUI.color = Color.red;
-        GUI.Box(
-            new Rect(
-                Screen.width / 4,
-                startingVerticalPos + heightOfBar + 5f,
-                //GameState.instance.passedTimeInSeconds * 5 + 50f,
-                60f,
-                heightOfBar), "Time: ");
-
+        if (TimePassed != null)
+        {
+            GUI.color = Color.red;
+            GUI.Box(
+                new Rect(
+                    Screen.width / 4,
+                    startingVerticalPos + heightOfBar + 5f,
+                    TimePassed() * 5 + 50f,
+                    heightOfBar), "Time");
+        }
     }
 }
