@@ -38,12 +38,12 @@ public class ConcertState {
 	//geci gány, proto jó lesz
 	public SongData GetNextSong()
 	{
-		return GameData.instance.SongDataList.Find ( x => x.id == currentSong.id+1);
+		return GameData.instance.SongDataList.Find ( x => x.id == lastComplatedSongID + 1);
 	}
 
 	public ConcertData GetNextConcert()
 	{
-		return GameData.instance.ConcertDataList.Find ( x => x.id == CurrentConcert.id+1);
+		return GameData.instance.ConcertDataList.Find ( x => x.id == currentConcertID + 1);
 	}
 
 	public SongData CurrentSong
