@@ -5,12 +5,14 @@ public class SongController : MonoBehaviour {
 
     public delegate SongData GiveNextSongEvent();
     public event GiveNextSongEvent GiveNextSong;
+    public event GiveNextSongEvent GiveFirstSongOfActualConcert;
 
     private TapController tapController;
     private HudUI hudUI;
     private SongData currentSong;
 
     private float actualTapAmount = 0f;
+    private float bossBattleCountDown = 0f;
 
     void Awake()
     {
@@ -41,6 +43,18 @@ public class SongController : MonoBehaviour {
                 currentSong = GiveNextSong();
             }
         }
+
+        if (currentSong.bossBattle)
+        {
+            bossBattleCountDown += deltaTime;
+
+            if (bossBattleCountDown > currentSong.duration)
+            {
+                currentSong = GiveFirstSongOfActualConcert();
+                actualTapAmount = 0f;
+                bossBattleCountDown = 0f;
+            }
+        }
     }
 	
     private void IncomingTapStrength(float tapStrength)
@@ -53,6 +67,7 @@ public class SongController : MonoBehaviour {
             {
                 currentSong = GiveNextSong();
                 actualTapAmount = 0f;
+                bossBattleCountDown = 0f;
             }
         }
     }
