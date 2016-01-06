@@ -4,7 +4,7 @@ public class TapController : MonoBehaviour
 {
     private TapUI tapUI;
 
-    public delegate void TapEvent(BigInteger value);
+    public delegate void TapEvent(float value);
     public event TapEvent OnTap;
 
     void Awake()
@@ -37,13 +37,22 @@ public class TapController : MonoBehaviour
         }
         if (OnTap != null)
         {
-            BigInteger tapValue = CalculateTapValue(args.positions.Count);
+            float tapValue = CalculateTapValue(args.positions.Count);
             OnTap(tapValue);
         }
     }
 
-    private BigInteger CalculateTapValue(int tapCount)
+    private float CalculateTapValue(int tapCount)
     {
-        return tapCount * 1;
+        GameState state = GameState.instance;
+
+        return tapCount *
+            DefaultOrSelf(state.Tour.CurrentTour.tapMultiplier);
+            //DefaultOrSelf(state.Equipment.CurrentHolyMageBladeOfJustice.tapMultiplier)
+    }
+
+    private float DefaultOrSelf(float f)
+    {
+        return f == 0.0f ? 1.0f : f;
     }
 }
