@@ -20,14 +20,16 @@ public class ConcertController : MonoBehaviour {
 	{
 		hud.NewConcert += DisplayNewConcert;
 		songController.GiveNextSong += GiveNextSongFromConcert;
+		songController.GiveFirstSongOfActualConcert += ResetToFirstSongOfConcert;
 
 	}
 	void OnDisable()
 	{
 		hud.NewConcert -= DisplayNewConcert;
 		songController.GiveNextSong -= GiveNextSongFromConcert;
+		songController.GiveFirstSongOfActualConcert -= ResetToFirstSongOfConcert;
 	}
-	
+
 	//mi a kövtetkező lejátszandó szám, értesíti
 	private SongData GiveNextSongFromConcert()
 	{
@@ -48,6 +50,22 @@ public class ConcertController : MonoBehaviour {
 
 		return state.CurrentSong;
 	}
+
+
+	private SongData ResetToFirstSongOfConcert()
+	{
+		ConcertState state = GameState.instance.Concert;
+
+		//TODO: kikeresni az előző koncert utolsó számát
+		state.LastComplatedSongID = 0;
+
+		state.CurrentSong = state.CurrentConcert.songList [0];
+
+		return state.CurrentSong;
+	}
+	
+
+
 
 	private string DisplayNewConcert()
 	{
