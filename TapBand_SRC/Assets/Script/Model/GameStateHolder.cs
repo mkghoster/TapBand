@@ -49,7 +49,7 @@ public class GameStateHolder : MonoBehaviour
 
 	private List<SongData> GetAllSongForConcert(int concertID)
 	{
-		return GameData.instance.SongDataList.FindAll (x => x.id == concertID);
+		return GameData.instance.SongDataList.FindAll (x => x.concertID == concertID);
 	}
 
 }

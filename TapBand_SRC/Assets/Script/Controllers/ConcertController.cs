@@ -57,11 +57,9 @@ public class ConcertController : MonoBehaviour {
 		ConcertState state = GameState.instance.Concert;
 
 		//TODO: kikeresni az előző koncert utolsó számát
-		state.LastComplatedSongID = 0;
-
-		state.CurrentSong = state.CurrentConcert.songList [0];
-
-		return state.CurrentSong;
+		state.CurrentSong = state.CurrentConcert.songList[0];
+        state.LastComplatedSongID = state.CurrentSong.id;
+        return state.CurrentSong;
 	}
 	
 

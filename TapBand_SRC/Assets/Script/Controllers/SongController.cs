@@ -54,9 +54,9 @@ public class SongController : MonoBehaviour {
 
             if (bossBattleCountDown > currentSong.duration)
             {
-                currentSong = GiveFirstSongOfActualConcert();
                 actualTapAmount = 0f;
                 bossBattleCountDown = 0f;
+                currentSong = GiveFirstSongOfActualConcert();
             }
         }
     }
