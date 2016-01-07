@@ -54,8 +54,7 @@ public class SongController : MonoBehaviour {
 
             if (bossBattleCountDown > currentSong.duration)
             {
-                actualTapAmount = 0f;
-                bossBattleCountDown = 0f;
+                ResetCountStates();
                 currentSong = GiveFirstSongOfActualConcert();
             }
         }
@@ -79,9 +78,8 @@ public class SongController : MonoBehaviour {
 
             if (currentSong.tapGoal < actualTapAmount)
             {
+                ResetCountStates();
                 currentSong = GiveNextSong();
-                actualTapAmount = 0f;
-                bossBattleCountDown = 0f;
             }
         }
     }
@@ -89,5 +87,11 @@ public class SongController : MonoBehaviour {
     private string GetSongName()
     {
         return currentSong == null ? "" : currentSong.title;
+    }
+
+    private void ResetCountStates()
+    {
+        actualTapAmount = 0f;
+        bossBattleCountDown = 0f;
     }
 }
