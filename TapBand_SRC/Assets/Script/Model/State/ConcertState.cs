@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 [System.Serializable]
 public class ConcertState {
 
 	private int currentConcertID;
 	private int lastComplatedSongID;
-	private SongData currentSong;
+    [NonSerialized]
+    private SongData currentSong;
 
 
 	
