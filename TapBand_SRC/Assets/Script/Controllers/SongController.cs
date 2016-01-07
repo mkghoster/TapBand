@@ -7,6 +7,9 @@ public class SongController : MonoBehaviour {
     public event GiveNextSongEvent GiveNextSong;
     public event GiveNextSongEvent GiveFirstSongOfActualConcert;
 
+	public delegate void GiveEndOfSongEvent (SongData songData);
+	public event GiveEndOfSongEvent GiveEndOfSong;
+
     private TapController tapController;
     private HudUI hudUI;
     private SongData currentSong;
