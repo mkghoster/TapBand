@@ -185,6 +185,7 @@ public class RawGameDataLoader : IGameDataLoader
         gameData.TourDataList = LoadTourData();
         gameData.ConcertDataList = LoadConcertData();
         gameData.MerchDataList = LoadMerchData();
+		gameData.EquipmentDataList = LoadEquipmentData();
         // TODO: continue
 		return gameData;
 	}
@@ -286,4 +287,30 @@ public class RawGameDataLoader : IGameDataLoader
 
         return merchDataList;
     }
+
+	private List<EquipmentData> LoadEquipmentData()
+	{
+		currentSheet = "EquipmentData";
+		currentRows = dataReader.GetRows(currentSheet);
+		
+		List<EquipmentData> equipmentDataList = new List<EquipmentData>();
+		
+		int rowNum = currentRows.Count;
+		for (int i = 0; i < rowNum; i++)
+		{
+			EquipmentData equipmentDataObject = new EquipmentData();
+			
+			TryLoadInt(i, "ID", out equipmentDataObject.id);
+			TryLoadEnum(i, "EquipmentType", out equipmentDataObject.equipmentType);
+			TryLoadInt(i, "Level", out equipmentDataObject.level);
+			TryLoadString(i, "Name", out equipmentDataObject.name);
+			TryLoadInt(i, "UpgradeCost", out equipmentDataObject.upgradeCost);
+			TryLoadFloat(i, "TapMultiplier", out equipmentDataObject.tapMultiplier);
+
+			
+			equipmentDataList.Add(equipmentDataObject);
+		}
+		
+		return equipmentDataList;
+	}
 }
