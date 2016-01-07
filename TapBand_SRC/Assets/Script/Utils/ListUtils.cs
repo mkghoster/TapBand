@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ListUtils {
+public static class ListUtils {
 	
 	public static T NextOf<T>(this IList<T> list, T item)
 	{

@@ -110,22 +110,22 @@ public class EquipmentState {
 
 	public EquipmentData NextDrumEquipment
 	{
-		
+		get{return null;}	
 	}
 
 	public EquipmentData NextGuitarEquipment
 	{
-		
+		get{return null;}
 	}
 
 	public EquipmentData NextBassEquipment
 	{
-		
+		get{return null;}
 	}
 
 	public EquipmentData NextKeyboardEquipment
 	{
-		
+		get{return null;}
 	}
 
 }
