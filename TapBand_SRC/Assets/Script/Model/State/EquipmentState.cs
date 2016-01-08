@@ -60,7 +60,7 @@ public class EquipmentState {
 		}
 	}
 
-	public EquipmentData CurrentDrumEquipment
+	public EquipmentData CurrentDrumEquipmentId
 	{
 		get
 		{
