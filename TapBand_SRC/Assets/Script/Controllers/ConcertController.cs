@@ -9,6 +9,9 @@ public class ConcertController : MonoBehaviour {
 	public delegate void RestartConcertEvent();
 	public event RestartConcertEvent RestartConcert;
     
+	public delegate void GiveEndOfConcertEvent(ConcertData concertData);
+	public event GiveEndOfConcertEvent GiveEndOfConcert;
+
 	void Awake()
 	{
 		hud = (HudUI)FindObjectOfType (typeof(HudUI));
@@ -41,6 +44,10 @@ public class ConcertController : MonoBehaviour {
             //új indítása
             if (state.CurrentSong.bossBattle)
             {
+				if(GiveEndOfConcert != null)
+				{
+					GiveEndOfConcert(state.CurrentConcert);
+				}
                 state.CurrentConcertID = state.GetNextConcert().id;
             }
 
