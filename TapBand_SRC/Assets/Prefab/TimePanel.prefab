@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .39199999}
+  m_Color: {r: 1, g: .733333349, b: .733333349, a: .388235301}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -322,7 +322,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: We collect you money, while you are away!
+  m_Text: We collect you money, look how much in every second!
 --- !u!114 &11417960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +0 sec
+  m_Text: +0 coin
 --- !u!114 &11418496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -523,7 +523,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Current Time:'
+  m_Text: 'Current Coin:'
 --- !u!114 &11478988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -555,7 +555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Time Boost
+  m_Text: Coin Boost
 --- !u!114 &11484374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -587,7 +587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy the Holy Mageblade!
+  m_Text: Buy the Gift of the Cataclysm!
 --- !u!114 &11485856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -833,9 +833,9 @@ RectTransform:
   - {fileID: 22478176}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: 1}
-  m_AnchorMax: {x: .5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -160}
+  m_AnchorMin: {x: .5, y: 0}
+  m_AnchorMax: {x: .5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 186}
   m_SizeDelta: {x: 320, y: 240}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22481918

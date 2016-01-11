@@ -232,8 +232,8 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 600}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &42456810
 MonoBehaviour:
@@ -1076,7 +1076,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1155,7 +1157,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1271,8 +1275,8 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -.0499989986}
-  m_SizeDelta: {x: 500, y: 597}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &393536234
 MonoBehaviour:
@@ -2887,7 +2891,7 @@ RectTransform:
   m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 293, y: 388}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &824921451
@@ -3456,7 +3460,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -5880,7 +5886,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5948,39 +5954,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11478988, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Text
-      value: Coin Boost
+      value: Time Boost
       objectReference: {fileID: 0}
     - target: {fileID: 11417222, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Text
-      value: We collect you money, look how much in every second!
+      value: We collect you money, look for how long!
       objectReference: {fileID: 0}
     - target: {fileID: 11484374, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Text
-      value: Buy the Gift of the Cataclysm!
-      objectReference: {fileID: 0}
-    - target: {fileID: 11417960, guid: 154ea12d120178842b9da820371681cf, type: 2}
-      propertyPath: m_Text
-      value: +0 coin
-      objectReference: {fileID: 0}
-    - target: {fileID: 11409094, guid: 154ea12d120178842b9da820371681cf, type: 2}
-      propertyPath: m_Color.g
-      value: .733333349
-      objectReference: {fileID: 0}
-    - target: {fileID: 11409094, guid: 154ea12d120178842b9da820371681cf, type: 2}
-      propertyPath: m_Color.b
-      value: .733333349
-      objectReference: {fileID: 0}
-    - target: {fileID: 11409094, guid: 154ea12d120178842b9da820371681cf, type: 2}
-      propertyPath: m_Color.a
-      value: .388235301
-      objectReference: {fileID: 0}
-    - target: {fileID: 11474606, guid: 154ea12d120178842b9da820371681cf, type: 2}
-      propertyPath: m_Text
-      value: 'Current Coin:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 188454, guid: 154ea12d120178842b9da820371681cf, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+      value: Buy the Holy Sword!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 154ea12d120178842b9da820371681cf, type: 2}
@@ -6353,7 +6335,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -6459,6 +6443,10 @@ Prefab:
     - target: {fileID: 170544, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417960, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Text
+      value: 0 sec
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 154ea12d120178842b9da820371681cf, type: 2}
