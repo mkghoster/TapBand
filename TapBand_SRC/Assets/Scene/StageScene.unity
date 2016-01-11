@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightOfBar: 25
-  startingVerticalPos: 100
+  startingVerticalPos: 120
   coin: {fileID: 0}
   fan: {fileID: 0}
   tour: {fileID: 0}
