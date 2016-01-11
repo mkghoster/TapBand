@@ -171,30 +171,57 @@ public class EquipmentController : MonoBehaviour {
     private void BuyBassEquipment(EquipmentData data)
     {
         GameState.instance.Equipment.BassEquipmentId = data.id;
-        GameState.instance.Currency.NumberOfCoins -= data.upgradeCost;
+        if (CoinTransaction != null)
+        {
+            CoinTransaction(-data.upgradeCost);
+        }
     }
 
     private void BuyDrumEquipment(EquipmentData data)
     {
         GameState.instance.Equipment.DrumEquipmentId = data.id;
-        GameState.instance.Currency.NumberOfCoins -= data.upgradeCost;
+        if (CoinTransaction != null)
+        {
+            CoinTransaction(-data.upgradeCost);
+        }
     }
 
     private void BuyGuitarEquipment(EquipmentData data)
     {
         GameState.instance.Equipment.GuitarEquipmentId = data.id;
-        GameState.instance.Currency.NumberOfCoins -= data.upgradeCost;
+        if (CoinTransaction != null)
+        {
+            CoinTransaction(-data.upgradeCost);
+        }
     }
 
     private void BuyKeyboardEquipment(EquipmentData data)
     {
         GameState.instance.Equipment.KeyboardEquipmentId = data.id;
-        GameState.instance.Currency.NumberOfCoins -= data.upgradeCost;
+        if (CoinTransaction != null)
+        {
+            CoinTransaction(-data.upgradeCost);
+        }
     }
 
     private bool CanBuy(int price)
     {
         return price <= GameState.instance.Currency.NumberOfCoins;
+    }
+
+    public delegate void ModifyCoinEvent(int price);
+    public event ModifyCoinEvent CoinTransaction;
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 
 }
