@@ -23,10 +23,10 @@ public class GameStateHolder : MonoBehaviour
 
     private void LoadDefaults()
     {
-        if (GameState.instance.Tour.CurrentTourID == 0)
+        if (GameState.instance.Tour.CurrentTourIndex == 0)
         {
             TourData firstTour = GameData.instance.TourDataList[0];
-            GameState.instance.Tour.CurrentTourID = firstTour.id;
+            GameState.instance.Tour.CurrentTourIndex = firstTour.id;
         }
 
 		if (GameState.instance.Concert.CurrentConcertID == 0) 

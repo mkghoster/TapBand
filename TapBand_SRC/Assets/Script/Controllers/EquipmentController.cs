@@ -3,8 +3,11 @@ using System.Collections;
 
 public class EquipmentController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public delegate void ModifyCoinEvent(int price);
+    public event ModifyCoinEvent CoinTransaction;
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	

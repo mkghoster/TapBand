@@ -10,7 +10,7 @@ public class HudUI : MonoBehaviour {
     public delegate string NewTourEvent();
     public event NewTourEvent NewTour;
 
-    public delegate void NewCoinEvent();
+    public delegate string NewCoinEvent();
     public event NewCoinEvent NewCoin;
 
     public delegate void NewFansEvent();
@@ -48,7 +48,7 @@ public class HudUI : MonoBehaviour {
         }
         if (NewCoin != null)
         {
-            NewCoin();
+            coin.GetComponent<Text>().text = NewCoin();
         }
         if (NewFans != null)
         {
