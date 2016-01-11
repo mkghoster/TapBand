@@ -10,6 +10,9 @@ public class SongController : MonoBehaviour {
 	public delegate void GiveEndOfSongEvent(SongData songData);
 	public event GiveEndOfSongEvent GiveEndOfSong;
 
+	public delegate void GiveRewardOfSongEvent(int coinReward);
+	public event GiveRewardOfSongEvent GiveRewardOfSong;
+
     private TapController tapController;
     private TourController tourController;
     private HudUI hudUI;
@@ -88,6 +91,10 @@ public class SongController : MonoBehaviour {
 				if(GiveEndOfSong != null)
 				{
 					GiveEndOfSong(currentSong);
+				}
+				if(GiveRewardOfSong != null)
+				{
+					GiveRewardOfSong(currentSong.coinReward);
 				}
                 ResetControllerState();
                 currentSong = GiveNextSong();

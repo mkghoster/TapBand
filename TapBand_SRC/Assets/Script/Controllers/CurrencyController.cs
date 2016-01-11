@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CurrencyController : MonoBehaviour {
 
+	private SongController songController;
+	private ConcertController concertController;
     private TourController tourController;
     private MerchController merchController;
     private EquipmentController equipmentController;
@@ -11,6 +13,8 @@ public class CurrencyController : MonoBehaviour {
 
     void Awake()
     {
+		songController = (SongController)FindObjectOfType (typeof(SongController));
+		concertController = (ConcertController)FindObjectOfType (typeof(ConcertController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
         merchController = (MerchController)FindObjectOfType(typeof(MerchController));
         equipmentController = (EquipmentController)FindObjectOfType(typeof(EquipmentController));
@@ -19,20 +23,28 @@ public class CurrencyController : MonoBehaviour {
 
     void OnEnable()
     {
+		songController.GiveRewardOfSong += CoinTransaction;
+		concertController.GiveCoinRewardOfConcert += CoinTransaction;
+		concertController.GiveFanRewardOfConcert += FanTransaction;
         tourController.ResetCurrencies += Reset;
         merchController.CoinTransaction += CoinTransaction;
         equipmentController.CoinTransaction += CoinTransaction;
         merchController.CanBuy += CanBuy;
         hudUI.NewCoin += Coins;
+		hudUI.NewFans += Fans;
     }
 
     void OnDisable()
     {
+		songController.GiveRewardOfSong -= CoinTransaction;
+		concertController.GiveCoinRewardOfConcert -= CoinTransaction;
+		concertController.GiveFanRewardOfConcert -= FanTransaction;
         tourController.ResetCurrencies -= Reset;
         merchController.CoinTransaction -= CoinTransaction;
         equipmentController.CoinTransaction -= CoinTransaction;
         merchController.CanBuy -= CanBuy;
         hudUI.NewCoin -= Coins;
+		hudUI.NewFans -= Fans;
     }
 
     private void Reset()
@@ -47,6 +59,11 @@ public class CurrencyController : MonoBehaviour {
         GameState.instance.Currency.NumberOfCoins += price;
     }
 
+	private void FanTransaction(int fans)
+	{
+		GameState.instance.Currency.NumberOfFans += fans;
+	}
+
     private bool CanBuy(int price)
     {
         return GameState.instance.Currency.NumberOfCoins >= price;
@@ -57,4 +74,10 @@ public class CurrencyController : MonoBehaviour {
         // Temporal solution for test purposes
         return GameState.instance.Currency.NumberOfCoins.ToString();
     }
+
+	private string Fans()
+	{
+		// Temporal solution for test purposes
+		return GameState.instance.Currency.NumberOfFans.ToString();
+	}
 }
