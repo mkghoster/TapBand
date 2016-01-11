@@ -29,18 +29,18 @@ public class SongController : MonoBehaviour {
     {
         tapController.OnTap += IncomingTapStrength;
         tourController.RestartSong += ResetControllerState;
-        hudUI.NewSong += GetSongName;
         hudUI.TapPassed += TapPassed;
         hudUI.TimePassed += TimePassed;
+		hudUI.newSongData += GetSongData;
     }
 
     void OnDisable()
     {
         tapController.OnTap -= IncomingTapStrength;
         tourController.RestartSong -= ResetControllerState;
-        hudUI.NewSong -= GetSongName;
         hudUI.TapPassed -= TapPassed;
         hudUI.TimePassed -= TimePassed;
+		hudUI.newSongData -= GetSongData;
     }
 
     void Update()
@@ -99,6 +99,11 @@ public class SongController : MonoBehaviour {
     {
         return currentSong == null ? "" : currentSong.title;
     }
+
+	private SongData GetSongData()
+	{
+		return currentSong;
+	}
 
     private void ResetControllerState()
     {

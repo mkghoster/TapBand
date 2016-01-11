@@ -19,8 +19,8 @@ public class HudUI : MonoBehaviour {
 	public delegate string NewConcertEvent();
 	public event NewConcertEvent NewConcert;
 
-	public delegate string NewSongEvent();
-	public event NewSongEvent NewSong;
+	public delegate SongData NewSongDataEvent();
+	public event NewSongDataEvent newSongData;
 
     public delegate float ProcessEvent();
     public event ProcessEvent TimePassed;
@@ -31,6 +31,8 @@ public class HudUI : MonoBehaviour {
     public GameObject tour;
 	public GameObject concert;
 	public GameObject song;
+
+	private SongData actualSongData;
     
     void Start () {
         coin = GameObject.Find("CoinText");
@@ -58,9 +60,10 @@ public class HudUI : MonoBehaviour {
 		{
 			concert.GetComponent<Text>().text = NewConcert();
 		}
-		if( NewSong != null)
+		if (newSongData != null) 
 		{
-			song.GetComponent<Text>().text = NewSong();
+			actualSongData = newSongData();
+			song.GetComponent<Text>().text = actualSongData.title; // + actualSongData.tapGoal.ToString();
 		}
 
 
@@ -68,12 +71,14 @@ public class HudUI : MonoBehaviour {
 
         if (TapPassed != null)
         {
+			//float max = Screen.width/2;
             GUI.color = Color.yellow;
             GUI.Box(
                 new Rect(
-                    Screen.width / 4,
+                    Screen.width / 4-25f,
                     startingVerticalPos,
-                    TapPassed() * 5 + 50f,
+                    //TapPassed() * 5 + 50f,
+					(TapPassed()/actualSongData.tapGoal)*(Screen.width/2)+50f,
                     heightOfBar), "Tap");
         }
 
@@ -82,9 +87,10 @@ public class HudUI : MonoBehaviour {
             GUI.color = Color.red;
             GUI.Box(
                 new Rect(
-                    Screen.width / 4,
+                    Screen.width / 4-25f,
                     startingVerticalPos + heightOfBar + 5f,
-                    TimePassed() * 5 + 50f,
+                    //TimePassed() * 5 + 50f,
+					(TimePassed() * 5 /actualSongData.tapGoal)*(Screen.width/2)+50f,
                     heightOfBar), "Time");
         }
     }
