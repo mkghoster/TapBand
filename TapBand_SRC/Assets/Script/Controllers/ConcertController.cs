@@ -13,6 +13,12 @@ public class ConcertController : MonoBehaviour {
     public delegate void GiveEndOfConcertEvent(ConcertData concertData);
 	public event GiveEndOfConcertEvent GiveEndOfConcert;
 
+	public delegate void GiveFanRewardOfConcertEvent(int fanReward);
+	public event GiveFanRewardOfConcertEvent GiveFanRewardOfConcert;
+
+	public delegate void GiveCoinRewardOfConcertEvent(int coinReward);
+	public event GiveCoinRewardOfConcertEvent GiveCoinRewardOfConcert;
+
 	void Awake()
 	{
 		hud = (HudUI)FindObjectOfType (typeof(HudUI));
@@ -49,6 +55,14 @@ public class ConcertController : MonoBehaviour {
 				if(GiveEndOfConcert != null)
 				{
 					GiveEndOfConcert(state.CurrentConcert);
+				}
+				if(GiveFanRewardOfConcert != null)
+				{
+					GiveFanRewardOfConcert(state.CurrentConcert.fanReward);
+				}
+				if(GiveCoinRewardOfConcert != null)
+				{
+					GiveCoinRewardOfConcert(state.CurrentConcert.coinReward);
 				}
                 state.CurrentConcertID = state.GetNextConcert().id;
             }

@@ -13,7 +13,7 @@ public class HudUI : MonoBehaviour {
     public delegate string NewCoinEvent();
     public event NewCoinEvent NewCoin;
 
-    public delegate void NewFansEvent();
+    public delegate string NewFansEvent();
     public event NewFansEvent NewFans;
 
 	public delegate string NewConcertEvent();
@@ -54,7 +54,7 @@ public class HudUI : MonoBehaviour {
         }
         if (NewFans != null)
         {
-            NewFans();
+            fan.GetComponent<Text>().text = NewFans();
         }
 		if( NewConcert != null)
 		{
@@ -63,7 +63,7 @@ public class HudUI : MonoBehaviour {
 		if (newSongData != null) 
 		{
 			actualSongData = newSongData();
-			song.GetComponent<Text>().text = actualSongData.title; // + actualSongData.tapGoal.ToString();
+			song.GetComponent<Text>().text = actualSongData.title;
 		}
 
 
@@ -71,13 +71,11 @@ public class HudUI : MonoBehaviour {
 
         if (TapPassed != null)
         {
-			//float max = Screen.width/2;
             GUI.color = Color.yellow;
             GUI.Box(
                 new Rect(
                     Screen.width / 4-25f,
                     startingVerticalPos,
-                    //TapPassed() * 5 + 50f,
 					(TapPassed()/actualSongData.tapGoal)*(Screen.width/2)+50f,
                     heightOfBar), "Tap");
         }
@@ -89,7 +87,6 @@ public class HudUI : MonoBehaviour {
                 new Rect(
                     Screen.width / 4-25f,
                     startingVerticalPos + heightOfBar + 5f,
-                    //TimePassed() * 5 + 50f,
 					(TimePassed() * 5 /actualSongData.tapGoal)*(Screen.width/2)+50f,
                     heightOfBar), "Time");
         }
