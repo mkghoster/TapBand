@@ -6,6 +6,7 @@ public static class ListUtils {
 	
 	public static T NextOf<T>(this IList<T> list, T item)
 	{
-		return list[(list.IndexOf(item) + 1) == list.Count ? 0 : (list.IndexOf(item) + 1)];
+        int nextIndex = (list.IndexOf(item) + 1);
+        return list[nextIndex == list.Count ? 0 : nextIndex];
 	}
 }

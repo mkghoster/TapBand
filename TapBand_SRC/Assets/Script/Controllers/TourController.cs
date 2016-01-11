@@ -4,6 +4,11 @@ using UnityEngine.UI;
 
 public class TourController : MonoBehaviour {
 
+    public delegate void RestartEvent();
+    public event RestartEvent RestartConcert;
+    public event RestartEvent RestartSong;
+    public event RestartEvent ResetCurrencies;
+
     private HudUI hud;
     private RestartUI restart;
 
@@ -39,8 +44,9 @@ public class TourController : MonoBehaviour {
 
     private void UpgradeLevel()
     {
-        GameState.instance.Tour.CurrentTourID += 1;
-        GameState.instance.Currency.NumberOfCoins = 0;
-        GameState.instance.Currency.NumberOfFans = 0;
+        GameState.instance.Tour.CurrentTourIndex += 1;
+        if (RestartConcert != null)RestartConcert();
+        if (RestartSong != null) RestartSong();
+        if (ResetCurrencies != null) ResetCurrencies();
     }
 }

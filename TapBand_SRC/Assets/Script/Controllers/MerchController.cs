@@ -1,12 +1,64 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MerchController : MonoBehaviour {
 
-    private MerchUI merchUI;
+    private float currentTime;
 
-	void Awake () {
-	    merchUI = (MerchUI)FindObjectOfType(typeof(MerchUI));
+    public delegate void ModifyCoinEvent(int price);
+    public event ModifyCoinEvent CoinTransaction;
+    public delegate bool CanBuyEvent(int price);
+    public event CanBuyEvent CanBuy;
+
+    private MerchUI merchUI;
+    
+    void Awake()
+    {
+        merchUI = (MerchUI)FindObjectOfType(typeof(MerchUI));
+    }
+
+    void Start()
+    {
+        if (GameState.instance.Merch.LastOnlineDate != null)
+        {
+            int diffInSeconds = (int)(DateTime.Now - GameState.instance.Merch.LastOnlineDate).TotalSeconds;
+            int timeLimit = GameState.instance.Merch.CurrentTimeMerch.timeLimit;
+            if (diffInSeconds > timeLimit)
+            {
+                CollectMoney(timeLimit);
+            }
+            else
+            {
+                CollectMoney(diffInSeconds);
+            }
+        }
+    }
+
+    void Update()
+    {
+        TickSecondsAndCollectMoney();
+    }
+
+    private void TickSecondsAndCollectMoney()
+    {
+        currentTime += Time.deltaTime;
+        if (currentTime >= 1f)
+        {
+            currentTime = 0f;
+            CollectMoney(1);
+        }
+    }
+
+    private void CollectMoney(int forSeconds)
+    {
+        if (CoinTransaction != null)
+        {
+            if (GameState.instance.Merch.CurrentQualityMerch != null)
+            {
+                CoinTransaction(GameState.instance.Merch.CurrentQualityMerch.coinPerSecond * forSeconds);
+            }
+        }
     }
 
     void OnEnable()
@@ -17,7 +69,7 @@ public class MerchController : MonoBehaviour {
         merchUI.NextTimeMerchData += NextTimeMerchData;
         merchUI.BuyQualityMerch += BuyQualityMerch;
         merchUI.BuyTimeMerch += BuyTimeMerch;
-        merchUI.CanBuy += CanBuy;
+        merchUI.CanBuy += CanBuyItem;
     }
 
     void OnDisable()
@@ -28,7 +80,10 @@ public class MerchController : MonoBehaviour {
         merchUI.NextTimeMerchData -= NextTimeMerchData;
         merchUI.BuyQualityMerch -= BuyQualityMerch;
         merchUI.BuyTimeMerch -= BuyTimeMerch;
-        merchUI.CanBuy -= CanBuy;
+        merchUI.CanBuy -= CanBuyItem;
+
+        // save last online date
+        GameState.instance.Merch.LastOnlineDate = DateTime.Now;
     }
 
     private MerchData CurrentQualityMerchData()
@@ -42,22 +97,9 @@ public class MerchController : MonoBehaviour {
         {
             return GameData.instance.MerchDataList.Find(x => x.merchType == MerchType.QUALITY); // finds the first
         }
-        bool currentFound = false;
-        foreach (MerchData data in GameData.instance.MerchDataList)
-        {
-            if (currentFound && data.merchType == MerchType.QUALITY)
-            {
-                return data;
-            }
 
-            if (data.id == GameState.instance.Merch.QualityMerchId)
-            {
-                currentFound = true;
-            }
-        }
-
-        // figure this out
-        return CurrentQualityMerchData();
+        MerchData nextMerch = ListUtils.NextOf(GameData.instance.MerchDataList, CurrentQualityMerchData());
+        return nextMerch.merchType == MerchType.QUALITY ? nextMerch : null;
     }
 
     private MerchData CurrentTimeMerchData()
@@ -71,39 +113,35 @@ public class MerchController : MonoBehaviour {
         {
             return GameData.instance.MerchDataList.Find(x => x.merchType == MerchType.TIME); // finds the first
         }
-        bool currentFound = false;
-        foreach (MerchData data in GameData.instance.MerchDataList)
-        {
-            if (currentFound && data.merchType == MerchType.TIME)
-            {
-                return data;
-            }
-
-            if (data.id == GameState.instance.Merch.TimeMerchId)
-            {
-                currentFound = true;
-            }
-        }
-
-        // figure this out
-        return CurrentTimeMerchData();
+        MerchData nextMerch = ListUtils.NextOf(GameData.instance.MerchDataList, CurrentTimeMerchData());
+        return nextMerch.merchType == MerchType.TIME ? nextMerch : null;
     }
 
     private void BuyQualityMerch(MerchData data)
     {
         GameState.instance.Merch.QualityMerchId = data.id;
-        GameState.instance.Currency.NumberOfCoins -= data.upgradeCost;
+        if (CoinTransaction != null)
+        {
+            CoinTransaction(-data.upgradeCost);
+        }
     }
 
     private void BuyTimeMerch(MerchData data)
     {
         GameState.instance.Merch.TimeMerchId = data.id;
-        GameState.instance.Currency.NumberOfCoins -= data.upgradeCost;
+        if (CoinTransaction != null)
+        {
+            CoinTransaction(-data.upgradeCost);
+        }
     }
 
 
-    private bool CanBuy(int price)
+    private bool CanBuyItem(int price)
     {
-        return price <= GameState.instance.Currency.NumberOfCoins;
+        if (CanBuy != null)
+        {
+            return CanBuy(price);
+        }
+        return false;
     }
 }

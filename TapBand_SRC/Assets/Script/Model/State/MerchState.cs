@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 [System.Serializable]
 public class MerchState {
 
     private int timeMerchId;
     private int qualityMerchId;
+    private DateTime lastOnlineDate;
 
     public int TimeMerchId
     {
@@ -33,6 +35,19 @@ public class MerchState {
         }
     }
 
+    public DateTime LastOnlineDate
+    {
+        get
+        {
+            return lastOnlineDate;
+        }
+
+        set
+        {
+            lastOnlineDate = value;
+        }
+    }
+
     public MerchData CurrentQualityMerch
     {
         get
@@ -56,4 +71,5 @@ public class MerchState {
             return GameData.instance.MerchDataList.Find(x => x.id == timeMerchId);
         }
     }
+
 }

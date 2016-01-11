@@ -4,17 +4,17 @@ using System.Collections;
 [System.Serializable]
 public class TourState {
 
-    private int currentTourID;
+    private int currentTourIndex;
 
-    public int CurrentTourID
+    public int CurrentTourIndex
     {
         get
         {
-            return currentTourID;
+            return currentTourIndex;
         }
         set
         {
-            currentTourID = value;
+            currentTourIndex = value;
         }
     }
 
@@ -22,7 +22,7 @@ public class TourState {
     {
         get
         {
-            return GameData.instance.TourDataList.Find(x => x.id == currentTourID);
+            return GameData.instance.TourDataList.Find(x => x.id == currentTourIndex);
         }
     }
 }
