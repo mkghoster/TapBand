@@ -60,7 +60,7 @@ public class EquipmentState {
 		}
 	}
 
-	public EquipmentData CurrentDrumEquipmentId
+	public EquipmentData CurrentDrumEquipment
 	{
 		get
 		{
@@ -72,7 +72,7 @@ public class EquipmentState {
 		}
 	}
 
-	public EquipmentData CurrentGuitarEquipmentId
+	public EquipmentData CurrentGuitarEquipment
 	{
 		get
 		{
@@ -84,7 +84,7 @@ public class EquipmentState {
 		}
 	}
 
-	public EquipmentData CurrentBassEquipmentId
+	public EquipmentData CurrentBassEquipment
 	{
 		get
 		{
@@ -96,7 +96,7 @@ public class EquipmentState {
 		}
 	}
 
-	public EquipmentData CurrentKeyboardEquipmentId
+	public EquipmentData CurrentKeyboardEquipment
 	{
 		get
 		{
@@ -110,22 +110,68 @@ public class EquipmentState {
 
 	public EquipmentData NextDrumEquipment
 	{
-		get{return null;}	
+
+        get
+        {
+            EquipmentData nextDrum = ListUtils.NextOf<EquipmentData>(GameData.instance.EquipmentDataList, CurrentDrumEquipment);
+            if (nextDrum.equipmentType == EquipmentType.DRUM)
+            { 
+                return nextDrum;
+            }
+            else
+            { 
+                return null;
+            }
+        }
+
 	}
 
 	public EquipmentData NextGuitarEquipment
 	{
-		get{return null;}
-	}
+        get
+        {
+            EquipmentData nextGuitar = ListUtils.NextOf<EquipmentData>(GameData.instance.EquipmentDataList, CurrentGuitarEquipment);
+            if (nextGuitar.equipmentType == EquipmentType.GUITAR)
+            {
+                return nextGuitar;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
 
 	public EquipmentData NextBassEquipment
 	{
-		get{return null;}
-	}
+        get
+        {
+            EquipmentData nextBass = ListUtils.NextOf<EquipmentData>(GameData.instance.EquipmentDataList, CurrentBassEquipment);
+            if (nextBass.equipmentType == EquipmentType.BASS)
+            {
+                return nextBass;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
 
 	public EquipmentData NextKeyboardEquipment
 	{
-		get{return null;}
-	}
+        get
+        {
+            EquipmentData nextKeyboard = ListUtils.NextOf<EquipmentData>(GameData.instance.EquipmentDataList, CurrentKeyboardEquipment);
+            if (nextKeyboard.equipmentType == EquipmentType.KEYBOARD)
+            {
+                return nextKeyboard;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
 
 }

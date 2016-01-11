@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public enum EquipmentType
 {
-    GUITAR, BASS, VOCAL, DRUM
+    GUITAR, BASS, KEYBOARD, DRUM
 }
 
 [System.Serializable]

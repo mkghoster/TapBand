@@ -32,9 +32,9 @@ public class EquipmentUI : MonoBehaviour {
 			EquipmentData drumData = CurrentDrumEquipmentData();
 			if (drumData != null)
 			{
-				GetTextComponentOfChild(drumPanel, "CurrentDrumHolder").text = drumData.level.ToString();
-				GetTextComponentOfChild(drumPanel, "CurrentDrumsBenefitsHolder").text = drumData.name;
-				GetTextComponentOfChild(drumPanel, "NextDrumsBenefitsHolder").text = drumData.tapMultiplier.ToString();
+				GetTextComponentOfChild(drumPanel, "CurrentDrumHolder").text = drumData.name;
+				GetTextComponentOfChild(drumPanel, "CurrentDrumsBenefitsHolder").text = drumData.tapMultiplier.ToString();
+				//GetTextComponentOfChild(drumPanel, "NextDrumsBenefitsHolder").text = drumData.tapMultiplier.ToString();
 			}
 		}
 		
@@ -46,7 +46,8 @@ public class EquipmentUI : MonoBehaviour {
 			if (drumData != null)
 			{
 				GetButtonTextComponentOfChild(drumPanel, "DrumsUpgradeButton").text = "Buy " + drumData.name;
-				GetTextComponentOfChild(drumPanel, "NextBoostProperties").text = "It'll give " + drumData.tapMultiplier;
+                //NextBoostProperties
+                GetTextComponentOfChild(drumPanel, "NextDrumsBenefitsHolder").text = "It'll give " + drumData.tapMultiplier+ " multiplier";
 				
 				if (CanBuy != null)
 				{
@@ -69,7 +70,7 @@ public class EquipmentUI : MonoBehaviour {
 			{
 				GetTextComponentOfChild(guitarPanel, "CurrentGuitarHolder").text = guitarData.level.ToString();
 				GetTextComponentOfChild(guitarPanel, "CurrentGuitarBenefitsHolder").text = guitarData.name;
-				GetTextComponentOfChild(guitarPanel, "NextGuitarBenefitsHolder").text = guitarData.tapMultiplier.ToString();
+				//GetTextComponentOfChild(guitarPanel, "NextGuitarBenefitsHolder").text = guitarData.tapMultiplier.ToString();
 			}
 		}
 		
@@ -81,7 +82,7 @@ public class EquipmentUI : MonoBehaviour {
 			if (guitarData != null)
 			{
 				GetButtonTextComponentOfChild(guitarPanel, "GuitarsUpgradeButton").text = "Buy " + guitarData.name;
-				GetTextComponentOfChild(guitarPanel, "NextBoostProperties").text = "It'll give " + guitarData.tapMultiplier;
+				GetTextComponentOfChild(guitarPanel, "NextGuitarBenefitsHolder").text = "It'll give " + guitarData.tapMultiplier;
 				
 				if (CanBuy != null)
 				{
@@ -104,7 +105,7 @@ public class EquipmentUI : MonoBehaviour {
 			{
 				GetTextComponentOfChild(bassPanel, "CurrentBassHolder").text = bassData.level.ToString();
 				GetTextComponentOfChild(bassPanel, "CurrentBassBenefitsHolder").text = bassData.name;
-				GetTextComponentOfChild(bassPanel, "NextBassBenefitsHolder").text = bassData.tapMultiplier.ToString();
+				//GetTextComponentOfChild(bassPanel, "NextBassBenefitsHolder").text = bassData.tapMultiplier.ToString();
 			}
 		}
 		
@@ -116,7 +117,7 @@ public class EquipmentUI : MonoBehaviour {
 			if (bassData != null)
 			{
 				GetButtonTextComponentOfChild(bassPanel, "BassUpgradeButton").text = "Buy " + bassData.name;
-				GetTextComponentOfChild(bassPanel, "NextBoostProperties").text = "It'll give " + bassData.tapMultiplier;
+				GetTextComponentOfChild(bassPanel, "NextBassBenefitsHolder").text = "It'll give " + bassData.tapMultiplier;
 				
 				if (CanBuy != null)
 				{
@@ -139,7 +140,7 @@ public class EquipmentUI : MonoBehaviour {
 			{
 				GetTextComponentOfChild(keyboardPanel, "CurrentKeyboardHolder").text = keyboardData.level.ToString();
 				GetTextComponentOfChild(keyboardPanel, "CurrentKeyboardBenefitsHolder").text = keyboardData.name;
-				GetTextComponentOfChild(keyboardPanel, "NextKeyboardBenefitsHolder").text = keyboardData.tapMultiplier.ToString();
+				//GetTextComponentOfChild(keyboardPanel, "NextKeyboardBenefitsHolder").text = keyboardData.tapMultiplier.ToString();
 			}
 		}
 		
@@ -151,7 +152,7 @@ public class EquipmentUI : MonoBehaviour {
 			if (keyboardData != null)
 			{
 				GetButtonTextComponentOfChild(keyboardPanel, "KeyboardUpgradeButton").text = "Buy " + keyboardData.name;
-				GetTextComponentOfChild(keyboardPanel, "NextBoostProperties").text = "It'll give " + keyboardData.tapMultiplier;
+				GetTextComponentOfChild(keyboardPanel, "NextKeyboardBenefitsHolder").text = "It'll give " + keyboardData.tapMultiplier;
 				
 				if (CanBuy != null)
 				{
