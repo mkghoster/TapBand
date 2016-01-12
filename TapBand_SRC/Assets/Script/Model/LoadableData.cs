@@ -61,17 +61,25 @@ public abstract class LoadableData
     private string ConstructDataPathAndFile(string assetsPath)
     {
         string gameDataPath = System.IO.Path.Combine(assetsPath, "Data/");
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+#else
         if (!Directory.Exists(gameDataPath))
         {
             Directory.CreateDirectory(gameDataPath);
         }
+#endif
+
         gameDataPath += GetFileName();
         Debug.Log(gameDataPath);
+#if UNITY_ANDROID && !UNITY_EDITOR
+#else
         if (!File.Exists(gameDataPath))
         {
             FileStream created = File.Create(gameDataPath);
             created.Close();
         }
+#endif
         return gameDataPath;
     }
 }
