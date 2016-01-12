@@ -748,8 +748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94b044862c3f74b8a34ee977b881e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timePanel: {fileID: 1409112430}
-  qualityPanel: {fileID: 1076088857}
+  timePanel: {fileID: 1076088857}
+  qualityPanel: {fileID: 1409112430}
 --- !u!114 &310855215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5950,7 +5950,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 170544, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Name
-      value: QualityPanel
+      value: TimePanel
       objectReference: {fileID: 0}
     - target: {fileID: 11478988, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Text
@@ -5963,6 +5963,30 @@ Prefab:
     - target: {fileID: 11484374, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Text
       value: Buy the Holy Sword!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474606, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Text
+      value: 'Current Time:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 124116, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Name
+      value: CurrentPropertiesHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 159406, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Name
+      value: CurrentProperties
+      objectReference: {fileID: 0}
+    - target: {fileID: 135490, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Name
+      value: NextMerchProperties
+      objectReference: {fileID: 0}
+    - target: {fileID: 22486600, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417960, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Text
+      value: 0 sec
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 154ea12d120178842b9da820371681cf, type: 2}
@@ -6446,7 +6470,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11417960, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Text
-      value: 0 sec
+      value: 0 coin per sec
+      objectReference: {fileID: 0}
+    - target: {fileID: 124116, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Name
+      value: CurrentPropertiesHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 159406, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Name
+      value: CurrentProperties
+      objectReference: {fileID: 0}
+    - target: {fileID: 135490, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Name
+      value: NextMerchProperties
+      objectReference: {fileID: 0}
+    - target: {fileID: 22486600, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 170544, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Name
+      value: QualityPanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 154ea12d120178842b9da820371681cf, type: 2}

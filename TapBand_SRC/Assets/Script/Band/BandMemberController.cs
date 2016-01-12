@@ -3,11 +3,11 @@ using System.Collections;
 
 public abstract class BandMemberController : MonoBehaviour
 {
-    private GameState gameState;
+    //private GameState gameState;
 
     void Start()
     {
-        gameState = GameState.instance;
+        //gameState = GameState.instance;
     }
 
     public void TapEventOnBandMember()

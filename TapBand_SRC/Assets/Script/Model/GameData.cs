@@ -24,6 +24,14 @@ public class GameData : LoadableData
             return _instance;
         }
     }
+    
+    // TODO: solve its protection level issues in RawGameDataLoader
+    /*
+    private GameData()
+    {
+
+    }
+    */
     #endregion
 
     private List<SongData> songDataList;

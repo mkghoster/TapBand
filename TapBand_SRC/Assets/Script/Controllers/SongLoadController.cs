@@ -1,45 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+This class is purely for TEST purposes, and it gives some music at least...
+*/
 public class SongLoadController : MonoBehaviour {
-
-    private float timePassed = 0.0f;
-
-    private AudioSource source1;
-    private AudioSource source2;
-
-    private bool oddPlay;
+    
+    private AudioSource[] sounds;
+    private int indexToPlay = 0;
 
 	void Start () {
-        oddPlay = false;
-
-        AudioSource[] sounds = GetComponents<AudioSource>();
-        source1 = sounds[0];
-        source2 = sounds[1];
+        sounds = GetComponents<AudioSource>();
     }
 
     void Update () {
-        timePassed += Time.deltaTime;
-
-        /*
-        if (timePassed > GameState.instance.songLengthInSeconds)
+        if (GameState.instance.Concert != null && GameState.instance.Concert.CurrentSong != null)
         {
-            timePassed = 0.0f;
-            //GameState.instance.resetTaps();
-            oddPlay = !oddPlay;
+            int newIndexToPlay = (GameState.instance.Concert.CurrentSong.id + 1) % 2;
+            if (indexToPlay != newIndexToPlay)
+            {
+                sounds[indexToPlay].Stop();
+                sounds[newIndexToPlay].Play();
 
-            if (oddPlay)
-            {
-                source1.Stop();
-                source2.Play();
-            } else
-            {
-                source2.Stop();
-                source1.Play();
+                indexToPlay = newIndexToPlay;
             }
         }
-
-        GameState.instance.passedTimeInSeconds = (int) timePassed;
-        */
-	}
+    }
 }

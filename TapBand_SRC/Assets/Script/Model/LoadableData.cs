@@ -10,7 +10,7 @@ public abstract class LoadableData
 {
     public void TryLoadFromAssets(string assetsPath)
     {
-        string gameDataPath = ConstructDataPath(assetsPath);
+        string gameDataPath = ConstructDataPathAndFile(assetsPath);
 
         // Load GameData byte[]
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -20,10 +20,11 @@ public abstract class LoadableData
         byteArray = File.ReadAllBytes(gameDataPath);
 #endif
 
-        // Load GameState	
-        MemoryStream ms = new MemoryStream(byteArray);
-
-        LoadData(ms);
+        if (byteArray.Length > 0)
+        {
+            MemoryStream ms = new MemoryStream(byteArray);
+            LoadData(ms);
+        }
     }
 
     public abstract string GetFileName();
@@ -44,7 +45,7 @@ public abstract class LoadableData
 
     public void SaveToFile(string assetsPath)
     {
-        string gameDataPath = ConstructDataPath(assetsPath);
+        string gameDataPath = ConstructDataPathAndFile(assetsPath);
 
         BinaryFormatter bf = new BinaryFormatter();
 
@@ -57,7 +58,7 @@ public abstract class LoadableData
         File.WriteAllBytes(gameDataPath, normalByteArray);
     }
 
-    private string ConstructDataPath(string assetsPath)
+    private string ConstructDataPathAndFile(string assetsPath)
     {
         string gameDataPath = System.IO.Path.Combine(assetsPath, "Data/");
         if (!Directory.Exists(gameDataPath))
@@ -66,6 +67,11 @@ public abstract class LoadableData
         }
         gameDataPath += GetFileName();
         Debug.Log(gameDataPath);
+        if (!File.Exists(gameDataPath))
+        {
+            FileStream created = File.Create(gameDataPath);
+            created.Close();
+        }
         return gameDataPath;
     }
 }

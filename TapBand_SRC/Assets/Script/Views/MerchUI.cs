@@ -21,75 +21,60 @@ public class MerchUI : MonoBehaviour {
 
     void OnGUI()
     {
-        if (CurrentQualityMerchData != null)
+        RefreshPanel(timePanel, CurrentTimeMerchData, NextTimeMerchData, BuyTimeMerch);
+        RefreshPanel(qualityPanel, CurrentQualityMerchData, NextQualityMerchData, BuyQualityMerch);
+    }
+    
+    private void RefreshPanel(GameObject panel, MerchDataEvent currentData, MerchDataEvent nextData,
+                              BuyMerchEvent buy)
+    {
+        if (currentData != null)
         {
-            MerchData qualityData = CurrentQualityMerchData();
-            if (qualityData != null)
+            MerchData merchData = currentData();
+            if (merchData != null)
             {
-                GetTextComponentOfChild(qualityPanel, "CurrentLevelHolder").text = qualityData.level.ToString();
-                GetTextComponentOfChild(qualityPanel, "CurrentNameHolder").text = qualityData.name;
-                GetTextComponentOfChild(qualityPanel, "CurrentTimeHolder").text = qualityData.coinPerSecond.ToString();
+                GetTextComponentOfChild(panel, "CurrentLevelHolder").text = merchData.level.ToString();
+                GetTextComponentOfChild(panel, "CurrentNameHolder").text = merchData.name;
+                GetTextComponentOfChild(panel, "CurrentPropertiesHolder").text = MerchPropertiesToShow(merchData);
             }
         }
 
-        GetButtonComponentOfChild(qualityPanel, "BuyButton").interactable = false;
+        GetButtonComponentOfChild(panel, "BuyButton").interactable = false;
 
-        if (NextQualityMerchData != null)
+        if (nextData != null)
         {
-            MerchData qualityData = NextQualityMerchData();
-            if (qualityData != null)
+            MerchData nextMerchData = nextData();
+            if (nextMerchData != null)
             {
-                GetButtonTextComponentOfChild(qualityPanel, "BuyButton").text = "Buy " + qualityData.name;
-                GetTextComponentOfChild(qualityPanel, "NextBoostProperties").text = "It'll give " + qualityData.coinPerSecond;
+                GetButtonTextComponentOfChild(panel, "BuyButton").text = "Buy " + nextMerchData.name + " (" + nextMerchData.upgradeCost + " coin)";
+                GetTextComponentOfChild(panel, "NextMerchProperties").text = "It'll give " + MerchPropertiesToShow(nextMerchData);
 
                 if (CanBuy != null)
                 {
-                    Button buyButton = GetButtonComponentOfChild(qualityPanel, "BuyButton");
-                    buyButton.interactable = CanBuy(qualityData.upgradeCost);
+                    Button buyButton = GetButtonComponentOfChild(panel, "BuyButton");
+                    buyButton.interactable = CanBuy(nextMerchData.upgradeCost);
                     // FIXME: temporary solution
                     buyButton.onClick.RemoveAllListeners();
-                    buyButton.onClick.AddListener(() => BuyQualityMerch(qualityData));
-                }
-            }
-            
-        }
-
-        // this duplicate is not nice at all, I'll fix this later
-
-        if (CurrentTimeMerchData != null)
-        {
-            MerchData timeData = CurrentTimeMerchData();
-            if (timeData != null)
-            {
-                GetTextComponentOfChild(timePanel, "CurrentLevelHolder").text = timeData.level.ToString();
-                GetTextComponentOfChild(timePanel, "CurrentNameHolder").text = timeData.name;
-                GetTextComponentOfChild(timePanel, "CurrentTimeHolder").text = timeData.timeLimit.ToString();
-            }
-        }
-
-        GetButtonComponentOfChild(timePanel, "BuyButton").interactable = false;
-
-        if (NextTimeMerchData != null)
-        {
-            MerchData timeData = NextTimeMerchData();
-            if (timeData != null)
-            {
-                GetButtonTextComponentOfChild(timePanel, "BuyButton").text = "Buy " + timeData.name;
-                GetTextComponentOfChild(timePanel, "NextBoostProperties").text = "It'll give " + timeData.timeLimit;
-
-                if (CanBuy != null)
-                {
-                    Button buyButton = GetButtonComponentOfChild(timePanel, "BuyButton");
-                    buyButton.interactable = CanBuy(timeData.upgradeCost);
-                    // FIXME: temporary solution
-                    buyButton.onClick.RemoveAllListeners();
-                    buyButton.onClick.AddListener(() => BuyTimeMerch(timeData));
+                    buyButton.onClick.AddListener(() => buy(nextMerchData));
                 }
             }
 
         }
     }
-    
+
+    private string MerchPropertiesToShow(MerchData merchData)
+    {
+        string ret = "";
+        if (merchData.coinPerSecond != 0)
+        {
+            ret += merchData.coinPerSecond + " coin per sec ";
+        }
+        if (merchData.timeLimit != 0)
+        {
+            ret += merchData.timeLimit + " sec ";
+        }
+        return ret;
+    }
 
     private Text GetTextComponentOfChild(GameObject parent, string childName)
     {

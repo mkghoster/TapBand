@@ -21,12 +21,20 @@ public class GameState : LoadableData {
             return _instance;
         }
     }
+
+    private GameState()
+    {
+        currencyState = new CurrencyState();
+        tourState = new TourState();
+        merchState = new MerchState();
+        concertState = new ConcertState();
+        equipmentState = new EquipmentState();
+    }
     #endregion
 
     private CurrencyState currencyState;
     private TourState tourState;
     private MerchState merchState;
-    // TODO folytatni, pl:
     private ConcertState concertState;
     private EquipmentState equipmentState;
 

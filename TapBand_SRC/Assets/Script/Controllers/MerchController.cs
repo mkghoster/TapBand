@@ -20,7 +20,7 @@ public class MerchController : MonoBehaviour {
 
     void Start()
     {
-        if (GameState.instance.Merch.LastOnlineDate != null)
+        if (GameState.instance.Merch.CurrentTimeMerch != null)
         {
             int diffInSeconds = (int)(DateTime.Now - GameState.instance.Merch.LastOnlineDate).TotalSeconds;
             int timeLimit = GameState.instance.Merch.CurrentTimeMerch.timeLimit;
