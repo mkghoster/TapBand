@@ -50,18 +50,20 @@ public class CurrencyController : MonoBehaviour {
     private void Reset()
     {
         GameState.instance.Currency.NumberOfCoins = 0;
-        GameState.instance.Currency.NumberOfFans = 0;
+        // TODO: need GD decision about this
+        // GameState.instance.Currency.NumberOfFans = 0;
     }
 
     private void CoinTransaction(int price)
     {
-        // TODO implement checks
-        GameState.instance.Currency.NumberOfCoins += price;
+        // TODO temporal solution
+        GameState.instance.Currency.NumberOfCoins += (int) (price * GameState.instance.Tour.CurrentTour.coinMultiplier);
     }
 
 	private void FanTransaction(int fans)
 	{
-		GameState.instance.Currency.NumberOfFans += fans;
+        // TODO temporal solution
+        GameState.instance.Currency.NumberOfFans += (int)(fans * GameState.instance.Tour.CurrentTour.fanMultiplier);
 	}
 
     private bool CanBuy(int price)
