@@ -31,24 +31,42 @@ public class TapController : MonoBehaviour
 
     private void HandleTap(TapArgs args)
     {
+        float tapValue = CalculateTapValue();
+
         foreach(Vector3 position in args.positions)
         {
-            tapUI.DisplayTapValueAt(position, 1);
+            tapUI.DisplayTapValueAt(position, (ulong) tapValue);
         }
         if (OnTap != null)
         {
-            float tapValue = CalculateTapValue(args.positions.Count);
-            OnTap(tapValue);
+            OnTap(tapValue * args.positions.Count);
         }
     }
 
-    private float CalculateTapValue(int tapCount)
+    private float CalculateTapValue()
     {
         GameState state = GameState.instance;
 
-        return tapCount *
+        float equipmentMultiplier = 1;
+        if (state.Equipment.CurrentBassEquipment != null)
+        {
+            equipmentMultiplier *= state.Equipment.CurrentBassEquipment.tapMultiplier;
+        }
+        if (state.Equipment.CurrentDrumEquipment != null)
+        {
+            equipmentMultiplier *= state.Equipment.CurrentDrumEquipment.tapMultiplier;
+        }
+        if (state.Equipment.CurrentGuitarEquipment != null)
+        {
+            equipmentMultiplier *= state.Equipment.CurrentGuitarEquipment.tapMultiplier;
+        }
+        if (state.Equipment.CurrentKeyboardEquipment != null)
+        {
+            equipmentMultiplier *= state.Equipment.CurrentKeyboardEquipment.tapMultiplier;
+        }
+
+        return equipmentMultiplier *
             DefaultOrSelf(state.Tour.CurrentTour.tapMultiplier);
-            //DefaultOrSelf(state.Equipment.CurrentHolyMageBladeOfJustice.tapMultiplier)
     }
 
     private float DefaultOrSelf(float f)
