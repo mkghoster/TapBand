@@ -22,9 +22,12 @@ public class TapUI : MonoBehaviour
     public delegate void TapEvent(TapArgs args);
     public event TapEvent OnTap;
 
+    private BandMemberView[] bandMembers;
+
 	void Start()
     {
         _collider = GetComponent<Collider2D>();
+        bandMembers = FindObjectsOfType<BandMemberView>();
 	}
 	
 	// Update is called once per frame
@@ -33,15 +36,25 @@ public class TapUI : MonoBehaviour
         if (Input.touchCount > 0)
         {
             TapArgs args = CalculateTapEventArgs();
+            AnimateCharacters();
             if (OnTap != null)
                 OnTap(args);
         }
 	}
 
+    private void AnimateCharacters()
+    {
+        foreach (BandMemberView view in bandMembers)
+        {
+            view.ForceClickOnBandMember();
+        }
+    }
+
     void OnMouseDown()
     {
         TapArgs args = new TapArgs();
         args.positions.Add(Input.mousePosition);
+        AnimateCharacters();
         if (OnTap != null)
             OnTap(args);
     }

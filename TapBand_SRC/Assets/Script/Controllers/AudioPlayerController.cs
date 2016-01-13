@@ -4,13 +4,31 @@ using System.Collections;
 /*
 This class is purely for TEST purposes, and it gives some music at least...
 */
-public class SongLoadController : MonoBehaviour {
-    
+public class AudioPlayerController : MonoBehaviour {
+
+    private ParticleSystem exp;
     private AudioSource[] sounds;
     private int indexToPlay = 0;
 
-	void Start () {
+    private ConcertController concertController;
+
+    void Awake()
+    {
+        concertController = (ConcertController)FindObjectOfType(typeof(ConcertController));
+    }
+
+    void OnEnable()
+    {
+        concertController.GiveEndOfConcert += PlayTasty;
+    }
+    void OnDisable()
+    {
+        concertController.GiveEndOfConcert -= PlayTasty;
+    }
+
+    void Start () {
         sounds = GetComponents<AudioSource>();
+        exp = GetComponent<ParticleSystem>();
     }
 
     void Update () {
@@ -25,5 +43,16 @@ public class SongLoadController : MonoBehaviour {
                 indexToPlay = newIndexToPlay;
             }
         }
+    }
+
+    private void PlayTasty(ConcertData data)
+    {
+        sounds[2].Play();
+        Explode();
+    }
+
+    void Explode()
+    {
+        exp.Play();
     }
 }

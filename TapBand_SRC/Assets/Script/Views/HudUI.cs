@@ -63,7 +63,10 @@ public class HudUI : MonoBehaviour {
 		if (newSongData != null) 
 		{
 			actualSongData = newSongData();
-			song.GetComponent<Text>().text = actualSongData.title;
+            if (actualSongData != null)
+            {
+                song.GetComponent<Text>().text = actualSongData.title;
+            }
 		}
 
 
