@@ -55,7 +55,7 @@ public class BallController : MonoBehaviour {
 
     void OnMouseDown()
     {
-        myRigidBody.AddForce(new Vector2(Random.Range(-200, 200), 0));
+        myRigidBody.AddForce(new Vector2(Random.Range(-300, 300), 0));
         state.numberOfSuccessfulTaps++;
     }
 }
