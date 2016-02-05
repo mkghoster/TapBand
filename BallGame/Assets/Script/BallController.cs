@@ -45,17 +45,35 @@ public class BallController : MonoBehaviour {
 
     private void HandleInput()
     {
-
+        if (Application.platform == RuntimePlatform.Android || 
+            Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            if (Input.touchCount > 0)
+            {
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    CheckTouch(Input.GetTouch(0).position);
+                }
+            }
+        } else {
+            if (Input.GetMouseButtonDown(0))
+            {
+                CheckTouch(Input.mousePosition);
+            }
+        }
     }
 
-    void FixedUpdate()
+    private void CheckTouch(Vector2 pos)
     {
-        
-    }
+        Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
+        Vector2 touchPos = new Vector2(wp.x, wp.y);
+        var hit = Physics2D.OverlapPoint(touchPos);
 
-    void OnMouseDown()
-    {
-        myRigidBody.AddForce(new Vector2(Random.Range(-300, 300), 0));
-        state.numberOfSuccessfulTaps++;
+        if (hit)
+        {
+            myRigidBody.AddForce(new Vector2(Random.Range(-300, 300), 0));
+            state.numberOfSuccessfulTaps++;
+        }
     }
+    
 }
