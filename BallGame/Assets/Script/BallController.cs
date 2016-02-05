@@ -45,20 +45,17 @@ public class BallController : MonoBehaviour {
 
     private void HandleInput()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            state.numberOfSuccessfulTaps++;
-        }
+
     }
 
     void FixedUpdate()
     {
-        if ((int)countDown < previousSecond)
-        {
-            myRigidBody.AddForce(new Vector2(Random.Range(-400, 400), 0));
-            previousSecond = (int)countDown;
-        }
+        
     }
 
-
+    void OnMouseDown()
+    {
+        myRigidBody.AddForce(new Vector2(Random.Range(-200, 200), 0));
+        state.numberOfSuccessfulTaps++;
+    }
 }
