@@ -25,8 +25,13 @@ public class BallController : MonoBehaviour {
         myRigidBody = GetComponent<Rigidbody2D>();
     }
 	
-	
 	void Update () {
+        HandleCountdown();
+        HandleInput();
+    }
+
+    private void HandleCountdown()
+    {
         float deltaTime = Time.deltaTime;
 
         countDown -= deltaTime;
@@ -36,7 +41,10 @@ public class BallController : MonoBehaviour {
             Debug.Log(state.numberOfSuccessfulTaps);
             Destroy(gameObject);
         }
+    }
 
+    private void HandleInput()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             state.numberOfSuccessfulTaps++;
@@ -47,7 +55,7 @@ public class BallController : MonoBehaviour {
     {
         if ((int)countDown < previousSecond)
         {
-            myRigidBody.AddForce(new Vector2(Random.Range(-200, 200), 0));
+            myRigidBody.AddForce(new Vector2(Random.Range(-400, 400), 0));
             previousSecond = (int)countDown;
         }
     }
