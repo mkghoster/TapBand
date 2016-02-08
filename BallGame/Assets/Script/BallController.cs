@@ -6,9 +6,10 @@ public class BallController : MonoBehaviour {
     private BallState state;
 
     private float countDown;
-    private int previousSecond;
-
     private Rigidbody2D myRigidBody;
+    private GameObject particleEmitter;
+
+    private bool left = false;
 
     public BallState State
     {
@@ -20,9 +21,8 @@ public class BallController : MonoBehaviour {
 
     void Start () {
         countDown = state.ballAliveTime;
-        previousSecond = state.ballAliveTime;
-
         myRigidBody = GetComponent<Rigidbody2D>();
+        particleEmitter = GameObject.Find("BallEmitter");
     }
 	
 	void Update () {
@@ -67,13 +67,29 @@ public class BallController : MonoBehaviour {
     {
         Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
         Vector2 touchPos = new Vector2(wp.x, wp.y);
-        var hit = Physics2D.OverlapPoint(touchPos);
+        Collider2D hit = Physics2D.OverlapPoint(touchPos);
 
         if (hit)
         {
-            myRigidBody.AddForce(new Vector2(Random.Range(-300, 300), 0));
+            KickBall();
+            InitializeEmitter();
             state.numberOfSuccessfulTaps++;
         }
     }
     
+    private void InitializeEmitter()
+    {
+        GameObject newEmitter = Instantiate(particleEmitter);
+        newEmitter.transform.position = gameObject.transform.position;
+
+        ParticleSystem ps = newEmitter.GetComponent<ParticleSystem>();
+        Destroy(newEmitter, ps.duration + ps.startLifetime);
+    }
+
+    private void KickBall()
+    {
+        int verticalForce = (left ? -1 : 1) * Random.Range(150, 250);
+        left = !left;
+        myRigidBody.AddForce(new Vector2(verticalForce, 0));
+    }
 }

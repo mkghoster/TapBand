@@ -10,7 +10,7 @@ public class BallInitializerController : MonoBehaviour {
         aliveBall.transform.position = Vector2.zero;
 
         BallController controller = aliveBall.GetComponent<BallController>();
-        controller.State = new BallState(20);
+        controller.State = new BallState(40);
     }
 
     void Update () {
