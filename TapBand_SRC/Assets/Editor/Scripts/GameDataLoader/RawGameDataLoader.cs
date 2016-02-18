@@ -186,7 +186,7 @@ public class RawGameDataLoader : IGameDataLoader
         gameData.ConcertDataList = LoadConcertData();
         gameData.MerchDataList = LoadMerchData();
 		gameData.EquipmentDataList = LoadEquipmentData();
-        // TODO: continue
+        gameData.GeneralDataList = LoadGeneralData();
 		return gameData;
 	}
 	
@@ -313,4 +313,26 @@ public class RawGameDataLoader : IGameDataLoader
 		
 		return equipmentDataList;
 	}
+
+    private List<GeneralData> LoadGeneralData()
+    {
+        currentSheet = "GeneralData";
+        currentRows = dataReader.GetRows(currentSheet);
+
+        List<GeneralData> generalDataList = new List<GeneralData>();
+
+        int rowNum = currentRows.Count;
+        for (int i = 0; i < rowNum; i++)
+        {
+            GeneralData dataObject = new GeneralData();
+
+            TryLoadInt(i, "ID", out dataObject.id);
+            TryLoadString(i, "Name", out dataObject.name);
+            TryLoadString(i, "Value", out dataObject.value);
+
+            generalDataList.Add(dataObject);
+        }
+
+        return generalDataList;
+    }
 }

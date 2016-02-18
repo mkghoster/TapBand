@@ -119,6 +119,19 @@ public class GameData : LoadableData
         }
     }
 
+    public GeneralData FindGeneralDataByName(string name)
+    {
+        foreach (GeneralData data in generalDataList)
+        {
+            if (data.name == name)
+            {
+                return data;
+            }
+        }
+
+        return null;
+    }
+
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {
