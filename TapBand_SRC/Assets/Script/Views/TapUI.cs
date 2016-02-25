@@ -114,13 +114,16 @@ public class TapUI : MonoBehaviour
         
         Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
         Collider2D hit = Physics2D.OverlapPoint(wp);
-        if (hit.gameObject.tag == "Spotlight")
+        if (hit)
         {
-            args.spotlightPositions.Add(pos);
-        }
-        else if (hit == _collider)
-        {
-            args.positions.Add(pos);
+            if (hit.gameObject.tag == "Spotlight")
+            {
+                args.spotlightPositions.Add(pos);
+            }
+            else if (hit == _collider)
+            {
+                args.positions.Add(pos);
+            }
         }
     }
 }
