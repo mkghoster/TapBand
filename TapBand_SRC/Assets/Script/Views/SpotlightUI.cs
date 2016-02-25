@@ -10,19 +10,30 @@ public class SpotlightUI : MonoBehaviour {
     public float aliveTime;
 
     private float passedTime;
+    private bool isActive;
+
+    public GameObject particleEmitterPrefab;
     
 	void Start () {
         DeactivateAll();
         passedTime = 0f;
+        isActive = false;
     }
 	
 	void Update () {
-	    if (passedTime <= 0)
+        if (isActive)
         {
-            DeactivateAll();
-        } else
-        {
-            passedTime -= Time.deltaTime;
+            if (passedTime <= 0)
+            {
+                isActive = false;
+                DeactivateAll();
+                GameObject inst = (GameObject)Instantiate(particleEmitterPrefab, Vector2.zero, Quaternion.identity);
+                Destroy(inst, 3);
+            }
+            else
+            {
+                passedTime -= Time.deltaTime;
+            }
         }
 	}
 
@@ -39,6 +50,7 @@ public class SpotlightUI : MonoBehaviour {
         {
             if (musician.name == obj.name)
             {
+                isActive = true;
                 obj.SetActive(true);
                 passedTime = aliveTime;
             } else

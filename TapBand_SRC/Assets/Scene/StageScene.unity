@@ -677,6 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spotlightUI: {fileID: 497162814}
+  tapController: {fileID: 0}
   musicians:
   - {fileID: 351168054}
   - {fileID: 1983958352}
@@ -1786,6 +1787,8 @@ MonoBehaviour:
   - {fileID: 2047558799}
   - {fileID: 1026367018}
   - {fileID: 1922444750}
+  particleEmitterPrefab: {fileID: 194778, guid: 5f4993717fc0eca48a3a554f936b0a31,
+    type: 2}
 --- !u!1 &502005565
 GameObject:
   m_ObjectHideFlags: 0
@@ -6827,6 +6830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b2984e9a0727d4ca5c925b5709ba92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpotlightTapMultiplier: 0
 --- !u!1 &1409112430 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 170544, guid: 154ea12d120178842b9da820371681cf, type: 2}
