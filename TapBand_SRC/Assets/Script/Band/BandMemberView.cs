@@ -29,7 +29,7 @@ public abstract class BandMemberView : MonoBehaviour {
 
     private void Animate()
     {
-        Vector3 newPosition = new Vector3(0, shakeY, 0);
+        Vector2 newPosition = new Vector2(0, shakeY);
         if (shakeY < 0)
         {
             shakeY *= shakeYSpeed;

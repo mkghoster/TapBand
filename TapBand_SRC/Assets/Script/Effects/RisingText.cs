@@ -3,22 +3,71 @@ using UnityEngine.UI;
 
 public class RisingText : MonoBehaviour
 {
-    private Vector3 speedVector;
+    private Vector2 speedVector;
     private float currentAlpha;
     private float fadeDuration;
+
+    private Color color;
+    private int fontSize;
+    private string text;
+    private float duration;
+    private float upSpeed;
+
+    public Color Color
+    {
+        set
+        {
+            color = value;
+        }
+    }
+
+    public int FontSize
+    {
+        set
+        {
+            fontSize = value;
+        }
+    }
+
+    public string Text
+    {
+        set
+        {
+            text = value;
+        }
+    }
+
+    public float Duration
+    {
+        set
+        {
+            duration = value;
+        }
+    }
+
+    public float UpSpeed
+    {
+        set
+        {
+            upSpeed = value;
+        }
+    }
 
     RisingText()
     {
         currentAlpha = 1f;
-        speedVector = new Vector3(0f, 1f, 0f);
+        speedVector = new Vector2(0f, 1f);
         fadeDuration = 0.5f;
     }
 
-    public void Setup(string text, float duration, float upSpeed)
+    public void Init()
     {
-        GetComponent<Text>().text = text;
+        Text textComponent = GetComponent<Text>();
+        textComponent.text = text;
+        textComponent.color = color;
+        textComponent.fontSize = fontSize;
         fadeDuration = 1f / duration;
-        speedVector = new Vector3(0f, upSpeed, 0f);
+        speedVector = new Vector2(0f, upSpeed);
     }
 
     void Update() 

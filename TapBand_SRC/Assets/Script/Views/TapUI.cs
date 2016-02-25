@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class TapArgs
 {
-    public ICollection<Vector3> positions;
+    public ICollection<Vector2> positions;
+    public ICollection<Vector2> spotlightPositions;
 
     public TapArgs()
     {
-        positions = new List<Vector3>();
+        positions = new List<Vector2>();
+        spotlightPositions = new List<Vector2>();
+    }
+
+    public bool HasAnyTap()
+    {
+        return positions.Count > 0 || spotlightPositions.Count > 0;
     }
 }
 
@@ -33,13 +40,14 @@ public class TapUI : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if (Input.touchCount > 0)
+        TapArgs args = CalculateTapEventArgs();
+        if (args.HasAnyTap())
         {
-            TapArgs args = CalculateTapEventArgs();
             AnimateCharacters();
             if (OnTap != null)
                 OnTap(args);
         }
+
 	}
 
     private void AnimateCharacters()
@@ -49,41 +57,70 @@ public class TapUI : MonoBehaviour
             view.ForceClickOnBandMember();
         }
     }
-
-    void OnMouseDown()
-    {
-        TapArgs args = new TapArgs();
-        args.positions.Add(Input.mousePosition);
-        AnimateCharacters();
-        if (OnTap != null)
-            OnTap(args);
-    }
-
-    public void DisplayTapValueAt(Vector3 position, BigInteger value)
+    
+    // waaaaaaay too much parameters, should be less than 3
+    public void DisplayTapValueAt(Vector2 position, BigInteger value, bool special)
     {
         GameObject canvas = GameObject.Find("Canvas");
         GameObject text = (GameObject) Instantiate(risingText);
         text.transform.position = position;
         text.transform.SetParent(canvas.transform);
-        text.GetComponent<RisingText>().Setup("+" + value.ToString(), 3f, 100f);
+
+        RisingText rising = text.GetComponent<RisingText>();
+        rising.Text = "+" + value.ToString();
+        rising.Duration = 3f;
+        rising.UpSpeed = 100f;
+        
+        if (special) {
+            rising.Color = Color.yellow;
+            rising.FontSize = 20;
+        } else
+        {
+            rising.Color = Color.white;
+            rising.FontSize = 16;
+        }
+
+        rising.Init();
     }
 
     private TapArgs CalculateTapEventArgs()
     {
         TapArgs args = new TapArgs();
-        for (var i = 0; i < Input.touchCount; ++i)
+
+        if (Application.platform == RuntimePlatform.Android ||
+            Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            Touch touch = Input.GetTouch(i);
-            if (touch.phase == TouchPhase.Began)
+
+            for (var i = 0; i < Input.touchCount; ++i)
             {
-                Vector3 wp = Camera.main.ScreenToWorldPoint(touch.position);
-                if (_collider == Physics2D.OverlapPoint(wp))
+                Touch touch = Input.GetTouch(i);
+                if (touch.phase == TouchPhase.Began)
                 {
-                    args.positions.Add(touch.position);
+                    CalculateWithPosition(touch.position, args);
                 }
             }
+        } else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                CalculateWithPosition(Input.mousePosition, args);
+            }
         }
-
         return args;
+    }
+
+    private void CalculateWithPosition(Vector2 pos, TapArgs args)
+    {
+        
+        Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
+        Collider2D hit = Physics2D.OverlapPoint(wp);
+        if (hit.gameObject.tag == "Spotlight")
+        {
+            args.spotlightPositions.Add(pos);
+        }
+        else if (hit == _collider)
+        {
+            args.positions.Add(pos);
+        }
     }
 }

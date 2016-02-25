@@ -6,20 +6,23 @@ public class SpotlightUI : MonoBehaviour {
 
     public GameObject[] spotLights;
 
-    private float initAliveTime;
+    [System.NonSerialized]
+    public float aliveTime;
+
+    private float passedTime;
     
 	void Start () {
         DeactivateAll();
-        initAliveTime = 0f;
+        passedTime = 0f;
     }
 	
 	void Update () {
-	    if (initAliveTime <= 0)
+	    if (passedTime <= 0)
         {
             DeactivateAll();
         } else
         {
-            initAliveTime -= Time.deltaTime;
+            passedTime -= Time.deltaTime;
         }
 	}
 
@@ -30,14 +33,14 @@ public class SpotlightUI : MonoBehaviour {
         }
     }
     
-    public void Activate(GameObject musician, float aliveTime)
+    public void Activate(GameObject musician)
     {
         foreach (GameObject obj in spotLights)
         {
             if (musician.name == obj.name)
             {
                 obj.SetActive(true);
-                initAliveTime = aliveTime;
+                passedTime = aliveTime;
             } else
             {
                 obj.SetActive(false);

@@ -8,21 +8,29 @@ public class SpotlightController : MonoBehaviour
     private float SpotlightInterval;
     private float SpotlightMinDelay;
     private float SpotlightMaxDelay;
+    private float SpotlightTapMultiplier;
 
     private float initSpotlightCountdown;
     private float actualCountDown;
 
     public SpotlightUI spotlightUI;
+    public TapController tapController;
 
     public GameObject[] musicians;
 
     void Start()
     {
-        SpotlightInterval = (float)Convert.ToDouble(GameData.instance.FindGeneralDataByName(GeneralData.SpotlightInterval).value);
-        SpotlightMinDelay = (float)Convert.ToDouble(GameData.instance.FindGeneralDataByName(GeneralData.SpotlightMinDelay).value);
-        SpotlightMaxDelay = (float)Convert.ToDouble(GameData.instance.FindGeneralDataByName(GeneralData.SpotlightMaxDelay).value);
+        SpotlightInterval = ReadFloat(GeneralData.SpotlightInterval);
+        SpotlightMinDelay = ReadFloat(GeneralData.SpotlightMinDelay);
+        SpotlightMaxDelay = ReadFloat(GeneralData.SpotlightMaxDelay);
+        SpotlightTapMultiplier = ReadFloat(GeneralData.SpotlightTapMultiplier);
 
-        initSpotlightCountdown = SpotlightInterval;
+        initSpotlightCountdown = CalculateAliveTime();
+
+        spotlightUI.aliveTime = SpotlightInterval;
+
+        tapController = FindObjectOfType<TapController>();
+        tapController.SpotlightTapMultiplier = SpotlightTapMultiplier;
     }
 
     void Update()
@@ -31,14 +39,22 @@ public class SpotlightController : MonoBehaviour
 
         if (initSpotlightCountdown <= 0)
         {
-            int indexToActivate = UnityEngine.Random.Range(0, 4);
-            spotlightUI.Activate(musicians[indexToActivate], UnityEngine.Random.Range(SpotlightMinDelay, SpotlightMaxDelay));
-            initSpotlightCountdown = SpotlightInterval;
+            int indexToActivate = UnityEngine.Random.Range(0, musicians.Length);
+            spotlightUI.Activate(musicians[indexToActivate]);
+            initSpotlightCountdown = CalculateAliveTime();
         } else
         {
             initSpotlightCountdown -= dt;
         }
+    }
 
+    private float CalculateAliveTime()
+    {
+        return UnityEngine.Random.Range(SpotlightMinDelay, SpotlightMaxDelay);
+    }
 
+    private float ReadFloat(string name)
+    {
+        return Convert.ToSingle(GameData.instance.FindGeneralDataByName(name).value);
     }
 }
