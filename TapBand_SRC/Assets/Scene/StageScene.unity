@@ -1065,7 +1065,7 @@ GameObject:
   - 4: {fileID: 351168055}
   - 114: {fileID: 351168056}
   - 212: {fileID: 351168058}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Drums
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1135,7 +1135,7 @@ GameObject:
   - 4: {fileID: 353918249}
   - 114: {fileID: 353918250}
   - 212: {fileID: 353918252}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vocal
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1782,11 +1782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6caa44024040dc440a188e8458d0aa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotlights:
-  - {fileID: 1290305422}
-  - {fileID: 2047558799}
-  - {fileID: 1026367018}
-  - {fileID: 1922444750}
   particleEmitterPrefab: {fileID: 194778, guid: 5f4993717fc0eca48a3a554f936b0a31,
     type: 2}
 --- !u!1 &502005565
@@ -1920,6 +1915,10 @@ Prefab:
     - target: {fileID: 167546, guid: 4c85b8982c344ee4e850c7e1c6c1608e, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 167546, guid: 4c85b8982c344ee4e850c7e1c6c1608e, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6504672, guid: 4c85b8982c344ee4e850c7e1c6c1608e, type: 2}
@@ -3554,7 +3553,7 @@ GameObject:
   - 4: {fileID: 964207775}
   - 114: {fileID: 964207776}
   - 212: {fileID: 964207778}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bass
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4031,7 +4030,7 @@ GameObject:
   - 4: {fileID: 1026367019}
   - 212: {fileID: 1026367020}
   - 61: {fileID: 1026367021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bass
   m_TagString: Spotlight
   m_Icon: {fileID: 0}
@@ -6549,7 +6548,7 @@ GameObject:
   - 4: {fileID: 1290305423}
   - 212: {fileID: 1290305424}
   - 61: {fileID: 1290305425}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Drums
   m_TagString: Spotlight
   m_Icon: {fileID: 0}
@@ -7851,7 +7850,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_AnchorMin.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_AnchorMin.y
@@ -7859,7 +7858,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_AnchorMax.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_AnchorMax.y
@@ -7867,11 +7866,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Pivot.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Pivot.y
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 170544, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Name
@@ -8174,7 +8173,7 @@ GameObject:
   - 4: {fileID: 1922444751}
   - 212: {fileID: 1922444752}
   - 61: {fileID: 1922444753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vocal
   m_TagString: Spotlight
   m_Icon: {fileID: 0}
@@ -8388,7 +8387,7 @@ GameObject:
   - 4: {fileID: 1983958353}
   - 212: {fileID: 1983958355}
   - 114: {fileID: 1983958354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guitar
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8505,7 +8504,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_AnchorMin.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_AnchorMin.y
@@ -8513,7 +8512,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_AnchorMax.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_AnchorMax.y
@@ -8521,19 +8520,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Pivot.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22481404, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Pivot.y
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 11409094, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Color.g
-      value: .735294104
+      value: 0.7352941
       objectReference: {fileID: 0}
     - target: {fileID: 11409094, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_Color.b
-      value: .735294104
+      value: 0.7352941
       objectReference: {fileID: 0}
     - target: {fileID: 188454, guid: 154ea12d120178842b9da820371681cf, type: 2}
       propertyPath: m_IsActive
@@ -8640,7 +8639,7 @@ GameObject:
   - 4: {fileID: 2047558800}
   - 212: {fileID: 2047558801}
   - 61: {fileID: 2047558802}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guitar
   m_TagString: Spotlight
   m_Icon: {fileID: 0}
