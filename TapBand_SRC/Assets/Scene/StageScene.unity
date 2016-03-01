@@ -95,7 +95,7 @@ GameObject:
   - 224: {fileID: 8964239}
   - 222: {fileID: 8964241}
   - 114: {fileID: 8964240}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TourText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - 224: {fileID: 42456809}
   - 222: {fileID: 42456811}
   - 114: {fileID: 42456810}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MerchPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - 224: {fileID: 218375442}
   - 222: {fileID: 218375444}
   - 114: {fileID: 218375443}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentKeyboardHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - 224: {fileID: 256184750}
   - 222: {fileID: 256184752}
   - 114: {fileID: 256184751}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ButtonHolderPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   - 222: {fileID: 297457602}
   - 114: {fileID: 297457601}
   - 114: {fileID: 297457600}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DrumsUpgradeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   - 114: {fileID: 310855215}
   - 114: {fileID: 310855214}
   - 114: {fileID: 310855217}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 345729536}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Concert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ GameObject:
   - 222: {fileID: 348364474}
   - 114: {fileID: 348364473}
   - 114: {fileID: 348364472}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackToGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,7 +1204,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 360856619}
   - 212: {fileID: 360856620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,7 +1263,7 @@ GameObject:
   - 224: {fileID: 362955694}
   - 222: {fileID: 362955696}
   - 114: {fileID: 362955695}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Drums
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1336,7 +1336,7 @@ GameObject:
   - 224: {fileID: 393536233}
   - 222: {fileID: 393536235}
   - 114: {fileID: 393536234}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EquipmentPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,7 +1408,7 @@ GameObject:
   - 224: {fileID: 448719448}
   - 222: {fileID: 448719450}
   - 114: {fileID: 448719449}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1482,7 +1482,7 @@ GameObject:
   - 222: {fileID: 460362964}
   - 114: {fileID: 460362963}
   - 114: {fileID: 460362962}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RestartGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1674,7 +1674,7 @@ GameObject:
   - 224: {fileID: 488308556}
   - 222: {fileID: 488308558}
   - 114: {fileID: 488308557}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6caa44024040dc440a188e8458d0aa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotLights:
+  spotlights:
   - {fileID: 1290305422}
   - {fileID: 2047558799}
   - {fileID: 1026367018}
@@ -1797,7 +1797,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 502005566}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1935,7 +1935,7 @@ GameObject:
   - 224: {fileID: 535788826}
   - 222: {fileID: 535788828}
   - 114: {fileID: 535788827}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentBassHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2008,7 +2008,7 @@ GameObject:
   - 224: {fileID: 547987957}
   - 222: {fileID: 547987959}
   - 114: {fileID: 547987958}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KeyboardPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2078,7 +2078,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 576472191}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2114,7 +2114,7 @@ GameObject:
   - 224: {fileID: 595796788}
   - 222: {fileID: 595796790}
   - 114: {fileID: 595796789}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FanImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2181,7 +2181,7 @@ GameObject:
   - 224: {fileID: 605143808}
   - 222: {fileID: 605143810}
   - 114: {fileID: 605143809}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SongText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2294,7 +2294,7 @@ GameObject:
   - 222: {fileID: 630977768}
   - 114: {fileID: 630977767}
   - 114: {fileID: 630977766}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackToGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2475,7 +2475,7 @@ GameObject:
   - 224: {fileID: 646695988}
   - 222: {fileID: 646695990}
   - 114: {fileID: 646695989}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NextBassBenefitsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2548,7 +2548,7 @@ GameObject:
   - 224: {fileID: 649485715}
   - 222: {fileID: 649485717}
   - 114: {fileID: 649485716}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2652,7 +2652,7 @@ GameObject:
   - 224: {fileID: 702756156}
   - 222: {fileID: 702756158}
   - 114: {fileID: 702756157}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentGuitarHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2726,7 +2726,7 @@ GameObject:
   - 222: {fileID: 737641700}
   - 114: {fileID: 737641699}
   - 114: {fileID: 737641698}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackToGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2868,7 +2868,7 @@ GameObject:
   - 224: {fileID: 740563471}
   - 222: {fileID: 740563473}
   - 114: {fileID: 740563472}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentGuitarBenefitsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2943,7 +2943,7 @@ GameObject:
   - 224: {fileID: 753725840}
   - 222: {fileID: 753725842}
   - 114: {fileID: 753725841}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentDrumsBenefitsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3018,7 +3018,7 @@ GameObject:
   - 224: {fileID: 824921450}
   - 222: {fileID: 824921452}
   - 114: {fileID: 824921451}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RestartPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3125,7 +3125,7 @@ GameObject:
   - 224: {fileID: 877916635}
   - 222: {fileID: 877916637}
   - 114: {fileID: 877916636}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ConcertText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3198,7 +3198,7 @@ GameObject:
   - 224: {fileID: 892271486}
   - 222: {fileID: 892271488}
   - 114: {fileID: 892271487}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3272,7 +3272,7 @@ GameObject:
   - 222: {fileID: 909425474}
   - 114: {fileID: 909425473}
   - 114: {fileID: 909425472}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EquipmentPanelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3414,7 +3414,7 @@ GameObject:
   - 224: {fileID: 917460108}
   - 222: {fileID: 917460110}
   - 114: {fileID: 917460109}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3487,7 +3487,7 @@ GameObject:
   - 224: {fileID: 952740405}
   - 222: {fileID: 952740407}
   - 114: {fileID: 952740406}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CoinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3624,7 +3624,7 @@ GameObject:
   - 224: {fileID: 970355236}
   - 222: {fileID: 970355238}
   - 114: {fileID: 970355237}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentKeyboardBenefitsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3700,7 +3700,7 @@ GameObject:
   - 222: {fileID: 987902500}
   - 114: {fileID: 987902499}
   - 114: {fileID: 987902498}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MerchPanelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3881,7 +3881,7 @@ GameObject:
   - 224: {fileID: 1013764125}
   - 222: {fileID: 1013764127}
   - 114: {fileID: 1013764126}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NextKeyboardBenefitsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3956,7 +3956,7 @@ GameObject:
   - 224: {fileID: 1025256092}
   - 222: {fileID: 1025256094}
   - 114: {fileID: 1025256093}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NextGuitarBenefitsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4104,7 +4104,7 @@ GameObject:
   - 224: {fileID: 1040094056}
   - 222: {fileID: 1040094058}
   - 114: {fileID: 1040094057}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentBassBenefitsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4177,7 +4177,7 @@ GameObject:
   - 224: {fileID: 1046227628}
   - 222: {fileID: 1046227630}
   - 114: {fileID: 1046227629}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GuitarPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6035,7 +6035,7 @@ GameObject:
   - 224: {fileID: 1073000767}
   - 222: {fileID: 1073000769}
   - 114: {fileID: 1073000768}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BeCareful
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6110,7 +6110,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1090646823}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Song
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6145,7 +6145,7 @@ GameObject:
   - 224: {fileID: 1177539795}
   - 222: {fileID: 1177539797}
   - 114: {fileID: 1177539796}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Guitar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6220,7 +6220,7 @@ GameObject:
   - 224: {fileID: 1179552774}
   - 222: {fileID: 1179552776}
   - 114: {fileID: 1179552775}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NextDrumsBenefitsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6295,7 +6295,7 @@ GameObject:
   - 224: {fileID: 1225277679}
   - 222: {fileID: 1225277681}
   - 114: {fileID: 1225277680}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentDrumHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6370,7 +6370,7 @@ GameObject:
   - 224: {fileID: 1229403885}
   - 222: {fileID: 1229403884}
   - 114: {fileID: 1229403883}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6443,7 +6443,7 @@ GameObject:
   - 224: {fileID: 1259649999}
   - 222: {fileID: 1259650001}
   - 114: {fileID: 1259650000}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6514,7 +6514,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1275306491}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6692,7 +6692,7 @@ GameObject:
   - 222: {fileID: 1393949701}
   - 114: {fileID: 1393949700}
   - 114: {fileID: 1393949699}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GuitarsUpgradeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6846,7 +6846,7 @@ GameObject:
   - 222: {fileID: 1469429627}
   - 114: {fileID: 1469429626}
   - 114: {fileID: 1469429625}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BassUpgradeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6955,7 +6955,7 @@ GameObject:
   - 224: {fileID: 1483623899}
   - 222: {fileID: 1483623901}
   - 114: {fileID: 1483623900}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7028,7 +7028,7 @@ GameObject:
   - 224: {fileID: 1489935545}
   - 222: {fileID: 1489935547}
   - 114: {fileID: 1489935546}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7103,7 +7103,7 @@ GameObject:
   - 224: {fileID: 1548175565}
   - 222: {fileID: 1548175567}
   - 114: {fileID: 1548175566}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BassPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7175,7 +7175,7 @@ GameObject:
   - 224: {fileID: 1597823305}
   - 222: {fileID: 1597823307}
   - 114: {fileID: 1597823306}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7251,7 +7251,7 @@ GameObject:
   - 222: {fileID: 1615655874}
   - 114: {fileID: 1615655873}
   - 114: {fileID: 1615655872}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RestartPanelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7393,7 +7393,7 @@ GameObject:
   - 224: {fileID: 1681553027}
   - 222: {fileID: 1681553029}
   - 114: {fileID: 1681553028}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FanText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7564,7 +7564,7 @@ GameObject:
   - 224: {fileID: 1703463028}
   - 222: {fileID: 1703463030}
   - 114: {fileID: 1703463029}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7731,7 +7731,7 @@ GameObject:
   - 224: {fileID: 1771239864}
   - 222: {fileID: 1771239866}
   - 114: {fileID: 1771239865}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7921,6 +7921,54 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 173
       objectReference: {fileID: 0}
+    - target: {fileID: 156120, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 135490, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 188454, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 124116, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 159406, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 190418, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 196758, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 164212, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 117884, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 186968, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 140622, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 170544, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 154ea12d120178842b9da820371681cf, type: 2}
   m_IsPrefabParent: 0
@@ -7939,7 +7987,7 @@ GameObject:
   - 224: {fileID: 1899598688}
   - 222: {fileID: 1899598690}
   - 114: {fileID: 1899598689}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Keyboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8051,7 +8099,7 @@ GameObject:
   - 224: {fileID: 1909789581}
   - 222: {fileID: 1909789583}
   - 114: {fileID: 1909789582}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8200,7 +8248,7 @@ GameObject:
   - 222: {fileID: 1928252741}
   - 114: {fileID: 1928252740}
   - 114: {fileID: 1928252739}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KeyboardUpgradeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8531,6 +8579,54 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: 223.5
       objectReference: {fileID: 0}
+    - target: {fileID: 156120, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 135490, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 188454, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 124116, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 159406, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 190418, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 196758, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 164212, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 117884, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 186968, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 140622, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 170544, guid: 154ea12d120178842b9da820371681cf, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 154ea12d120178842b9da820371681cf, type: 2}
   m_IsPrefabParent: 0
@@ -8617,7 +8713,7 @@ GameObject:
   - 224: {fileID: 2057265804}
   - 222: {fileID: 2057265806}
   - 114: {fileID: 2057265805}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DrumPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

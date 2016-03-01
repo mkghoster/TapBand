@@ -20,10 +20,10 @@ public class SpotlightController : MonoBehaviour
 
     void Start()
     {
-        SpotlightInterval = ReadFloat(GeneralData.SpotlightInterval);
-        SpotlightMinDelay = ReadFloat(GeneralData.SpotlightMinDelay);
-        SpotlightMaxDelay = ReadFloat(GeneralData.SpotlightMaxDelay);
-        SpotlightTapMultiplier = ReadFloat(GeneralData.SpotlightTapMultiplier);
+        SpotlightInterval = ReadFloat(GeneralProperties.SPOTLIGHT_INTERVAL);
+        SpotlightMinDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MIN_DELAY);
+        SpotlightMaxDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MAX_DELAY);
+        SpotlightTapMultiplier = ReadFloat(GeneralProperties.SPOTLIGHT_TAP_MULTIPLIER);
 
         initSpotlightCountdown = CalculateAliveTime();
 

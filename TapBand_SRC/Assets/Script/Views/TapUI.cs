@@ -116,7 +116,7 @@ public class TapUI : MonoBehaviour
         Collider2D hit = Physics2D.OverlapPoint(wp);
         if (hit)
         {
-            if (hit.gameObject.tag == "Spotlight")
+            if (hit.gameObject.tag == Tags.SPOTLIGHT)
             {
                 args.spotlightPositions.Add(pos);
             }

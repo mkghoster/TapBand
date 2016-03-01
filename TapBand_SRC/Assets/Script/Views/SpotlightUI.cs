@@ -4,17 +4,17 @@ using System.Collections;
 
 public class SpotlightUI : MonoBehaviour {
 
-    public GameObject[] spotLights;
-
     [System.NonSerialized]
     public float aliveTime;
 
+    private GameObject[] spotlights;
     private float passedTime;
     private bool isActive;
 
     public GameObject particleEmitterPrefab;
     
 	void Start () {
+        spotlights = GameObject.FindGameObjectsWithTag(Tags.SPOTLIGHT);
         DeactivateAll();
         passedTime = 0f;
         isActive = false;
@@ -39,14 +39,14 @@ public class SpotlightUI : MonoBehaviour {
 
     public void DeactivateAll()
     {
-        foreach(GameObject obj in spotLights) {
+        foreach(GameObject obj in spotlights) {
             obj.SetActive(false);
         }
     }
     
     public void Activate(GameObject musician)
     {
-        foreach (GameObject obj in spotLights)
+        foreach (GameObject obj in spotlights)
         {
             if (musician.name == obj.name)
             {
