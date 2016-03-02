@@ -19,11 +19,11 @@ public class AudioPlayerController : MonoBehaviour {
 
     void OnEnable()
     {
-        concertController.GiveEndOfConcert += PlayTasty;
+        concertController.EndOfConcert += PlayTasty;
     }
     void OnDisable()
     {
-        concertController.GiveEndOfConcert -= PlayTasty;
+        concertController.EndOfConcert -= PlayTasty;
     }
 
     void Start () {

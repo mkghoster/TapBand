@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: f4237c3cfb0e60042b3fb0635059d6ab
+timeCreated: 1456876115
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: trees_0
+    21300002: trees_1
+    21300004: trees_2
+    21300006: trees_3
+    21300008: trees_4
+    21300010: trees_5
+    21300012: trees_6
+    21300014: trees_7
+    21300016: trees_8
+    21300018: trees_9
+    21300020: trees_10
+    21300022: trees_11
+    21300024: trees_12
+    21300026: trees_13
+    21300028: trees_14
+    21300030: trees_15
+    21300032: trees_16
+    21300034: trees_17
+    21300036: trees_18
+    21300038: trees_19
+    21300040: trees_20
+    21300042: trees_21
+    21300044: trees_22
+    21300046: trees_23
+    21300048: trees_24
+    21300050: trees_25
+    21300052: trees_26
+    21300054: trees_27
+    21300056: trees_28
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: trees_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 304
+        width: 115
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 68}
+        - {x: -40.5, y: 66}
+        - {x: -57.5, y: 26}
+        - {x: -57.5, y: -15}
+        - {x: -27.5, y: -24}
+        - {x: -23.5, y: -25}
+        - {x: -41.5, y: -44}
+        - {x: -42.5, y: -49}
+        - {x: -44.5, y: -60}
+        - {x: -37.5, y: -68}
+        - {x: 41.5, y: -68}
+        - {x: 56.5, y: -67}
+        - {x: 57.5, y: -65}
+        - {x: 57.5, y: 33}
+        - {x: 28.5, y: 68}
+    - name: trees_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 304
+        width: 109
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.5, y: 66.5}
+        - {x: -46.5, y: 57.5}
+        - {x: -54.5, y: 26.5}
+        - {x: -54.5, y: -40.5}
+        - {x: -42.5, y: -66.5}
+        - {x: 42.5, y: -66.5}
+        - {x: 54.5, y: -60.5}
+        - {x: 54.5, y: 33.5}
+        - {x: 17.5, y: 66.5}
+      - - {x: 32.5, y: -32.5}
+        - {x: 34.5, y: -34.5}
+        - {x: 37.5, y: -33.5}
+        - {x: 37.5, y: -29.5}
+        - {x: 35.5, y: -27.5}
+        - {x: 32.5, y: -28.5}
+      - - {x: -30.5, y: -29.5}
+        - {x: -28.5, y: -31.5}
+        - {x: -25.5, y: -30.5}
+        - {x: -25.5, y: -25.5}
+        - {x: -27.5, y: -23.5}
+        - {x: -30.5, y: -24.5}
+      - - {x: -18.5, y: -28.5}
+        - {x: -16.5, y: -30.5}
+        - {x: -13.5, y: -29.5}
+        - {x: -13.5, y: -26.5}
+        - {x: -15.5, y: -24.5}
+        - {x: -18.5, y: -25.5}
+      - - {x: 51.5, y: 7.5}
+        - {x: 53.5, y: 5.5}
+        - {x: 54.5, y: 5.5}
+        - {x: 54.5, y: 10.5}
+        - {x: 52.5, y: 10.5}
+      - - {x: 50.5, y: 14.5}
+        - {x: 52.5, y: 11.5}
+        - {x: 54.5, y: 12.5}
+        - {x: 54.5, y: 15.5}
+        - {x: 52.5, y: 16.5}
+    - name: trees_2
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 364
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_3
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 304
+        width: 97
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48.5, y: -24}
+        - {x: 48.5, y: 40}
+        - {x: 44.5, y: 45}
+        - {x: 29.5, y: 64}
+        - {x: -19.5, y: 64}
+        - {x: -48.5, y: 38}
+        - {x: -48.5, y: -64}
+        - {x: 39.5, y: -64}
+        - {x: 48.5, y: -60}
+        - {x: 48.5, y: -58}
+        - {x: 36.5, y: -34}
+        - {x: 24.5, y: -30}
+        - {x: 23.5, y: -30}
+    - name: trees_4
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 301
+        width: 83
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 41.5, y: 4}
+        - {x: 38.5, y: 38}
+        - {x: 9.5, y: 66}
+        - {x: -23.5, y: 66}
+        - {x: -41.5, y: 9}
+        - {x: -41.5, y: -53}
+        - {x: -26.5, y: -64}
+        - {x: -20.5, y: -66}
+        - {x: 21.5, y: -66}
+        - {x: 39.5, y: -62}
+        - {x: 41.5, y: -57}
+    - name: trees_5
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 307
+        width: 62
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: -6.5}
+        - {x: -31, y: -43.5}
+        - {x: -29, y: -45.5}
+        - {x: 28, y: -45.5}
+        - {x: 31, y: -44.5}
+        - {x: 31, y: 2.5}
+        - {x: 11, y: 45.5}
+        - {x: -8, y: 45.5}
+        - {x: -26, y: 18.5}
+    - name: trees_6
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 179
+        width: 89
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30.5, y: 14.5}
+        - {x: 28.5, y: 12.5}
+        - {x: 29.5, y: 13.5}
+        - {x: 29.5, y: 17.5}
+        - {x: 44.5, y: 16.5}
+        - {x: 44.5, y: 41.5}
+        - {x: 19.5, y: 57.5}
+        - {x: -21.5, y: 57.5}
+        - {x: -30.5, y: 54.5}
+        - {x: -44.5, y: 46.5}
+        - {x: -44.5, y: -38.5}
+        - {x: -22.5, y: -57.5}
+        - {x: 17.5, y: -57.5}
+        - {x: 44.5, y: -47.5}
+        - {x: 44.5, y: 15.5}
+        - {x: 42.5, y: 16.5}
+      - - {x: 40.5, y: 7.5}
+        - {x: 42.5, y: 4.5}
+        - {x: 44.5, y: 5.5}
+        - {x: 44.5, y: 8.5}
+        - {x: 42.5, y: 9.5}
+    - name: trees_7
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 174
+        width: 82
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 61}
+        - {x: -41, y: 55}
+        - {x: -41, y: -53}
+        - {x: -29, y: -61}
+        - {x: 41, y: -61}
+        - {x: 41, y: 44}
+        - {x: 29, y: 61}
+      - - {x: -38, y: -24}
+        - {x: -32, y: -24}
+        - {x: -32, y: -19}
+        - {x: -34, y: -15}
+        - {x: -40, y: -15}
+        - {x: -40, y: -20}
+      - - {x: -32, y: -21}
+        - {x: -31, y: -24}
+        - {x: -28, y: -24}
+        - {x: -26, y: -22}
+        - {x: -27, y: -19}
+        - {x: -30, y: -19}
+      - - {x: -21, y: -21}
+        - {x: -20, y: -24}
+        - {x: -17, y: -24}
+        - {x: -15, y: -22}
+        - {x: -16, y: -19}
+        - {x: -19, y: -19}
+      - - {x: 27, y: -14}
+        - {x: 25, y: -16}
+        - {x: 25, y: -19}
+        - {x: 27, y: -21}
+        - {x: 29, y: -21}
+        - {x: 31, y: -19}
+        - {x: 31, y: -16}
+        - {x: 29, y: -14}
+      - - {x: 15, y: -14}
+        - {x: 13, y: -16}
+        - {x: 13, y: -18}
+        - {x: 15, y: -20}
+        - {x: 17, y: -20}
+        - {x: 19, y: -18}
+        - {x: 19, y: -16}
+        - {x: 17, y: -14}
+      - - {x: -30, y: -13}
+        - {x: -29, y: -16}
+        - {x: -26, y: -16}
+        - {x: -24, y: -14}
+        - {x: -25, y: -11}
+        - {x: -28, y: -11}
+      - - {x: -34, y: -3}
+        - {x: -33, y: -6}
+        - {x: -28, y: -7}
+        - {x: -25, y: -7}
+        - {x: -23, y: -4}
+        - {x: -24, y: -1}
+        - {x: -32, y: -1}
+    - name: trees_8
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 175
+        width: 67
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.5, y: 34.5}
+        - {x: 9.5, y: 27.5}
+        - {x: 6.5, y: 27.5}
+        - {x: 14.5, y: 35.5}
+        - {x: 14.5, y: 38.5}
+        - {x: 12.5, y: 40.5}
+        - {x: 8.5, y: 40.5}
+        - {x: 5.5, y: 37.5}
+        - {x: 7.5, y: 44.5}
+        - {x: 12.5, y: 44.5}
+        - {x: 15.5, y: 45.5}
+        - {x: 15.5, y: 55.5}
+        - {x: -19.5, y: 55.5}
+        - {x: -33.5, y: 46.5}
+        - {x: -33.5, y: -48.5}
+        - {x: -18.5, y: -55.5}
+        - {x: 15.5, y: -55.5}
+        - {x: 32.5, y: -50.5}
+        - {x: 33.5, y: -47.5}
+        - {x: 33.5, y: 38.5}
+        - {x: 26.5, y: 42.5}
+    - name: trees_9
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 150
+        width: 149
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.5, y: -20.5}
+        - {x: -35.5, y: -39.5}
+        - {x: -37.5, y: -43.5}
+        - {x: -37.5, y: -46.5}
+        - {x: -49.5, y: -40.5}
+        - {x: -1.5, y: -14.5}
+        - {x: 2.5, y: -14.5}
+        - {x: 16.5, y: -10.5}
+        - {x: 25.5, y: -15.5}
+        - {x: 35.5, y: -17.5}
+        - {x: 74.5, y: -12.5}
+        - {x: 74.5, y: 60.5}
+        - {x: 49.5, y: 72.5}
+        - {x: -18.5, y: 72.5}
+        - {x: -39.5, y: 33.5}
+        - {x: -32.5, y: 23.5}
+        - {x: -19.5, y: 21.5}
+        - {x: -11.5, y: 23.5}
+        - {x: -15.5, y: 14.5}
+        - {x: -46.5, y: -14.5}
+        - {x: -56.5, y: -24.5}
+        - {x: -64.5, y: -36.5}
+        - {x: -67.5, y: -41.5}
+        - {x: -74.5, y: -55.5}
+        - {x: -74.5, y: -70.5}
+        - {x: -66.5, y: -72.5}
+        - {x: 63.5, y: -72.5}
+        - {x: 66.5, y: -24.5}
+        - {x: 60.5, y: -21.5}
+        - {x: -0.5, y: -15.5}
+      - - {x: 70.5, y: 61.5}
+        - {x: 68.5, y: 59.5}
+        - {x: 68.5, y: 58.5}
+        - {x: 71.5, y: 55.5}
+        - {x: 74.5, y: 55.5}
+        - {x: 74.5, y: 60.5}
+        - {x: 73.5, y: 61.5}
+    - name: trees_10
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 151
+        width: 98
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25, y: -20}
+        - {x: 37, y: 14}
+        - {x: 37, y: 35}
+        - {x: 33, y: 43}
+        - {x: 15, y: 70}
+        - {x: -49, y: 70}
+        - {x: -49, y: -70}
+        - {x: 45, y: -70}
+        - {x: 49, y: -69}
+        - {x: 49, y: -39}
+        - {x: 33, y: -20}
+    - name: trees_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 14
+        width: 97
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21.5, y: 72.5}
+        - {x: -23.5, y: 70.5}
+        - {x: -30.5, y: 64.5}
+        - {x: -29.5, y: 56.5}
+        - {x: -48.5, y: 27.5}
+        - {x: -48.5, y: -72.5}
+        - {x: 24.5, y: -72.5}
+        - {x: 48.5, y: -55.5}
+        - {x: 48.5, y: 72.5}
+    - name: trees_12
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 15
+        width: 159
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 79.5, y: -49.5}
+        - {x: 52.5, y: -7.5}
+        - {x: -7.5, y: 66.5}
+        - {x: -57.5, y: 66.5}
+        - {x: -75.5, y: 63.5}
+        - {x: -79.5, y: 49.5}
+        - {x: -79.5, y: 17.5}
+        - {x: -66.5, y: 2.5}
+        - {x: -32.5, y: -14.5}
+        - {x: 9.5, y: -14.5}
+        - {x: 17.5, y: -16.5}
+        - {x: 20.5, y: -18.5}
+        - {x: 14.5, y: -20.5}
+        - {x: 9.5, y: -14.5}
+        - {x: 6.5, y: -14.5}
+        - {x: -44.5, y: -19.5}
+        - {x: -52.5, y: -31.5}
+        - {x: -45.5, y: -66.5}
+        - {x: 3.5, y: -66.5}
+        - {x: 10.5, y: -63.5}
+        - {x: 23.5, y: -66.5}
+        - {x: 79.5, y: -66.5}
+    - name: trees_13
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 47
+        width: 52
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 20}
+        - {x: -26, y: 14}
+        - {x: -26, y: -20}
+        - {x: 18, y: -20}
+        - {x: 26, y: -17}
+        - {x: 26, y: 19}
+        - {x: 24, y: 20}
+    - name: trees_14
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 46
+        width: 68
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 21}
+        - {x: -34, y: -21}
+        - {x: 33, y: -21}
+        - {x: 34, y: -19}
+        - {x: 34, y: 3}
+        - {x: 15, y: 21}
+    - name: trees_15
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 35
+        width: 51
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 38}
+        - {x: -25.5, y: 24}
+        - {x: -25.5, y: -28}
+        - {x: -19.5, y: -38}
+        - {x: 25.5, y: -38}
+        - {x: 25.5, y: 21}
+        - {x: 16.5, y: 38}
+    - name: trees_16
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 43
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_17
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 43
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_18
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 43
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_19
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 43
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_20
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 43
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_21
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 41
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_22
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 43
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_23
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 43
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_24
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 43
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_25
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 43
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_26
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 43
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_27
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 43
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: trees_28
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 7
+        width: 82
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 16}
+        - {x: -41, y: -16}
+        - {x: 41, y: -16}
+        - {x: 41, y: 16}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

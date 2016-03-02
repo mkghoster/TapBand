@@ -1210,7 +1210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &360856619
 Transform:
   m_ObjectHideFlags: 0
@@ -1219,7 +1219,7 @@ Transform:
   m_GameObject: {fileID: 360856618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4255633, y: 1.425563, z: 1.425563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 342436050}
   m_RootOrder: 5
@@ -1249,7 +1249,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 4cbe59878e46b514a8fcadc63ba531f1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3112,6 +3112,7 @@ Transform:
   - {fileID: 516402117}
   - {fileID: 619435844}
   - {fileID: 305725962}
+  - {fileID: 2035629508}
   m_Father: {fileID: 1334244384}
   m_RootOrder: 1
 --- !u!1 &877916634
@@ -7504,8 +7505,8 @@ Camera:
   m_GameObject: {fileID: 1691029844}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0.23235288, b: 0.42647058, a: 0.019607844}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -8629,6 +8630,54 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 154ea12d120178842b9da820371681cf, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2035629507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2035629508}
+  - 114: {fileID: 2035629509}
+  m_Layer: 0
+  m_Name: StageBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2035629508
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2035629507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 875471344}
+  m_RootOrder: 10
+--- !u!114 &2035629509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2035629507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de870e56b9a79df4ab82ce9992198f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stagePrefabs:
+  - {fileID: 107172, guid: 58da0558809b79043ab7369512348ef1, type: 2}
+  - {fileID: 113646, guid: 68ae596bf812baf4498a24b3c08fdd6c, type: 2}
+  - {fileID: 115040, guid: 13013538510947945b41472ad35762e8, type: 2}
+  - {fileID: 117288, guid: 3c4e190274b94df4580bfce40cd3b5fb, type: 2}
+  - {fileID: 199812, guid: 0b365728be98d70499e279305e556ad7, type: 2}
+  - {fileID: 188676, guid: 922a80bb79cea8444a56e8b116378ef4, type: 2}
+  - {fileID: 182468, guid: 51ed1f6166129d8428d4e22a3082c849, type: 2}
+  fullStage: {fileID: 182468, guid: 51ed1f6166129d8428d4e22a3082c849, type: 2}
 --- !u!1 &2047558799
 GameObject:
   m_ObjectHideFlags: 0

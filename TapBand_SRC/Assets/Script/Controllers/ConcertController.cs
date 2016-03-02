@@ -10,10 +10,11 @@ public class ConcertController : MonoBehaviour {
     public delegate void RestartConcertEvent();
 	public event RestartConcertEvent RestartConcert;
 
-    public delegate void GiveEndOfConcertEvent(ConcertData concertData);
-	public event GiveEndOfConcertEvent GiveEndOfConcert;
+    public delegate void ConcertEvent(ConcertData concertData);
+	public event ConcertEvent EndOfConcert;
+    public event ConcertEvent StartOfConcert;
 
-	public delegate void GiveFanRewardOfConcertEvent(int fanReward);
+    public delegate void GiveFanRewardOfConcertEvent(int fanReward);
 	public event GiveFanRewardOfConcertEvent GiveFanRewardOfConcert;
 
 	public delegate void GiveCoinRewardOfConcertEvent(int coinReward);
@@ -52,9 +53,9 @@ public class ConcertController : MonoBehaviour {
             //új indítása
             if (state.CurrentSong.bossBattle)
             {
-				if(GiveEndOfConcert != null)
+				if(EndOfConcert != null)
 				{
-					GiveEndOfConcert(state.CurrentConcert);
+					EndOfConcert(state.CurrentConcert);
 				}
 				if(GiveFanRewardOfConcert != null)
 				{
@@ -65,6 +66,11 @@ public class ConcertController : MonoBehaviour {
 					GiveCoinRewardOfConcert(state.CurrentConcert.coinReward);
 				}
                 state.CurrentConcertID = state.GetNextConcert().id;
+
+                if (StartOfConcert != null)
+                {
+                    StartOfConcert(state.CurrentConcert);
+                }
             }
 
             state.LastComplatedSongID = state.CurrentSong.id;
