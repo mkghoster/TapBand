@@ -28,7 +28,7 @@ namespace QuickPool
         public Pool this[string name]
         {
             get { return pools.Find(pool => pool.poolName == name); }
-            
+
         }
 
         public List<GameObject> Prefabs

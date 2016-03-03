@@ -2,7 +2,8 @@
 using System.Collections;
 using QuickPool;
 
-public class SpotlightUI : MonoBehaviour {
+public class SpotlightUI : MonoBehaviour
+{
 
     [System.NonSerialized]
     public float aliveTime;
@@ -12,8 +13,9 @@ public class SpotlightUI : MonoBehaviour {
     private bool isActive;
     private Pool spotlightEmitterPool;
     private GameObject lastEmitter;
-   
-	void Start () {
+
+    void Start()
+    {
         spotlightEmitterPool = PoolsManager.Instance["SpotlightParticleEmitter"];
         lastEmitter = null;
         spotlights = GameObject.FindGameObjectsWithTag(Tags.SPOTLIGHT);
@@ -21,8 +23,9 @@ public class SpotlightUI : MonoBehaviour {
         passedTime = 0f;
         isActive = false;
     }
-	
-	void Update () {
+
+    void Update()
+    {
         if (isActive)
         {
             if (passedTime <= 0)
@@ -41,15 +44,16 @@ public class SpotlightUI : MonoBehaviour {
                 passedTime -= Time.deltaTime;
             }
         }
-	}
+    }
 
     public void DeactivateAll()
     {
-        foreach(GameObject obj in spotlights) {
+        foreach (GameObject obj in spotlights)
+        {
             obj.SetActive(false);
         }
     }
-    
+
     public void Activate(GameObject musician)
     {
         foreach (GameObject obj in spotlights)
@@ -59,7 +63,8 @@ public class SpotlightUI : MonoBehaviour {
                 isActive = true;
                 obj.SetActive(true);
                 passedTime = aliveTime;
-            } else
+            }
+            else
             {
                 obj.SetActive(false);
             }

@@ -21,7 +21,7 @@ namespace QuickPool
             return root;
 
         }
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         public static int DrawBitMaskField(Rect aPosition, int aMask, System.Type aType, GUIContent aLabel)
         {
             var itemNames = System.Enum.GetNames(aType);
@@ -44,11 +44,11 @@ namespace QuickPool
 
             for (int i = 0; i < itemValues.Length; i++)
             {
-                if ((changes & (1 << i)) != 0)            
+                if ((changes & (1 << i)) != 0)
                 {
-                    if ((newMaskVal & (1 << i)) != 0)     
+                    if ((newMaskVal & (1 << i)) != 0)
                     {
-                        if (itemValues[i] == 0)           
+                        if (itemValues[i] == 0)
                         {
                             val = 0;
                             break;
@@ -56,7 +56,7 @@ namespace QuickPool
                         else
                             val |= itemValues[i];
                     }
-                    else                                  
+                    else
                     {
                         val &= ~itemValues[i];
                     }
@@ -64,7 +64,7 @@ namespace QuickPool
             }
             return val;
         }
-        #endif
+#endif
     }
 
 }
