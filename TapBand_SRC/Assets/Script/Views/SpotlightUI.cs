@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using QuickPool;
 
 public class SpotlightUI : MonoBehaviour {
 
@@ -10,10 +10,12 @@ public class SpotlightUI : MonoBehaviour {
     private GameObject[] spotlights;
     private float passedTime;
     private bool isActive;
-
-    public GameObject particleEmitterPrefab;
-    
+    private Pool spotlightEmitterPool;
+    private GameObject lastEmitter;
+   
 	void Start () {
+        spotlightEmitterPool = PoolsManager.Instance["SpotlightParticleEmitter"];
+        lastEmitter = null;
         spotlights = GameObject.FindGameObjectsWithTag(Tags.SPOTLIGHT);
         DeactivateAll();
         passedTime = 0f;
@@ -27,8 +29,12 @@ public class SpotlightUI : MonoBehaviour {
             {
                 isActive = false;
                 DeactivateAll();
-                GameObject inst = (GameObject)Instantiate(particleEmitterPrefab, Vector2.zero, Quaternion.identity);
-                Destroy(inst, 3);
+
+                if (lastEmitter != null)
+                {
+                    spotlightEmitterPool.Despawn(lastEmitter);
+                }
+                lastEmitter = spotlightEmitterPool.Spawn(Vector3.zero, Quaternion.identity);
             }
             else
             {
