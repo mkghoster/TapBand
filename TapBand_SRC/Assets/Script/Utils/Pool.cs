@@ -101,9 +101,9 @@ namespace QuickPool
         /// Creates new pool
         /// </summary>
         /// <returns></returns>
-        public Pool(GameObject _prefab) 
+        public Pool(GameObject _prefab)
         {
-            if(_prefab != null)
+            if (_prefab != null)
                 this.Prefab = _prefab;
             size = 1;
             Audio = Prefab.GetComponent<AudioSource>() != null;
@@ -198,11 +198,11 @@ namespace QuickPool
             if (PoolsManager.Instance.spawnDespawnMessages)
                 obj.SendMessage("OnSpawn", SendMessageOptions.DontRequireReceiver);
 
-            if((audioSourceHandling & ComponentHandlingType.playOnSpawn) == ComponentHandlingType.playOnSpawn)
+            if ((audioSourceHandling & ComponentHandlingType.playOnSpawn) == ComponentHandlingType.playOnSpawn)
                 if (Audio)
                     obj.GetComponent<AudioSource>().Play();
 
-            if((particleSystemHandling & ComponentHandlingType.playOnSpawn) == ComponentHandlingType.playOnSpawn)
+            if ((particleSystemHandling & ComponentHandlingType.playOnSpawn) == ComponentHandlingType.playOnSpawn)
                 if (Particles)
                     obj.GetComponent<ParticleSystem>().Play();
 
@@ -225,11 +225,11 @@ namespace QuickPool
 
             if ((audioSourceHandling & ComponentHandlingType.stopOnDespawn) == ComponentHandlingType.stopOnDespawn)
                 if (Audio)
-                    target.GetComponent<AudioSource>().Play();
+                    target.GetComponent<AudioSource>().Stop();
 
             if ((particleSystemHandling & ComponentHandlingType.stopOnDespawn) == ComponentHandlingType.stopOnDespawn)
                 if (Particles)
-                    target.GetComponent<ParticleSystem>().Play();
+                    target.GetComponent<ParticleSystem>().Stop();
         }
 
         /// <summary>
