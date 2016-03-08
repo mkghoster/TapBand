@@ -118,4 +118,10 @@ public class SongController : MonoBehaviour {
         bossBattleCountDown = 0f;
         currentSong = null;
     }
+
+    //ATMENETI!!!!!!!!!!!!!!
+    public int GetSongID()
+    {
+        return currentSong.id;
+    }
 }
