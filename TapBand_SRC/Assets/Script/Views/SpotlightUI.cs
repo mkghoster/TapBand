@@ -24,6 +24,11 @@ public class SpotlightUI : MonoBehaviour
         isActive = false;
     }
 
+    void OnDisable()
+    {
+        spotlightEmitterPool.DespawnAll();
+    }
+
     void Update()
     {
         if (isActive)
