@@ -21,6 +21,11 @@ public class AudioManagerTapBand : AudioManager
 
     public bool testBool = false;
 
+
+    private SettingsController settingsController;
+    private float musicVolume;
+    private float sfxVolume;
+
     
 
     void Awake()
@@ -36,12 +41,18 @@ public class AudioManagerTapBand : AudioManager
 
         //inic SFX
         //base.CreateSFXPool();
+
+        //TODO, sfxVolume move to Generic AudiManager
+        settingsController = (SettingsController)GameObject.FindObjectOfType(typeof(SettingsController));
+        
+        musicVolume = PlayerPrefsManager.GetMusicVolume();
+        sfxVolume = PlayerPrefsManager.GetSFXVolume();
     }
 
     void Start()
     {
         concertState = GameState.instance.Concert;
-
+        
         //in the first play it will be 0, but that isn't a boss battle
         if (concertState.LastComplatedSongID != 0)
         {
@@ -59,10 +70,7 @@ public class AudioManagerTapBand : AudioManager
 
     void Update()
     {
-        if (testBool)
-        {
-            TestFunc();
-        }    
+      
     }
 
     void TestFunc()
@@ -76,6 +84,9 @@ public class AudioManagerTapBand : AudioManager
         songController.GiveEndOfSong += PlayMusicSound;
         concertController.EndOfConcert += StopMusicSoundConcert;
         concertController.RestartConcert += StopMusicSounds;
+
+        settingsController.MusicVolumeChange += SetMusicVolume;
+        settingsController.SFXVolumeChange += SetSFXVolume;
     }
 
     void OnDisable()
@@ -83,6 +94,24 @@ public class AudioManagerTapBand : AudioManager
         songController.GiveEndOfSong -= PlayMusicSound;
         concertController.EndOfConcert -= StopMusicSoundConcert;
         concertController.RestartConcert -= StopMusicSounds;
+
+        settingsController.MusicVolumeChange -= SetMusicVolume;
+        settingsController.SFXVolumeChange -= SetSFXVolume;
+    }
+
+    //Change to actual music bars volume
+    void SetMusicVolume(float volume)
+    { 
+        musicVolume = volume;
+        for (int i = 0; i <= actualIndex; i++)
+        {
+            musicSources[i].volume = musicVolume;
+        }
+    }
+
+    void SetSFXVolume(float volume)
+    {
+        sfxVolume = volume;
     }
 
 
@@ -110,12 +139,7 @@ public class AudioManagerTapBand : AudioManager
     }
 
 
-    void PlayMusicSound(int index)
-    {
-        musicSources[index].loop = true;
-        musicSources[index].volume = 1.0f;
-        musicSources[index].Play();
-    }
+
 
     void PlayMusicSoundUntilIndex(int index)
     {
@@ -127,7 +151,8 @@ public class AudioManagerTapBand : AudioManager
         for (int i = 0; i <= index; i++)
         {
             musicSources[i].loop = true;
-            musicSources[i].volume = 1.0f;
+            //musicSources[i].volume = 1.0f;
+            musicSources[i].volume = musicVolume;
             musicSources[i].Play();
         }
     }
