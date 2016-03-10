@@ -147,7 +147,7 @@ namespace QuickPool
         /// <summary>
         /// Adds new object to pool if pool is empty
         /// </summary>
-        public void AddewObject()
+        public void AddNewObject()
         {
             if (!Empty || !allowGrowth)
                 return;
@@ -242,7 +242,7 @@ namespace QuickPool
             {
                 if (allowGrowth)
                 {
-                    AddewObject();
+                    AddNewObject();
                     size++;
                 }
                 else
