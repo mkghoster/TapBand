@@ -6,9 +6,45 @@ using System;
 public class CurrencyState
 {
     private int fans;
+    [System.NonSerialized]
+    private int screenFans;
+
     private int coins;
+    [System.NonSerialized]
+    private int screenCoins;
+
     private int tokens;
+    [System.NonSerialized]
+    private int screenTokens;
+
     private ICollection<Single> tapMultipliers = new List<Single>();
+
+    public void AddTapMultiplier(float multiplier)
+    {
+        tapMultipliers.Add(multiplier);
+    }
+    
+    public float TapMultipliersProduct
+    {
+        get
+        {
+            float retVal = 1.0f;
+
+            foreach (float f in tapMultipliers)
+            {
+                retVal *= f;
+            }
+
+            return retVal;
+        }
+    }
+
+    public void SynchronizeRealCurrencyAndScreenCurrency()
+    {
+        screenFans = fans;
+        screenCoins = coins;
+        screenTokens = tokens;
+    }
 
     public int Fans
     {
@@ -48,10 +84,44 @@ public class CurrencyState
             tokens = value;
         }
     }
-
-    public void AddTapMultiplier(float multiplier)
+    
+    public int ScreenFans
     {
-        tapMultipliers.Add(multiplier);
+        get
+        {
+            return screenFans;
+        }
+
+        set
+        {
+            screenFans = value;
+        }
+    }
+
+    public int ScreenCoins
+    {
+        get
+        {
+            return screenCoins;
+        }
+
+        set
+        {
+            screenCoins = value;
+        }
+    }
+
+    public int ScreenTokens
+    {
+        get
+        {
+            return screenTokens;
+        }
+
+        set
+        {
+            screenTokens = value;
+        }
     }
 
     public ICollection<float> TapMultipliers
@@ -67,18 +137,4 @@ public class CurrencyState
         }
     }
 
-    public float TapMultipliersProduct
-    {
-        get
-        {
-            float retVal = 1.0f;
-
-            foreach (float f in tapMultipliers)
-            {
-                retVal *= f;
-            }
-
-            return retVal;
-        }
-    }
 }

@@ -99,6 +99,8 @@ public class GameState : LoadableData {
         this.merchState = gd.merchState == null ? new MerchState() : gd.merchState;
 		this.concertState = gd.concertState == null ? new ConcertState() : gd.concertState;
         this.equipmentState = gd.equipmentState == null ? new EquipmentState() : gd.equipmentState;
+
+        this.currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     public override string GetFileName()
