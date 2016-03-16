@@ -23,7 +23,6 @@ public class TourController : MonoBehaviour {
         hud.NewTour += CurrentTour;
         restart.NewLevel += UpgradeLevel;
         restart.CurrentTour += CurrentTour;
-        restart.RestartEnabled += NewTourStartIsAvailable;
     }
 
     void OnDisable()
@@ -31,19 +30,13 @@ public class TourController : MonoBehaviour {
         hud.NewTour -= CurrentTour;
         restart.NewLevel -= UpgradeLevel;
         restart.CurrentTour -= CurrentTour;
-        restart.RestartEnabled -= NewTourStartIsAvailable;
     }
 
     private TourData CurrentTour()
     {
 		return GameState.instance.Tour.CurrentTour;
 	}
-
-    private bool NewTourStartIsAvailable()
-    {
-        return GameState.instance.Currency.NumberOfFans >= GameState.instance.Tour.CurrentTour.fanRequirementToSkip;
-    }
-
+    
     private TourData NextTour()
     {
         return ListUtils.NextOf(GameData.instance.TourDataList, GameState.instance.Tour.CurrentTour);

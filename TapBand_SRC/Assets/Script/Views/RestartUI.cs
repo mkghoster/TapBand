@@ -7,12 +7,8 @@ public class RestartUI : MonoBehaviour {
     public delegate void NewLevelEvent();
     public event NewLevelEvent NewLevel;
 
-    public delegate bool RestartEnabledEvent();
-    public event RestartEnabledEvent RestartEnabled;
-
     public delegate TourData TourEvent();
     public event TourEvent CurrentTour;
-
 
     public GameObject restartPanel, restartButton;
     
@@ -27,19 +23,13 @@ public class RestartUI : MonoBehaviour {
         if (restartPanel.activeInHierarchy)
         {
             Button btn = restartButton.GetComponent<Button>();
-            if (RestartEnabled != null)
-            {
-                btn.interactable = RestartEnabled();
 
-                if (CurrentTour != null)
-                {
-                    TourData tour = CurrentTour();
-                    btn.transform.Find("Text").GetComponent<Text>().text = "Restart (" + tour.fanRequirementToSkip + " fans)";
-                }
-            } else
+            if (CurrentTour != null)
             {
-                restartButton.GetComponent<Button>().interactable = false;
+                TourData tour = CurrentTour();
+                btn.transform.Find("Text").GetComponent<Text>().text = "Restart with " + GameState.instance.Currency.NumberOfFans + " fans";
             }
+
         }
     }
 }

@@ -58,7 +58,8 @@ public class TapController : MonoBehaviour
 
         float equipmentMultiplier = 1;
 
-        if (special) // we should rename this parameter to isSpotlight, if there will be no other special cases
+        // we should rename this parameter to isSpotlight, if there will be no other special cases
+        if (special)
         {
             equipmentMultiplier *= SpotlightTapMultiplier;
         }
@@ -81,7 +82,7 @@ public class TapController : MonoBehaviour
         }
 
         return equipmentMultiplier *
-            DefaultOrSelf(state.Tour.CurrentTour.tapMultiplier);
+            DefaultOrSelf(state.Tour.CurrentTour.tapStrengthMultiplier);
     }
 
     private float DefaultOrSelf(float f)

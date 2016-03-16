@@ -56,14 +56,12 @@ public class CurrencyController : MonoBehaviour {
 
     private void CoinTransaction(int price)
     {
-        // TODO temporal solution
-        GameState.instance.Currency.NumberOfCoins += (int) (price * GameState.instance.Tour.CurrentTour.coinMultiplier);
+        GameState.instance.Currency.NumberOfCoins += price;
     }
 
 	private void FanTransaction(int fans)
 	{
-        // TODO temporal solution
-        GameState.instance.Currency.NumberOfFans += (int)(fans * GameState.instance.Tour.CurrentTour.fanMultiplier);
+        GameState.instance.Currency.NumberOfFans += fans;
 	}
 
     private bool CanBuy(int price)

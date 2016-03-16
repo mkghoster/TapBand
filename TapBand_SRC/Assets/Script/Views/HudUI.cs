@@ -46,7 +46,7 @@ public class HudUI : MonoBehaviour {
     {
         if (NewTour != null) 
 		{
-            tour.GetComponent<Text>().text = "Tour: " + NewTour().level;
+            tour.GetComponent<Text>().text = "Tour: WAT?";
         }
         if (NewCoin != null)
         {
