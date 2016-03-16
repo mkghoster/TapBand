@@ -23,12 +23,14 @@ public class CurrencyController : MonoBehaviour {
 
     void OnEnable()
     {
-		songController.GiveRewardOfSong += CoinTransaction;
-		concertController.GiveCoinRewardOfConcert += CoinTransaction;
-		concertController.GiveFanRewardOfConcert += FanTransaction;
-        tourController.ResetCurrencies += Reset;
-        merchController.CoinTransaction += CoinTransaction;
-        equipmentController.CoinTransaction += CoinTransaction;
+		songController.GiveRewardOfSong += AddCoins;
+		concertController.GiveCoinRewardOfConcert += AddCoins;
+		concertController.GiveFanRewardOfConcert += AddFans;
+        tourController.OnPrestige += OnPrestige;
+
+        merchController.MerchTransaction += MerchTransaction;
+        merchController.CoinTransaction += AddCoins;
+        equipmentController.EquipmentTransaction += EquipmentTransaction;
         merchController.CanBuy += CanBuy;
         hudUI.NewCoin += Coins;
 		hudUI.NewFans += Fans;
@@ -36,48 +38,66 @@ public class CurrencyController : MonoBehaviour {
 
     void OnDisable()
     {
-		songController.GiveRewardOfSong -= CoinTransaction;
-		concertController.GiveCoinRewardOfConcert -= CoinTransaction;
-		concertController.GiveFanRewardOfConcert -= FanTransaction;
-        tourController.ResetCurrencies -= Reset;
-        merchController.CoinTransaction -= CoinTransaction;
-        equipmentController.CoinTransaction -= CoinTransaction;
+		songController.GiveRewardOfSong -= AddCoins;
+		concertController.GiveCoinRewardOfConcert -= AddCoins;
+		concertController.GiveFanRewardOfConcert -= AddFans;
+        tourController.OnPrestige -= OnPrestige;
+
+        merchController.MerchTransaction -= MerchTransaction;
+        merchController.CoinTransaction -= AddCoins;
+        equipmentController.EquipmentTransaction -= EquipmentTransaction;
         merchController.CanBuy -= CanBuy;
         hudUI.NewCoin -= Coins;
 		hudUI.NewFans -= Fans;
     }
 
-    private void Reset()
+    private void OnPrestige(TourData tour)
     {
-        GameState.instance.Currency.NumberOfCoins = 0;
-        // TODO: need GD decision about this
-        // GameState.instance.Currency.NumberOfFans = 0;
+        GameState.instance.Currency.Coins = 0;
+        GameState.instance.Currency.Fans = 0;
+        GameState.instance.Currency.AddTapMultiplier(tour.tapStrengthMultiplier);
     }
 
-    private void CoinTransaction(int price)
+    private void EquipmentTransaction(EquipmentData equipment)
     {
-        GameState.instance.Currency.NumberOfCoins += price;
+        GameState.instance.Currency.Coins -= equipment.upgradeCost;
+        GameState.instance.Currency.AddTapMultiplier(equipment.tapMultiplier);
     }
 
-	private void FanTransaction(int fans)
+    private void MerchTransaction(MerchData merch)
+    {
+        GameState.instance.Currency.Coins -= merch.upgradeCost;
+    }
+
+    private void AddCoins(int coins)
+    {
+        GameState.instance.Currency.Coins += coins;
+    }
+
+    private void AddFans(int fans)
 	{
-        GameState.instance.Currency.NumberOfFans += fans;
+        GameState.instance.Currency.Fans += fans;
 	}
+
+    private void AddTokens(int tokens)
+    {
+        GameState.instance.Currency.Tokens += tokens;
+    }
 
     private bool CanBuy(int price)
     {
-        return GameState.instance.Currency.NumberOfCoins >= price;
+        return GameState.instance.Currency.Coins >= price;
     }
 
     private string Coins()
     {
         // Temporal solution for test purposes
-        return GameState.instance.Currency.NumberOfCoins.ToString();
+        return GameState.instance.Currency.Coins.ToString();
     }
 
 	private string Fans()
 	{
 		// Temporal solution for test purposes
-		return GameState.instance.Currency.NumberOfFans.ToString();
+		return GameState.instance.Currency.Fans.ToString();
 	}
 }

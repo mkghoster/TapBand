@@ -1,35 +1,84 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using System;
 
 [System.Serializable]
 public class CurrencyState
 {
-    private int numberOfFans;
-    private int numberOfCoins;
+    private int fans;
+    private int coins;
+    private int tokens;
+    private ICollection<Single> tapMultipliers = new List<Single>();
 
-    public int NumberOfFans
+    public int Fans
     {
         get
         {
-            return numberOfFans;
+            return fans;
         }
 
         set
         {
-            numberOfFans = value;
+            fans = value;
         }
     }
 
-    public int NumberOfCoins
+    public int Coins
     {
         get
         {
-            return numberOfCoins;
+            return coins;
         }
 
         set
         {
-            numberOfCoins = value;
+            coins = value;
+        }
+    }
+
+    public int Tokens
+    {
+        get
+        {
+            return tokens;
+        }
+
+        set
+        {
+            tokens = value;
+        }
+    }
+
+    public void AddTapMultiplier(float multiplier)
+    {
+        tapMultipliers.Add(multiplier);
+    }
+
+    public ICollection<float> TapMultipliers
+    {
+        get
+        {
+            return tapMultipliers;
+        }
+
+        set
+        {
+            tapMultipliers = value;
+        }
+    }
+
+    public float TapMultipliersProduct
+    {
+        get
+        {
+            float retVal = 1.0f;
+
+            foreach (float f in tapMultipliers)
+            {
+                retVal *= f;
+            }
+
+            return retVal;
         }
     }
 }

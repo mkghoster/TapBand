@@ -54,35 +54,13 @@ public class TapController : MonoBehaviour
 
     private float CalculateTapValue(Vector2 position, bool special)
     {
-        GameState state = GameState.instance;
-
-        float equipmentMultiplier = 1;
-
+        float tapMultiplier = GameState.instance.Currency.TapMultipliersProduct;
         // we should rename this parameter to isSpotlight, if there will be no other special cases
         if (special)
         {
-            equipmentMultiplier *= SpotlightTapMultiplier;
+            tapMultiplier *= DefaultOrSelf(SpotlightTapMultiplier);
         }
-
-        if (state.Equipment.CurrentBassEquipment != null)
-        {
-            equipmentMultiplier *= state.Equipment.CurrentBassEquipment.tapMultiplier;
-        }
-        if (state.Equipment.CurrentDrumEquipment != null)
-        {
-            equipmentMultiplier *= state.Equipment.CurrentDrumEquipment.tapMultiplier;
-        }
-        if (state.Equipment.CurrentGuitarEquipment != null)
-        {
-            equipmentMultiplier *= state.Equipment.CurrentGuitarEquipment.tapMultiplier;
-        }
-        if (state.Equipment.CurrentKeyboardEquipment != null)
-        {
-            equipmentMultiplier *= state.Equipment.CurrentKeyboardEquipment.tapMultiplier;
-        }
-
-        return equipmentMultiplier *
-            DefaultOrSelf(state.Tour.CurrentTour.tapStrengthMultiplier);
+        return tapMultiplier;
     }
 
     private float DefaultOrSelf(float f)

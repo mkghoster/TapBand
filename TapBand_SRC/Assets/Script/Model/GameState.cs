@@ -25,7 +25,6 @@ public class GameState : LoadableData {
     private GameState()
     {
         currencyState = new CurrencyState();
-        tourState = new TourState();
         merchState = new MerchState();
         concertState = new ConcertState();
         equipmentState = new EquipmentState();
@@ -33,24 +32,11 @@ public class GameState : LoadableData {
     #endregion
 
     private CurrencyState currencyState;
-    private TourState tourState;
     private MerchState merchState;
     private ConcertState concertState;
     private EquipmentState equipmentState;
 
-    public TourState Tour
-    {
-        get
-        {
-            return tourState;
-        }
-
-        set
-        {
-            tourState = value;
-        }
-    }
-
+    
     public CurrencyState Currency
     {
         get
@@ -109,7 +95,6 @@ public class GameState : LoadableData {
         IFormatter formatter = new BinaryFormatter();
         GameState gd = (GameState)formatter.Deserialize(ms);
         
-        this.tourState = gd.tourState == null ? new TourState() : gd.tourState;
         this.currencyState = gd.currencyState == null ? new CurrencyState() : gd.currencyState;
         this.merchState = gd.merchState == null ? new MerchState() : gd.merchState;
 		this.concertState = gd.concertState == null ? new ConcertState() : gd.concertState;

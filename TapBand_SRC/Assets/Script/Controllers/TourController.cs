@@ -7,46 +7,44 @@ public class TourController : MonoBehaviour {
     public delegate void RestartEvent();
     public event RestartEvent RestartConcert;
     public event RestartEvent RestartSong;
-    public event RestartEvent ResetCurrencies;
+    public delegate void OnPrestigeEvent(TourData tour);
+    public event OnPrestigeEvent OnPrestige;
 
-    private HudUI hud;
     private RestartUI restart;
+    private HudUI hud;
 
     void Awake()
     {
-        hud = (HudUI)FindObjectOfType(typeof(HudUI));
-        restart = (RestartUI)FindObjectOfType(typeof(RestartUI));
+        restart = FindObjectOfType<RestartUI>();
+        hud = FindObjectOfType<HudUI>();
     }
 
     void OnEnable()
     {
-        hud.NewTour += CurrentTour;
         restart.NewLevel += UpgradeLevel;
-        restart.CurrentTour += CurrentTour;
     }
 
     void OnDisable()
     {
-        hud.NewTour -= CurrentTour;
         restart.NewLevel -= UpgradeLevel;
-        restart.CurrentTour -= CurrentTour;
-    }
-
-    private TourData CurrentTour()
-    {
-		return GameState.instance.Tour.CurrentTour;
-	}
-    
-    private TourData NextTour()
-    {
-        return ListUtils.NextOf(GameData.instance.TourDataList, GameState.instance.Tour.CurrentTour);
     }
 
     private void UpgradeLevel()
     {
-        GameState.instance.Tour.CurrentTourIndex += 1;
         if (RestartConcert != null)RestartConcert();
         if (RestartSong != null) RestartSong();
-        if (ResetCurrencies != null) ResetCurrencies();
+        if (OnPrestige != null)
+        {
+            int fans = GameState.instance.Currency.Fans;
+            foreach (TourData tourData in GameData.instance.TourDataList)
+            {
+                if (fans > tourData.minFanCount)
+                {
+                    OnPrestige(tourData);
+                    break;
+                }
+            }
+            
+        }
     }
 }

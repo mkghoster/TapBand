@@ -23,19 +23,11 @@ public class GameStateHolder : MonoBehaviour
 
     private void LoadDefaults()
     {
-        if (GameState.instance.Tour.CurrentTourIndex == 0)
-        {
-            TourData firstTour = GameData.instance.TourDataList[0];
-            GameState.instance.Tour.CurrentTourIndex = firstTour.id;
-        }
-
 		if (GameState.instance.Concert.CurrentConcertID == 0) 
 		{
 			ConcertData firstConcert = GameData.instance.ConcertDataList[0];
 			GameState.instance.Concert.CurrentConcertID = firstConcert.id;
 		}
-
-
     }
 
 	private void LoadConnectionsInGameData()

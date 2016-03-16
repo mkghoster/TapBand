@@ -27,7 +27,7 @@ public class RestartUI : MonoBehaviour {
             if (CurrentTour != null)
             {
                 TourData tour = CurrentTour();
-                btn.transform.Find("Text").GetComponent<Text>().text = "Restart with " + GameState.instance.Currency.NumberOfFans + " fans";
+                btn.transform.Find("Text").GetComponent<Text>().text = "Restart with " + GameState.instance.Currency.Fans + " fans";
             }
 
         }
