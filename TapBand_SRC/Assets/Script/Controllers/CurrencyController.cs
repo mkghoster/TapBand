@@ -11,6 +11,8 @@ public class CurrencyController : MonoBehaviour {
 
     private HudUI hudUI;
 
+    private CurrencyState currencyState;
+
     void Awake()
     {
 		songController = (SongController)FindObjectOfType (typeof(SongController));
@@ -19,16 +21,20 @@ public class CurrencyController : MonoBehaviour {
         merchController = (MerchController)FindObjectOfType(typeof(MerchController));
         equipmentController = (EquipmentController)FindObjectOfType(typeof(EquipmentController));
         hudUI = (HudUI)FindObjectOfType(typeof(HudUI));
+
+        currencyState = GameState.instance.Currency;
     }
 
     void OnEnable()
     {
-		songController.GiveRewardOfSong += CoinTransaction;
-		concertController.GiveCoinRewardOfConcert += CoinTransaction;
-		concertController.GiveFanRewardOfConcert += FanTransaction;
-        tourController.ResetCurrencies += Reset;
-        merchController.CoinTransaction += CoinTransaction;
-        equipmentController.CoinTransaction += CoinTransaction;
+		songController.GiveRewardOfSong += AddCoins;
+		concertController.GiveCoinRewardOfConcert += AddCoins;
+		concertController.GiveFanRewardOfConcert += AddFans;
+        tourController.OnPrestige += OnPrestige;
+
+        merchController.MerchTransaction += MerchTransaction;
+        merchController.CoinTransaction += AddCoins;
+        equipmentController.EquipmentTransaction += EquipmentTransaction;
         merchController.CanBuy += CanBuy;
         hudUI.NewCoin += Coins;
 		hudUI.NewFans += Fans;
@@ -36,50 +42,74 @@ public class CurrencyController : MonoBehaviour {
 
     void OnDisable()
     {
-		songController.GiveRewardOfSong -= CoinTransaction;
-		concertController.GiveCoinRewardOfConcert -= CoinTransaction;
-		concertController.GiveFanRewardOfConcert -= FanTransaction;
-        tourController.ResetCurrencies -= Reset;
-        merchController.CoinTransaction -= CoinTransaction;
-        equipmentController.CoinTransaction -= CoinTransaction;
+		songController.GiveRewardOfSong -= AddCoins;
+		concertController.GiveCoinRewardOfConcert -= AddCoins;
+		concertController.GiveFanRewardOfConcert -= AddFans;
+        tourController.OnPrestige -= OnPrestige;
+
+        merchController.MerchTransaction -= MerchTransaction;
+        merchController.CoinTransaction -= AddCoins;
+        equipmentController.EquipmentTransaction -= EquipmentTransaction;
         merchController.CanBuy -= CanBuy;
         hudUI.NewCoin -= Coins;
 		hudUI.NewFans -= Fans;
     }
 
-    private void Reset()
+    private void OnPrestige(TourData tour)
     {
-        GameState.instance.Currency.NumberOfCoins = 0;
-        // TODO: need GD decision about this
-        // GameState.instance.Currency.NumberOfFans = 0;
+        currencyState.Coins = 0;
+        currencyState.Fans = 0;
+        currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
+
+        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void CoinTransaction(int price)
+    private void EquipmentTransaction(EquipmentData equipment)
     {
-        // TODO temporal solution
-        GameState.instance.Currency.NumberOfCoins += (int) (price * GameState.instance.Tour.CurrentTour.coinMultiplier);
+        currencyState.Coins -= equipment.upgradeCost;
+        currencyState.AddTapMultiplier(equipment.tapMultiplier);
+
+        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-	private void FanTransaction(int fans)
+    private void MerchTransaction(MerchData merch)
+    {
+        currencyState.Coins -= merch.upgradeCost;
+
+        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    private void AddCoins(int coins)
+    {
+        currencyState.Coins += coins;
+        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    private void AddFans(int fans)
 	{
-        // TODO temporal solution
-        GameState.instance.Currency.NumberOfFans += (int)(fans * GameState.instance.Tour.CurrentTour.fanMultiplier);
-	}
+        currencyState.Fans += fans;
+        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    private void AddTokens(int tokens)
+    {
+        currencyState.Tokens += tokens;
+    }
 
     private bool CanBuy(int price)
     {
-        return GameState.instance.Currency.NumberOfCoins >= price;
+        return currencyState.Coins >= price;
     }
 
     private string Coins()
     {
         // Temporal solution for test purposes
-        return GameState.instance.Currency.NumberOfCoins.ToString();
+        return currencyState.ScreenCoins.ToString();
     }
 
 	private string Fans()
 	{
 		// Temporal solution for test purposes
-		return GameState.instance.Currency.NumberOfFans.ToString();
+		return currencyState.ScreenFans.ToString();
 	}
 }
