@@ -10153,9 +10153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Merch
-
-'
+  m_Text: Merch
 --- !u!222 &1909789583
 CanvasRenderer:
   m_ObjectHideFlags: 0
