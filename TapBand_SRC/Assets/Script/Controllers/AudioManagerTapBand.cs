@@ -22,7 +22,7 @@ public class AudioManagerTapBand : AudioManager
     public bool testBool = false;
 
 
-    private SettingsController settingsController;
+    private SettingsUI settingsUI;
     private float musicVolume;
     private float sfxVolume;
 
@@ -43,7 +43,7 @@ public class AudioManagerTapBand : AudioManager
         //base.CreateSFXPool();
 
         //TODO, sfxVolume move to Generic AudiManager
-        settingsController = (SettingsController)GameObject.FindObjectOfType(typeof(SettingsController));
+        settingsUI = (SettingsUI)GameObject.FindObjectOfType(typeof(SettingsUI));
         
         musicVolume = PlayerPrefsManager.GetMusicVolume();
         sfxVolume = PlayerPrefsManager.GetSFXVolume();
@@ -85,8 +85,8 @@ public class AudioManagerTapBand : AudioManager
         concertController.EndOfConcert += StopMusicSoundConcert;
         concertController.RestartConcert += StopMusicSounds;
 
-        settingsController.MusicVolumeChange += SetMusicVolume;
-        settingsController.SFXVolumeChange += SetSFXVolume;
+        settingsUI.MusicVolumeChange += SetMusicVolume;
+        settingsUI.SFXVolumeChange += SetSFXVolume;
     }
 
     void OnDisable()
@@ -95,8 +95,8 @@ public class AudioManagerTapBand : AudioManager
         concertController.EndOfConcert -= StopMusicSoundConcert;
         concertController.RestartConcert -= StopMusicSounds;
 
-        settingsController.MusicVolumeChange -= SetMusicVolume;
-        settingsController.SFXVolumeChange -= SetSFXVolume;
+        settingsUI.MusicVolumeChange -= SetMusicVolume;
+        settingsUI.SFXVolumeChange -= SetSFXVolume;
     }
 
     //Change to actual music bars volume
