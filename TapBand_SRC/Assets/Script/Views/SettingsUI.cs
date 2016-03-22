@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class SettingsController : MonoBehaviour {
+public class SettingsUI : MonoBehaviour {
 
     public delegate void SoundVolumeChangeEvent(float volume);
     public event SoundVolumeChangeEvent MusicVolumeChange;

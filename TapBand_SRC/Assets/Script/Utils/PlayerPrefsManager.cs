@@ -8,36 +8,22 @@ public class PlayerPrefsManager : MonoBehaviour {
 
     public static void SetMusicVolume(float volume)
     {
-        if (volume >= 0.0f && volume <= 1.0f)
-        {
-            PlayerPrefs.SetFloat(MUSIC_VOLUME_KEY, volume);
-        }
-        else
-        {
-            Debug.LogError("Music volume is out of range");
-        }
+       PlayerPrefs.SetFloat(MUSIC_VOLUME_KEY, Mathf.Clamp(volume, 0.0f, 1.0f));
     }
 
     public static float GetMusicVolume()
     {
-        return PlayerPrefs.GetFloat(MUSIC_VOLUME_KEY);
+        return PlayerPrefs.GetFloat(MUSIC_VOLUME_KEY, 0.5f);
     }
 
     public static void SetSFXVolume(float volume)
     {
-        if (volume >= 0.0f && volume <= 1.0f)
-        {
-            PlayerPrefs.SetFloat(SFX_VOLUME_KEY, volume);
-        }
-        else
-        {
-            Debug.LogError("SFX volume is out of range");
-        }
+        PlayerPrefs.SetFloat(SFX_VOLUME_KEY, Mathf.Clamp( volume,0.0f,1.0f));
     }
 
     public static float GetSFXVolume()
     {
-        return PlayerPrefs.GetFloat(SFX_VOLUME_KEY);
+        return PlayerPrefs.GetFloat(SFX_VOLUME_KEY, 0.5f);
     }
 
 
