@@ -908,6 +908,7 @@ Transform:
   - {fileID: 1762087075}
   - {fileID: 360856619}
   - {fileID: 497162813}
+  - {fileID: 1366884308}
   m_Father: {fileID: 1334244384}
   m_RootOrder: 2
 --- !u!1 &345729535
@@ -4556,7 +4557,6 @@ Transform:
   - {fileID: 2035629508}
   - {fileID: 1211231717}
   - {fileID: 1126463865}
-  - {fileID: 1366884308}
   m_Father: {fileID: 1334244384}
   m_RootOrder: 1
 --- !u!1 &877916634
@@ -7722,6 +7722,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1126463865}
   - 114: {fileID: 1126463866}
+  - 114: {fileID: 1126463867}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -7754,9 +7755,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72c8ca939e3d99459dd8bf519c7f602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundPrefab: {fileID: 0}
-  willGrow: 1
   testBool: 0
+--- !u!114 &1126463867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1126463864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d570b194fc08bb84fb56cf0e78dc9d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - prefab: {fileID: 152196, guid: 7252e985ec37e424281ccc8912bf019e, type: 2}
+    id: 
+    mode: 0
+    despawnPos: {x: -100, y: -100, z: -100}
+    despawned: []
+    spawned: []
+    m_Root: {fileID: 0}
+    allowGrowth: 1
+    debugMessages: 1
+    useCustomRoot: 0
+    audioSourceHandling: 1
+    particleSystemHandling: 0
+    size: 3
+    playOnSpawn: 0
+    stopOnDespawn: 0
+    Audio: 1
+    Particles: 0
+    foldout: 1
+  debugMessages: 1
+  spawnDespawnMessages: 1
 --- !u!1 &1177539794
 GameObject:
   m_ObjectHideFlags: 0
@@ -8499,10 +8530,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1366884308}
-  - 114: {fileID: 1366884309}
   - 114: {fileID: 1366884310}
+  - 114: {fileID: 1366884309}
   m_Layer: 0
-  m_Name: SettingsController
+  m_Name: SettingsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8518,8 +8549,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 875471344}
-  m_RootOrder: 13
+  m_Father: {fileID: 342436050}
+  m_RootOrder: 7
 --- !u!114 &1366884309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10545,6 +10576,7 @@ GameObject:
   - 222: {fileID: 2017673024}
   - 114: {fileID: 2017673023}
   - 114: {fileID: 2017673022}
+  - 114: {fileID: 2017673025}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -10677,6 +10709,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2017673020}
+--- !u!114 &2017673025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2017673020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f2a92b758968479de61e4c6c96ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 3eeddb1cb3733854bbba65f7c17c28dd, type: 3}
 --- !u!1 &2035629507
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
+//using System.Collections;
 
+//TODO: handle end of Tour!
 
 public class AudioManagerTapBand : AudioManager
 {
@@ -22,9 +23,7 @@ public class AudioManagerTapBand : AudioManager
     public bool testBool = false;
 
 
-    private SettingsUI settingsUI;
-    private float musicVolume;
-    private float sfxVolume;
+   
 
     
 
@@ -40,13 +39,9 @@ public class AudioManagerTapBand : AudioManager
         GetAllChildMusicSource();
 
         //inic SFX
-        //base.CreateSFXPool();
+        base.InitAudioManager();
 
-        //TODO, sfxVolume move to Generic AudiManager
-        settingsUI = (SettingsUI)GameObject.FindObjectOfType(typeof(SettingsUI));
         
-        musicVolume = PlayerPrefsManager.GetMusicVolume();
-        sfxVolume = PlayerPrefsManager.GetSFXVolume();
     }
 
     void Start()
@@ -73,11 +68,6 @@ public class AudioManagerTapBand : AudioManager
       
     }
 
-    void TestFunc()
-    {
-
-       base.PlaySound();
-    }
 
     void OnEnable()
     {
@@ -96,23 +86,11 @@ public class AudioManagerTapBand : AudioManager
         concertController.RestartConcert -= StopMusicSounds;
 
         settingsUI.MusicVolumeChange -= SetMusicVolume;
-        settingsUI.SFXVolumeChange -= SetSFXVolume;
+        settingsUI.SFXVolumeChange -= SetSFXVolume;  //base classban nem kapta meg az eventet, csak ha idehoztam
     }
 
-    //Change to actual music bars volume
-    void SetMusicVolume(float volume)
-    { 
-        musicVolume = volume;
-        for (int i = 0; i <= actualIndex; i++)
-        {
-            musicSources[i].volume = musicVolume;
-        }
-    }
+    
 
-    void SetSFXVolume(float volume)
-    {
-        sfxVolume = volume;
-    }
 
 
     #region Music
@@ -139,6 +117,15 @@ public class AudioManagerTapBand : AudioManager
     }
 
 
+    //Change to actual music bars volume
+    void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        for (int i = 0; i <= actualIndex; i++)
+        {
+            musicSources[i].volume = musicVolume;
+        }
+    }
 
 
     void PlayMusicSoundUntilIndex(int index)
@@ -151,13 +138,10 @@ public class AudioManagerTapBand : AudioManager
         for (int i = 0; i <= index; i++)
         {
             musicSources[i].loop = true;
-            //musicSources[i].volume = 1.0f;
             musicSources[i].volume = musicVolume;
             musicSources[i].Play();
         }
     }
-
-
 
 
     void GetAllChildMusicSource()
