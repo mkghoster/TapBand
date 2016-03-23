@@ -5103,6 +5103,7 @@ GameObject:
   - 222: {fileID: 987902500}
   - 114: {fileID: 987902499}
   - 114: {fileID: 987902498}
+  - 114: {fileID: 987902501}
   m_Layer: 5
   m_Name: MerchPanelButton
   m_TagString: Untagged
@@ -5235,6 +5236,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 987902496}
+--- !u!114 &987902501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 987902496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f2a92b758968479de61e4c6c96ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: a337d16f964546d4481568eb08e00a03, type: 3}
+  isLoop: 0
+  stopEvent: 0
 --- !u!1 &990817061
 GameObject:
   m_ObjectHideFlags: 0
@@ -7722,7 +7737,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1126463865}
   - 114: {fileID: 1126463866}
-  - 114: {fileID: 1126463867}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -7755,20 +7769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72c8ca939e3d99459dd8bf519c7f602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testBool: 0
---- !u!114 &1126463867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1126463864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d570b194fc08bb84fb56cf0e78dc9d39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pools:
-  - prefab: {fileID: 152196, guid: 7252e985ec37e424281ccc8912bf019e, type: 2}
+  audioPool:
+    prefab: {fileID: 152196, guid: 7252e985ec37e424281ccc8912bf019e, type: 2}
     id: 
     mode: 0
     despawnPos: {x: -100, y: -100, z: -100}
@@ -7778,16 +7780,15 @@ MonoBehaviour:
     allowGrowth: 1
     debugMessages: 1
     useCustomRoot: 0
-    audioSourceHandling: 1
-    particleSystemHandling: 0
-    size: 3
+    audioSourceHandling: 0
+    particleSystemHandling: 1
+    size: 0
     playOnSpawn: 0
     stopOnDespawn: 0
-    Audio: 1
+    Audio: 0
     Particles: 0
-    foldout: 1
-  debugMessages: 1
-  spawnDespawnMessages: 1
+    foldout: 0
+  testBool: 0
 --- !u!1 &1177539794
 GameObject:
   m_ObjectHideFlags: 0
@@ -8102,6 +8103,7 @@ GameObject:
   - 222: {fileID: 1229302661}
   - 114: {fileID: 1229302660}
   - 114: {fileID: 1229302659}
+  - 114: {fileID: 1229302662}
   m_Layer: 5
   m_Name: EquipmentPanelButton
   m_TagString: Untagged
@@ -8234,6 +8236,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1229302657}
+--- !u!114 &1229302662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1229302657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f2a92b758968479de61e4c6c96ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: a337d16f964546d4481568eb08e00a03, type: 3}
+  isLoop: 0
+  stopEvent: 0
 --- !u!1 &1229403882
 GameObject:
   m_ObjectHideFlags: 0
@@ -10720,7 +10736,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123f2a92b758968479de61e4c6c96ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 3eeddb1cb3733854bbba65f7c17c28dd, type: 3}
+  clip: {fileID: 8300000, guid: a337d16f964546d4481568eb08e00a03, type: 3}
+  isLoop: 0
+  stopEvent: 0
 --- !u!1 &2035629507
 GameObject:
   m_ObjectHideFlags: 0
