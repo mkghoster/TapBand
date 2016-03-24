@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour {
     protected float musicVolume;
     protected float sfxVolume;
 
-    protected float fadeDuration = 5.0f;
+    protected float fadeDuration = 3.0f;
     protected enum FadeState { FadeIn, FadeOut };
 
     private static  AudioManager instance;
