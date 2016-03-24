@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour {
     protected float musicVolume;
     protected float sfxVolume;
 
+    protected float fadeDuration = 5.0f;
+    protected enum FadeState { FadeIn, FadeOut };
 
     private static  AudioManager instance;
     public  static  AudioManager Instance
@@ -68,7 +70,6 @@ public class AudioManager : MonoBehaviour {
             PlayLoopSound(clip, name);
         else
             PlayOneShotSound(clip);
-
     }
 
    
@@ -77,8 +78,6 @@ public class AudioManager : MonoBehaviour {
     private void PlayOneShotSound(AudioClip clip)
     {
         //print("PlayOneShotSound()");
-
-        
         var spawn = audioPool.Spawn(Vector3.zero, Quaternion.identity);
         spawn.GetComponent<AudioSource>().PlayOneShot(clip, sfxVolume);
 
@@ -94,8 +93,7 @@ public class AudioManager : MonoBehaviour {
     //pool loop sound
     private void PlayLoopSound(AudioClip clip, string name)
     {
-        //print("PlayLoopSound()");
-        
+        //print("PlayLoopSound()");        
         var spawn = audioPool.Spawn(Vector3.zero, Quaternion.identity);
         AudioSource spawnSource = spawn.GetComponent<AudioSource>();
         spawnSource.loop = true;
@@ -103,9 +101,38 @@ public class AudioManager : MonoBehaviour {
         spawnSource.volume = sfxVolume;
         spawnSource.Play();
 
-
         loopSounds.Add(name, spawn);
+    }
 
+  
+    protected void FadeClip(AudioSource source, FadeState fadeState)
+    {
+        StartCoroutine(Fade(source, fadeState));   
+    }
+
+    private IEnumerator Fade(AudioSource source, FadeState fadeState)
+    {
+        if(fadeState == FadeState.FadeIn)
+        {
+            source.volume = 0.0f;
+            for (float f = 0f; f <= 1.0f; f += (Time.deltaTime / fadeDuration))
+            {
+                source.volume = Mathf.Lerp(0.0f, musicVolume, f);
+                yield return null;
+            }
+            source.volume = musicVolume;    
+        }
+        else if(fadeState == FadeState.FadeOut)
+        {  
+            source.volume = 1.0f;
+            for (float f = 1f; f >= 0.0f; f -= (Time.deltaTime / fadeDuration))
+            {
+                source.volume = Mathf.Lerp(0.0f, musicVolume, f);   
+                yield return null;
+            }
+            source.volume = 0.0f;   
+        }
+       
     }
 
     void OnEnable()
@@ -119,6 +146,7 @@ public class AudioManager : MonoBehaviour {
         audioPool.DespawnAll();
     }
 
+    //called only in the child class
     protected void SetSFXVolume(float volume)
     {
         sfxVolume = volume;
