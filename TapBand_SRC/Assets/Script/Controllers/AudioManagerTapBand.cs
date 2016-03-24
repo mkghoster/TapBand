@@ -41,25 +41,28 @@ public class AudioManagerTapBand : AudioManager
     void Start()
     {
         concertState = GameState.instance.Concert;
-        
+
+        //first time
+        MuteAndPlayAllMusicBars();
+
         //in the first play it will be 0, but that isn't a boss battle
         if (concertState.LastComplatedSongID != 0)
         {
             //it's the previous song id, need to inc
-            actualIndex = CastSongIndex(concertState.LastComplatedSongID +1); 
-            PlayMusicSoundUntilIndex(actualIndex);
+            actualIndex = CastSongIndex(concertState.LastComplatedSongID +1);
+            FadeInMusicBarsUntilIndex(actualIndex);
         }
         else
         {
-            PlayMusicSoundUntilIndex(concertState.LastComplatedSongID);
+            FadeInMusicBarsUntilIndex(concertState.LastComplatedSongID);
         }
             
     }
 
     void OnEnable()
     {
-        songController.GiveEndOfSong += PlayMusicSound;
-        concertController.EndOfConcert += StopMusicSoundConcert;
+        songController.GiveEndOfSong += EndOfSongEvent;
+        concertController.EndOfConcert += EndOfConcertEvent;
         concertController.RestartConcert += ResetartConcert;
 
         settingsUI.MusicVolumeChange += SetMusicVolume;
@@ -68,8 +71,8 @@ public class AudioManagerTapBand : AudioManager
 
     void OnDisable()
     {
-        songController.GiveEndOfSong -= PlayMusicSound;
-        concertController.EndOfConcert -= StopMusicSoundConcert;
+        songController.GiveEndOfSong -= EndOfSongEvent;
+        concertController.EndOfConcert -= EndOfConcertEvent;
         concertController.RestartConcert -= ResetartConcert;
 
         settingsUI.MusicVolumeChange -= SetMusicVolume;
@@ -77,17 +80,16 @@ public class AudioManagerTapBand : AudioManager
     }
 
     #region events
-    private void PlayMusicSound(SongData songData)
+    private void EndOfSongEvent(SongData songData)
     {
         //id++: it's the previous song id
         actualIndex = CastSongIndex(songData.id + 1 );
 
-        //PlayMusicSoundUntilIndex(actualIndex);
-        PlayNextSong();
+        FadeInNextSong();
     }
 
     //concert success
-    void StopMusicSoundConcert(ConcertData concertData)
+    void EndOfConcertEvent(ConcertData concertData)
     {
         StartNewOrPrevConcert();
     }
@@ -115,41 +117,47 @@ public class AudioManagerTapBand : AudioManager
     {
         StopMusicSounds();
         actualIndex = 0;
-        PlayMusicSoundUntilIndex(actualIndex);
+        MuteAndPlayAllMusicBars();
+        FadeInMusicBarsUntilIndex(actualIndex);
     }
 
     void StopMusicSounds()
     {
         for (int i = 0; i < musicSources.Length; i++)
         {
-            musicSources[i].volume = 0f;
             musicSources[i].Stop();
         }
     }
 
     //called:  after every song
-    void PlayNextSong()
+    void FadeInNextSong()
     {
-        musicSources[actualIndex].loop = true;
         FadeClip(musicSources[actualIndex], FadeState.FadeIn);
-        //FadeClip(musicSources[actualIndex], FadeState.FadeOut);
-        musicSources[actualIndex].Play();
     }
 
     //called when: fail/succes concert, game start
-    void PlayMusicSoundUntilIndex(int index)
+    void FadeInMusicBarsUntilIndex(int index)
     {
         for (int i = 0; i <= index; i++)
         {
-            musicSources[i].loop = true;
-            FadeClip(musicSources[i], FadeState.FadeIn);
-            musicSources[i].Play();       
+            FadeClip(musicSources[i], FadeState.FadeIn);     
         }
     }
 
 
-    
+    //mute and start all music bars
+    void MuteAndPlayAllMusicBars()
+    {
+        for (int i = 0; i < musicSources.Length; i++)
+        {
+            musicSources[i].volume = 0.0f;
+            musicSources[i].loop = true;
+            musicSources[i].Play();
+        }
+    }
 
+
+   
     void GetAllChildMusicSource()
     {
         for (int i = 0; i < musicSoruceGameObject.transform.childCount; i++)
