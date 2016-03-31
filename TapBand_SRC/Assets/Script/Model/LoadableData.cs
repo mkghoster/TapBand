@@ -22,8 +22,14 @@ public abstract class LoadableData
 
         if (byteArray.Length > 0)
         {
-            MemoryStream ms = new MemoryStream(byteArray);
-            LoadData(ms);
+            byteArray = AesEncryptor.Decrypt(byteArray);
+            if (HashUtils.IsHashValid(byteArray))
+            {
+                byteArray = HashUtils.RemoveHash(byteArray);
+
+                MemoryStream ms = new MemoryStream(byteArray);
+                LoadData(ms);
+            }
         }
     }
 
@@ -53,6 +59,9 @@ public abstract class LoadableData
         MemoryStream ms = new MemoryStream();
         bf.Serialize(ms, this);
         byte[] normalByteArray = ms.ToArray();
+
+        normalByteArray = HashUtils.AddHash(normalByteArray);
+        normalByteArray = AesEncryptor.Encrypt(normalByteArray);
 
         // Save to file
         File.WriteAllBytes(gameDataPath, normalByteArray);
