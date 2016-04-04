@@ -78,17 +78,19 @@ public class AudioManager : MonoBehaviour {
     private void PlayOneShotSound(AudioClip clip)
     {
         //print("PlayOneShotSound()");
-        var spawn = audioPool.Spawn(Vector3.zero, Quaternion.identity);
-        spawn.GetComponent<AudioSource>().PlayOneShot(clip, sfxVolume);
+        //var spawn = audioPool.Spawn(Vector3.zero, Quaternion.identity);
+        //spawn.GetComponent<AudioSource>().PlayOneShot(clip, sfxVolume);
+        //StartCoroutine(WaitAndDespawn(clip.length, spawn));
 
-        StartCoroutine(WaitAndDespawn(clip.length, spawn));
+
+        AudioSource.PlayClipAtPoint(clip, Vector3.zero, sfxVolume);
     }
 
-    private IEnumerator WaitAndDespawn(float waitTime, GameObject spawn)
+    /*private IEnumerator WaitAndDespawn(float waitTime, GameObject spawn)
     {
         yield return new WaitForSeconds(waitTime);
         audioPool.Despawn(spawn);
-    }
+    }*/
 
     //pool loop sound
     private void PlayLoopSound(AudioClip clip, string name)

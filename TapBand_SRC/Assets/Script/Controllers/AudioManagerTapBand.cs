@@ -15,6 +15,7 @@ public class AudioManagerTapBand : AudioManager
     
     private SongController songController;
     private ConcertController concertController;
+    private TourController tourController;
     private ConcertState concertState;
 
     //index for Concert and MusicBars
@@ -27,6 +28,7 @@ public class AudioManagerTapBand : AudioManager
     {
         songController = (SongController)GameObject.FindObjectOfType(typeof(SongController));
         concertController = (ConcertController)GameObject.FindObjectOfType(typeof(ConcertController));
+        tourController = (TourController)GameObject.FindObjectOfType(typeof(TourController));
 
         musicSources = new AudioSource[numberOfMusicBars];
 
@@ -64,6 +66,7 @@ public class AudioManagerTapBand : AudioManager
         songController.GiveEndOfSong += EndOfSongEvent;
         concertController.EndOfConcert += EndOfConcertEvent;
         concertController.RestartConcert += ResetartConcert;
+       // tourController.OnPrestige += OnPrestigeEvent;
 
         settingsUI.MusicVolumeChange += SetMusicVolume;
         settingsUI.SFXVolumeChange += SetSFXVolume;
@@ -74,6 +77,7 @@ public class AudioManagerTapBand : AudioManager
         songController.GiveEndOfSong -= EndOfSongEvent;
         concertController.EndOfConcert -= EndOfConcertEvent;
         concertController.RestartConcert -= ResetartConcert;
+      //  tourController.OnPrestige -= OnPrestigeEvent;
 
         settingsUI.MusicVolumeChange -= SetMusicVolume;
         settingsUI.SFXVolumeChange -= SetSFXVolume;  //base classban nem kapta meg az eventet, csak ha idehoztam
@@ -82,10 +86,15 @@ public class AudioManagerTapBand : AudioManager
     #region events
     private void EndOfSongEvent(SongData songData)
     {
-        //id++: it's the previous song id
-        actualIndex = CastSongIndex(songData.id + 1 );
+        
+        if (!songData.bossBattle)
+        {
+            //id++: it's the previous song id
+            actualIndex = CastSongIndex(songData.id + 1);
 
-        FadeInNextSong();
+            FadeInNextSong();
+        }
+        
     }
 
     //concert success
@@ -100,6 +109,12 @@ public class AudioManagerTapBand : AudioManager
         StartNewOrPrevConcert();
     }
 
+    //OnPrestige
+    /*void OnPrestigeEvent(TourData tourData)
+    {
+        StartNewOrPrevConcert();
+    }*/
+
     //Change to actual music bars volume
     void SetMusicVolume(float volume)
     {
@@ -110,15 +125,24 @@ public class AudioManagerTapBand : AudioManager
         }
     }
 
+    
+
     #endregion
 
     //concert fail/succ -> same stuff, just from different events
     void StartNewOrPrevConcert()
     {
+        //print("idegyussz??");
+        //print("actualIndex1: "+ actualIndex);
         StopMusicSounds();
+        //print("actualIndex2: " + actualIndex);
         actualIndex = 0;
+        //print("actualIndex3: " + actualIndex);
         MuteAndPlayAllMusicBars();
+        //print("actualIndex4: " + actualIndex);
         FadeInMusicBarsUntilIndex(actualIndex);
+        //FadeInNextSong();
+       // print("actualIndex5: " + actualIndex);
     }
 
     void StopMusicSounds()
