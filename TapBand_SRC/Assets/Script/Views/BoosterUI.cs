@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Collections.Generic;
 
 public class BoosterUI : MonoBehaviour {
 
-	private float TapStrengthBoosterMultiplier;
+    enum BoosterDataType { TapStrengthBoosterMultiplier, TapStrengthBoosterDuration, ExtraTimeBoosterBonus, AutoTapBoosterInterval, AutoTapBoosterDuration };
+    private float TapStrengthBoosterMultiplier;
 	private float TapStrengthBoosterDuration;
 	private float CurrentTapStrengthBoosterDuration;
 	private float ExtraTimeBoosterBonus;
@@ -57,33 +60,42 @@ public class BoosterUI : MonoBehaviour {
 		}
 	}
 
+
+
     private void BoosterData()
     {
+        List<string> BoosterTypeNamesList = new List<string>(Enum.GetNames(typeof(BoosterDataType)));
         foreach (GeneralData data in GameData.instance.GeneralDataList)
         {
-            switch (data.name)
+
+            if (BoosterTypeNamesList.Contains(data.name))
             {
-                case "TapStrengthBoosterMultiplier":
-                    float.TryParse(data.value, out TapStrengthBoosterMultiplier);
-                    break;
-                case "TapStrengthBoosterDuration":
-                    float.TryParse(data.value, out TapStrengthBoosterDuration);
-                    break;
-                case "ExtraTimeBoosterBonus":
-                    float.TryParse(data.value, out ExtraTimeBoosterBonus);
-                    break;
-                case "AutoTapBoosterInterval":
-                    float.TryParse(data.value, out AutoTapBoosterInterval);
-                    break;
-                case "AutoTapBoosterDuration":
-                    float.TryParse(data.value, out AutoTapBoosterDuration);
-                    break;
-                default:
-                    break;
+                BoosterDataType MyBooster = (BoosterDataType)Enum.Parse(typeof(BoosterDataType), data.name, true);
+                switch (MyBooster)
+                {
+                    case BoosterDataType.TapStrengthBoosterMultiplier:
+                        float.TryParse(data.value, out TapStrengthBoosterMultiplier);
+                        break;
+                    case BoosterDataType.TapStrengthBoosterDuration:
+                        float.TryParse(data.value, out TapStrengthBoosterDuration);
+                        break;
+                    case BoosterDataType.ExtraTimeBoosterBonus:
+                        float.TryParse(data.value, out ExtraTimeBoosterBonus);
+                        break;
+                    case BoosterDataType.AutoTapBoosterInterval:
+                        float.TryParse(data.value, out AutoTapBoosterInterval);
+                        break;
+                    case BoosterDataType.AutoTapBoosterDuration:
+                        float.TryParse(data.value, out AutoTapBoosterDuration);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         Debug.Log("TapStrengthBoosterMultiplier " + TapStrengthBoosterMultiplier + "\n  TapStrengthBoosterDuration " + TapStrengthBoosterDuration + "\n  ExtraTimeBoosterBonus " + ExtraTimeBoosterBonus + "\n AutoTapBoosterInterval " + AutoTapBoosterInterval + "\n  AutoTapBoosterDuration " + AutoTapBoosterDuration);
-    }
+        }
+    
 
     public void HandleBoosters(string BoosterName){
 		if (BoosterName.Equals ("TapStrengthBooster")) {
