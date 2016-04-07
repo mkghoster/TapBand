@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour {
     protected float musicVolume;
     protected float sfxVolume;
 
-    protected float fadeDuration = 3.0f;
+    protected float fadeDuration = 1.0f;
     protected enum FadeState { FadeIn, FadeOut };
 
     private static  AudioManager instance;
@@ -94,8 +94,7 @@ public class AudioManager : MonoBehaviour {
 
     //pool loop sound
     private void PlayLoopSound(AudioClip clip, string name)
-    {
-        //print("PlayLoopSound()");        
+    {      
         var spawn = audioPool.Spawn(Vector3.zero, Quaternion.identity);
         AudioSource spawnSource = spawn.GetComponent<AudioSource>();
         spawnSource.loop = true;

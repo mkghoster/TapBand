@@ -66,7 +66,8 @@ public class AudioManagerTapBand : AudioManager
         songController.GiveEndOfSong += EndOfSongEvent;
         concertController.EndOfConcert += EndOfConcertEvent;
         concertController.RestartConcert += ResetartConcert;
-       // tourController.OnPrestige += OnPrestigeEvent;
+        tourController.OnPrestige += OnPrestigeEvent;
+        tourController.RestartConcert += RestartConcertFromTour;  //TODO: ez kell?
 
         settingsUI.MusicVolumeChange += SetMusicVolume;
         settingsUI.SFXVolumeChange += SetSFXVolume;
@@ -77,7 +78,8 @@ public class AudioManagerTapBand : AudioManager
         songController.GiveEndOfSong -= EndOfSongEvent;
         concertController.EndOfConcert -= EndOfConcertEvent;
         concertController.RestartConcert -= ResetartConcert;
-      //  tourController.OnPrestige -= OnPrestigeEvent;
+        tourController.OnPrestige -= OnPrestigeEvent;
+        tourController.RestartConcert -= RestartConcertFromTour;
 
         settingsUI.MusicVolumeChange -= SetMusicVolume;
         settingsUI.SFXVolumeChange -= SetSFXVolume;  //base classban nem kapta meg az eventet, csak ha idehoztam
@@ -100,7 +102,7 @@ public class AudioManagerTapBand : AudioManager
     //concert success
     void EndOfConcertEvent(ConcertData concertData)
     {
-        StartNewOrPrevConcert();
+        StartNewOrPrevConcert(); 
     }
 
     //concert fail
@@ -110,10 +112,16 @@ public class AudioManagerTapBand : AudioManager
     }
 
     //OnPrestige
-    /*void OnPrestigeEvent(TourData tourData)
+    void OnPrestigeEvent(TourData tourData)
     {
         StartNewOrPrevConcert();
-    }*/
+    }
+
+    //Nem kapott OnPrestigeEventet a torubol ha az első concerten nyomtunk ismét restart-ot
+    void RestartConcertFromTour()
+    {
+        StartNewOrPrevConcert();
+    }
 
     //Change to actual music bars volume
     void SetMusicVolume(float volume)
@@ -125,24 +133,24 @@ public class AudioManagerTapBand : AudioManager
         }
     }
 
-    
+    void TestBars()
+    {
+        for (int i = 0; i < musicSources.Length; i++)
+        {
+            //print(i+":  "+musicSources[i].isPlaying);
+            print(i + ":  " + musicSources[i].volume);
+        }
+    }
 
     #endregion
 
     //concert fail/succ -> same stuff, just from different events
     void StartNewOrPrevConcert()
     {
-        //print("idegyussz??");
-        //print("actualIndex1: "+ actualIndex);
-        StopMusicSounds();
-        //print("actualIndex2: " + actualIndex);
+        StopMusicSounds(); 
         actualIndex = 0;
-        //print("actualIndex3: " + actualIndex);
         MuteAndPlayAllMusicBars();
-        //print("actualIndex4: " + actualIndex);
-        FadeInMusicBarsUntilIndex(actualIndex);
-        //FadeInNextSong();
-       // print("actualIndex5: " + actualIndex);
+        FadeInMusicBarsUntilIndex(actualIndex);     
     }
 
     void StopMusicSounds()
@@ -156,10 +164,11 @@ public class AudioManagerTapBand : AudioManager
     //called:  after every song
     void FadeInNextSong()
     {
-        FadeClip(musicSources[actualIndex], FadeState.FadeIn);
+        FadeClip(musicSources[actualIndex], FadeState.FadeIn);  //-----------> BUUG
+        //musicSources[actualIndex].volume = base.musicVolume;
     }
 
-    //called when: fail/succes concert, game start
+    //called when: game start, fail/succes concert
     void FadeInMusicBarsUntilIndex(int index)
     {
         for (int i = 0; i <= index; i++)
@@ -169,7 +178,7 @@ public class AudioManagerTapBand : AudioManager
     }
 
 
-    //mute and start all music bars
+    //mute, loop and start all music bars
     void MuteAndPlayAllMusicBars()
     {
         for (int i = 0; i < musicSources.Length; i++)
@@ -181,7 +190,7 @@ public class AudioManagerTapBand : AudioManager
     }
 
 
-   
+    //find && mute
     void GetAllChildMusicSource()
     {
         for (int i = 0; i < musicSoruceGameObject.transform.childCount; i++)
