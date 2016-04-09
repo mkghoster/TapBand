@@ -155,6 +155,7 @@ public class AudioManagerTapBand : AudioManager
 
     void StopMusicSounds()
     {
+        StopAllCoroutines();
         for (int i = 0; i < musicSources.Length; i++)
         {
             musicSources[i].Stop();
@@ -164,8 +165,7 @@ public class AudioManagerTapBand : AudioManager
     //called:  after every song
     void FadeInNextSong()
     {
-        FadeClip(musicSources[actualIndex], FadeState.FadeIn);  //-----------> BUUG
-        //musicSources[actualIndex].volume = base.musicVolume;
+        FadeClip(musicSources[actualIndex], FadeState.FadeIn);
     }
 
     //called when: game start, fail/succes concert
