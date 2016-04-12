@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-//using System.Collections;
+using System.Collections;
 
-//TODO: - handle end of Tour!
-//      - FadeOut at the end of the song
+//TODO: - settingsUI: eventek folyamatosan jönnek (akkor is ha nem állítom a csúszkát )  --> más megoldás? (ezért volt az encore song közben mindegyik sáv maxon szólt)
+
 
 public class AudioManagerTapBand : AudioManager
 {
@@ -32,7 +32,6 @@ public class AudioManagerTapBand : AudioManager
 
         musicSources = new AudioSource[numberOfMusicBars];
 
-
         musicSoruceGameObject = GameObject.Find(musicSoruceGameObjectPath);
         GetAllChildMusicSource();
 
@@ -44,7 +43,6 @@ public class AudioManagerTapBand : AudioManager
     {
         concertState = GameState.instance.Concert;
 
-        //first time
         MuteAndPlayAllMusicBars();
 
         //in the first play it will be 0, but that isn't a boss battle
@@ -52,13 +50,21 @@ public class AudioManagerTapBand : AudioManager
         {
             //it's the previous song id, need to inc
             actualIndex = CastSongIndex(concertState.LastComplatedSongID +1);
-            FadeInMusicBarsUntilIndex(actualIndex);
+            
+            //encore song : only the last bar need to fade in
+            if (actualIndex == 4)  
+            {
+                FadeClip(musicSources[actualIndex], FadeState.FadeIn);
+            }
+            else
+            {
+                FadeInMusicBarsUntilIndex(actualIndex);
+            }             
         }
         else
         {
             FadeInMusicBarsUntilIndex(concertState.LastComplatedSongID);
         }
-            
     }
 
     void OnEnable()
@@ -67,7 +73,7 @@ public class AudioManagerTapBand : AudioManager
         concertController.EndOfConcert += EndOfConcertEvent;
         concertController.RestartConcert += ResetartConcert;
         tourController.OnPrestige += OnPrestigeEvent;
-        tourController.RestartConcert += RestartConcertFromTour;  //TODO: ez kell?
+        tourController.RestartConcert += RestartConcertFromTour;
 
         settingsUI.MusicVolumeChange += SetMusicVolume;
         settingsUI.SFXVolumeChange += SetSFXVolume;
@@ -84,19 +90,26 @@ public class AudioManagerTapBand : AudioManager
         settingsUI.MusicVolumeChange -= SetMusicVolume;
         settingsUI.SFXVolumeChange -= SetSFXVolume;  //base classban nem kapta meg az eventet, csak ha idehoztam
     }
-
+    
     #region events
     private void EndOfSongEvent(SongData songData)
     {
-        
-        if (!songData.bossBattle)
-        {
-            //id++: it's the previous song id
-            actualIndex = CastSongIndex(songData.id + 1);
+        //id++: it's the previous song id
+        actualIndex = CastSongIndex(songData.id + 1);
 
+        //before the encore song
+        if(actualIndex == 4)
+        {
+            FadeOutPreviousBars();
+
+            StartCoroutine(WaitUntilFadeOutBeforEncore());
+            
             FadeInNextSong();
         }
-        
+        else
+        {
+            FadeInNextSong();
+        } 
     }
 
     //concert success
@@ -127,22 +140,23 @@ public class AudioManagerTapBand : AudioManager
     void SetMusicVolume(float volume)
     {
         musicVolume = volume;
-        for (int i = 0; i <= actualIndex; i++)
+        if (actualIndex == 4)
+            musicSources[actualIndex].volume = musicVolume;
+        else
         {
-            musicSources[i].volume = musicVolume;
+            for (int i = 0; i <= actualIndex; i++)
+            {
+                musicSources[i].volume = musicVolume;
+            }
         }
-    }
-
-    void TestBars()
-    {
-        for (int i = 0; i < musicSources.Length; i++)
-        {
-            //print(i+":  "+musicSources[i].isPlaying);
-            print(i + ":  " + musicSources[i].volume);
-        }
+       
     }
 
     #endregion
+
+
+
+    #region music bars handle methods
 
     //concert fail/succ -> same stuff, just from different events
     void StartNewOrPrevConcert()
@@ -161,6 +175,17 @@ public class AudioManagerTapBand : AudioManager
             musicSources[i].Stop();
         }
     }
+
+    //at the begin of the encore song
+    void FadeOutPreviousBars()
+    {
+        for (int i = 0; i < musicSources.Length-1; i++)
+        {
+            FadeClip(musicSources[i], FadeState.FadeOut);
+            //musicSources[i].volume = 0.0f;
+        }
+    }
+
 
     //called:  after every song
     void FadeInNextSong()
@@ -200,12 +225,31 @@ public class AudioManagerTapBand : AudioManager
         }
     }
 
+    #endregion
+
+
     private int CastSongIndex(int songID)
     {
         int newID = (songID - 1) % numberOfMusicBars;
         return newID;
     }
 
+    private IEnumerator WaitUntilFadeOutBeforEncore()
+    {
+        yield return new WaitForSeconds(base.fadeDuration);
+    }
+
+
+    /*void TestBars()
+  {
+      print("-----------------");
+      for (int i = 0; i < musicSources.Length; i++)
+      {
+          //print(i+":  "+musicSources[i].isPlaying);
+          print(i + ":  " + musicSources[i].volume);
+      }
+      print("*******************");
+  }*/
 
 
 

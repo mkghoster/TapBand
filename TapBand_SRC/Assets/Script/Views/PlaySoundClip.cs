@@ -2,38 +2,38 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using System.Collections.Generic;
+
 public class PlaySoundClip : MonoBehaviour {
 
-    public AudioClip clip;
-
-    private Button myButton;
+    //instance
     private AudioManager audioManager;
-    public bool isLoop = false;
 
-    public bool stopEvent = false;
+    //store the pooled element refernce and it's audioclip
+    private Dictionary< AudioClip, GameObject> audioMap;
 
-	void Start () {
-        myButton = gameObject.GetComponent<Button>();
-        myButton.GetComponent<Button>().onClick.AddListener(() => { PlaySound(clip, isLoop);  });
+    void Start () {
         audioManager = AudioManager.Instance;
+        audioMap = new Dictionary< AudioClip, GameObject>();
     }
 	
-    void Update()
+    
+    public void PlayLoopSound(AudioClip audioClip)
     {
-        if (stopEvent)
-        {
-            StopSound();
-            stopEvent = false;
-        }
+        GameObject refToPoolMember = audioManager.PlaySound(audioClip, true);
+        audioMap.Add(audioClip, refToPoolMember);
     }
 
-    private void PlaySound(AudioClip clip, bool isLoop)
+    public void PlayOneShotSound(AudioClip audioClip)
     {
-        audioManager.PlaySound(clip, gameObject.name, isLoop);
+        audioManager.PlaySound(audioClip, false);
     }
 
-    private void StopSound()
+    public void StopSound(AudioClip clip)
     {
-        audioManager.StopSound(gameObject.name);
+        audioManager.StopSound( audioMap[clip] );
+        audioMap.Remove(clip);
     }
+
+  
 }
