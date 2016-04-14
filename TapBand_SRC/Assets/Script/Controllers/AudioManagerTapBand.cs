@@ -3,7 +3,6 @@ using System.Collections;
 
 //TODO: - settingsUI: eventek folyamatosan jönnek (akkor is ha nem állítom a csúszkát )  --> más megoldás? (ezért volt az encore song közben mindegyik sáv maxon szólt)
 
-
 public class AudioManagerTapBand : AudioManager
 {
     private string musicSoruceGameObjectPath = "AudioManager/MusicSources";
@@ -20,9 +19,6 @@ public class AudioManagerTapBand : AudioManager
 
     //index for Concert and MusicBars
     private int actualIndex;
-
-
-    public bool testBool = false;
 
     void Awake()
     {
@@ -54,7 +50,7 @@ public class AudioManagerTapBand : AudioManager
             //encore song : only the last bar need to fade in
             if (actualIndex == 4)  
             {
-                FadeClip(musicSources[actualIndex], FadeState.FadeIn);
+                PlayEncoreSong();
             }
             else
             {
@@ -66,6 +62,8 @@ public class AudioManagerTapBand : AudioManager
             FadeInMusicBarsUntilIndex(concertState.LastComplatedSongID);
         }
     }
+
+   
 
     void OnEnable()
     {
@@ -103,8 +101,8 @@ public class AudioManagerTapBand : AudioManager
             FadeOutPreviousBars();
 
             StartCoroutine(WaitUntilFadeOutBeforEncore());
-            
-            FadeInNextSong();
+
+            PlayEncoreSong();
         }
         else
         {
@@ -182,7 +180,6 @@ public class AudioManagerTapBand : AudioManager
         for (int i = 0; i < musicSources.Length-1; i++)
         {
             FadeClip(musicSources[i], FadeState.FadeOut);
-            //musicSources[i].volume = 0.0f;
         }
     }
 
@@ -202,11 +199,20 @@ public class AudioManagerTapBand : AudioManager
         }
     }
 
+    //Play and Fade In encore
+    void PlayEncoreSong()
+    {
+        musicSources[actualIndex].Play();
+        FadeClip(musicSources[actualIndex], FadeState.FadeIn);
+    }
 
-    //mute, loop and start all music bars
+
+
+    //mute, loop and start all music bars 
     void MuteAndPlayAllMusicBars()
     {
-        for (int i = 0; i < musicSources.Length; i++)
+        //(except the last encore source)
+        for (int i = 0; i < musicSources.Length-1; i++)
         {
             musicSources[i].volume = 0.0f;
             musicSources[i].loop = true;
