@@ -13,10 +13,14 @@ public class SongController : MonoBehaviour {
 	public delegate void GiveRewardOfSongEvent(int coinReward);
 	public event GiveRewardOfSongEvent GiveRewardOfSong;
 
+    public delegate void ShowEncoreButtonEvent();
+    public event ShowEncoreButtonEvent ShowEncoreEvent; 
+
     private TapController tapController;
     private TourController tourController;
     private HudUI hudUI;
     private SongData currentSong;
+    private EncoreButton encoreButton;
 
     private float actualTapAmount = 0f;
     private float bossBattleCountDown = 0f;
@@ -26,6 +30,7 @@ public class SongController : MonoBehaviour {
         hudUI = (HudUI)FindObjectOfType(typeof(HudUI));
         tapController = (TapController)FindObjectOfType(typeof(TapController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
+        encoreButton = (EncoreButton)FindObjectOfType(typeof(EncoreButton));
     }
 
     void OnEnable()
@@ -35,6 +40,7 @@ public class SongController : MonoBehaviour {
         hudUI.TapPassed += TapPassed;
         hudUI.TimePassed += TimePassed;
 		hudUI.newSongData += GetSongData;
+        //encoreButton.GiveEncoreButtonPressedEvent += StartEncoreSong();
     }
 
     void OnDisable()
@@ -86,6 +92,20 @@ public class SongController : MonoBehaviour {
         {
             actualTapAmount += tapStrength;
 
+            //last song before encore
+            if(CastSongIndex( currentSong.id) == 4 )
+            {
+                if (GiveRewardOfSong != null)
+                {
+                    GiveRewardOfSong(currentSong.coinReward);
+                }
+                ResetControllerState();
+                WaitToBeginEncoreSong();
+
+
+            }
+
+
             if (currentSong.tapGoal < actualTapAmount)
             {
 				if(GiveEndOfSong != null)
@@ -123,5 +143,24 @@ public class SongController : MonoBehaviour {
     public int GetSongID()
     {
         return currentSong.id;
+    }
+
+
+    private void StartEncoreSong()
+    {
+
+    }
+
+
+    IEnumerator WaitToBeginEncoreSong()
+    {
+        yield return new WaitForSeconds(10f);
+    }
+
+
+    private int CastSongIndex(int songID)
+    {
+        int newID = (songID - 1) % 5;
+        return newID;
     }
 }
