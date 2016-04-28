@@ -7,12 +7,12 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler
 
 	public int tokenNumber=40;
 	private Image image;
-	private BoosterUI boosterUI;
+	private BoosterController boosterController;
 	Color baseColor;
 
 	public void Awake(){
 		image = GetComponent<Image> ();
-		boosterUI = (BoosterUI)FindObjectOfType(typeof(BoosterUI));
+        boosterController = (BoosterController)FindObjectOfType(typeof(BoosterController));
 		baseColor= image.color;
 	}
 
@@ -27,12 +27,12 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler
 		image.color = baseColor;
 		Debug.Log (eventData.pointerDrag.name + " was dropped to " +gameObject.name);
 
-		BoosterDraggable bd = eventData.pointerDrag.GetComponent<BoosterDraggable> ();
+		BoosterUI bd = eventData.pointerDrag.GetComponent<BoosterUI> ();
 		if (bd.IsActive()) {
 			if (bd != null) {
 				tokenNumber -= bd.tokenCost;
 				string BoosterName = eventData.pointerDrag.name;
-				boosterUI.HandleBoosters (BoosterName);
+                boosterController.HandleBoosters (BoosterName);
 				bd.transform.localPosition = bd.basePosition;
 				Debug.Log (tokenNumber);
 				if (tokenNumber <= 0) 

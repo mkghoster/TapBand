@@ -1,115 +1,80 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
-using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
-public class BoosterUI : MonoBehaviour {
+public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler{ 
 
-    enum BoosterDataType { TapStrengthBoosterMultiplier, TapStrengthBoosterDuration, ExtraTimeBoosterBonus, AutoTapBoosterInterval, AutoTapBoosterDuration };
-    private float TapStrengthBoosterMultiplier;
-	private float TapStrengthBoosterDuration;
-	private float CurrentTapStrengthBoosterDuration;
-	private float ExtraTimeBoosterBonus;
-	private float AutoTapBoosterInterval;
-	private float AutoTapBoosterDuration;
-	private float CurrentAutoTapBoosterDuration;
-	private TapController tapController;
-	private bool startCountDown=false;
-	private bool autoTapStartCountDown=false;
-	private SongController songController;
+    public int tokenCost;
+    private bool boosterIsActive;
+    private BoosterDropZone boosterDropzone;
+    public Vector3 basePosition;
 
-	public delegate void TapEvent(float value);
-	public event TapEvent OnTap;
-	private TapUI tapUI;
-		
-	void Start () {
-		BoosterData ();
-		tapController = (TapController)FindObjectOfType(typeof(TapController));
-		songController = (SongController)FindObjectOfType(typeof(SongController));
-		tapUI = (TapUI)FindObjectOfType(typeof(TapUI));
-	}
-
-	void Update () {
-		if (startCountDown){
-			CurrentTapStrengthBoosterDuration -= Time.deltaTime;
-		}
-		if (CurrentTapStrengthBoosterDuration <= 0) {
-			startCountDown = false;
-			tapController.BoosterTimeInterval (0);
-		}
-
-		if (autoTapStartCountDown){
-			CurrentAutoTapBoosterDuration -= Time.deltaTime;
-		}
-
-		if (CurrentAutoTapBoosterDuration <= 0) {
-			autoTapStartCountDown = false;
-		}
-
-//		if (autoTapStartCountDown) {
-//			for (int i = 0; i < 10; i++) {
-//				if (Time.time == i) {
-//					
-//				}
-//			}
-//				
-//			
-//		}
-		if (CurrentAutoTapBoosterDuration > 0) {
-	//		Debug.Log (CurrentAutoTapBoosterDuration);
-		}
-	}
-
-
-
-    private void BoosterData()
+    public void Awake()
     {
-        List<string> BoosterTypeNamesList = new List<string>(Enum.GetNames(typeof(BoosterDataType)));
-        foreach (GeneralData data in GameData.instance.GeneralDataList)
+        boosterDropzone = GameObject.Find("BoosterDropZone").GetComponent<BoosterDropZone>();
+        basePosition = GetComponent<RectTransform>().localPosition;
+        if (boosterDropzone.tokenNumber > tokenCost)
         {
-
-            if (BoosterTypeNamesList.Contains(data.name))
-            {
-                BoosterDataType MyBooster = (BoosterDataType)Enum.Parse(typeof(BoosterDataType), data.name, true);
-                switch (MyBooster)
-                {
-                    case BoosterDataType.TapStrengthBoosterMultiplier:
-                        float.TryParse(data.value, out TapStrengthBoosterMultiplier);
-                        break;
-                    case BoosterDataType.TapStrengthBoosterDuration:
-                        float.TryParse(data.value, out TapStrengthBoosterDuration);
-                        break;
-                    case BoosterDataType.ExtraTimeBoosterBonus:
-                        float.TryParse(data.value, out ExtraTimeBoosterBonus);
-                        break;
-                    case BoosterDataType.AutoTapBoosterInterval:
-                        float.TryParse(data.value, out AutoTapBoosterInterval);
-                        break;
-                    case BoosterDataType.AutoTapBoosterDuration:
-                        float.TryParse(data.value, out AutoTapBoosterDuration);
-                        break;
-                    default:
-                        break;
-                }
-            }
+            boosterIsActive = true;
         }
-        Debug.Log("TapStrengthBoosterMultiplier " + TapStrengthBoosterMultiplier + "\n  TapStrengthBoosterDuration " + TapStrengthBoosterDuration + "\n  ExtraTimeBoosterBonus " + ExtraTimeBoosterBonus + "\n AutoTapBoosterInterval " + AutoTapBoosterInterval + "\n  AutoTapBoosterDuration " + AutoTapBoosterDuration);
+        else
+        {
+            boosterIsActive = false;
         }
-    
 
-    public void HandleBoosters(string BoosterName){
-		if (BoosterName.Equals ("TapStrengthBooster")) {
-			tapController.BoosterMultiplier (TapStrengthBoosterMultiplier);
-			tapController.BoosterTimeInterval (TapStrengthBoosterDuration);
-			CurrentTapStrengthBoosterDuration = TapStrengthBoosterDuration;
-			startCountDown = true;
-		} else if (BoosterName.Equals ("AutoTapBooster")) {
-			CurrentAutoTapBoosterDuration = AutoTapBoosterDuration;
-			autoTapStartCountDown = true;
 
-		} else if (BoosterName.Equals ("ExtraTimeBooster")) {
-			songController.BossExtratime (ExtraTimeBoosterBonus);
-		}
-	}
+    }
 
+    public void Start()
+    {
+        Debug.Log(basePosition);
+    }
+
+    public void Update()
+    {
+        if (boosterDropzone.tokenNumber >= tokenCost)
+        {
+            boosterIsActive = true;
+        }
+        else
+        {
+            boosterIsActive = false;
+        }
+
+
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Color color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
+        boosterDropzone.setColor(color);
+        if (boosterIsActive)
+        {
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (boosterIsActive)
+        {
+            this.transform.position = eventData.position;
+
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Color color = new Vector4(0f, 0f, 0f, 0f);
+        boosterDropzone.setColor(color);
+        if (boosterIsActive)
+        {
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+    }
+
+    public bool IsActive()
+    {
+        return boosterIsActive;
+    }
 }
