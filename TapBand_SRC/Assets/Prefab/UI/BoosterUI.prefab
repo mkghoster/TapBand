@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493e7cd8b3096bc44a1b7176af4b47ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tokenCost: 0
+  tokenCost: 10
   basePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &11429986
 MonoBehaviour:
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493e7cd8b3096bc44a1b7176af4b47ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tokenCost: 0
+  tokenCost: 30
   basePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &11465960
 MonoBehaviour:
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493e7cd8b3096bc44a1b7176af4b47ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tokenCost: 0
+  tokenCost: 20
   basePosition: {x: 0, y: 0, z: 0}
 --- !u!222 &22219498
 CanvasRenderer:
