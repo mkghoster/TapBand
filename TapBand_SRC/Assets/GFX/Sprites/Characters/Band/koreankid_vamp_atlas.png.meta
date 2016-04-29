@@ -1,0 +1,315 @@
+fileFormatVersion: 2
+guid: 1f6f6cd50601383459f07147c7dceef6
+timeCreated: 1461863407
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: koreankid_vamp_HEAD
+    21300002: koreankid_vamp_legR_UP
+    21300004: koreankid_vamp_legL_UP
+    21300006: koreankid_vamp_legR_LO
+    21300008: koreankid_vamp_legL_LO
+    21300010: koreankid_vamp_BODY
+    21300012: koreankid_vamp_armR_UP
+    21300014: koreankid_vamp_armL_UP
+    21300016: koreankid_vamp_armR_LO
+    21300018: koreankid_vamp_armL_LO
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: koreankid_vamp_HEAD
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 472
+        width: 417
+        height: 528
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 139.5, y: 80.600006}
+        - {x: 150.5, y: 83.600006}
+        - {x: 157.5, y: 88.600006}
+        - {x: 161.5, y: 104.600006}
+        - {x: 164.5, y: 126.600006}
+        - {x: 167.5, y: 150.6}
+        - {x: 168.5, y: 161.6}
+        - {x: 175.5, y: 171.6}
+        - {x: 186.5, y: 183.6}
+        - {x: 193.5, y: 197.6}
+        - {x: 199.5, y: 210.6}
+        - {x: 204.5, y: 234.6}
+        - {x: 208.5, y: 260.6}
+        - {x: 208.5, y: 359.6}
+        - {x: 204.5, y: 378.6}
+        - {x: 198.5, y: 398.6}
+        - {x: 183.5, y: 425.6}
+        - {x: 176.5, y: 433.6}
+        - {x: 156.5, y: 454.6}
+        - {x: 141.5, y: 465.6}
+        - {x: 126.5, y: 475.6}
+        - {x: 97.5, y: 489.6}
+        - {x: 74.5, y: 495.6}
+        - {x: 60.5, y: 498.6}
+        - {x: 45.5, y: 501.6}
+        - {x: -40.5, y: 501.6}
+        - {x: -47.5, y: 500.6}
+        - {x: -69.5, y: 496.6}
+        - {x: -93.5, y: 486.6}
+        - {x: -115.5, y: 475.6}
+        - {x: -124.5, y: 469.6}
+        - {x: -133.5, y: 462.6}
+        - {x: -155.5, y: 441.6}
+        - {x: -164.5, y: 430.6}
+        - {x: -181.5, y: 405.6}
+        - {x: -192.5, y: 381.6}
+        - {x: -197.5, y: 367.6}
+        - {x: -205.5, y: 332.6}
+        - {x: -208.5, y: 318.6}
+        - {x: -208.5, y: 230.6}
+        - {x: -206.5, y: 216.6}
+        - {x: -201.5, y: 183.6}
+        - {x: -194.5, y: 160.6}
+        - {x: -188.5, y: 142.6}
+        - {x: -185.5, y: 134.6}
+        - {x: -179.5, y: 119.600006}
+        - {x: -164.5, y: 89.600006}
+        - {x: -160.5, y: 83.600006}
+        - {x: -151.5, y: 72.600006}
+        - {x: -150.5, y: 72.600006}
+        - {x: -151.5, y: 72.600006}
+        - {x: -160.5, y: 73.600006}
+        - {x: -169.5, y: 71.600006}
+        - {x: -176.5, y: 61.600006}
+        - {x: -175.5, y: 46.600006}
+        - {x: -172.5, y: 39.600006}
+        - {x: -165.5, y: 33.600006}
+        - {x: -160.5, y: 30.600006}
+        - {x: -149.5, y: 29.600006}
+        - {x: -136.5, y: 28.600006}
+        - {x: -131.5, y: 17.600006}
+        - {x: -116.5, y: -13.399994}
+        - {x: -112.5, y: -20.399994}
+        - {x: -109.5, y: -25.399994}
+        - {x: -107.5, y: -26.399994}
+        - {x: 113.5, y: -26.399994}
+        - {x: 121.5, y: 0.6000061}
+        - {x: 133.5, y: 51.600006}
+    - name: koreankid_vamp_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 737
+        width: 31
+        height: 109
+      alignment: 9
+      pivot: {x: 0.62132215, y: 0.9178915}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_vamp_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 738
+        width: 31
+        height: 110
+      alignment: 9
+      pivot: {x: 0.6213241, y: 0.9064947}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_vamp_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 576
+        width: 105
+        height: 140
+      alignment: 9
+      pivot: {x: 0.2452846, y: 0.91789204}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15.245117, y: 1.4951172}
+        - {x: 9.245117, y: 10.495117}
+        - {x: -18.754883, y: 10.495117}
+        - {x: -25.754883, y: -41.504883}
+        - {x: -25.754883, y: -128.50488}
+        - {x: 79.24512, y: -128.50488}
+        - {x: 79.24512, y: -121.50488}
+        - {x: 75.24512, y: -109.50488}
+    - name: koreankid_vamp_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 576
+        width: 105
+        height: 138
+      alignment: 9
+      pivot: {x: 0.22140473, y: 0.93606126}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.752502, y: 8.823547}
+        - {x: -11.247498, y: 8.823547}
+        - {x: -20.247498, y: 4.8235474}
+        - {x: -23.247498, y: -29.176453}
+        - {x: -23.247498, y: -129.17645}
+        - {x: 81.7525, y: -129.17645}
+        - {x: 81.7525, y: -122.17645}
+        - {x: 77.7525, y: -110.17645}
+    - name: koreankid_vamp_BODY
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 84
+        width: 238
+        height: 316
+      alignment: 9
+      pivot: {x: 0.5, y: 0.34}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 72, y: -64.44}
+        - {x: 67, y: -101.44}
+        - {x: 67, y: -107.44}
+        - {x: 82, y: -107.44}
+        - {x: 94, y: -104.44}
+        - {x: 113, y: -94.44}
+        - {x: 119, y: -88.44}
+        - {x: 119, y: -23.440002}
+        - {x: 115, y: 44.559998}
+        - {x: 109, y: 199.56}
+        - {x: 107, y: 203.56}
+        - {x: 54, y: 208.56}
+        - {x: -29, y: 208.56}
+        - {x: -32, y: 206.56}
+        - {x: -39, y: 198.56}
+        - {x: -114, y: 198.56}
+        - {x: -118, y: 197.56}
+        - {x: -114, y: 87.56}
+        - {x: -119, y: 20.559998}
+        - {x: -119, y: -71.44}
+        - {x: -97, y: -95.44}
+        - {x: -71, y: -107.44}
+        - {x: -53, y: -107.44}
+        - {x: -53, y: -95.44}
+        - {x: -66, y: -48.440002}
+        - {x: 76, y: -48.440002}
+    - name: koreankid_vamp_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 335
+        width: 59
+        height: 148
+      alignment: 9
+      pivot: {x: 0.75077486, y: 0.91987896}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.295715, y: 11.85791}
+        - {x: -34.295715, y: -11.14209}
+        - {x: -44.295715, y: -79.14209}
+        - {x: -44.295715, y: -136.14209}
+        - {x: -13.295715, y: -136.14209}
+        - {x: 14.704285, y: -81.14209}
+        - {x: 14.704285, y: 11.85791}
+    - name: koreankid_vamp_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 334
+        width: 76
+        height: 147
+      alignment: 9
+      pivot: {x: 0.2274467, y: 0.89455307}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.28595, y: 15.500702}
+        - {x: -17.28595, y: -27.499298}
+        - {x: 26.71405, y: -131.4993}
+        - {x: 58.71405, y: -131.4993}
+        - {x: 58.71405, y: -91.4993}
+        - {x: 33.71405, y: 15.500702}
+    - name: koreankid_vamp_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 67
+        width: 67
+        height: 200
+      alignment: 9
+      pivot: {x: 0.17316858, y: 0.94683105}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.602295, y: -145.36621}
+        - {x: 17.397705, y: -189.36621}
+        - {x: 55.397705, y: -189.36621}
+        - {x: 55.397705, y: -87.36621}
+        - {x: 14.397705, y: 10.633789}
+        - {x: -9.602295, y: 10.633789}
+        - {x: -11.602295, y: 9.633789}
+        - {x: -11.602295, y: -71.36621}
+    - name: koreankid_vamp_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 67
+        width: 80
+        height: 199
+      alignment: 9
+      pivot: {x: 0.81071013, y: 0.9282586}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15.856812, y: 14.276535}
+        - {x: -64.85681, y: -123.723465}
+        - {x: -64.85681, y: -184.72346}
+        - {x: -36.85681, y: -184.72346}
+        - {x: 8.143188, y: -144.72346}
+        - {x: 15.143188, y: -65.723465}
+        - {x: 15.143188, y: 14.276535}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
