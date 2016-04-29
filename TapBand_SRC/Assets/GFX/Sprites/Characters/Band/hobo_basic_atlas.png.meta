@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 496b4329fbc31d743b558cf7451f6b9d
+timeCreated: 1461866616
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hobo_basic_HEAD
+    21300002: hobo_basic_eyebrushR
+    21300004: hobo_basic_eyebrushL
+    21300006: hobo_basic_eyeR_closed
+    21300008: hobo_basic_eyeL_closed
+    21300010: hobo_basic_eyeR
+    21300012: hobo_basic_eyeL
+    21300014: hobo_basic_armR_UP
+    21300016: hobo_basic_armL_UP
+    21300018: hobo_basic_armR_LO
+    21300020: hobo_basic_armL_LO
+    21300022: hobo_basic_BODY
+    21300024: hobo_basic_legR_UP
+    21300026: hobo_basic_legL_UP
+    21300028: hobo_basic_legR_LO
+    21300030: hobo_basic_legL_LO
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: hobo_basic_HEAD
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 304
+        width: 508
+        height: 704
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76, y: -140.79999}
+        - {x: 87, y: -134.79999}
+        - {x: 93, y: -136.79999}
+        - {x: 98, y: -140.79999}
+        - {x: 106, y: -140.79999}
+        - {x: 112, y: -136.79999}
+        - {x: 127, y: -83.79999}
+        - {x: 138, y: -18.799988}
+        - {x: 145, y: -20.799988}
+        - {x: 148, y: -13.799988}
+        - {x: 152, y: 30.200012}
+        - {x: 158, y: 34.200012}
+        - {x: 179, y: 41.200012}
+        - {x: 183, y: 60.200012}
+        - {x: 185, y: 70.20001}
+        - {x: 171, y: 79.20001}
+        - {x: 182, y: 81.20001}
+        - {x: 173, y: 97.20001}
+        - {x: 171, y: 108.20001}
+        - {x: 177, y: 129.20001}
+        - {x: 181, y: 150.20001}
+        - {x: 182, y: 159.20001}
+        - {x: 183, y: 177.20001}
+        - {x: 183, y: 196.20001}
+        - {x: 191, y: 194.20001}
+        - {x: 215, y: 224.20001}
+        - {x: 234, y: 256.2}
+        - {x: 241, y: 272.2}
+        - {x: 251, y: 304.2}
+        - {x: 254, y: 330.2}
+        - {x: 254, y: 366.2}
+        - {x: 252, y: 382.2}
+        - {x: 248, y: 408.2}
+        - {x: 226, y: 459.2}
+        - {x: 202, y: 489.2}
+        - {x: 196, y: 487.2}
+        - {x: 200, y: 462.2}
+        - {x: 194, y: 476.2}
+        - {x: 175, y: 502.2}
+        - {x: 145, y: 529.2}
+        - {x: 133, y: 536.2}
+        - {x: 102, y: 551.2}
+        - {x: 74, y: 563.2}
+        - {x: 57, y: 563.2}
+        - {x: 57, y: 562.2}
+        - {x: 75, y: 536.2}
+        - {x: 58, y: 544.2}
+        - {x: 50, y: 548.2}
+        - {x: 17, y: 555.2}
+        - {x: -23, y: 553.2}
+        - {x: -67, y: 543.2}
+        - {x: -92, y: 532.2}
+        - {x: -94, y: 529.2}
+        - {x: -93, y: 525.2}
+        - {x: -86, y: 522.2}
+        - {x: -109, y: 495.2}
+        - {x: -124, y: 490.2}
+        - {x: -138, y: 484.2}
+        - {x: -158, y: 471.2}
+        - {x: -170, y: 461.2}
+        - {x: -186, y: 444.2}
+        - {x: -192, y: 437.2}
+        - {x: -191, y: 445.2}
+        - {x: -194, y: 448.2}
+        - {x: -201, y: 440.2}
+        - {x: -216, y: 417.2}
+        - {x: -233, y: 383.2}
+        - {x: -241, y: 366.2}
+        - {x: -246, y: 347.2}
+        - {x: -254, y: 314.2}
+        - {x: -254, y: 234.20001}
+        - {x: -248, y: 219.20001}
+        - {x: -236, y: 204.20001}
+        - {x: -236, y: 184.20001}
+        - {x: -247, y: 137.20001}
+        - {x: -254, y: 119.20001}
+        - {x: -254, y: 67.20001}
+        - {x: -245, y: 44.200012}
+        - {x: -235, y: 30.200012}
+        - {x: -231, y: 29.200012}
+        - {x: -226, y: 42.200012}
+        - {x: -221, y: 20.200012}
+        - {x: -198, y: -0.7999878}
+        - {x: -183, y: -5.799988}
+        - {x: -182, y: -2.7999878}
+        - {x: -182, y: -0.7999878}
+        - {x: -184, y: 4.200012}
+        - {x: -153, y: -10.799988}
+        - {x: -146, y: -7.799988}
+        - {x: -134, y: -12.799988}
+        - {x: -126, y: -13.799988}
+        - {x: -118, y: -32.799988}
+        - {x: -105, y: -44.799988}
+        - {x: -68, y: -106.79999}
+        - {x: -64, y: -116.79999}
+        - {x: -58, y: -106.79999}
+        - {x: -26, y: -140.79999}
+        - {x: -18, y: -140.79999}
+        - {x: -14, y: -130.79999}
+        - {x: 1, y: -137.79999}
+        - {x: 14, y: -140.79999}
+    - name: hobo_basic_eyebrushR
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 936
+        width: 78
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_basic_eyebrushL
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 940
+        width: 78
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_basic_eyeR_closed
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 901
+        width: 42
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_basic_eyeL_closed
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 901
+        width: 42
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_basic_eyeR
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 844
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 16.5}
+        - {x: -14, y: 16.5}
+        - {x: -18, y: 13.5}
+        - {x: -18, y: -12.5}
+        - {x: -17, y: -16.5}
+        - {x: 13, y: -16.5}
+        - {x: 17, y: -10.5}
+        - {x: 17, y: 7.5}
+        - {x: 16, y: 14.5}
+    - name: hobo_basic_eyeL
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 845
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -17, y: 15}
+        - {x: -17, y: -11}
+        - {x: -11, y: -16}
+        - {x: 10, y: -16}
+        - {x: 17, y: -9}
+        - {x: 17, y: 16}
+    - name: hobo_basic_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 571
+        width: 94
+        height: 218
+      alignment: 9
+      pivot: {x: 0.8626209, y: 0.931336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.913635, y: 14.96875}
+        - {x: -19.086365, y: 14.96875}
+        - {x: -81.086365, y: -74.03125}
+        - {x: -81.086365, y: -138.03125}
+        - {x: -59.086365, y: -203.03125}
+        - {x: -37.086365, y: -203.03125}
+        - {x: -33.086365, y: -199.03125}
+        - {x: -30.086365, y: -185.03125}
+        - {x: 12.913635, y: -28.03125}
+    - name: hobo_basic_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 569
+        width: 95
+        height: 220
+      alignment: 9
+      pivot: {x: 0.15356895, y: 0.922072}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33.41095, y: -202.85583}
+        - {x: 80.41095, y: -202.85583}
+        - {x: 80.41095, y: -45.855835}
+        - {x: 71.41095, y: 15.144165}
+        - {x: 62.41095, y: 17.144165}
+        - {x: -14.58905, y: 17.144165}
+        - {x: -14.58905, y: -89.855835}
+    - name: hobo_basic_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 321
+        width: 63
+        height: 214
+      alignment: 9
+      pivot: {x: 0.19038996, y: 0.95577234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11.005432, y: 9.464722}
+        - {x: -11.994568, y: 9.464722}
+        - {x: -11.994568, y: -126.53528}
+        - {x: -6.994568, y: -172.53528}
+        - {x: 22.005432, y: -201.53528}
+        - {x: 29.005432, y: -204.53528}
+        - {x: 51.005432, y: -204.53528}
+        - {x: 51.005432, y: -99.53528}
+        - {x: 16.005432, y: 2.4647217}
+    - name: hobo_basic_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 322
+        width: 53
+        height: 215
+      alignment: 9
+      pivot: {x: 0.68640137, y: 0.9501573}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.379272, y: 10.716187}
+        - {x: -36.379272, y: -204.28381}
+        - {x: 16.620728, y: -204.28381}
+        - {x: 16.620728, y: 6.7161865}
+        - {x: 13.620728, y: 10.716187}
+    - name: hobo_basic_BODY
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 18
+        width: 389
+        height: 259
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 77.75, y: -123.5}
+        - {x: 101.75, y: -121.5}
+        - {x: 153.75, y: -114.5}
+        - {x: 165.75, y: -112.5}
+        - {x: 259.75, y: -95.5}
+        - {x: 283.75, y: -90.5}
+        - {x: 291.75, y: -87.5}
+        - {x: 291.75, y: 14.5}
+        - {x: 290.75, y: 15.5}
+        - {x: 290.75, y: 97.5}
+        - {x: 288.75, y: 110.5}
+        - {x: 285.75, y: 113.5}
+        - {x: 274.75, y: 114.5}
+        - {x: 158.75, y: 121.5}
+        - {x: 111.75, y: 124.5}
+        - {x: 80.75, y: 126.5}
+        - {x: 50.75, y: 128.5}
+        - {x: 36.75, y: 129.5}
+        - {x: -43.25, y: 129.5}
+        - {x: -45.25, y: 126.5}
+        - {x: -58.25, y: 126.5}
+        - {x: -77.25, y: 125.5}
+        - {x: -94.25, y: 124.5}
+        - {x: -96.25, y: 122.5}
+        - {x: -97.25, y: 77.5}
+        - {x: -97.25, y: -126.5}
+        - {x: -96.25, y: -127.5}
+        - {x: -92.25, y: -128.5}
+        - {x: -90.25, y: -129.5}
+        - {x: -5.25, y: -129.5}
+        - {x: 36.75, y: -126.5}
+        - {x: 49.75, y: -125.5}
+    - name: hobo_basic_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 154
+        width: 54
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5652997, y: 0.9121498}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.526184, y: 13.528931}
+        - {x: -30.526184, y: 9.528931}
+        - {x: -30.526184, y: -136.47107}
+        - {x: -27.526184, y: -140.47107}
+        - {x: 17.473816, y: -140.47107}
+        - {x: 23.473816, y: -132.47107}
+        - {x: 23.473816, y: -1.4710693}
+        - {x: 19.473816, y: 13.528931}
+    - name: hobo_basic_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 154
+        width: 52
+        height: 153
+      alignment: 9
+      pivot: {x: 0.57735974, y: 0.9201411}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.022705, y: 12.218414}
+        - {x: -30.022705, y: -56.781586}
+        - {x: -30.022705, y: -136.78159}
+        - {x: -27.022705, y: -140.78159}
+        - {x: 21.977295, y: -140.78159}
+        - {x: 21.977295, y: 12.218414}
+    - name: hobo_basic_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 33
+        width: 101
+        height: 114
+      alignment: 9
+      pivot: {x: 0.12087801, y: 0.9293937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.791321, y: 8.049118}
+        - {x: -8.208679, y: 8.049118}
+        - {x: -12.208679, y: 2.049118}
+        - {x: -12.208679, y: -105.95088}
+        - {x: 88.79132, y: -105.95088}
+        - {x: 88.79132, y: -89.95088}
+        - {x: 79.79132, y: -76.95088}
+    - name: hobo_basic_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 33
+        width: 101
+        height: 115
+      alignment: 9
+      pivot: {x: 0.12148111, y: 0.91878384}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.2695923, y: 9.339859}
+        - {x: -12.269592, y: 2.339859}
+        - {x: -12.269592, y: -105.66014}
+        - {x: 88.73041, y: -105.66014}
+        - {x: 88.73041, y: -72.66014}
+        - {x: 24.730408, y: 9.339859}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
