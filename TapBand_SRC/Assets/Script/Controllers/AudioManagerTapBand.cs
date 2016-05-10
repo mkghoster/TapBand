@@ -233,7 +233,8 @@ public class AudioManagerTapBand : AudioManager
 
     #endregion
 
-
+    //0 == encore song
+    //1 == first song, ..., 4 == before encore song
     private int CastSongIndex(int songID)
     {
         int newID = (songID - 1) % numberOfMusicBars;
