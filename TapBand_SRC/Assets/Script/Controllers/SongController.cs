@@ -105,7 +105,7 @@ public class SongController : MonoBehaviour {
                 //if there was already a try
                 if(PlayerPrefsManager.GetEncoreSongTry())
                 {
-                    WaitToBeginEncoreSong();   
+                    //WaitToBeginEncoreSong();   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ez most kell eeeee???????????????????????
                     if(ShowEncoreButton != null)
                     {
                         ShowEncoreButton();
