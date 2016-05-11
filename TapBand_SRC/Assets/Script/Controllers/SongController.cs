@@ -13,19 +13,29 @@ public class SongController : MonoBehaviour {
 	public delegate void GiveRewardOfSongEvent(int coinReward);
 	public event GiveRewardOfSongEvent GiveRewardOfSong;
 
+    public delegate void ShowEncoreButtonEvent();
+    public event ShowEncoreButtonEvent ShowEncoreButton; 
+
     private TapController tapController;
     private TourController tourController;
     private HudUI hudUI;
     private SongData currentSong;
+    private EncoreButtonUI encoreButton;
 
     private float actualTapAmount = 0f;
     private float bossBattleCountDown = 0f;
+
+    // private bool wasEncoreSongTry = false; 
+
+    // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
+    private const int beforeEncoreSongConstID = 3;
 
     void Awake()
     {
         hudUI = (HudUI)FindObjectOfType(typeof(HudUI));
         tapController = (TapController)FindObjectOfType(typeof(TapController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
+        encoreButton = (EncoreButtonUI)FindObjectOfType(typeof(EncoreButtonUI));
     }
 
     void OnEnable()
@@ -35,6 +45,7 @@ public class SongController : MonoBehaviour {
         hudUI.TapPassed += TapPassed;
         hudUI.TimePassed += TimePassed;
 		hudUI.newSongData += GetSongData;
+        encoreButton.GiveEncoreButtonPressedEvent += StartEncoreSong;
     }
 
     void OnDisable()
@@ -44,6 +55,7 @@ public class SongController : MonoBehaviour {
         hudUI.TapPassed -= TapPassed;
         hudUI.TimePassed -= TimePassed;
 		hudUI.newSongData -= GetSongData;
+        encoreButton.GiveEncoreButtonPressedEvent -= StartEncoreSong;
     }
 
     void Update()
@@ -68,6 +80,7 @@ public class SongController : MonoBehaviour {
                 currentSong = GiveFirstSongOfActualConcert();
             }
         }
+        //print("wasEncoreSongTry:" + PlayerPrefsManager.GetEncoreSongTry());
     }
 	
     private float TapPassed()
@@ -86,18 +99,29 @@ public class SongController : MonoBehaviour {
         {
             actualTapAmount += tapStrength;
 
-            if (currentSong.tapGoal < actualTapAmount)
+            //last song before encore
+            if(CastSongIndex( currentSong.id) == beforeEncoreSongConstID   &&  currentSong.tapGoal < actualTapAmount)  
             {
-				if(GiveEndOfSong != null)
-				{
-					GiveEndOfSong(currentSong);
-				}
-				if(GiveRewardOfSong != null)
-				{
-					GiveRewardOfSong(currentSong.coinReward);
-				}
-                ResetControllerState();
-                currentSong = GiveNextSong();
+                //if there was already a try
+                if(PlayerPrefsManager.GetEncoreSongTry())
+                {
+                    WaitToBeginEncoreSong();   
+                    if(ShowEncoreButton != null)
+                    {
+                        ShowEncoreButton();
+                    }
+                }
+                else
+                {
+                    PlayerPrefsManager.SetEncoreSongTry(true);
+                    StartNextSong();
+                }
+ 
+            }
+            //else if, because we alawys do the same (except before the encore song)
+            else  if (currentSong.tapGoal < actualTapAmount) 
+            {
+                StartNextSong();
             }
         }
     }
@@ -123,5 +147,43 @@ public class SongController : MonoBehaviour {
     public int GetSongID()
     {
         return currentSong.id;
+    }
+
+    //when we push the encore button
+    private void StartEncoreSong()
+    {
+        StartNextSong();
+    }
+
+    private void StartNextSong()
+    {
+        if (GiveEndOfSong != null)
+        {
+            GiveEndOfSong(currentSong);
+            //when we complete the encore song : reset the try
+            if (currentSong.bossBattle)
+            {
+                PlayerPrefsManager.SetEncoreSongTry(false);
+            }
+        }
+        if (GiveRewardOfSong != null)
+        {
+            GiveRewardOfSong(currentSong.coinReward);
+        }
+        ResetControllerState();
+        currentSong = GiveNextSong();
+    }
+
+
+    IEnumerator WaitToBeginEncoreSong()
+    {
+        yield return new WaitForSeconds(10f);
+    }
+
+
+    private int CastSongIndex(int songID)
+    {
+        int newID = (songID - 1) % 5;
+        return newID;
     }
 }

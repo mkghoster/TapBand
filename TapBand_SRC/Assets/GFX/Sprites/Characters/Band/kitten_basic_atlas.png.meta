@@ -1,0 +1,370 @@
+fileFormatVersion: 2
+guid: aa699da94e51ce94b822f30c8a58d579
+timeCreated: 1461869611
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: kitten_basic_HAIR
+    21300002: kitten_basic_armR_LO
+    21300004: kitten_basic_armR_UP
+    21300006: kitten_basic_armL_LO
+    21300008: kitten_basic_armL_UP
+    21300010: kitten_basic_HEAD
+    21300012: kitten_basic_BODY_UP
+    21300014: kitten_basic_BODY_LO
+    21300016: kitten_basic_LEGS
+    21300018: kitten_basic_eyeR_closed
+    21300020: kitten_basic_eyeL_closed
+    21300022: kitten_basic_eyeR
+    21300024: kitten_basic_eyeL
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: kitten_basic_HAIR
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 556
+        width: 473
+        height: 449
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 142.5, y: -148.5}
+        - {x: 193.5, y: -76.5}
+        - {x: 221.5, y: -50.5}
+        - {x: 236.5, y: -17.5}
+        - {x: 236.5, y: 53.5}
+        - {x: 200.5, y: 132.5}
+        - {x: 162.5, y: 179.5}
+        - {x: 129.5, y: 200.5}
+        - {x: 83.5, y: 224.5}
+        - {x: 63.5, y: 224.5}
+        - {x: 63.5, y: 221.5}
+        - {x: 64.5, y: 211.5}
+        - {x: 37.5, y: 219.5}
+        - {x: -29.5, y: 222.5}
+        - {x: -57.5, y: 218.5}
+        - {x: -114.5, y: 207.5}
+        - {x: -170.5, y: 185.5}
+        - {x: -166.5, y: 178.5}
+        - {x: -112.5, y: 166.5}
+        - {x: -142.5, y: 159.5}
+        - {x: -174.5, y: 133.5}
+        - {x: -199.5, y: 97.5}
+        - {x: -197.5, y: 95.5}
+        - {x: -210.5, y: 87.5}
+        - {x: -236.5, y: 86.5}
+        - {x: -236.5, y: 76.5}
+        - {x: -233.5, y: 65.5}
+        - {x: -192.5, y: 49.5}
+        - {x: -149.5, y: 46.5}
+        - {x: -131.5, y: 54.5}
+        - {x: -110.5, y: 50.5}
+        - {x: -67.5, y: 26.5}
+        - {x: -84.5, y: 6.5}
+        - {x: -95.5, y: -9.5}
+        - {x: -107.5, y: -27.5}
+        - {x: -127.5, y: -69.5}
+        - {x: -125.5, y: -77.5}
+        - {x: -96.5, y: -67.5}
+        - {x: -130.5, y: -121.5}
+        - {x: -128.5, y: -136.5}
+        - {x: -101.5, y: -142.5}
+        - {x: -91.5, y: -163.5}
+        - {x: -62.5, y: -184.5}
+        - {x: -34.5, y: -197.5}
+        - {x: 2.5, y: -198.5}
+        - {x: -48.5, y: -209.5}
+        - {x: -43.5, y: -218.5}
+        - {x: -9.5, y: -224.5}
+        - {x: 37.5, y: -224.5}
+        - {x: 78.5, y: -215.5}
+        - {x: 111.5, y: -197.5}
+        - {x: 131.5, y: -175.5}
+    - name: kitten_basic_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 961
+        width: 184
+        height: 24
+      alignment: 9
+      pivot: {x: 0.9588238, y: 0.5866394}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: kitten_basic_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 933
+        width: 168
+        height: 51
+      alignment: 9
+      pivot: {x: 0.9092196, y: 0.14205155}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -83.7489, y: 38.75537}
+        - {x: -118.7489, y: 43.75537}
+        - {x: -151.7489, y: 43.75537}
+        - {x: -152.7489, y: 41.75537}
+        - {x: -152.7489, y: 25.755371}
+        - {x: -150.7489, y: 23.755371}
+        - {x: -23.748901, y: -7.244629}
+        - {x: 14.251099, y: -7.244629}
+        - {x: 14.251099, y: 6.755371}
+        - {x: -29.748901, y: 25.755371}
+    - name: kitten_basic_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 840
+        width: 185
+        height: 36
+      alignment: 9
+      pivot: {x: 0.953188, y: 0.24460347}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -176.33978, y: 14.194275}
+        - {x: -171.33978, y: 8.194275}
+        - {x: -69.33978, y: -8.805725}
+        - {x: 8.660217, y: -8.805725}
+        - {x: 8.660217, y: 8.194275}
+        - {x: 5.6602173, y: 13.194275}
+        - {x: -120.33978, y: 27.194275}
+        - {x: -165.33978, y: 27.194275}
+        - {x: -176.33978, y: 23.194275}
+    - name: kitten_basic_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 840
+        width: 167
+        height: 41
+      alignment: 9
+      pivot: {x: 0.9318482, y: 0.82067424}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -57.618652, y: 7.352356}
+        - {x: -154.61865, y: -11.647644}
+        - {x: -155.61865, y: -11.647644}
+        - {x: -155.61865, y: -33.647644}
+        - {x: -20.618652, y: -33.647644}
+        - {x: 11.381348, y: -10.647644}
+        - {x: 11.381348, y: 7.352356}
+    - name: kitten_basic_HEAD
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 224
+        width: 360
+        height: 304
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 165, y: 128.8}
+        - {x: 180, y: 179.8}
+        - {x: 180, y: 224.8}
+        - {x: 171, y: 234.8}
+        - {x: 156, y: 240.8}
+        - {x: 127, y: 239.8}
+        - {x: 115, y: 241.8}
+        - {x: 98, y: 262.8}
+        - {x: 67, y: 281.8}
+        - {x: 47, y: 286.8}
+        - {x: 31, y: 288.8}
+        - {x: -37, y: 288.8}
+        - {x: -56, y: 285.8}
+        - {x: -92, y: 256.8}
+        - {x: -104, y: 227.8}
+        - {x: -112, y: 185.8}
+        - {x: -144, y: 198.8}
+        - {x: -166, y: 198.8}
+        - {x: -180, y: 175.8}
+        - {x: -180, y: 154.8}
+        - {x: -172, y: 110.8}
+        - {x: -161, y: 83.8}
+        - {x: -154, y: 80.8}
+        - {x: -134, y: 45.800003}
+        - {x: -105, y: 18.800003}
+        - {x: -81, y: 4.800003}
+        - {x: -71, y: -15.199997}
+        - {x: 73, y: -15.199997}
+        - {x: 89, y: 12.800003}
+        - {x: 102, y: 43.800003}
+        - {x: 133, y: 76.8}
+    - name: kitten_basic_BODY_UP
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 512
+        width: 144
+        height: 244
+      alignment: 9
+      pivot: {x: 0.58978695, y: 0.12774234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53.07068, y: 212.83087}
+        - {x: -84.92932, y: 212.83087}
+        - {x: -84.92932, y: 168.83087}
+        - {x: -72.92932, y: 98.83087}
+        - {x: -36.92932, y: -24.169128}
+        - {x: -20.929321, y: -31.169128}
+        - {x: 24.070679, y: -31.169128}
+        - {x: 41.07068, y: -10.169128}
+        - {x: 59.07068, y: 104.83087}
+        - {x: 59.07068, y: 178.83087}
+    - name: kitten_basic_BODY_LO
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 438
+        width: 125
+        height: 310
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55.5, y: -208}
+        - {x: 62.5, y: -79}
+        - {x: 62.5, y: 93}
+        - {x: -5.5, y: 93}
+        - {x: -62.5, y: 47}
+        - {x: -62.5, y: -123}
+        - {x: -58.5, y: -215}
+        - {x: -52.5, y: -217}
+        - {x: -12.5, y: -217}
+        - {x: -7.5, y: -204}
+        - {x: 6.5, y: -217}
+        - {x: 40.5, y: -217}
+    - name: kitten_basic_LEGS
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 237
+        width: 107
+        height: 193
+      alignment: 9
+      pivot: {x: 0.5, y: 0.95}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 9.650024}
+        - {x: -53.5, y: 9.650024}
+        - {x: -53.5, y: -32.349976}
+        - {x: -35.5, y: -183.34998}
+        - {x: 53.5, y: -183.34998}
+        - {x: 53.5, y: -105.349976}
+        - {x: 37.5, y: 7.6500244}
+        - {x: 31.5, y: 9.650024}
+        - {x: 1.5, y: 9.650024}
+        - {x: -4.5, y: 0.6500244}
+    - name: kitten_basic_eyeR_closed
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 141
+        width: 58
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: kitten_basic_eyeL_closed
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 140
+        width: 59
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: kitten_basic_eyeR
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 44
+        width: 54
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 22}
+        - {x: -27, y: -1}
+        - {x: -16, y: -21}
+        - {x: -12, y: -22}
+        - {x: 24, y: -22}
+        - {x: 27, y: -18}
+        - {x: 27, y: 18}
+        - {x: 25, y: 22}
+    - name: kitten_basic_eyeL
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 44
+        width: 55
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 22.5}
+        - {x: -27.5, y: 21.5}
+        - {x: -27.5, y: -18.5}
+        - {x: -23.5, y: -22.5}
+        - {x: 9.5, y: -22.5}
+        - {x: 15.5, y: -21.5}
+        - {x: 27.5, y: 2.5}
+        - {x: 27.5, y: 22.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
