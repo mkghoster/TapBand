@@ -61,10 +61,6 @@ public class ConcertController : MonoBehaviour {
 				{
 					GiveFanRewardOfConcert(state.CurrentConcert.fanReward);
 				}
-				if(GiveCoinRewardOfConcert != null)
-				{
-					GiveCoinRewardOfConcert(state.CurrentConcert.coinReward);
-				}
                 state.CurrentConcertID = state.GetNextConcert().id;
 
                 if (StartOfConcert != null)

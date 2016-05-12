@@ -228,11 +228,8 @@ public class RawGameDataLoader : IGameDataLoader
             TourData tourDataObject = new TourData();
 
             TryLoadInt(i, "ID", out tourDataObject.id);
-            TryLoadInt(i, "Level", out tourDataObject.level);
-            TryLoadFloat(i, "CoinMultiplier", out tourDataObject.coinMultiplier);
-            TryLoadFloat(i, "FanMultiplier", out tourDataObject.fanMultiplier);
-            TryLoadFloat(i, "TapMultiplier", out tourDataObject.tapMultiplier);
-            TryLoadInt(i, "FanRequirementToSkip", out tourDataObject.fanRequirementToSkip);
+            TryLoadInt(i, "MinFanCount", out tourDataObject.minFanCount);
+            TryLoadFloat(i, "TapStrengthMultiplier", out tourDataObject.tapStrengthMultiplier);
             tourDataList.Add(tourDataObject);
         }
 
@@ -254,7 +251,6 @@ public class RawGameDataLoader : IGameDataLoader
 			TryLoadInt(i, "ID", out concertDataObject.id);
 			TryLoadString(i, "Name", out concertDataObject.name);
 			TryLoadInt(i, "FanReward", out concertDataObject.fanReward);
-			TryLoadInt(i, "CoinReward", out concertDataObject.coinReward);
 			concertDataList.Add(concertDataObject);
 		}
 

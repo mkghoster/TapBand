@@ -6,8 +6,10 @@ public class MerchController : MonoBehaviour {
 
     private float currentTime;
 
-    public delegate void ModifyCoinEvent(int price);
-    public event ModifyCoinEvent CoinTransaction;
+    public delegate void MerchTransactionEvent(MerchData merch);
+    public event MerchTransactionEvent MerchTransaction;
+    public delegate void CoinTransactionEvent(int coins);
+    public event CoinTransactionEvent CoinTransaction;
     public delegate bool CanBuyEvent(int price);
     public event CanBuyEvent CanBuy;
 
@@ -119,19 +121,19 @@ public class MerchController : MonoBehaviour {
 
     private void BuyQualityMerch(MerchData data)
     {
-        GameState.instance.Merch.QualityMerchId = data.id;
-        if (CoinTransaction != null)
+        if (MerchTransaction != null)
         {
-            CoinTransaction(-data.upgradeCost);
+            MerchTransaction(data);
+            GameState.instance.Merch.QualityMerchId = data.id;
         }
     }
 
     private void BuyTimeMerch(MerchData data)
     {
-        GameState.instance.Merch.TimeMerchId = data.id;
-        if (CoinTransaction != null)
+        if (MerchTransaction != null)
         {
-            CoinTransaction(-data.upgradeCost);
+            MerchTransaction(data);
+            GameState.instance.Merch.TimeMerchId = data.id;
         }
     }
 

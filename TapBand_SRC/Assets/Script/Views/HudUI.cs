@@ -7,9 +7,6 @@ public class HudUI : MonoBehaviour {
     public float heightOfBar;
     public float startingVerticalPos;
 
-    public delegate TourData NewTourEvent();
-    public event NewTourEvent NewTour;
-
     public delegate string NewCoinEvent();
     public event NewCoinEvent NewCoin;
 
@@ -28,7 +25,6 @@ public class HudUI : MonoBehaviour {
 
     public GameObject coin;
     public GameObject fan;
-    public GameObject tour;
 	public GameObject concert;
 	public GameObject song;
 
@@ -37,17 +33,12 @@ public class HudUI : MonoBehaviour {
     void Start () {
         coin = GameObject.Find("CoinText");
         fan = GameObject.Find("FanText");
-        tour = GameObject.Find("TourText");
 		concert = GameObject.Find("ConcertText");
 		song = GameObject.Find("SongText");
     }
 	
     void OnGUI()
     {
-        if (NewTour != null) 
-		{
-            tour.GetComponent<Text>().text = "Tour: " + NewTour().level;
-        }
         if (NewCoin != null)
         {
             coin.GetComponent<Text>().text = NewCoin();
@@ -68,9 +59,6 @@ public class HudUI : MonoBehaviour {
                 song.GetComponent<Text>().text = actualSongData.title;
             }
 		}
-
-
-        // TODO : finish for all the UI elements
 
         if (TapPassed != null)
         {

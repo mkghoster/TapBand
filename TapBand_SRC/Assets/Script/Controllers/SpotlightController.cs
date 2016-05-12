@@ -11,7 +11,6 @@ public class SpotlightController : MonoBehaviour
     private float SpotlightTapMultiplier;
 
     private float initSpotlightCountdown;
-    private float actualCountDown;
 
     public SpotlightUI spotlightUI;
     public TapController tapController;

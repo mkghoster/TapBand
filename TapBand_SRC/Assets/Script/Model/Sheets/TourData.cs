@@ -5,9 +5,6 @@ using System.Collections.Generic;
 public class TourData
 {
 	public int id;
-	public int level;
-    public float coinMultiplier;
-    public float fanMultiplier;
-    public float tapMultiplier;
-    public int fanRequirementToSkip;
+    public int minFanCount;
+    public float tapStrengthMultiplier;
 }

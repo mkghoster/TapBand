@@ -10,7 +10,7 @@ GameObject:
   - 224: {fileID: 22483730}
   - 222: {fileID: 22217286}
   - 114: {fileID: 11422560}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,8 +27,8 @@ GameObject:
   - 224: {fileID: 22421576}
   - 222: {fileID: 22246308}
   - 114: {fileID: 11485856}
-  m_Layer: 0
-  m_Name: CurrentTimeHolder
+  m_Layer: 5
+  m_Name: CurrentPropertiesHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,8 @@ GameObject:
   - 224: {fileID: 22478176}
   - 222: {fileID: 22223310}
   - 114: {fileID: 11417960}
-  m_Layer: 0
-  m_Name: NextBoostProperties
+  m_Layer: 5
+  m_Name: NextMerchProperties
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ GameObject:
   - 224: {fileID: 22462298}
   - 222: {fileID: 22223180}
   - 114: {fileID: 11478988}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - 224: {fileID: 22447370}
   - 222: {fileID: 22275522}
   - 114: {fileID: 11484374}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,8 +95,8 @@ GameObject:
   - 224: {fileID: 22468506}
   - 222: {fileID: 22272776}
   - 114: {fileID: 11474606}
-  m_Layer: 0
-  m_Name: CurrentTime
+  m_Layer: 5
+  m_Name: CurrentProperties
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ GameObject:
   - 224: {fileID: 22481918}
   - 222: {fileID: 22244010}
   - 114: {fileID: 11412208}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentLevelHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - 224: {fileID: 22481404}
   - 222: {fileID: 22268836}
   - 114: {fileID: 11409094}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - 224: {fileID: 22486250}
   - 222: {fileID: 22231142}
   - 114: {fileID: 11417222}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FunctionExplain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - 222: {fileID: 22241358}
   - 114: {fileID: 11401850}
   - 114: {fileID: 11418496}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - 224: {fileID: 22467462}
   - 222: {fileID: 22253764}
   - 114: {fileID: 11449366}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentNameHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - 224: {fileID: 22409402}
   - 222: {fileID: 22254924}
   - 114: {fileID: 11446972}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.73333335, b: 0.73333335, a: 0.3882353}
+  m_Color: {r: 1, g: 0.7352941, b: 0.7352941, a: 0.3882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -324,7 +324,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: We collect you money, look how much in every second!
+  m_Text: We collect you money, look for how long!
 --- !u!114 &11417960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,7 +348,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -357,7 +357,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +0 coin
+  m_Text: 0 sec
 --- !u!114 &11418496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,7 +530,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Current Coin:'
+  m_Text: 'Current Time:'
 --- !u!114 &11478988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -563,7 +563,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Coin Boost
+  m_Text: Time Boost
 --- !u!114 &11484374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -587,16 +587,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 20
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy the Gift of the Cataclysm!
+  m_Text: Buy the Holy Sword!
 --- !u!114 &11485856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,8 +784,8 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 162, y: -6.7}
-  m_SizeDelta: {x: 50, y: 20}
+  m_AnchoredPosition: {x: 223.5, y: -6.7}
+  m_SizeDelta: {x: 173, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22468506
 RectTransform:
@@ -816,10 +816,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22481404}
   m_RootOrder: 9
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -95.2}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 0.1, y: 0}
+  m_AnchorMax: {x: 0.9, y: 0.1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -6, y: -6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22481404
 RectTransform:
@@ -843,10 +843,10 @@ RectTransform:
   - {fileID: 22478176}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 186}
-  m_SizeDelta: {x: 320, y: 240}
+  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMax: {x: 0.9, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22481918
 RectTransform:
@@ -912,10 +912,10 @@ RectTransform:
   - {fileID: 22447370}
   m_Father: {fileID: 22481404}
   m_RootOrder: 8
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 57.9}
-  m_SizeDelta: {x: 200, y: 30}
+  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMax: {x: 0.9, y: 0.3}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
