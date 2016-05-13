@@ -167,7 +167,7 @@ public class AudioManagerTapBand : AudioManager
 
     void StopMusicSounds()
     {
-        //StopAllCoroutines();------------------------------------------------FADE MIATT
+        StopAllCoroutines();//----???
         for (int i = 0; i < musicSources.Length; i++)
         {
             musicSources[i].Stop();
