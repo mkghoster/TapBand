@@ -4,6 +4,7 @@ using UnityEngine;
 public class TapController : MonoBehaviour
 {
     private TapUI tapUI;
+    private SongController songController;
 
     public float SpotlightTapMultiplier;
 
@@ -13,16 +14,20 @@ public class TapController : MonoBehaviour
     void Awake()
     {
         BindWithUI();
+
+        songController = (SongController)FindObjectOfType(typeof(SongController));
     }
 
     void OnEnable()
     {
         tapUI.OnTap += HandleTap;
+        songController.SwitchTapableCollider += SwitchTapAreaCollider;
     }
 
     void OnDisable()
     {
         tapUI.OnTap -= HandleTap;
+        songController.SwitchTapableCollider -= SwitchTapAreaCollider;
     }
 
     #region MVC bindings
@@ -66,5 +71,10 @@ public class TapController : MonoBehaviour
     private float DefaultOrSelf(float f)
     {
         return f == 0.0f ? 1.0f : f;
+    }
+
+    private void SwitchTapAreaCollider(bool value)
+    {
+        tapUI.SwitchOnOffCollider(value);
     }
 }
