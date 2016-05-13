@@ -158,7 +158,9 @@ public class GameData : LoadableData
         this.merchDataList = gd.merchDataList;
         this.equipmentDataList = gd.equipmentDataList;
         this.generalDataList = gd.generalDataList;
-        this.boosterData.LoadBoostersData();
+        this.boosterData = new BoosterData();
+
+        this.boosterData.LoadBoostersData(gd);
     }
 
     public override string GetFileName()

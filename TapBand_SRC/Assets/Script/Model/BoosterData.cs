@@ -3,20 +3,20 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class BoosterData  {
+public class BoosterData {
 
     enum BoosterDataType { TapStrengthBoosterMultiplier, TapStrengthBoosterDuration, ExtraTimeBoosterBonus, AutoTapBoosterInterval, AutoTapBoosterDuration };
-    public float TapStrengthBoosterMultiplier;
+    public float TapStrengthBoosterMultiplier;        
     public float TapStrengthBoosterDuration;
     public float ExtraTimeBoosterBonus;
     public float AutoTapBoosterInterval;
     public float AutoTapBoosterDuration;
 
 
-    public void LoadBoostersData()
+    public void LoadBoostersData(GameData gd)
     {
         List<string> BoosterTypeNamesList = new List<string>(Enum.GetNames(typeof(BoosterDataType)));
-        foreach (GeneralData data in GameData.instance.GeneralDataList)
+        foreach (GeneralData data in gd.GeneralDataList)
         {
             if (BoosterTypeNamesList.Contains(data.name))
             {
@@ -24,19 +24,19 @@ public class BoosterData  {
                 switch (MyBooster)
                 {
                     case BoosterDataType.TapStrengthBoosterMultiplier:
-                        float.TryParse(data.name, out TapStrengthBoosterMultiplier);
+                        float.TryParse(data.value, out TapStrengthBoosterMultiplier);         
                         break;
                     case BoosterDataType.TapStrengthBoosterDuration:
-                        float.TryParse(data.name, out TapStrengthBoosterDuration);
+                        float.TryParse(data.value, out TapStrengthBoosterDuration);
                         break;
                     case BoosterDataType.ExtraTimeBoosterBonus:
-                        float.TryParse(data.name, out ExtraTimeBoosterBonus);
+                        float.TryParse(data.value, out ExtraTimeBoosterBonus);
                         break;
                     case BoosterDataType.AutoTapBoosterInterval:
-                        float.TryParse(data.name, out AutoTapBoosterInterval);
+                        float.TryParse(data.value, out AutoTapBoosterInterval);
                         break;
                     case BoosterDataType.AutoTapBoosterDuration:
-                        float.TryParse(data.name, out AutoTapBoosterDuration);
+                        float.TryParse(data.value, out AutoTapBoosterDuration);
                         break;
                     default:
                         break;
