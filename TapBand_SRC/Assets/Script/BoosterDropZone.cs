@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
-	public int tokenNumber=40;
+	public int tokenNumber=100;
 	private Image image;
 	private BoosterController boosterController;
 	Color baseColor;
@@ -32,9 +32,10 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler
 			if (bd != null) {
 				tokenNumber -= bd.tokenCost;
 				string BoosterName = eventData.pointerDrag.name;
-                boosterController.HandleBoosters (BoosterName);
+                boosterController.HandleBoosters (BoosterName, bd);
 				bd.transform.localPosition = bd.basePosition;
 				Debug.Log (tokenNumber);
+                bd.boosterIsActive = false;
 				if (tokenNumber <= 0) 
 					{
 						eventData.pointerDrag.SetActive (false);

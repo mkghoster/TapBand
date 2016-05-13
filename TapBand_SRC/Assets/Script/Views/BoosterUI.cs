@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler{ 
 
-    public int tokenCost;
-    private bool boosterIsActive;
+    public int tokenCost = 10;
+    public bool boosterIsActive;
     private BoosterDropZone boosterDropzone;
     public Vector3 basePosition;
 
@@ -28,13 +28,15 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void Start()
     {
         Debug.Log(basePosition);
+        Debug.Log(this.gameObject.name);
     }
 
     public void Update()
     {
         if (boosterDropzone.tokenNumber >= tokenCost)
         {
-            boosterIsActive = true;
+            //boosterIsActive = true;
+            //Debug.Log(boosterIsActive);
         }
         else
         {
@@ -67,7 +69,7 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         Color color = new Vector4(0f, 0f, 0f, 0f);
         boosterDropzone.setColor(color);
-        if (boosterIsActive)
+        if (!boosterIsActive)
         {
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
