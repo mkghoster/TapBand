@@ -1,0 +1,472 @@
+fileFormatVersion: 2
+guid: dc5367cc93d805942bb352f02706602e
+timeCreated: 1463153788
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hobo_egypt_hair
+    21300002: hobo_egypt_head
+    21300004: hobo_egypt_body
+    21300006: hobo_egypt_armR_LO
+    21300008: hobo_egypt_armR_UP
+    21300010: hobo_egypt_armL_LO
+    21300012: hobo_egypt_armL_UP
+    21300014: hobo_egypt_eyeR_brow
+    21300016: hobo_egypt_eyeL_brow
+    21300018: hobo_egypt_legR_UP
+    21300020: hobo_egypt_legL_UP
+    21300022: hobo_egypt_eyeR_closed
+    21300024: hobo_egypt_eyeL_closed
+    21300026: hobo_egypt_legR_LO
+    21300028: hobo_egypt_legL_LO
+    21300030: hobo_egypt_eyeR
+    21300032: hobo_egypt_eyeL
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: hobo_egypt_hair
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 576
+        width: 508
+        height: 428
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: -172}
+        - {x: 45, y: -167}
+        - {x: 100, y: -146}
+        - {x: 93, y: -165}
+        - {x: 99, y: -167}
+        - {x: 128, y: -149}
+        - {x: 137, y: -139}
+        - {x: 142, y: -159}
+        - {x: 147, y: -169}
+        - {x: 150, y: -171}
+        - {x: 160, y: -168}
+        - {x: 185, y: -156}
+        - {x: 192, y: -155}
+        - {x: 213, y: -128}
+        - {x: 232, y: -99}
+        - {x: 244, y: -72}
+        - {x: 251, y: -49}
+        - {x: 254, y: -33}
+        - {x: 254, y: 35}
+        - {x: 248, y: 59}
+        - {x: 239, y: 83}
+        - {x: 219, y: 120}
+        - {x: 202, y: 139}
+        - {x: 198, y: 137}
+        - {x: 199, y: 126}
+        - {x: 185, y: 142}
+        - {x: 159, y: 169}
+        - {x: 139, y: 185}
+        - {x: 104, y: 203}
+        - {x: 83, y: 213}
+        - {x: 77, y: 214}
+        - {x: 57, y: 214}
+        - {x: 58, y: 213}
+        - {x: 76, y: 187}
+        - {x: 60, y: 196}
+        - {x: 29, y: 204}
+        - {x: -22, y: 204}
+        - {x: -63, y: 195}
+        - {x: -91, y: 184}
+        - {x: -93, y: 180}
+        - {x: -93, y: 174}
+        - {x: -97, y: 159}
+        - {x: -102, y: 151}
+        - {x: -144, y: 132}
+        - {x: -168, y: 113}
+        - {x: -186, y: 95}
+        - {x: -193, y: 101}
+        - {x: -217, y: 69}
+        - {x: -227, y: 48}
+        - {x: -247, y: -1}
+        - {x: -254, y: -35}
+        - {x: -254, y: -107}
+        - {x: -252, y: -114}
+        - {x: -248, y: -125}
+        - {x: -245, y: -132}
+        - {x: -241, y: -138}
+        - {x: -229, y: -150}
+        - {x: -144, y: -204}
+        - {x: -141, y: -214}
+        - {x: -128, y: -214}
+        - {x: -43, y: -173}
+        - {x: 1, y: -151}
+        - {x: -17, y: -170}
+    - name: hobo_egypt_head
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 603
+        width: 435
+        height: 402
+      alignment: 9
+      pivot: {x: 0.61889017, y: 0.30117768}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76.782776, y: -117.073425}
+        - {x: 84.782776, y: -121.073425}
+        - {x: 91.782776, y: -121.073425}
+        - {x: 100.782776, y: -105.073425}
+        - {x: 113.782776, y: -44.073425}
+        - {x: 121.782776, y: 1.9265747}
+        - {x: 126.782776, y: -1.0734253}
+        - {x: 129.78278, y: -0.07342529}
+        - {x: 132.78278, y: 17.926575}
+        - {x: 137.78278, y: 50.926575}
+        - {x: 161.78278, y: 56.926575}
+        - {x: 165.78278, y: 70.926575}
+        - {x: 165.78278, y: 100.926575}
+        - {x: 155.78278, y: 127.926575}
+        - {x: 165.78278, y: 165.92657}
+        - {x: 165.78278, y: 234.92657}
+        - {x: 152.78278, y: 244.92657}
+        - {x: 139.78278, y: 245.92657}
+        - {x: 139.78278, y: 280.92657}
+        - {x: 60.782776, y: 280.92657}
+        - {x: -94.217224, y: 273.92657}
+        - {x: -155.21722, y: 272.92657}
+        - {x: -158.21722, y: 260.92657}
+        - {x: -155.21722, y: 204.92657}
+        - {x: -175.21722, y: 223.92657}
+        - {x: -187.21722, y: 231.92657}
+        - {x: -201.21722, y: 237.92657}
+        - {x: -217.21722, y: 243.92657}
+        - {x: -251.21722, y: 245.92657}
+        - {x: -254.21722, y: 204.92657}
+        - {x: -269.21722, y: 135.92657}
+        - {x: -269.21722, y: 83.926575}
+        - {x: -267.21722, y: 74.926575}
+        - {x: -251.21722, y: 47.926575}
+        - {x: -246.21722, y: 50.926575}
+        - {x: -221.21722, y: 21.926575}
+        - {x: -199.21722, y: 12.926575}
+        - {x: -198.21722, y: 16.926575}
+        - {x: -198.21722, y: 21.926575}
+        - {x: -162.21722, y: 5.9265747}
+        - {x: -141.21722, y: 5.9265747}
+        - {x: -138.21722, y: -8.073425}
+        - {x: -120.217224, y: -28.073425}
+        - {x: -99.217224, y: -64.073425}
+        - {x: -79.217224, y: -93.073425}
+        - {x: -76.217224, y: -91.073425}
+        - {x: -60.217224, y: -102.073425}
+        - {x: -42.217224, y: -121.073425}
+        - {x: -34.217224, y: -121.073425}
+        - {x: -30.217224, y: -112.073425}
+        - {x: -6.217224, y: -121.073425}
+        - {x: 60.782776, y: -121.073425}
+    - name: hobo_egypt_body
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 48
+        width: 261
+        height: 451
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2159256}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -72.5, y: -96.38245}
+        - {x: -71.5, y: -97.38245}
+        - {x: 81.5, y: -97.38245}
+        - {x: 83.5, y: -95.38245}
+        - {x: 84.5, y: -82.38245}
+        - {x: 85.5, y: -60.382446}
+        - {x: 96.5, y: -73.38245}
+        - {x: 106.5, y: -82.38245}
+        - {x: 114.5, y: -89.38245}
+        - {x: 125.5, y: -94.38245}
+        - {x: 128.5, y: -90.38245}
+        - {x: 130.5, y: -79.38245}
+        - {x: 130.5, y: 3.6175537}
+        - {x: 129.5, y: 32.617554}
+        - {x: 127.5, y: 60.617554}
+        - {x: 124.5, y: 89.61755}
+        - {x: 117.5, y: 165.61755}
+        - {x: 111.5, y: 216.61755}
+        - {x: 107.5, y: 233.61755}
+        - {x: 94.5, y: 312.61755}
+        - {x: 85.5, y: 353.61755}
+        - {x: -33.5, y: 353.61755}
+        - {x: -34.5, y: 352.61755}
+        - {x: -111.5, y: 351.61755}
+        - {x: -115.5, y: 348.61755}
+        - {x: -118.5, y: 303.61755}
+        - {x: -123.5, y: 225.61755}
+        - {x: -128.5, y: 144.61755}
+        - {x: -130.5, y: 108.61755}
+        - {x: -130.5, y: -31.382446}
+        - {x: -128.5, y: -66.38245}
+        - {x: -126.5, y: -97.38245}
+        - {x: -113.5, y: -97.38245}
+        - {x: -86.5, y: -69.38245}
+        - {x: -81.5, y: -61.382446}
+        - {x: -75.5, y: -52.382446}
+    - name: hobo_egypt_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 479
+        width: 236
+        height: 77
+      alignment: 9
+      pivot: {x: 0.95357215, y: 0.80761164}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10.95697, y: -13.186096}
+        - {x: 10.95697, y: 14.813904}
+        - {x: -68.04303, y: 14.813904}
+        - {x: -188.04303, y: -8.186096}
+        - {x: -221.04303, y: -32.186096}
+        - {x: -225.04303, y: -46.186096}
+        - {x: -225.04303, y: -62.186096}
+        - {x: -159.04303, y: -62.186096}
+        - {x: -145.04303, y: -60.186096}
+        - {x: 5.95697, y: -22.186096}
+    - name: hobo_egypt_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 451
+        width: 220
+        height: 105
+      alignment: 9
+      pivot: {x: 0.9182337, y: 0.14427403}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -120.01141, y: 89.85123}
+        - {x: -202.01141, y: 89.85123}
+        - {x: -202.01141, y: 55.851227}
+        - {x: -74.01141, y: -15.148773}
+        - {x: 17.988586, y: -15.148773}
+        - {x: 17.988586, y: 19.851227}
+        - {x: -5.0114136, y: 65.85123}
+    - name: hobo_egypt_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 321
+        width: 236
+        height: 77
+      alignment: 9
+      pivot: {x: 0.9381313, y: 0.174641}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -221.39899, y: 63.552643}
+        - {x: -221.39899, y: 22.552643}
+        - {x: -215.39899, y: 12.552643}
+        - {x: -58.398987, y: -13.447357}
+        - {x: 12.601013, y: -13.447357}
+        - {x: 14.601013, y: -7.447357}
+        - {x: 14.601013, y: 50.552643}
+        - {x: -83.39899, y: 63.552643}
+    - name: hobo_egypt_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 320
+        width: 220
+        height: 105
+      alignment: 9
+      pivot: {x: 0.9182337, y: 0.8470491}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.011414, y: 16.059845}
+        - {x: -202.01141, y: -59.940155}
+        - {x: -202.01141, y: -85.940155}
+        - {x: -201.01141, y: -88.940155}
+        - {x: -139.01141, y: -88.940155}
+        - {x: -20.011414, y: -64.940155}
+        - {x: 17.988586, y: -18.940155}
+        - {x: 17.988586, y: 16.059845}
+    - name: hobo_egypt_eyeR_brow
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 161
+        width: 78
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_egypt_eyeL_brow
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 163
+        width: 78
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_egypt_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 155
+        width: 20
+        height: 133
+      alignment: 9
+      pivot: {x: 0.46571046, y: 0.94173276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_egypt_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 155
+        width: 20
+        height: 133
+      alignment: 9
+      pivot: {x: 0.46571046, y: 0.9417511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_egypt_eyeR_closed
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 124
+        width: 41
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_egypt_eyeL_closed
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 124
+        width: 41
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_egypt_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 5
+        width: 97
+        height: 133
+      alignment: 9
+      pivot: {x: 0.097002484, y: 0.9451706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.409241, y: 7.2923126}
+        - {x: -9.409241, y: -125.70769}
+        - {x: 87.59076, y: -125.70769}
+        - {x: 87.59076, y: -86.70769}
+        - {x: 25.59076, y: 7.2923126}
+    - name: hobo_egypt_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 5
+        width: 97
+        height: 133
+      alignment: 9
+      pivot: {x: 0.096152395, y: 0.9520772}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 61.673218, y: -98.62627}
+        - {x: 15.673218, y: 4.3737335}
+        - {x: 9.673218, y: 6.3737335}
+        - {x: -9.326782, y: 6.3737335}
+        - {x: -9.326782, y: -126.62627}
+        - {x: 87.67322, y: -126.62627}
+        - {x: 87.67322, y: -111.62627}
+        - {x: 81.67322, y: -106.62627}
+    - name: hobo_egypt_eyeR
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 68
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15.5, y: 16}
+        - {x: -16.5, y: 15}
+        - {x: -16.5, y: -12}
+        - {x: -12.5, y: -16}
+        - {x: 14.5, y: -16}
+        - {x: 16.5, y: -14}
+        - {x: 16.5, y: 16}
+    - name: hobo_egypt_eyeL
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 68
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 14, y: -16}
+        - {x: 16, y: -13}
+        - {x: 16, y: 12}
+        - {x: 13, y: 16}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

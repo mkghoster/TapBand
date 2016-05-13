@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 2ba6b89d50d47cf45ab9d50f612841c3
-timeCreated: 1461862087
+timeCreated: 1463151574
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: all_band_basic_elonezet_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,18 +39,33 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 380, y: 0, z: 395, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: all_band_basic_elonezet_0
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 0
+        width: 182
+        height: 450
+      alignment: 9
+      pivot: {x: 0.5152021, y: 0.2417644}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93.766785, y: 341.20602}
+        - {x: -93.766785, y: -108.793976}
+        - {x: 88.233215, y: -108.793976}
+        - {x: 88.233215, y: 341.20602}
     outline: []
   spritePackingTag: 
   userData: 
