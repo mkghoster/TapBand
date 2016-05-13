@@ -7,8 +7,6 @@ using System;
 
 public class AudioManager : MonoBehaviour {
 
-    private Dictionary<string, GameObject> loopSounds; 
-
      public Pool audioPool = new Pool()
      {
          size = 10,
@@ -20,7 +18,7 @@ public class AudioManager : MonoBehaviour {
     protected float musicVolume;
     protected float sfxVolume;
 
-    protected float fadeDuration = 3.0f;
+    protected float fadeDuration = 1.0f;
     protected enum FadeState { FadeIn, FadeOut };
 
     private static  AudioManager instance;
@@ -39,37 +37,30 @@ public class AudioManager : MonoBehaviour {
 
     protected void InitAudioManager()
     {
-        loopSounds = new Dictionary<string, GameObject>();
-
         PoolsManager.RegisterPool(audioPool); //register pool if you want to use extention method Despawn
         audioPool.Initialize();
 
         settingsUI = (SettingsUI)GameObject.FindObjectOfType(typeof(SettingsUI));
 
-        musicVolume = PlayerPrefsManager.GetMusicVolume();
-        sfxVolume = PlayerPrefsManager.GetSFXVolume();
+        //musicVolume = PlayerPrefsManager.GetMusicVolume();
+        //sfxVolume = PlayerPrefsManager.GetSFXVolume();
+        musicVolume = PlayerPrefs.GetFloat("music_volume", 0.5f);
+        sfxVolume = PlayerPrefs.GetFloat("sfx_volume", 0.5f);
     }
 
 
 
-    public void StopSound(string name)
-    {
-        AudioSource spawnSource = loopSounds[name].GetComponent<AudioSource>();
-        spawnSource.Stop();
-        spawnSource.loop = false;
-        spawnSource.clip = null;
-
-        audioPool.Despawn(loopSounds[name]);
-
-        loopSounds.Remove(name.ToString());
-    }
-
-    public void PlaySound(AudioClip clip, string name, bool isLoop)
+    
+    public GameObject PlaySound(AudioClip clip, bool isLoop)
     {
         if (isLoop)
-            PlayLoopSound(clip, name);
+            return PlayLoopSound(clip);
         else
             PlayOneShotSound(clip);
+
+        //if it's not a loop sound, then the reference doesn't matter
+        return null;
+            
     }
 
    
@@ -77,25 +68,13 @@ public class AudioManager : MonoBehaviour {
     //pool one sound
     private void PlayOneShotSound(AudioClip clip)
     {
-        //print("PlayOneShotSound()");
-        //var spawn = audioPool.Spawn(Vector3.zero, Quaternion.identity);
-        //spawn.GetComponent<AudioSource>().PlayOneShot(clip, sfxVolume);
-        //StartCoroutine(WaitAndDespawn(clip.length, spawn));
-
-
         AudioSource.PlayClipAtPoint(clip, Vector3.zero, sfxVolume);
     }
 
-    /*private IEnumerator WaitAndDespawn(float waitTime, GameObject spawn)
-    {
-        yield return new WaitForSeconds(waitTime);
-        audioPool.Despawn(spawn);
-    }*/
-
-    //pool loop sound
-    private void PlayLoopSound(AudioClip clip, string name)
-    {
-        //print("PlayLoopSound()");        
+    
+    //pooled loop sound, return the pooled object as a reference
+    private GameObject PlayLoopSound(AudioClip clip)
+    {      
         var spawn = audioPool.Spawn(Vector3.zero, Quaternion.identity);
         AudioSource spawnSource = spawn.GetComponent<AudioSource>();
         spawnSource.loop = true;
@@ -103,10 +82,20 @@ public class AudioManager : MonoBehaviour {
         spawnSource.volume = sfxVolume;
         spawnSource.Play();
 
-        loopSounds.Add(name, spawn);
+        return spawn.gameObject;
     }
 
-  
+    public void StopSound(GameObject targetToStop)
+    {
+        targetToStop.GetComponent<AudioSource>().Stop();
+        targetToStop.GetComponent<AudioSource>().loop = false;
+        targetToStop.GetComponent<AudioSource>().clip = null;
+
+        audioPool.Despawn(targetToStop);
+    }
+
+
+
     protected void FadeClip(AudioSource source, FadeState fadeState)
     {
         StartCoroutine(Fade(source, fadeState));   
@@ -116,7 +105,7 @@ public class AudioManager : MonoBehaviour {
     {
         if(fadeState == FadeState.FadeIn)
         {
-            source.volume = 0.0f;
+            //source.volume = 0.0f;
             for (float f = 0f; f <= 1.0f; f += (Time.deltaTime / fadeDuration))
             {
                 source.volume = Mathf.Lerp(0.0f, musicVolume, f);
@@ -126,7 +115,7 @@ public class AudioManager : MonoBehaviour {
         }
         else if(fadeState == FadeState.FadeOut)
         {  
-            source.volume = 1.0f;
+            //source.volume = 1.0f;
             for (float f = 1f; f >= 0.0f; f -= (Time.deltaTime / fadeDuration))
             {
                 source.volume = Mathf.Lerp(0.0f, musicVolume, f);   
