@@ -38,7 +38,7 @@ public class SongController : MonoBehaviour
     //stop the boss time counter
     private bool isEncoreOver = false;
 
-    private const float waitTimeBetweenConcerts = 3f;
+    
 
     void Awake()
     {
@@ -134,7 +134,7 @@ public class SongController : MonoBehaviour
                 //Succes boss battle: waiting and switch off the taparea
                 if (currentSong.bossBattle)
                 {
-                    StartCoroutine(WaitAfterConcert(waitTimeBetweenConcerts));
+                    StartCoroutine(WaitAfterConcert(SongConcertTour.waitTimeBetweenConcerts));
                     if(SwitchTapableCollider != null)
                     {
                         SwitchTapableCollider(false);
