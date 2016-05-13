@@ -42,41 +42,45 @@ public class ConcertController : MonoBehaviour {
         tourController.RestartConcert -= RestartConcertFromTheFirst;
     }
 
-	//mi a kövtetkező lejátszandó szám, értesíti
-	private SongData GiveNextSongFromConcert()
+    //mi a kövtetkező lejátszandó szám, értesíti
+    private SongData GiveNextSongFromConcert()
 	{
 		ConcertState state = GameState.instance.Concert;
 
-		//ha boss battle
-		if (state.CurrentSong != null) 
-		{
+        if (state.CurrentSong != null)
+        {
             //új indítása
             if (state.CurrentSong.bossBattle)
-            {
-				if(EndOfConcert != null)
-				{
-					EndOfConcert(state.CurrentConcert);
-				}
-				if(GiveFanRewardOfConcert != null)
-				{
-					GiveFanRewardOfConcert(state.CurrentConcert.fanReward);
-				}
+            {             
+                if (EndOfConcert != null)
+                {    
+                    EndOfConcert(state.CurrentConcert);
+                }
+                if (GiveFanRewardOfConcert != null)
+                {
+                    GiveFanRewardOfConcert(state.CurrentConcert.fanReward);
+                }
                 state.CurrentConcertID = state.GetNextConcert().id;
 
                 if (StartOfConcert != null)
                 {
                     StartOfConcert(state.CurrentConcert);
                 }
+
             }
 
             state.LastComplatedSongID = state.CurrentSong.id;
-        }
-		state.CurrentSong = state.GetNextSong();
 
-		return state.CurrentSong;
-	}
-    
-	private SongData ResetToFirstSongOfConcert()
+        }
+
+        state.CurrentSong = state.GetNextSong();
+     
+        return state.CurrentSong;
+    }
+
+ 
+
+    private SongData ResetToFirstSongOfConcert()
 	{
 		ConcertState state = GameState.instance.Concert;
         if (RestartConcert != null)

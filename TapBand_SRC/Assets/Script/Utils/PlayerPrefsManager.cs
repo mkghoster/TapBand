@@ -27,6 +27,7 @@ public class PlayerPrefsManager : MonoBehaviour {
         return PlayerPrefs.GetFloat(SFX_VOLUME_KEY, 0.5f);
     }
 
+    //TODO: átrakni ezt a gamestate-be
     public static void SetEncoreSongTry(bool value)
     {
         if (value)
