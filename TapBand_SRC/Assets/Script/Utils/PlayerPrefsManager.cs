@@ -44,7 +44,7 @@ public class PlayerPrefsManager : MonoBehaviour {
         PlayerPrefs.SetInt(PlayerPrefsConsts.PREV_CONCERT_AUDIO_ID, id);
     }
 
-    public static float GetPrevAudioConcertID()
+    public static int GetPrevAudioConcertID()
     {
         return PlayerPrefs.GetInt(PlayerPrefsConsts.PREV_CONCERT_AUDIO_ID, 0);
     }

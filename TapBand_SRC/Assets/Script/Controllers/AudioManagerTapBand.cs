@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 //TODO: - settingsUI: eventek folyamatosan jönnek (akkor is ha nem állítom a csúszkát )  --> más megoldás? (ezért volt az encore song közben mindegyik sáv maxon szólt)   
 //  - cast indexet utilsba átemelni és mindenhova azt hívni ne helyit!!!!
@@ -22,7 +24,10 @@ public class AudioManagerTapBand : AudioManager
     //index for Concert and MusicBars
     private int actualIndex;
 
-    private int prevConcertAudioID; // kmenetni az előző concert audio id-t és ellenőrizni  volt e 
+    //private int prevConcertAudioID; // kmenetni az előző concert audio id-t és ellenőrizni  volt e 
+
+    private AudioClip[] clips;
+
 
     void Awake()
     {
@@ -36,7 +41,11 @@ public class AudioManagerTapBand : AudioManager
         GetAllChildMusicSource();
 
         //inic SFX
-        base.InitAudioManager();   
+        base.InitAudioManager();
+
+
+        ReadMusicFromResources();
+        ChooseConcertAudio();
     }
 
     void Start()
@@ -66,7 +75,8 @@ public class AudioManagerTapBand : AudioManager
             FadeInMusicBarsUntilIndex(concertState.LastComplatedSongID);
         }
  
-        ChooseConcertAudio();
+        
+       
     }
 
    
@@ -167,6 +177,9 @@ public class AudioManagerTapBand : AudioManager
     {
         StopMusicSounds(); 
         actualIndex = 0;
+
+        ChooseConcertAudio();
+
         MuteAndPlayAllMusicBars();
         FadeInMusicBarsUntilIndex(actualIndex);     
     }
@@ -268,41 +281,46 @@ public class AudioManagerTapBand : AudioManager
 
     private void ChooseConcertAudio() //átnevezeni
     {
-        //int concertID = 0;
-        print("PrevConcertAudioID: " + PlayerPrefsManager.GetPrevAudioConcertID());
+        int[] ret = { -1,-1,-1,-1,-1 };
+
+        
+
         int randomNumber = Random.Range(0, 3);
-        print("1.: "+ randomNumber);
+
         while(randomNumber == PlayerPrefsManager.GetPrevAudioConcertID())
         {
             randomNumber = Random.Range(0,3);
-            print("??");
         }
-        print("2.: "+randomNumber);
+
         switch (randomNumber)
         {
             case 0:
-                print("0");
-                FirstConcertOrder();
+                print("0");               
+                ret = FirstConcertOrder();
                 break;
             case 1:
-                print("1");
-                SecondConcertOrder();
+                print("1");              
+                ret = SecondConcertOrder();
                 break;
             case 2:
-                print("2");
-                SecondConcertOrder();
+                print("2");            
+                ret = SecondConcertOrder();
                 break;
             case 3:
-                print("3");
-                ThirdConecertOrder();
+                print("3");               
+                ret = ThirdConecertOrder();
                 break;
         }
 
         PlayerPrefsManager.SetPrevAudioConcertID(randomNumber);
 
-        //FirstConcertOrder();
-        //SecondConcertOrder();
-        //ThirdConecertOrder();
+        /*for(int i = 0; i < ret.Length; i++)
+        {
+            print(i + ": "+ ret[i]);
+        }*/
+
+        SetCorrectOrderAudioClips(ret);
+
     }
 
     //0 - Guitar
@@ -311,17 +329,36 @@ public class AudioManagerTapBand : AudioManager
     //3 - Synth
     //4 - Encore
     
-    private void SetCorrectAudioClips( int[] order)
+    private void SetCorrectOrderAudioClips( int[] order)
     {
-        for(int i = 0;i< order.Length;i++)
+        int currentConcertAudioID = PlayerPrefsManager.GetPrevAudioConcertID();
+
+        for(int i = 0; i< order.Length;i++)
         {
-            //musicSources[i].
+            musicSources[i].clip = clips[ order[i] + (currentConcertAudioID * 5) ];
         }
+    }
+
+    private void ReadMusicFromResources()
+    {
+       //--------------------------------------------------------------------- TODO, try catchbe
+        var array = Resources.LoadAll("PlaceHolder", typeof(AudioClip));
+        clips = new AudioClip[array.Length];
+        for (int i = 0; i < clips.Length; i++)
+        {
+            clips[i] = array[i] as AudioClip;
+        }
+    
+        /*for(int i = 0; i < clips.Length; i++)
+        {
+            print("name: "+ clips[i].name);
+        }*/
+
     }
 
 
     //Happy Develeopers
-    private void FirstConcertOrder()
+    private int[] FirstConcertOrder()
     {
         float n = Random.Range(0f,1f);
         int[] order = new int[5];
@@ -349,10 +386,11 @@ public class AudioManagerTapBand : AudioManager
         order[4] = 4;
 
         print("order: "+ order[0] + order[1] + order[2] + order[3] + order[4]);
+        return order;
 
     }
 
-    private void SecondConcertOrder()
+    private int[] SecondConcertOrder()
     {
         float n = Random.Range(0,2);
         //int("1. n: "+ n);
@@ -366,7 +404,6 @@ public class AudioManagerTapBand : AudioManager
             order[0] = 2;
 
         n = Random.Range(0f, 1f);
-       //rint("2. n: " + n);
         if (order[0] == 1 || order[0] == 2)
             order[1] = 0;
         else if (order[0] == 0 && n >= 0.5f)
@@ -384,9 +421,10 @@ public class AudioManagerTapBand : AudioManager
 
 
         print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
+        return order;
     }
 
-    private void ThirdConecertOrder()
+    private int[] ThirdConecertOrder()
     {
         float n = Random.Range(0f, 1f);
         int[] order = new int[5];
@@ -406,15 +444,7 @@ public class AudioManagerTapBand : AudioManager
         order[4] = 4;
 
         print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
-    }
-
-    private void SetCorrectBarOrder()
-    {
-        //0,1,2,3 (encore nem kell), de legyen az is
-        /*for(int i = 0; i < order.Length; i++)
-        {
-            //musicSources[i]
-        }*/
+        return order;
     }
 
 
