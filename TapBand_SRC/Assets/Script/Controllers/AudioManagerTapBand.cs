@@ -295,19 +295,19 @@ public class AudioManagerTapBand : AudioManager
         switch (randomNumber)
         {
             case 0:
-                print("0");               
+                //print("0");               
                 ret = FirstConcertOrder();
                 break;
             case 1:
-                print("1");              
+                //print("1");              
                 ret = SecondConcertOrder();
                 break;
             case 2:
-                print("2");            
+                //print("2");            
                 ret = SecondConcertOrder();
                 break;
             case 3:
-                print("3");               
+                //print("3");               
                 ret = ThirdConecertOrder();
                 break;
         }
@@ -385,7 +385,7 @@ public class AudioManagerTapBand : AudioManager
         order[3] = 3;
         order[4] = 4;
 
-        print("order: "+ order[0] + order[1] + order[2] + order[3] + order[4]);
+        //print("order: "+ order[0] + order[1] + order[2] + order[3] + order[4]);
         return order;
 
     }
@@ -420,7 +420,7 @@ public class AudioManagerTapBand : AudioManager
         order[4] = 4;
 
 
-        print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
+        //print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
         return order;
     }
 
@@ -443,7 +443,7 @@ public class AudioManagerTapBand : AudioManager
         order[3] = 3;
         order[4] = 4;
 
-        print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
+        //print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
         return order;
     }
 
