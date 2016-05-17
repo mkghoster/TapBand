@@ -38,4 +38,16 @@ public class PlayerPrefsManager : MonoBehaviour {
         return PlayerPrefs.GetInt(PlayerPrefsConsts.ENCORE_SONG_TRY, 0) == 0 ? false : true;
     }
 
+    //TODO: ezt is a gamestatebe átrakni
+    public static void SetPrevAudioConcertID(int id)
+    {
+        PlayerPrefs.SetInt(PlayerPrefsConsts.PREV_CONCERT_AUDIO_ID, id);
+    }
+
+    public static float GetPrevAudioConcertID()
+    {
+        return PlayerPrefs.GetInt(PlayerPrefsConsts.PREV_CONCERT_AUDIO_ID, 0);
+    }
+
+
 }
