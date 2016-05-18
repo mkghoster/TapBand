@@ -198,7 +198,7 @@ public class SongController : MonoBehaviour
     }
 
 	public void BossExtratime(float extraTime){
-		bossBattleCountDownBooster = extraTime;
+		timeCountDown = -extraTime;
 		extraTimeBoosterIsActive = true;
 	}
 
