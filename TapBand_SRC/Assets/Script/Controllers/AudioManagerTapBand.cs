@@ -45,7 +45,7 @@ public class AudioManagerTapBand : AudioManager
 
 
         ReadMusicFromResources();
-        ChooseConcertAudio();
+        ChooseConcertAudio(true);
     }
 
     void Start()
@@ -129,25 +129,29 @@ public class AudioManagerTapBand : AudioManager
     //concert success
     void EndOfConcertEvent(ConcertData concertData)
     {
-        StartNewOrPrevConcert(); 
+        //StartNewOrPrevConcert();
+        StartNewConcert();
     }
 
     //concert fail
     void ResetartConcert()
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartPrevConcert();
     }
 
     //OnPrestige
     void OnPrestigeEvent(TourData tourData)
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartNewConcert();//---???
     }
 
     //Nem kapott OnPrestigeEventet a torubol ha az első concerten nyomtunk ismét restart-ot
     void RestartConcertFromTour()
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartNewConcert();
     }
 
     //Change to actual music bars volume
@@ -173,7 +177,7 @@ public class AudioManagerTapBand : AudioManager
     #region music bars handle methods
 
     //concert fail/succ -> same stuff, just from different events
-    void StartNewOrPrevConcert()
+    /*void StartNewOrPrevConcert()
     {
         StopMusicSounds(); 
         actualIndex = 0;
@@ -182,7 +186,28 @@ public class AudioManagerTapBand : AudioManager
 
         MuteAndPlayAllMusicBars();
         FadeInMusicBarsUntilIndex(actualIndex);     
+    }*/
+
+    void StartNewConcert()
+    {
+        StopMusicSounds();
+        actualIndex = 0;
+
+        ChooseConcertAudio(false);
+
+        MuteAndPlayAllMusicBars();
+        FadeInMusicBarsUntilIndex(actualIndex);
     }
+
+    void StartPrevConcert()
+    {
+        StopMusicSounds();
+        actualIndex = 0;
+
+        MuteAndPlayAllMusicBars();
+        FadeInMusicBarsUntilIndex(actualIndex);
+    }
+
 
     void StopMusicSounds()
     {
@@ -279,18 +304,22 @@ public class AudioManagerTapBand : AudioManager
 
     #region Concert mix order
 
-    private void ChooseConcertAudio() //átnevezeni
+    private void ChooseConcertAudio(bool isStarted)
     {
-        int[] ret = { -1,-1,-1,-1,-1 };
+        int[] ret = { -1, -1, -1, -1, -1 };
+        int randomNumber = -1;
 
-        
-
-        int randomNumber = Random.Range(0, 3);
-
-        while(randomNumber == PlayerPrefsManager.GetPrevAudioConcertID())
+        if (isStarted)
+            randomNumber = PlayerPrefsManager.GetPrevAudioConcertID();
+        else
         {
-            randomNumber = Random.Range(0,3);
+            randomNumber = Random.Range(0, 3);
+            while (randomNumber == PlayerPrefsManager.GetPrevAudioConcertID())
+            {
+                randomNumber = Random.Range(0, 3);
+            }
         }
+        
 
         switch (randomNumber)
         {
