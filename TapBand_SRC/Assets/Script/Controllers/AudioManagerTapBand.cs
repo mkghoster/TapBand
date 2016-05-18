@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-//TODO: - settingsUI: eventek folyamatosan jönnek (akkor is ha nem állítom a csúszkát )  --> más megoldás? (ezért volt az encore song közben mindegyik sáv maxon szólt)
+
+//TODO: - settingsUI: eventek folyamatosan jönnek (akkor is ha nem állítom a csúszkát )  --> más megoldás? (ezért volt az encore song közben mindegyik sáv maxon szólt)   
+//  - cast indexet utilsba átemelni és mindenhova azt hívni ne helyit!!!!
+
 
 public class AudioManagerTapBand : AudioManager
 {
@@ -20,6 +24,11 @@ public class AudioManagerTapBand : AudioManager
     //index for Concert and MusicBars
     private int actualIndex;
 
+    //private int prevConcertAudioID; // kmenetni az előző concert audio id-t és ellenőrizni  volt e 
+
+    private AudioClip[] clips;
+
+
     void Awake()
     {
         songController = (SongController)GameObject.FindObjectOfType(typeof(SongController));
@@ -32,7 +41,11 @@ public class AudioManagerTapBand : AudioManager
         GetAllChildMusicSource();
 
         //inic SFX
-        base.InitAudioManager();   
+        base.InitAudioManager();
+
+
+        ReadMusicFromResources();
+        ChooseConcertAudio(true);
     }
 
     void Start()
@@ -61,6 +74,9 @@ public class AudioManagerTapBand : AudioManager
         {
             FadeInMusicBarsUntilIndex(concertState.LastComplatedSongID);
         }
+ 
+        
+       
     }
 
    
@@ -113,25 +129,29 @@ public class AudioManagerTapBand : AudioManager
     //concert success
     void EndOfConcertEvent(ConcertData concertData)
     {
-        StartNewOrPrevConcert(); 
+        //StartNewOrPrevConcert();
+        StartNewConcert();
     }
 
     //concert fail
     void ResetartConcert()
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartPrevConcert();
     }
 
     //OnPrestige
     void OnPrestigeEvent(TourData tourData)
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartNewConcert();//---???
     }
 
     //Nem kapott OnPrestigeEventet a torubol ha az első concerten nyomtunk ismét restart-ot
     void RestartConcertFromTour()
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartNewConcert();
     }
 
     //Change to actual music bars volume
@@ -156,14 +176,26 @@ public class AudioManagerTapBand : AudioManager
 
     #region music bars handle methods
 
-    //concert fail/succ -> same stuff, just from different events
-    void StartNewOrPrevConcert()
+    void StartNewConcert()
     {
-        StopMusicSounds(); 
+        StopMusicSounds();
         actualIndex = 0;
+
+        ChooseConcertAudio(false);
+
         MuteAndPlayAllMusicBars();
-        FadeInMusicBarsUntilIndex(actualIndex);     
+        FadeInMusicBarsUntilIndex(actualIndex);
     }
+
+    void StartPrevConcert()
+    {
+        StopMusicSounds();
+        actualIndex = 0;
+
+        MuteAndPlayAllMusicBars();
+        FadeInMusicBarsUntilIndex(actualIndex);
+    }
+
 
     void StopMusicSounds()
     {
@@ -258,6 +290,182 @@ public class AudioManagerTapBand : AudioManager
       print("*******************");
   }*/
 
+    #region Concert mix order
+
+    private void ChooseConcertAudio(bool isStarted)
+    {
+        int[] ret = { -1, -1, -1, -1, -1 };
+        int randomNumber = -1;
+
+        if (isStarted)
+            randomNumber = PlayerPrefsManager.GetPrevAudioConcertID();
+        else
+        {
+            randomNumber = Random.Range(0, 3);
+            while (randomNumber == PlayerPrefsManager.GetPrevAudioConcertID())
+            {
+                randomNumber = Random.Range(0, 3);
+            }
+        }
+        
+
+        switch (randomNumber)
+        {
+            case 0:
+                //print("0");               
+                ret = FirstConcertOrder();
+                break;
+            case 1:
+                //print("1");              
+                ret = SecondConcertOrder();
+                break;
+            case 2:
+                //print("2");            
+                ret = SecondConcertOrder();
+                break;
+            case 3:
+                //print("3");               
+                ret = ThirdConecertOrder();
+                break;
+        }
+
+        PlayerPrefsManager.SetPrevAudioConcertID(randomNumber);
+
+        /*for(int i = 0; i < ret.Length; i++)
+        {
+            print(i + ": "+ ret[i]);
+        }*/
+
+        SetCorrectOrderAudioClips(ret);
+
+    }
+
+    //0 - Guitar
+    //1 - Drum
+    //2 - Bass
+    //3 - Synth
+    //4 - Encore
+    
+    private void SetCorrectOrderAudioClips( int[] order)
+    {
+        int currentConcertAudioID = PlayerPrefsManager.GetPrevAudioConcertID();
+
+        for(int i = 0; i< order.Length;i++)
+        {
+            musicSources[i].clip = clips[ order[i] + (currentConcertAudioID * 5) ];
+        }
+    }
+
+    private void ReadMusicFromResources()
+    {
+       //--------------------------------------------------------------------- TODO, try catchbe
+        var array = Resources.LoadAll("PlaceHolder", typeof(AudioClip));
+        clips = new AudioClip[array.Length];
+        for (int i = 0; i < clips.Length; i++)
+        {
+            clips[i] = array[i] as AudioClip;
+        }
+    
+        /*for(int i = 0; i < clips.Length; i++)
+        {
+            print("name: "+ clips[i].name);
+        }*/
+
+    }
+
+
+    //Happy Develeopers
+    private int[] FirstConcertOrder()
+    {
+        float n = Random.Range(0f,1f);
+        int[] order = new int[5];
+        if (n >= 0.5f)
+            order[0] = 0;
+        else
+            order[0] = 1;
+
+
+        n = Random.Range(0f,1f);
+        if (order[0] == 1)
+            order[1] = 0;
+        else if ( order[0] == 0 && n <= 0.5f)
+            order[1] = 1;
+        else
+            order[1] = 2;
+
+
+        if (order[0] == 0 && order[1] == 2)
+            order[2] = 1;
+        else
+            order[2] = 2;
+
+        order[3] = 3;
+        order[4] = 4;
+
+        //print("order: "+ order[0] + order[1] + order[2] + order[3] + order[4]);
+        return order;
+
+    }
+
+    private int[] SecondConcertOrder()
+    {
+        float n = Random.Range(0,2);
+        //int("1. n: "+ n);
+        int[] order = new int[5];
+
+        if (n % 3 == 0)
+            order[0] = 0;
+        else if (n % 3 == 1)
+            order[0] = 1;
+        else
+            order[0] = 2;
+
+        n = Random.Range(0f, 1f);
+        if (order[0] == 1 || order[0] == 2)
+            order[1] = 0;
+        else if (order[0] == 0 && n >= 0.5f)
+            order[1] = 1;
+        else if (order[0] == 0 && n <= 0.5f)
+            order[1] = 2;
+
+        if ((order[0] == 0 && order[1] == 2) || (order[0] == 2 && order[1] == 0))  //----------TODO: előző kettőben a fordított eset lekezeése
+            order[2] = 1;
+        else   
+            order[2] = 2;
+
+        order[3] = 3;
+        order[4] = 4;
+
+
+        //print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
+        return order;
+    }
+
+    private int[] ThirdConecertOrder()
+    {
+        float n = Random.Range(0f, 1f);
+        int[] order = new int[5];
+
+        if (n >= 0.5f)
+            order[0] = 1;
+        else
+            order[0] = 2;
+
+        if (order[0] == 1)
+            order[1] = 2;
+        else
+            order[1] = 1;
+
+        order[2] = 0;
+        order[3] = 3;
+        order[4] = 4;
+
+        //print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
+        return order;
+    }
+
+
+    #endregion
 
 
 }

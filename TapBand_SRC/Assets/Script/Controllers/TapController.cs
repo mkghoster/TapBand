@@ -23,13 +23,13 @@ public class TapController : MonoBehaviour
     void OnEnable()
     {
         tapUI.OnTap += HandleTap;
-        songController.SwitchTapableCollider += SwitchTapAreaCollider;
+        songController.SwitchOnOffTap += SwitchTapAreaCollider;
     }
 
     void OnDisable()
     {
         tapUI.OnTap -= HandleTap;
-        songController.SwitchTapableCollider -= SwitchTapAreaCollider;
+        songController.SwitchOnOffTap -= SwitchTapAreaCollider;
     }
 
     #region MVC bindings
@@ -88,6 +88,6 @@ public class TapController : MonoBehaviour
 
     private void SwitchTapAreaCollider(bool value)
     {
-        tapUI.SwitchOnOffCollider(value);
+        tapUI.SwitchOnOffCollider(value);  //szebben???
     }
 }
