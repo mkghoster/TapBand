@@ -28,14 +28,15 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler
 		Debug.Log (eventData.pointerDrag.name + " was dropped to " +gameObject.name);
 
 		BoosterUI bd = eventData.pointerDrag.GetComponent<BoosterUI> ();
-		if (bd.IsActive()) {
+		if (bd.IsAvailable()) {
 			if (bd != null) {
 				tokenNumber -= bd.tokenCost;
-				string BoosterName = eventData.pointerDrag.name;
-                boosterController.HandleBoosters (BoosterName, bd);
-				bd.transform.localPosition = bd.basePosition;
-				Debug.Log (tokenNumber);
-                bd.boosterIsActive = false;
+                //string BoosterName = eventData.pointerDrag.name;
+                //boosterController.HandleBoosters (BoosterName, bd);
+                boosterController.HandleBoosters(bd);
+                //bd.transform.localPosition = bd.basePosition;
+                Debug.Log (tokenNumber+" tokens left");
+                bd.boosterIsAvailable = false;
 				if (tokenNumber <= 0) 
 					{
 						eventData.pointerDrag.SetActive (false);
