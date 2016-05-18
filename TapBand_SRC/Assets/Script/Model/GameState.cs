@@ -37,7 +37,6 @@ public class GameState : LoadableData
     public MerchState Merch { get; private set; }
     public ConcertState Concert { get; private set; }
     public EquipmentState Equipment { get; private set; }
-    public AchievementState AchievementState { get; private set; }
 
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
@@ -49,7 +48,6 @@ public class GameState : LoadableData
         Merch = gd.Merch == null ? new MerchState() : gd.Merch;
         Concert = gd.Concert == null ? new ConcertState() : gd.Concert;
         Equipment = gd.Equipment == null ? new EquipmentState() : gd.Equipment;
-        AchievementState = gd.AchievementState == null ? new AchievementState() : gd.AchievementState;
 
         Currency.SynchronizeRealCurrencyAndScreenCurrency();
     }
