@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System;
 
-[System.Serializable]
+[Serializable]
 public class CurrencyState
 {
     private int fans;
-    [System.NonSerialized]
+
+    [NonSerialized]
     private int screenFans;
 
     private int coins;
-    [System.NonSerialized]
+
+    [NonSerialized]
     private int screenCoins;
 
     private int tokens;
-    [System.NonSerialized]
+
+    [NonSerialized]
     private int screenTokens;
 
     private ICollection<Single> tapMultipliers = new List<Single>();
