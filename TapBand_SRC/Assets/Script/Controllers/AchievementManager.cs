@@ -9,7 +9,8 @@ public class AchievementManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        // TODO: load achievement groups
+        // TODO: wireup events
     }
 
     // Update is called once per frame

@@ -4,9 +4,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
-[System.Serializable]
-public class GameState : LoadableData {
+[Serializable]
+public class GameState : LoadableData
+{
 
     #region Singleton access
     private static GameState _instance;
@@ -24,83 +26,32 @@ public class GameState : LoadableData {
 
     private GameState()
     {
-        currencyState = new CurrencyState();
-        merchState = new MerchState();
-        concertState = new ConcertState();
-        equipmentState = new EquipmentState();
+        Currency = new CurrencyState();
+        Merch = new MerchState();
+        Concert = new ConcertState();
+        Equipment = new EquipmentState();
     }
     #endregion
 
-    private CurrencyState currencyState;
-    private MerchState merchState;
-    private ConcertState concertState;
-    private EquipmentState equipmentState;
-
-    
-    public CurrencyState Currency
-    {
-        get
-        {
-            return currencyState;
-        }
-
-        set
-        {
-            currencyState = value;
-        }
-    }
-
-    public MerchState Merch
-    {
-        get
-        {
-            return merchState;
-        }
-
-        set
-        {
-            merchState = value;
-        }
-    }
-
-	public ConcertState Concert
-	{
-		get
-		{
-			return concertState;
-		}
-		
-		set
-		{
-			concertState = value;
-		}
-	}
-
-    public EquipmentState Equipment
-    {
-        get
-        {
-            return equipmentState;
-        }
-
-        set
-        {
-            equipmentState = value;
-        }
-    }
+    public CurrencyState Currency { get; private set; }
+    public MerchState Merch { get; private set; }
+    public ConcertState Concert { get; private set; }
+    public EquipmentState Equipment { get; private set; }
+    public AchievementState AchievementState { get; private set; }
 
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {
         IFormatter formatter = new BinaryFormatter();
         GameState gd = (GameState)formatter.Deserialize(ms);
-        
-        this.currencyState = gd.currencyState == null ? new CurrencyState() : gd.currencyState;
-        this.merchState = gd.merchState == null ? new MerchState() : gd.merchState;
-		this.concertState = gd.concertState == null ? new ConcertState() : gd.concertState;
-        this.equipmentState = gd.equipmentState == null ? new EquipmentState() : gd.equipmentState;
 
-        this.currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        Currency = gd.Currency == null ? new CurrencyState() : gd.Currency;
+        Merch = gd.Merch == null ? new MerchState() : gd.Merch;
+        Concert = gd.Concert == null ? new ConcertState() : gd.Concert;
+        Equipment = gd.Equipment == null ? new EquipmentState() : gd.Equipment;
+        AchievementState = gd.AchievementState == null ? new AchievementState() : gd.AchievementState;
+
+        Currency.SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     public override string GetFileName()

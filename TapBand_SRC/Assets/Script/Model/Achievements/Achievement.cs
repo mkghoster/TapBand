@@ -1,20 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public abstract class Achievement
 {
-    //public abstract void CheckIsClaimable(GameStateEventArgs data);
+    public bool TrySetClaimable(double value)
+    {
+        if (value >= TargetValue)
+        {
+            IsClaimable = true;
+        }
+        return IsClaimable;
+    }
 
-    public void Claim()
+    public bool TryClaim()
     {
         if (IsClaimable && !IsClaimed)
         {
-            //TODO: signal token gain
             IsClaimed = true;
         }
-        //TODO: kell-e exception, ha nem claimelhet?
+        return IsClaimed;
+    }
+
+    public int Id { get; protected set; }
+
+    [NonSerialized]
+    private AchievementGroup achievementGroup;
+    public AchievementGroup AchievementGroup
+    {
+        get
+        { return achievementGroup; }
+        protected set
+        {
+            achievementGroup = value;
+        }
     }
 
     public bool IsClaimable { get; protected set; }
     public bool IsClaimed { get; protected set; }
+    protected double TargetValue { get; set; }
 }
