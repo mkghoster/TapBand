@@ -40,6 +40,7 @@ public class GameData : LoadableData
     private List<EquipmentData> equipmentDataList;
     private List<MerchData> merchDataList;
     private List<GeneralData> generalDataList;
+    private BoosterData boosterData;
 
     public List<SongData> SongDataList
     {
@@ -132,6 +133,19 @@ public class GameData : LoadableData
         return null;
     }
 
+    public BoosterData BoosterData
+    {
+        get
+        {
+            return boosterData;
+        }
+
+        set
+        {
+            boosterData = value;
+        }
+    }
+
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {
@@ -144,6 +158,9 @@ public class GameData : LoadableData
         this.merchDataList = gd.merchDataList;
         this.equipmentDataList = gd.equipmentDataList;
         this.generalDataList = gd.generalDataList;
+        this.boosterData = new BoosterData();
+
+        this.boosterData.LoadBoostersData(gd);
     }
 
     public override string GetFileName()

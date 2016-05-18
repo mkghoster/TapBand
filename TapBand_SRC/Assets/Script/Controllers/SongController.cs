@@ -30,6 +30,8 @@ public class SongController : MonoBehaviour
 
     private float actualTapAmount = 0f;
     private float timeCountDown = 0f;
+	private float bossBattleCountDownBooster = 0f;
+	private bool extraTimeBoosterIsActive = false;
 
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
     private const int beforeEncoreSongConstID = 3;
@@ -85,6 +87,13 @@ public class SongController : MonoBehaviour
                                  
         if (currentSong.bossBattle)
         {
+            if(!isEncoreOver)
+                timeCountDown += deltaTime;
+			if (extraTimeBoosterIsActive) {
+                timeCountDown -= bossBattleCountDownBooster;
+				extraTimeBoosterIsActive = false;
+			}
+
             if (timeCountDown > currentSong.duration)
             {
                 ResetartConcert();
@@ -187,6 +196,11 @@ public class SongController : MonoBehaviour
     {
         return currentSong.id;
     }
+
+	public void BossExtratime(float extraTime){
+		timeCountDown = -extraTime;
+		extraTimeBoosterIsActive = true;
+	}
 
     //when we push the encore button
     private void StartEncoreSong()

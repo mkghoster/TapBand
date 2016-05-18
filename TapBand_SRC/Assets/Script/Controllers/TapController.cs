@@ -7,6 +7,8 @@ public class TapController : MonoBehaviour
     private SongController songController;
 
     public float SpotlightTapMultiplier;
+	public float boosterMultiplier=0f;
+	public float boosterTimeInterval=0f;
 
     public delegate void TapEvent(float value);
     public event TapEvent OnTap;
@@ -48,6 +50,9 @@ public class TapController : MonoBehaviour
         foreach (Vector2 position in positions)
         {
             float tapValue = CalculateTapValue(position, special);
+			if (boosterMultiplier > 0 && boosterTimeInterval>0) {
+				tapValue *= boosterMultiplier;
+			}
             tapUI.DisplayTapValueAt(position, (ulong)tapValue, special);
 
             if (OnTap != null)
@@ -72,6 +77,14 @@ public class TapController : MonoBehaviour
     {
         return f == 0.0f ? 1.0f : f;
     }
+
+	public void BoosterMultiplier(float multiplierValue){
+		boosterMultiplier = multiplierValue;
+	}
+
+	public void BoosterTimeInterval(float multiplierIntervalValue){
+		boosterTimeInterval = multiplierIntervalValue;
+	}
 
     private void SwitchTapAreaCollider(bool value)
     {
