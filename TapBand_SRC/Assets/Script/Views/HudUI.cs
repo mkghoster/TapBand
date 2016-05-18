@@ -86,12 +86,28 @@ public class HudUI : MonoBehaviour {
         if (TimePassed != null)
         {
             GUI.color = Color.red;
-            GUI.Box(
+            if(actualSongData.bossBattle)
+            {
+                GUI.Box(
                 new Rect(
-                    Screen.width / 4-25f,
+                    Screen.width / 4 - 25f,
                     startingVerticalPos + heightOfBar + 5f,
-					(TimePassed() * 5 /actualSongData.tapGoal)*(Screen.width/2)+50f,
+                    (TimePassed() * 5 / actualSongData.tapGoal) * (Screen.width / 2) + 50f,
                     heightOfBar), "Time");
+
+               // print("bossbattle duration: " + actualSongData.duration);
+                //print("bossbattle tapGoal: "  + actualSongData.tapGoal);
+            }
+            else  //************************** ÁTMENETI   ********************************************************* amíg a nem boss songok hossza 0 !!!!!!!!!!!!!!!!!!!!!!!!!!!
+            {
+                GUI.Box(
+                new Rect(
+                   Screen.width / 4 - 25f,
+                   startingVerticalPos + heightOfBar + 5f,
+                   (TimePassed() * 5 / 80f) * (Screen.width / 2) + 50f,
+                   heightOfBar), "Time");
+            }
+            //print("timepassed: "+TimePassed() + " || tapgoal: "+ actualSongData.tapGoal);
         }
     }
 }

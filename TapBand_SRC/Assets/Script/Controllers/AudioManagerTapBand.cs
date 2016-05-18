@@ -176,18 +176,6 @@ public class AudioManagerTapBand : AudioManager
 
     #region music bars handle methods
 
-    //concert fail/succ -> same stuff, just from different events
-    /*void StartNewOrPrevConcert()
-    {
-        StopMusicSounds(); 
-        actualIndex = 0;
-
-        ChooseConcertAudio();
-
-        MuteAndPlayAllMusicBars();
-        FadeInMusicBarsUntilIndex(actualIndex);     
-    }*/
-
     void StartNewConcert()
     {
         StopMusicSounds();

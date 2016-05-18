@@ -28,7 +28,8 @@ public class SongController : MonoBehaviour
     private EncoreButtonUI encoreButton;
 
     private float actualTapAmount = 0f;
-    private float bossBattleCountDown = 0f;
+    //private float bossBattleCountDown = 0f;
+    private float timeCountDown = 0f;
 
     // private bool wasEncoreSongTry = false; 
 
@@ -77,21 +78,35 @@ public class SongController : MonoBehaviour
             if (GiveNextSong != null)
             {
                 currentSong = GiveNextSong();
-            }
+            }    
         }
 
+       
+        if (!isEncoreOver)
+            timeCountDown += deltaTime;
+                                 
         if (currentSong.bossBattle)
         {
-            if(!isEncoreOver)
-                bossBattleCountDown += deltaTime;
-
-            if (bossBattleCountDown > currentSong.duration)
+            if (timeCountDown > currentSong.duration)
             {
-                ResetControllerState();
-                currentSong = GiveFirstSongOfActualConcert();
+                ResetartConcert();
+            }        
+        }
+        else        //************************** ÁTMENETI   ********************************************************* amíg a nem boss songok hossza 0 !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        {
+            if (timeCountDown > 20f) ///--------------- MOST BEÉGETVE A SIMA SZÁMOKNÁL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            {
+                ResetartConcert();
             }
         }
-        //print("wasEncoreSongTry:" + PlayerPrefsManager.GetEncoreSongTry());
+
+    }
+
+
+    private void ResetartConcert()
+    {
+        ResetControllerState();
+        currentSong = GiveFirstSongOfActualConcert();
     }
 
     private float TapPassed()
@@ -101,7 +116,8 @@ public class SongController : MonoBehaviour
 
     private float TimePassed()
     {
-        return bossBattleCountDown;
+        //print("vau: "+ timeCountDown);
+        return timeCountDown;
     }
 
     private void IncomingTapStrength(float tapStrength)
@@ -165,7 +181,7 @@ public class SongController : MonoBehaviour
     private void ResetControllerState()
     {
         actualTapAmount = 0f;
-        bossBattleCountDown = 0f;
+        timeCountDown = 0f;
         currentSong = null;
     }
 
@@ -217,6 +233,7 @@ public class SongController : MonoBehaviour
         {
             SwitchTapableCollider(true);
         }
+        isEncoreOver = false;
         StartNextSong();
     }
 }
