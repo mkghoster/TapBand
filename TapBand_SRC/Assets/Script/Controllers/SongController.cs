@@ -17,8 +17,9 @@ public class SongController : MonoBehaviour
     public delegate void ShowEncoreButtonEvent();
     public event ShowEncoreButtonEvent ShowEncoreButton;
 
-    public delegate void SwitchTapableColliderEvent(bool value);
-    public event SwitchTapableColliderEvent SwitchTapableCollider;
+    //between 2 concert
+    public delegate void SwitchOnOffTapEvent(bool value);
+    public event SwitchOnOffTapEvent SwitchOnOffTap;
 
 
     private TapController tapController;
@@ -28,10 +29,7 @@ public class SongController : MonoBehaviour
     private EncoreButtonUI encoreButton;
 
     private float actualTapAmount = 0f;
-    //private float bossBattleCountDown = 0f;
     private float timeCountDown = 0f;
-
-    // private bool wasEncoreSongTry = false; 
 
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
     private const int beforeEncoreSongConstID = 3;
@@ -116,7 +114,6 @@ public class SongController : MonoBehaviour
 
     private float TimePassed()
     {
-        //print("vau: "+ timeCountDown);
         return timeCountDown;
     }
 
@@ -151,9 +148,9 @@ public class SongController : MonoBehaviour
                 if (currentSong.bossBattle)
                 {
                     StartCoroutine(WaitAfterConcert(SongConcertTour.waitTimeBetweenConcerts));
-                    if(SwitchTapableCollider != null)
+                    if(SwitchOnOffTap != null)
                     {
-                        SwitchTapableCollider(false);
+                        SwitchOnOffTap(false);
                     }
                     isEncoreOver = true;
                 }
@@ -229,9 +226,9 @@ public class SongController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         
         //visszakapcsolás
-        if (SwitchTapableCollider != null)
+        if (SwitchOnOffTap != null)
         {
-            SwitchTapableCollider(true);
+            SwitchOnOffTap(true);
         }
         isEncoreOver = false;
         StartNextSong();

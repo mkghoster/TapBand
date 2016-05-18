@@ -14,8 +14,16 @@ public class SpotlightController : MonoBehaviour
 
     public SpotlightUI spotlightUI;
     public TapController tapController;
+    private SongController songController;
 
     public GameObject[] musicians;
+
+    private bool canActivate = true;
+
+    void Awake()
+    {
+        songController = (SongController)FindObjectOfType(typeof(SongController));
+    }
 
     void Start()
     {
@@ -32,19 +40,33 @@ public class SpotlightController : MonoBehaviour
         tapController.SpotlightTapMultiplier = SpotlightTapMultiplier;
     }
 
+    void OnEnable()
+    {
+        songController.SwitchOnOffTap += SwitchOnOffSpotlight;
+    }
+
+    void OnDisable()
+    {
+        songController.SwitchOnOffTap -= SwitchOnOffSpotlight;
+    }
+
     void Update()
     {
         float dt = Time.deltaTime;
 
-        if (initSpotlightCountdown <= 0)
+        if (canActivate)
         {
-            int indexToActivate = UnityEngine.Random.Range(0, musicians.Length);
-            spotlightUI.Activate(musicians[indexToActivate]);
-            initSpotlightCountdown = CalculateAliveTime();
-        } else
-        {
-            initSpotlightCountdown -= dt;
-        }
+            if (initSpotlightCountdown <= 0)
+            {
+                int indexToActivate = UnityEngine.Random.Range(0, musicians.Length);
+                spotlightUI.Activate(musicians[indexToActivate]);
+                initSpotlightCountdown = CalculateAliveTime();
+            }
+            else
+            {
+                initSpotlightCountdown -= dt;
+            }
+        }     
     }
 
     private float CalculateAliveTime()
@@ -55,5 +77,11 @@ public class SpotlightController : MonoBehaviour
     private float ReadFloat(string name)
     {
         return Convert.ToSingle(GameData.instance.FindGeneralDataByName(name).value);
+    }
+
+    //between 2 concert
+    private void SwitchOnOffSpotlight(bool value)
+    {
+        canActivate = value;
     }
 }
