@@ -24,7 +24,7 @@ public class GameData : LoadableData
             return _instance;
         }
     }
-    
+
     // TODO: solve its protection level issues in RawGameDataLoader
     /*
     private GameData()
@@ -34,103 +34,37 @@ public class GameData : LoadableData
     */
     #endregion
 
-    private List<SongData> songDataList;
-    private List<ConcertData> concertDataList;
-    private List<TourData> tourDataList;
-    private List<EquipmentData> equipmentDataList;
-    private List<MerchData> merchDataList;
-    private List<GeneralData> generalDataList;
+    public IList<SongData> SongDataList { get; private set; }
+    public IList<ConcertData> ConcertDataList { get; private set; }
 
-    public List<SongData> SongDataList
-    {
-        get
-        {
-            return songDataList;
-        }
+    public IList<CharacterData> CharacterData1List { get; private set; }
+    public IList<CharacterData> CharacterData2List { get; private set; }
+    public IList<CharacterData> CharacterData3List { get; private set; }
+    public IList<CharacterData> CharacterData4List { get; private set; }
+    public IList<CharacterData> CharacterData5List { get; private set; }
 
-        set
-        {
-            songDataList = value;
-        }
-    }
+    public IList<SkinData> SkinData1List { get; private set; }
+    public IList<SkinData> SkinData2List { get; private set; }
+    public IList<SkinData> SkinData3List { get; private set; }
+    public IList<SkinData> SkinData4List { get; private set; }
+    public IList<SkinData> SkinData5List { get; private set; }
 
-    public List<ConcertData> ConcertDataList
-    {
-        get
-        {
-            return concertDataList;
-        }
+    public IList<MerchData> MerchData1List { get; private set; }
+    public IList<MerchData> MerchData2List { get; private set; }
+    public IList<MerchData> MerchData3List { get; private set; }
+    public IList<MerchData> MerchData4List { get; private set; }
+    public IList<MerchData> MerchData5List { get; private set; }
+    public IList<MerchData> MerchData6List { get; private set; }
 
-        set
-        {
-            concertDataList = value;
-        }
-    }
+    public IList<MerchSlotData> MerchSlotData { get; private set; }
 
-    public List<TourData> TourDataList
-    {
-        get
-        {
-            return tourDataList;
-        }
+    public IapData IapData { get; private set; }
+    public GeneralData GeneralData { get; private set; }
 
-        set
-        {
-            tourDataList = value;
-        }
-    }
+    public IList<DroneRewardData> DroneRewardDataList { get; private set; }
 
-    public List<EquipmentData> EquipmentDataList
-    {
-        get
-        {
-            return equipmentDataList;
-        }
-
-        set
-        {
-            equipmentDataList = value;
-        }
-    }
-
-    public List<MerchData> MerchDataList
-    {
-        get
-        {
-            return merchDataList;
-        }
-
-        set
-        {
-            merchDataList = value;
-        }
-    }
-
-    public List<GeneralData> GeneralDataList
-    {
-        get
-        {
-            return generalDataList;
-        }
-
-        set
-        {
-            generalDataList = value;
-        }
-    }
-
-    public GeneralData FindGeneralDataByName(string name)
-    {
-        foreach (GeneralData data in generalDataList)
-        {
-            if (data.name == name)
-            {
-                return data;
-            }
-        }
-
-        return null;
-    }
+    public IList<DailyRandomData> DailyRandomDataList { get; private set; }
+    public IList<DailyStreakData> DailyStreakDataList { get; private set; }
 
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
@@ -138,12 +72,32 @@ public class GameData : LoadableData
         IFormatter formatter = new BinaryFormatter();
         GameData gd = (GameData)formatter.Deserialize(ms);
 
-        this.songDataList = gd.songDataList;
-        this.concertDataList = gd.concertDataList;
-        this.tourDataList = gd.tourDataList;
-        this.merchDataList = gd.merchDataList;
-        this.equipmentDataList = gd.equipmentDataList;
-        this.generalDataList = gd.generalDataList;
+        // nem lenne egyszerűbb staticcá tenni a loaddatát, és az instancet beállítani a deserializált cuccra?
+
+        SongDataList = gd.SongDataList;
+        ConcertDataList = gd.ConcertDataList;
+        CharacterData1List = gd.CharacterData1List;
+        CharacterData2List = gd.CharacterData2List;
+        CharacterData3List = gd.CharacterData3List;
+        CharacterData4List = gd.CharacterData4List;
+        CharacterData5List = gd.CharacterData5List;
+
+        MerchData1List = gd.MerchData1List;
+        MerchData2List = gd.MerchData2List;
+        MerchData3List = gd.MerchData3List;
+        MerchData4List = gd.MerchData4List;
+        MerchData5List = gd.MerchData5List;
+        MerchData6List = gd.MerchData6List;
+
+        MerchSlotData = gd.MerchSlotData;
+
+        IapData = gd.IapData;
+        GeneralData = gd.GeneralData;
+
+        DroneRewardDataList = gd.DroneRewardDataList;
+
+        DailyRandomDataList = gd.DailyRandomDataList;
+        DailyStreakDataList = gd.DailyStreakDataList;
     }
 
     public override string GetFileName()

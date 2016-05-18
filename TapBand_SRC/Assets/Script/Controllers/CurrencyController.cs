@@ -64,10 +64,10 @@ public class CurrencyController : MonoBehaviour {
         currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void EquipmentTransaction(EquipmentData equipment)
+    private void EquipmentTransaction(CharacterData equipment)
     {
         currencyState.Coins -= equipment.upgradeCost;
-        currencyState.AddTapMultiplier(equipment.tapMultiplier);
+        currencyState.AddTapMultiplier(equipment.tapStrengthBonus);
 
         currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class EquipmentUI : MonoBehaviour {
-	public delegate EquipmentData EquipmentDataEvent();
+	public delegate CharacterData EquipmentDataEvent();
 	public event EquipmentDataEvent CurrentDrumEquipmentData;
 	public event EquipmentDataEvent CurrentGuitarEquipmentData;
 	public event EquipmentDataEvent CurrentBassEquipmentData;
@@ -14,7 +14,7 @@ public class EquipmentUI : MonoBehaviour {
 	public event EquipmentDataEvent NextBassEquipmentData;
 	public event EquipmentDataEvent NextKeyboardEquipmentData;
 	
-	public delegate void BuyEquipmentEvent(EquipmentData data);
+	public delegate void BuyEquipmentEvent(CharacterData data);
 	public event BuyEquipmentEvent BuyDrumEquipment;
 	public event BuyEquipmentEvent BuyGuitarEquipment;
 	public event BuyEquipmentEvent BuyBassEquipment;
@@ -29,11 +29,11 @@ public class EquipmentUI : MonoBehaviour {
 	{
 		if (CurrentDrumEquipmentData != null)
 		{
-			EquipmentData drumData = CurrentDrumEquipmentData();
+			CharacterData drumData = CurrentDrumEquipmentData();
 			if (drumData != null)
 			{
 				GetTextComponentOfChild(drumPanel, "CurrentDrumHolder").text = drumData.name;
-				GetTextComponentOfChild(drumPanel, "CurrentDrumsBenefitsHolder").text = drumData.tapMultiplier.ToString();
+				GetTextComponentOfChild(drumPanel, "CurrentDrumsBenefitsHolder").text = drumData.tapStrengthBonus.ToString();
 			}
 		}
 		
@@ -41,12 +41,12 @@ public class EquipmentUI : MonoBehaviour {
 		
 		if (NextDrumEquipmentData != null)
 		{
-			EquipmentData drumData = NextDrumEquipmentData();
+			CharacterData drumData = NextDrumEquipmentData();
 			if (drumData != null)
 			{
 				GetButtonTextComponentOfChild(drumPanel, "DrumsUpgradeButton").text = "Buy for " + drumData.upgradeCost;
                 //NextBoostProperties
-                GetTextComponentOfChild(drumPanel, "NextDrumsBenefitsHolder").text = "It'll give " + drumData.tapMultiplier+ " multiplier";
+                GetTextComponentOfChild(drumPanel, "NextDrumsBenefitsHolder").text = "It'll give " + drumData.tapStrengthBonus+ " multiplier";
 				
 				if (CanBuy != null)
 				{
@@ -64,11 +64,11 @@ public class EquipmentUI : MonoBehaviour {
 		
 		if (CurrentGuitarEquipmentData != null)
 		{
-			EquipmentData guitarData = CurrentGuitarEquipmentData();
+			CharacterData guitarData = CurrentGuitarEquipmentData();
 			if (guitarData != null)
 			{
 				GetTextComponentOfChild(guitarPanel, "CurrentGuitarHolder").text = guitarData.name;
-				GetTextComponentOfChild(guitarPanel, "CurrentGuitarBenefitsHolder").text = guitarData.tapMultiplier.ToString();
+				GetTextComponentOfChild(guitarPanel, "CurrentGuitarBenefitsHolder").text = guitarData.tapStrengthBonus.ToString();
 			}
 		}
 		
@@ -76,11 +76,11 @@ public class EquipmentUI : MonoBehaviour {
 		
 		if (NextGuitarEquipmentData != null)
 		{
-			EquipmentData guitarData = NextGuitarEquipmentData();
+			CharacterData guitarData = NextGuitarEquipmentData();
 			if (guitarData != null)
 			{
 				GetButtonTextComponentOfChild(guitarPanel, "GuitarsUpgradeButton").text = "Buy for " + guitarData.upgradeCost;
-				GetTextComponentOfChild(guitarPanel, "NextGuitarBenefitsHolder").text = "It'll give " + guitarData.tapMultiplier + " multiplier";
+				GetTextComponentOfChild(guitarPanel, "NextGuitarBenefitsHolder").text = "It'll give " + guitarData.tapStrengthBonus + " multiplier";
 				
 				if (CanBuy != null)
 				{
@@ -98,11 +98,11 @@ public class EquipmentUI : MonoBehaviour {
 
 		if (CurrentBassEquipmentData != null)
 		{
-			EquipmentData bassData = CurrentBassEquipmentData();
+			CharacterData bassData = CurrentBassEquipmentData();
 			if (bassData != null)
 			{
 				GetTextComponentOfChild(bassPanel, "CurrentBassHolder").text = bassData.name;
-				GetTextComponentOfChild(bassPanel, "CurrentBassBenefitsHolder").text = bassData.tapMultiplier.ToString();
+				GetTextComponentOfChild(bassPanel, "CurrentBassBenefitsHolder").text = bassData.tapStrengthBonus.ToString();
 			}
 		}
 		
@@ -110,11 +110,11 @@ public class EquipmentUI : MonoBehaviour {
 		
 		if (NextBassEquipmentData != null)
 		{
-			EquipmentData bassData = NextBassEquipmentData();
+			CharacterData bassData = NextBassEquipmentData();
 			if (bassData != null)
 			{
 				GetButtonTextComponentOfChild(bassPanel, "BassUpgradeButton").text = "Buy for " + bassData.upgradeCost;
-				GetTextComponentOfChild(bassPanel, "NextBassBenefitsHolder").text = "It'll give " + bassData.tapMultiplier + " multiplier";
+				GetTextComponentOfChild(bassPanel, "NextBassBenefitsHolder").text = "It'll give " + bassData.tapStrengthBonus + " multiplier";
 				
 				if (CanBuy != null)
 				{
@@ -132,11 +132,11 @@ public class EquipmentUI : MonoBehaviour {
 
 		if (CurrentKeyboardEquipmentData != null)
 		{
-			EquipmentData keyboardData = CurrentKeyboardEquipmentData();
+			CharacterData keyboardData = CurrentKeyboardEquipmentData();
 			if (keyboardData != null)
 			{
 				GetTextComponentOfChild(keyboardPanel, "CurrentKeyboardHolder").text = keyboardData.name;
-				GetTextComponentOfChild(keyboardPanel, "CurrentKeyboardBenefitsHolder").text = keyboardData.tapMultiplier.ToString();
+				GetTextComponentOfChild(keyboardPanel, "CurrentKeyboardBenefitsHolder").text = keyboardData.tapStrengthBonus.ToString();
 			}
 		}
 		
@@ -144,11 +144,11 @@ public class EquipmentUI : MonoBehaviour {
 		
 		if (NextKeyboardEquipmentData != null)
 		{
-			EquipmentData keyboardData = NextKeyboardEquipmentData();
+			CharacterData keyboardData = NextKeyboardEquipmentData();
 			if (keyboardData != null)
 			{
 				GetButtonTextComponentOfChild(keyboardPanel, "KeyboardUpgradeButton").text = "Buy for " + keyboardData.upgradeCost;
-				GetTextComponentOfChild(keyboardPanel, "NextKeyboardBenefitsHolder").text = "It'll give " + keyboardData.tapMultiplier + " multiplier";
+				GetTextComponentOfChild(keyboardPanel, "NextKeyboardBenefitsHolder").text = "It'll give " + keyboardData.tapStrengthBonus + " multiplier";
 				
 				if (CanBuy != null)
 				{
