@@ -63,12 +63,24 @@ public class HudUI : MonoBehaviour {
         if (TapPassed != null)
         {
             GUI.color = Color.yellow;
-            GUI.Box(
-                new Rect(
-                    Screen.width / 4-25f,
-                    startingVerticalPos,
-					(TapPassed()/actualSongData.tapGoal)*(Screen.width/2)+50f,
-                    heightOfBar), "Tap");
+            if( TapPassed() >= (float)actualSongData.tapGoal  && actualSongData.bossBattle)
+            {
+                //print("vau");
+                /*GUI.Box(
+                    new Rect(
+                        Screen.width / 4 - 25f,
+                        startingVerticalPos,
+                        (actualSongData.tapGoal) * (Screen.width / 2) + 50f,
+                        heightOfBar), "Tap");*/
+                //print("TapGoal: "+actualSongData.tapGoal +  "  TapPassed: "+ TapPassed());
+            }
+            else
+                GUI.Box(
+                    new Rect(
+                        Screen.width / 4-25f,
+                        startingVerticalPos,
+					    (TapPassed()/actualSongData.tapGoal)*(Screen.width/2)+50f,
+                        heightOfBar), "Tap");
         }
 
         if (TimePassed != null)
