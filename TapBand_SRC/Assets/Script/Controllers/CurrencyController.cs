@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CurrencyController : MonoBehaviour {
+public class CurrencyController : MonoBehaviour
+{
 
-	private SongController songController;
-	private ConcertController concertController;
+    private SongController songController;
+    private ConcertController concertController;
     private TourController tourController;
     private MerchController merchController;
-    private EquipmentController equipmentController;
+    //private EquipmentController equipmentController;
 
     private HudUI hudUI;
 
@@ -15,11 +16,11 @@ public class CurrencyController : MonoBehaviour {
 
     void Awake()
     {
-		songController = (SongController)FindObjectOfType (typeof(SongController));
-		concertController = (ConcertController)FindObjectOfType (typeof(ConcertController));
+        songController = (SongController)FindObjectOfType(typeof(SongController));
+        concertController = (ConcertController)FindObjectOfType(typeof(ConcertController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
         merchController = (MerchController)FindObjectOfType(typeof(MerchController));
-        equipmentController = (EquipmentController)FindObjectOfType(typeof(EquipmentController));
+        //equipmentController = (EquipmentController)FindObjectOfType(typeof(EquipmentController));
         hudUI = (HudUI)FindObjectOfType(typeof(HudUI));
 
         currencyState = GameState.instance.Currency;
@@ -27,39 +28,39 @@ public class CurrencyController : MonoBehaviour {
 
     void OnEnable()
     {
-		songController.GiveRewardOfSong += AddCoins;
-		concertController.GiveCoinRewardOfConcert += AddCoins;
-		concertController.GiveFanRewardOfConcert += AddFans;
+        songController.GiveRewardOfSong += AddCoins;
+        concertController.GiveCoinRewardOfConcert += AddCoins;
+        concertController.GiveFanRewardOfConcert += AddFans;
         tourController.OnPrestige += OnPrestige;
 
         merchController.MerchTransaction += MerchTransaction;
         merchController.CoinTransaction += AddCoins;
-        equipmentController.EquipmentTransaction += EquipmentTransaction;
+        //equipmentController.EquipmentTransaction += EquipmentTransaction;
         merchController.CanBuy += CanBuy;
         hudUI.NewCoin += Coins;
-		hudUI.NewFans += Fans;
+        hudUI.NewFans += Fans;
     }
 
     void OnDisable()
     {
-		songController.GiveRewardOfSong -= AddCoins;
-		concertController.GiveCoinRewardOfConcert -= AddCoins;
-		concertController.GiveFanRewardOfConcert -= AddFans;
+        songController.GiveRewardOfSong -= AddCoins;
+        concertController.GiveCoinRewardOfConcert -= AddCoins;
+        concertController.GiveFanRewardOfConcert -= AddFans;
         tourController.OnPrestige -= OnPrestige;
 
         merchController.MerchTransaction -= MerchTransaction;
         merchController.CoinTransaction -= AddCoins;
-        equipmentController.EquipmentTransaction -= EquipmentTransaction;
+        //equipmentController.EquipmentTransaction -= EquipmentTransaction;
         merchController.CanBuy -= CanBuy;
         hudUI.NewCoin -= Coins;
-		hudUI.NewFans -= Fans;
+        hudUI.NewFans -= Fans;
     }
 
-    private void OnPrestige(TourData tour)
+    private void OnPrestige()
     {
         currencyState.Coins = 0;
         currencyState.Fans = 0;
-        currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
+        //  currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
 
         currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
@@ -67,14 +68,14 @@ public class CurrencyController : MonoBehaviour {
     private void EquipmentTransaction(CharacterData equipment)
     {
         currencyState.Coins -= equipment.upgradeCost;
-        currencyState.AddTapMultiplier(equipment.tapStrengthBonus);
+        currencyState.TapMultipliers.Add(equipment.tapStrengthBonus);
 
         currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     private void MerchTransaction(MerchData merch)
     {
-        currencyState.Coins -= merch.upgradeCost;
+        currencyState.Coins -= merch.cost;
 
         currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
@@ -86,7 +87,7 @@ public class CurrencyController : MonoBehaviour {
     }
 
     private void AddFans(int fans)
-	{
+    {
         currencyState.Fans += fans;
         currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
@@ -107,9 +108,9 @@ public class CurrencyController : MonoBehaviour {
         return currencyState.ScreenCoins.ToString();
     }
 
-	private string Fans()
-	{
-		// Temporal solution for test purposes
-		return currencyState.ScreenFans.ToString();
-	}
+    private string Fans()
+    {
+        // Temporal solution for test purposes
+        return currencyState.ScreenFans.ToString();
+    }
 }

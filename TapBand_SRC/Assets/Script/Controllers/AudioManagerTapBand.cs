@@ -139,7 +139,7 @@ public class AudioManagerTapBand : AudioManager
     }
 
     //OnPrestige
-    void OnPrestigeEvent(TourData tourData)
+    void OnPrestigeEvent()
     {
         StartNewOrPrevConcert();
     }

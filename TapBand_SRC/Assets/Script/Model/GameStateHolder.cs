@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 public class GameStateHolder : MonoBehaviour
@@ -34,14 +34,14 @@ public class GameStateHolder : MonoBehaviour
 	{
 		foreach (ConcertData cd in GameData.instance.ConcertDataList)
 		{
-			cd.songList = GetAllSongForConcert(cd.id);
+			cd.songList = GetAllSongsForConcert(cd.id);
 		}
 
 	}
 
-	private List<SongData> GetAllSongForConcert(int concertID)
+	private List<SongData> GetAllSongsForConcert(int concertID)
 	{
-		return GameData.instance.SongDataList.FindAll (x => x.concertID == concertID);
+		return GameData.instance.SongDataList.Where(x => x.concertID == concertID).ToList(); // ez nem korrekt, a concert ismeri a songjait
 	}
 
 }

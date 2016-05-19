@@ -5,90 +5,13 @@ using System;
 [Serializable]
 public class CurrencyState
 {
-    private int fans;
+    public double Fans { get; set; }
+    public double Coins { get; set; }
+    public int Tokens { get; set; }
 
     [NonSerialized]
-    private int screenFans;
-
-    private int coins;
-
-    [NonSerialized]
-    private int screenCoins;
-
-    private int tokens;
-
-    [NonSerialized]
-    private int screenTokens;
-
-    private ICollection<Single> tapMultipliers = new List<Single>();
-
-    public void AddTapMultiplier(float multiplier)
-    {
-        tapMultipliers.Add(multiplier);
-    }
-    
-    public float TapMultipliersProduct
-    {
-        get
-        {
-            float retVal = 1.0f;
-
-            foreach (float f in tapMultipliers)
-            {
-                retVal *= f;
-            }
-
-            return retVal;
-        }
-    }
-
-    public void SynchronizeRealCurrencyAndScreenCurrency()
-    {
-        screenFans = fans;
-        screenCoins = coins;
-        screenTokens = tokens;
-    }
-
-    public int Fans
-    {
-        get
-        {
-            return fans;
-        }
-
-        set
-        {
-            fans = value;
-        }
-    }
-
-    public int Coins
-    {
-        get
-        {
-            return coins;
-        }
-
-        set
-        {
-            coins = value;
-        }
-    }
-
-    public int Tokens
-    {
-        get
-        {
-            return tokens;
-        }
-
-        set
-        {
-            tokens = value;
-        }
-    }
-    
-    public int ScreenFans
+    private double screenFans;
+    public double ScreenFans
     {
         get
         {
@@ -101,7 +24,9 @@ public class CurrencyState
         }
     }
 
-    public int ScreenCoins
+    [NonSerialized]
+    private double screenCoins;
+    public double ScreenCoins
     {
         get
         {
@@ -114,6 +39,8 @@ public class CurrencyState
         }
     }
 
+    [NonSerialized]
+    private int screenTokens;
     public int ScreenTokens
     {
         get
@@ -127,17 +54,32 @@ public class CurrencyState
         }
     }
 
-    public ICollection<float> TapMultipliers
+    public IList<float> TapMultipliers { get; private set; }
+
+    public CurrencyState()
+    {
+        TapMultipliers = new List<float>();
+    }
+
+    public float TapMultipliersProduct
     {
         get
         {
-            return tapMultipliers;
-        }
+            float retVal = 1.0f;
 
-        set
-        {
-            tapMultipliers = value;
+            for (int i = 0; i < TapMultipliers.Count; i++)
+            {
+                retVal *= TapMultipliers[i];
+            }
+
+            return retVal;
         }
     }
 
+    public void SynchronizeRealCurrencyAndScreenCurrency()
+    {
+        screenFans = Fans;
+        screenCoins = Coins;
+        screenTokens = Tokens;
+    }
 }

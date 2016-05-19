@@ -68,7 +68,7 @@ public class EquipmentState {
 			{
 				return null;
 			}
-			return GameData.instance.EquipmentDataList.Find(x => x.id == drumEquipmentId);
+            return null;// GameData.instance.EquipmentDataList.Find(x => x.id == drumEquipmentId);
 		}
 	}
 
@@ -80,7 +80,7 @@ public class EquipmentState {
 			{
 				return null;
 			}
-			return GameData.instance.EquipmentDataList.Find(x => x.id == guitarEquipmentId);
+            return null; // GameData.instance.EquipmentDataList.Find(x => x.id == guitarEquipmentId);
 		}
 	}
 
@@ -92,7 +92,7 @@ public class EquipmentState {
 			{
 				return null;
 			}
-			return GameData.instance.EquipmentDataList.Find(x => x.id == bassEquipmentId);
+            return null;// GameData.instance.EquipmentDataList.Find(x => x.id == bassEquipmentId);
 		}
 	}
 
@@ -104,7 +104,7 @@ public class EquipmentState {
 			{
 				return null;
 			}
-			return GameData.instance.EquipmentDataList.Find(x => x.id == keyboardEquipmentId);
+            return null;// GameData.instance.EquipmentDataList.Find(x => x.id == keyboardEquipmentId);
 		}
 	}
 
@@ -113,15 +113,15 @@ public class EquipmentState {
 
         get
         {
-            CharacterData nextDrum = ListUtils.NextOf<CharacterData>(GameData.instance.EquipmentDataList, CurrentDrumEquipment);
-            if (nextDrum.equipmentType == EquipmentType.DRUM)
-            { 
-                return nextDrum;
-            }
-            else
-            { 
+            //CharacterData nextDrum = ListUtils.NextOf<CharacterData>(GameData.instance.EquipmentDataList, CurrentDrumEquipment);
+            //if (nextDrum.equipmentType == EquipmentType.DRUM)
+            //{ 
+            //    return nextDrum;
+            //}
+            //else
+            //{ 
                 return null;
-            }
+            //}
         }
 
 	}
@@ -130,15 +130,15 @@ public class EquipmentState {
 	{
         get
         {
-            CharacterData nextGuitar = ListUtils.NextOf<CharacterData>(GameData.instance.EquipmentDataList, CurrentGuitarEquipment);
-            if (nextGuitar.equipmentType == EquipmentType.GUITAR)
-            {
-                return nextGuitar;
-            }
-            else
-            {
+        //    CharacterData nextGuitar = ListUtils.NextOf<CharacterData>(GameData.instance.EquipmentDataList, CurrentGuitarEquipment);
+        //    if (nextGuitar.equipmentType == EquipmentType.GUITAR)
+        //    {
+        //        return nextGuitar;
+        //    }
+        //    else
+        //    {
                 return null;
-            }
+         //   }
         }
     }
 
@@ -146,15 +146,15 @@ public class EquipmentState {
 	{
         get
         {
-            CharacterData nextBass = ListUtils.NextOf<CharacterData>(GameData.instance.EquipmentDataList, CurrentBassEquipment);
-            if (nextBass.equipmentType == EquipmentType.BASS)
-            {
-                return nextBass;
-            }
-            else
-            {
+            //CharacterData nextBass = ListUtils.NextOf<CharacterData>(GameData.instance.EquipmentDataList, CurrentBassEquipment);
+            //if (nextBass.equipmentType == EquipmentType.BASS)
+            //{
+            //    return nextBass;
+            //}
+            //else
+            //{
                 return null;
-            }
+            //}
         }
     }
 
@@ -162,15 +162,15 @@ public class EquipmentState {
 	{
         get
         {
-            CharacterData nextKeyboard = ListUtils.NextOf<CharacterData>(GameData.instance.EquipmentDataList, CurrentKeyboardEquipment);
-            if (nextKeyboard.equipmentType == EquipmentType.KEYBOARD)
-            {
-                return nextKeyboard;
-            }
-            else
-            {
+            //CharacterData nextKeyboard = ListUtils.NextOf<CharacterData>(GameData.instance.EquipmentDataList, CurrentKeyboardEquipment);
+            //if (nextKeyboard.equipmentType == EquipmentType.KEYBOARD)
+            //{
+            //    return nextKeyboard;
+            //}
+            //else
+            //{
                 return null;
-            }
+            //}
         }
     }
 

@@ -22,19 +22,7 @@ public class MerchController : MonoBehaviour {
 
     void Start()
     {
-        if (GameState.instance.Merch.CurrentTimeMerch != null)
-        {
-            int diffInSeconds = (int)(DateTime.Now - GameState.instance.Merch.LastOnlineDate).TotalSeconds;
-            int timeLimit = GameState.instance.Merch.CurrentTimeMerch.timeLimit;
-            if (diffInSeconds > timeLimit)
-            {
-                CollectMoney(timeLimit);
-            }
-            else
-            {
-                CollectMoney(diffInSeconds);
-            }
-        }
+        
     }
 
     void Update()
@@ -54,20 +42,11 @@ public class MerchController : MonoBehaviour {
 
     private void CollectMoney(int forSeconds)
     {
-        if (CoinTransaction != null)
-        {
-            if (GameState.instance.Merch.CurrentQualityMerch != null)
-            {
-                CoinTransaction(GameState.instance.Merch.CurrentQualityMerch.coinPerSecond * forSeconds);
-            }
-        }
+        
     }
 
     void OnEnable()
     {
-        merchUI.CurrentQualityMerchData += CurrentQualityMerchData;
-        merchUI.NextQualityMerchData += NextQualityMerchData;
-        merchUI.CurrentTimeMerchData += CurrentTimeMerchData;
         merchUI.NextTimeMerchData += NextTimeMerchData;
         merchUI.BuyQualityMerch += BuyQualityMerch;
         merchUI.BuyTimeMerch += BuyTimeMerch;
@@ -76,10 +55,7 @@ public class MerchController : MonoBehaviour {
 
     void OnDisable()
     {
-        merchUI.CurrentQualityMerchData -= CurrentQualityMerchData;
-        merchUI.NextQualityMerchData -= NextQualityMerchData;
-        merchUI.CurrentTimeMerchData -= CurrentTimeMerchData;
-        merchUI.NextTimeMerchData -= NextTimeMerchData;
+            merchUI.NextTimeMerchData -= NextTimeMerchData;
         merchUI.BuyQualityMerch -= BuyQualityMerch;
         merchUI.BuyTimeMerch -= BuyTimeMerch;
         merchUI.CanBuy -= CanBuyItem;
@@ -88,35 +64,19 @@ public class MerchController : MonoBehaviour {
         GameState.instance.Merch.LastOnlineDate = DateTime.Now;
     }
 
-    private MerchData CurrentQualityMerchData()
-    {
-        return GameState.instance.Merch.CurrentQualityMerch;
-    }
+    
 
-    private MerchData NextQualityMerchData()
-    {
-        if (GameState.instance.Merch.CurrentQualityMerch == null)
-        {
-            return GameData.instance.MerchDataList.Find(x => x.merchType == MerchType.QUALITY); // finds the first
-        }
-
-        MerchData nextMerch = ListUtils.NextOf(GameData.instance.MerchDataList, CurrentQualityMerchData());
-        return nextMerch.merchType == MerchType.QUALITY ? nextMerch : null;
-    }
-
-    private MerchData CurrentTimeMerchData()
-    {
-        return GameState.instance.Merch.CurrentTimeMerch;
-    }
+    
 
     private MerchData NextTimeMerchData()
     {
-        if (GameState.instance.Merch.CurrentTimeMerch == null)
-        {
-            return GameData.instance.MerchDataList.Find(x => x.merchType == MerchType.TIME); // finds the first
-        }
-        MerchData nextMerch = ListUtils.NextOf(GameData.instance.MerchDataList, CurrentTimeMerchData());
-        return nextMerch.merchType == MerchType.TIME ? nextMerch : null;
+        return null;
+        //if (GameState.instance.Merch.CurrentTimeMerch == null)
+        //{
+        //    return GameData.instance.MerchDataList.Find(x => x.merchType == MerchType.TIME); // finds the first
+        //}
+        //MerchData nextMerch = ListUtils.NextOf(GameData.instance.MerchDataList, CurrentTimeMerchData());
+        //return nextMerch.merchType == MerchType.TIME ? nextMerch : null;
     }
 
     private void BuyQualityMerch(MerchData data)

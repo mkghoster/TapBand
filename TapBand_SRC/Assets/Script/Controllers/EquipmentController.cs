@@ -1,227 +1,229 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿//using UnityEngine;
+//using System.Collections;
 
-public class EquipmentController : MonoBehaviour {
+//public class EquipmentController : MonoBehaviour {
 
-    private EquipmentUI equipmentUI;
+//    private EquipmentUI equipmentUI;
 
-    void Awake()
-    {
-        equipmentUI = (EquipmentUI)FindObjectOfType(typeof(EquipmentUI));
-    }
+//    void Awake()
+//    {
+//        equipmentUI = (EquipmentUI)FindObjectOfType(typeof(EquipmentUI));
+//    }
+        
+//    void OnEnable()
+//    {
+//        equipmentUI.CurrentDrumEquipmentData += CurrentDrumEquipmentData;
+//        equipmentUI.NextDrumEquipmentData += NextDrumEquipmentData;
+//        equipmentUI.CurrentGuitarEquipmentData += CurrentGuitarEquipmentData;
+//        equipmentUI.NextGuitarEquipmentData += NextGuitarEquipmentData;
+//        equipmentUI.CurrentBassEquipmentData += CurrentBassEquipmentData;
+//        equipmentUI.NextBassEquipmentData += NextBassEquipmentData;
+//        equipmentUI.CurrentKeyboardEquipmentData += CurrentKeyboardEquipmentData;
+//        equipmentUI.NextKeyboardEquipmentData += NextKeyboardEquipmentData;
 
-    void OnEnable()
-    {
-        equipmentUI.CurrentDrumEquipmentData += CurrentDrumEquipmentData;
-        equipmentUI.NextDrumEquipmentData += NextDrumEquipmentData;
-        equipmentUI.CurrentGuitarEquipmentData += CurrentGuitarEquipmentData;
-        equipmentUI.NextGuitarEquipmentData += NextGuitarEquipmentData;
-        equipmentUI.CurrentBassEquipmentData += CurrentBassEquipmentData;
-        equipmentUI.NextBassEquipmentData += NextBassEquipmentData;
-        equipmentUI.CurrentKeyboardEquipmentData += CurrentKeyboardEquipmentData;
-        equipmentUI.NextKeyboardEquipmentData += NextKeyboardEquipmentData;
+//        equipmentUI.BuyBassEquipment += BuyBassEquipment;
+//        equipmentUI.BuyDrumEquipment += BuyDrumEquipment;
+//        equipmentUI.BuyGuitarEquipment += BuyGuitarEquipment;
+//        equipmentUI.BuyKeyboardEquipment += BuyKeyboardEquipment;
+//        equipmentUI.CanBuy += CanBuy;
+//    }
 
-        equipmentUI.BuyBassEquipment += BuyBassEquipment;
-        equipmentUI.BuyDrumEquipment += BuyDrumEquipment;
-        equipmentUI.BuyGuitarEquipment += BuyGuitarEquipment;
-        equipmentUI.BuyKeyboardEquipment += BuyKeyboardEquipment;
-        equipmentUI.CanBuy += CanBuy;
-    }
+//    void OnDisable()
+//    {
+//        equipmentUI.CurrentDrumEquipmentData += CurrentDrumEquipmentData;
+//        equipmentUI.NextDrumEquipmentData += NextDrumEquipmentData;
+//        equipmentUI.CurrentGuitarEquipmentData += CurrentGuitarEquipmentData;
+//        equipmentUI.NextGuitarEquipmentData += NextGuitarEquipmentData;
+//        equipmentUI.CurrentBassEquipmentData += CurrentBassEquipmentData;
+//        equipmentUI.NextBassEquipmentData += NextBassEquipmentData;
+//        equipmentUI.CurrentKeyboardEquipmentData += CurrentKeyboardEquipmentData;
+//        equipmentUI.NextKeyboardEquipmentData += NextKeyboardEquipmentData;
 
-    void OnDisable()
-    {
-        equipmentUI.CurrentDrumEquipmentData += CurrentDrumEquipmentData;
-        equipmentUI.NextDrumEquipmentData += NextDrumEquipmentData;
-        equipmentUI.CurrentGuitarEquipmentData += CurrentGuitarEquipmentData;
-        equipmentUI.NextGuitarEquipmentData += NextGuitarEquipmentData;
-        equipmentUI.CurrentBassEquipmentData += CurrentBassEquipmentData;
-        equipmentUI.NextBassEquipmentData += NextBassEquipmentData;
-        equipmentUI.CurrentKeyboardEquipmentData += CurrentKeyboardEquipmentData;
-        equipmentUI.NextKeyboardEquipmentData += NextKeyboardEquipmentData;
+//        equipmentUI.BuyBassEquipment += BuyBassEquipment;
+//        equipmentUI.BuyDrumEquipment += BuyDrumEquipment;
+//        equipmentUI.BuyGuitarEquipment += BuyGuitarEquipment;
+//        equipmentUI.BuyKeyboardEquipment += BuyKeyboardEquipment;
+//        equipmentUI.CanBuy += CanBuy;
+//    }
 
-        equipmentUI.BuyBassEquipment += BuyBassEquipment;
-        equipmentUI.BuyDrumEquipment += BuyDrumEquipment;
-        equipmentUI.BuyGuitarEquipment += BuyGuitarEquipment;
-        equipmentUI.BuyKeyboardEquipment += BuyKeyboardEquipment;
-        equipmentUI.CanBuy += CanBuy;
-    }
 
-    private CharacterData CurrentDrumEquipmentData()
-    {
-        return GameState.instance.Equipment.CurrentDrumEquipment;
-    }
 
-    private CharacterData NextDrumEquipmentData()
-    {
-        if (GameState.instance.Equipment.CurrentDrumEquipment == null)
-        {
-            return GameData.instance.EquipmentDataList.Find(x => x.equipmentType == EquipmentType.DRUM); // finds the first
-        }
-        bool currentFound = false;
-        foreach (CharacterData data in GameData.instance.EquipmentDataList)
-        {
-            if (currentFound && data.equipmentType == EquipmentType.DRUM)
-            {
-                return data;
-            }
+//    private CharacterData CurrentDrumEquipmentData()
+//    {
+//        return GameState.instance.Equipment.CurrentDrumEquipment;
+//    }
 
-            if (data.id == GameState.instance.Equipment.DrumEquipmentId)
-            {
-                currentFound = true;
-            }
-        }
+//    private CharacterData NextDrumEquipmentData()
+//    {
+//        if (GameState.instance.Equipment.CurrentDrumEquipment == null)
+//        {
+//            return GameData.instance.EquipmentDataList.Find(x => x.equipmentType == EquipmentType.DRUM); // finds the first
+//        }
+//        bool currentFound = false;
+//        foreach (CharacterData data in GameData.instance.EquipmentDataList)
+//        {
+//            if (currentFound && data.equipmentType == EquipmentType.DRUM)
+//            {
+//                return data;
+//            }
 
-        // figure this out
-        return CurrentDrumEquipmentData();
-    }
+//            if (data.id == GameState.instance.Equipment.DrumEquipmentId)
+//            {
+//                currentFound = true;
+//            }
+//        }
 
-    //duplicate
+//        // figure this out
+//        return CurrentDrumEquipmentData();
+//    }
 
-    private CharacterData CurrentGuitarEquipmentData()
-    {
-        return GameState.instance.Equipment.CurrentGuitarEquipment;
-    }
+//    //duplicate
 
-    private CharacterData NextGuitarEquipmentData()
-    {
-        if (GameState.instance.Equipment.CurrentGuitarEquipment == null)
-        {
-            return GameData.instance.EquipmentDataList.Find(x => x.equipmentType == EquipmentType.GUITAR); // finds the first
-        }
-        bool currentFound = false;
-        foreach (CharacterData data in GameData.instance.EquipmentDataList)
-        {
-            if (currentFound && data.equipmentType == EquipmentType.GUITAR)
-            {
-                return data;
-            }
+//    private CharacterData CurrentGuitarEquipmentData()
+//    {
+//        return GameState.instance.Equipment.CurrentGuitarEquipment;
+//    }
 
-            if (data.id == GameState.instance.Equipment.GuitarEquipmentId)
-            {
-                currentFound = true;
-            }
-        }
+//    private CharacterData NextGuitarEquipmentData()
+//    {
+//        if (GameState.instance.Equipment.CurrentGuitarEquipment == null)
+//        {
+//            return GameData.instance.EquipmentDataList.Find(x => x.equipmentType == EquipmentType.GUITAR); // finds the first
+//        }
+//        bool currentFound = false;
+//        foreach (CharacterData data in GameData.instance.EquipmentDataList)
+//        {
+//            if (currentFound && data.equipmentType == EquipmentType.GUITAR)
+//            {
+//                return data;
+//            }
 
-        // figure this out
-        return CurrentGuitarEquipmentData();
-    }
+//            if (data.id == GameState.instance.Equipment.GuitarEquipmentId)
+//            {
+//                currentFound = true;
+//            }
+//        }
 
-    //duplicate
+//        // figure this out
+//        return CurrentGuitarEquipmentData();
+//    }
 
-    private CharacterData CurrentBassEquipmentData()
-    {
-        return GameState.instance.Equipment.CurrentBassEquipment;
-    }
+//    //duplicate
 
-    private CharacterData NextBassEquipmentData()
-    {
-        if (GameState.instance.Equipment.CurrentBassEquipment == null)
-        {
-            return GameData.instance.EquipmentDataList.Find(x => x.equipmentType == EquipmentType.BASS); // finds the first
-        }
-        bool currentFound = false;
-        foreach (CharacterData data in GameData.instance.EquipmentDataList)
-        {
-            if (currentFound && data.equipmentType == EquipmentType.BASS)
-            {
-                return data;
-            }
+//    private CharacterData CurrentBassEquipmentData()
+//    {
+//        return GameState.instance.Equipment.CurrentBassEquipment;
+//    }
 
-            if (data.id == GameState.instance.Equipment.BassEquipmentId)
-            {
-                currentFound = true;
-            }
-        }
+//    private CharacterData NextBassEquipmentData()
+//    {
+//        if (GameState.instance.Equipment.CurrentBassEquipment == null)
+//        {
+//            return GameData.instance.EquipmentDataList.Find(x => x.equipmentType == EquipmentType.BASS); // finds the first
+//        }
+//        bool currentFound = false;
+//        foreach (CharacterData data in GameData.instance.EquipmentDataList)
+//        {
+//            if (currentFound && data.equipmentType == EquipmentType.BASS)
+//            {
+//                return data;
+//            }
 
-        // figure this out
-        return CurrentBassEquipmentData();
-    }
+//            if (data.id == GameState.instance.Equipment.BassEquipmentId)
+//            {
+//                currentFound = true;
+//            }
+//        }
 
-    //duplicate
+//        // figure this out
+//        return CurrentBassEquipmentData();
+//    }
 
-    private CharacterData CurrentKeyboardEquipmentData()
-    {
-        return GameState.instance.Equipment.CurrentKeyboardEquipment;
-    }
+//    //duplicate
 
-    private CharacterData NextKeyboardEquipmentData()
-    {
-        if (GameState.instance.Equipment.CurrentKeyboardEquipment == null)
-        {
-            return GameData.instance.EquipmentDataList.Find(x => x.equipmentType == EquipmentType.KEYBOARD); // finds the first
-        }
-        bool currentFound = false;
-        foreach (CharacterData data in GameData.instance.EquipmentDataList)
-        {
-            if (currentFound && data.equipmentType == EquipmentType.KEYBOARD)
-            {
-                return data;
-            }
+//    private CharacterData CurrentKeyboardEquipmentData()
+//    {
+//        return GameState.instance.Equipment.CurrentKeyboardEquipment;
+//    }
 
-            if (data.id == GameState.instance.Equipment.KeyboardEquipmentId)
-            {
-                currentFound = true;
-            }
-        }
+//    private CharacterData NextKeyboardEquipmentData()
+//    {
+//        if (GameState.instance.Equipment.CurrentKeyboardEquipment == null)
+//        {
+//            return GameData.instance.EquipmentDataList.Find(x => x.equipmentType == EquipmentType.KEYBOARD); // finds the first
+//        }
+//        bool currentFound = false;
+//        foreach (CharacterData data in GameData.instance.EquipmentDataList)
+//        {
+//            if (currentFound && data.equipmentType == EquipmentType.KEYBOARD)
+//            {
+//                return data;
+//            }
 
-        // figure this out
-        return CurrentKeyboardEquipmentData();
-    }
+//            if (data.id == GameState.instance.Equipment.KeyboardEquipmentId)
+//            {
+//                currentFound = true;
+//            }
+//        }
 
-    private void BuyBassEquipment(CharacterData data)
-    {
-        GameState.instance.Equipment.BassEquipmentId = data.id;
-        if (EquipmentTransaction != null)
-        {
-            EquipmentTransaction(data);
-        }
-    }
+//        // figure this out
+//        return CurrentKeyboardEquipmentData();
+//    }
 
-    private void BuyDrumEquipment(CharacterData data)
-    {
-        GameState.instance.Equipment.DrumEquipmentId = data.id;
-        if (EquipmentTransaction != null)
-        {
-            EquipmentTransaction(data);
-        }
-    }
+//    private void BuyBassEquipment(CharacterData data)
+//    {
+//        GameState.instance.Equipment.BassEquipmentId = data.id;
+//        if (EquipmentTransaction != null)
+//        {
+//            EquipmentTransaction(data);
+//        }
+//    }
 
-    private void BuyGuitarEquipment(CharacterData data)
-    {
-        GameState.instance.Equipment.GuitarEquipmentId = data.id;
-        if (EquipmentTransaction != null)
-        {
-            EquipmentTransaction(data);
-        }
-    }
+//    private void BuyDrumEquipment(CharacterData data)
+//    {
+//        GameState.instance.Equipment.DrumEquipmentId = data.id;
+//        if (EquipmentTransaction != null)
+//        {
+//            EquipmentTransaction(data);
+//        }
+//    }
 
-    private void BuyKeyboardEquipment(CharacterData data)
-    {
-        GameState.instance.Equipment.KeyboardEquipmentId = data.id;
-        if (EquipmentTransaction != null)
-        {
-            EquipmentTransaction(data);
-        }
-    }
+//    private void BuyGuitarEquipment(CharacterData data)
+//    {
+//        GameState.instance.Equipment.GuitarEquipmentId = data.id;
+//        if (EquipmentTransaction != null)
+//        {
+//            EquipmentTransaction(data);
+//        }
+//    }
 
-    private bool CanBuy(int price)
-    {
-        return price <= GameState.instance.Currency.Coins;
-    }
+//    private void BuyKeyboardEquipment(CharacterData data)
+//    {
+//        GameState.instance.Equipment.KeyboardEquipmentId = data.id;
+//        if (EquipmentTransaction != null)
+//        {
+//            EquipmentTransaction(data);
+//        }
+//    }
 
-    public delegate void EquipmentTransactionEvent(CharacterData equipment);
-    public event EquipmentTransactionEvent EquipmentTransaction;
+//    private bool CanBuy(int price)
+//    {
+//        return price <= GameState.instance.Currency.Coins;
+//    }
 
-    // Use this for initialization
-    void Start()
-    {
+//    public delegate void EquipmentTransactionEvent(CharacterData equipment);
+//    public event EquipmentTransactionEvent EquipmentTransaction;
 
-    }
+//    // Use this for initialization
+//    void Start()
+//    {
 
-    // Update is called once per frame
-    void Update()
-    {
+//    }
 
-    }
+//    // Update is called once per frame
+//    void Update()
+//    {
 
-}
+//    }
+
+//}

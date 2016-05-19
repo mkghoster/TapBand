@@ -19,10 +19,10 @@ public class SpotlightController : MonoBehaviour
 
     void Start()
     {
-        SpotlightInterval = ReadFloat(GeneralProperties.SPOTLIGHT_INTERVAL);
-        SpotlightMinDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MIN_DELAY);
-        SpotlightMaxDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MAX_DELAY);
-        SpotlightTapMultiplier = ReadFloat(GeneralProperties.SPOTLIGHT_TAP_MULTIPLIER);
+        SpotlightInterval = GameData.instance.GeneralData.SpotlightInterval;
+        SpotlightMinDelay = GameData.instance.GeneralData.RandomMechanismMinDelay;//Fix this
+        SpotlightMaxDelay = GameData.instance.GeneralData.RandomMechanismMaxDelay;
+        SpotlightTapMultiplier = GameData.instance.GeneralData.SpotlightTapMultiplier;
 
         initSpotlightCountdown = CalculateAliveTime();
 
@@ -50,10 +50,5 @@ public class SpotlightController : MonoBehaviour
     private float CalculateAliveTime()
     {
         return UnityEngine.Random.Range(SpotlightMinDelay, SpotlightMaxDelay);
-    }
-
-    private float ReadFloat(string name)
-    {
-        return Convert.ToSingle(GameData.instance.FindGeneralDataByName(name).value);
-    }
+    }    
 }

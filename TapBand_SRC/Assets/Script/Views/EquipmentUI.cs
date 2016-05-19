@@ -2,8 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 
+public delegate CharacterData EquipmentDataEvent();
+public delegate void BuyEquipmentEvent(CharacterData data);
+
 public class EquipmentUI : MonoBehaviour {
-	public delegate CharacterData EquipmentDataEvent();
+    public BuyEquipmentEvent OnEquipmentBought;
+
 	public event EquipmentDataEvent CurrentDrumEquipmentData;
 	public event EquipmentDataEvent CurrentGuitarEquipmentData;
 	public event EquipmentDataEvent CurrentBassEquipmentData;
@@ -14,7 +18,7 @@ public class EquipmentUI : MonoBehaviour {
 	public event EquipmentDataEvent NextBassEquipmentData;
 	public event EquipmentDataEvent NextKeyboardEquipmentData;
 	
-	public delegate void BuyEquipmentEvent(CharacterData data);
+
 	public event BuyEquipmentEvent BuyDrumEquipment;
 	public event BuyEquipmentEvent BuyGuitarEquipment;
 	public event BuyEquipmentEvent BuyBassEquipment;
@@ -51,7 +55,7 @@ public class EquipmentUI : MonoBehaviour {
 				if (CanBuy != null)
 				{
 					Button buyButton = GetButtonComponentOfChild(drumPanel, "DrumsUpgradeButton");
-					buyButton.interactable = CanBuy(drumData.upgradeCost);
+					//buyButton.interactable = CanBuy(drumData.upgradeCost);
 					// FIXME: temporary solution
 					buyButton.onClick.RemoveAllListeners();
 					buyButton.onClick.AddListener(() => BuyDrumEquipment(drumData));
@@ -85,7 +89,7 @@ public class EquipmentUI : MonoBehaviour {
 				if (CanBuy != null)
 				{
 					Button buyButton = GetButtonComponentOfChild(guitarPanel, "GuitarsUpgradeButton");
-					buyButton.interactable = CanBuy(guitarData.upgradeCost);
+					//buyButton.interactable = CanBuy(guitarData.upgradeCost);
 					// FIXME: temporary solution
 					buyButton.onClick.RemoveAllListeners();
 					buyButton.onClick.AddListener(() => BuyGuitarEquipment(guitarData));
@@ -119,7 +123,7 @@ public class EquipmentUI : MonoBehaviour {
 				if (CanBuy != null)
 				{
 					Button buyButton = GetButtonComponentOfChild(bassPanel, "BassUpgradeButton");
-					buyButton.interactable = CanBuy(bassData.upgradeCost);
+					//buyButton.interactable = CanBuy(bassData.upgradeCost);
 					// FIXME: temporary solution
 					buyButton.onClick.RemoveAllListeners();
 					buyButton.onClick.AddListener(() => BuyBassEquipment(bassData));
@@ -153,7 +157,7 @@ public class EquipmentUI : MonoBehaviour {
 				if (CanBuy != null)
 				{
 					Button buyButton = GetButtonComponentOfChild(keyboardPanel, "KeyboardUpgradeButton");
-					buyButton.interactable = CanBuy(keyboardData.upgradeCost);
+					//buyButton.interactable = CanBuy(keyboardData.upgradeCost);
 					// FIXME: temporary solution
 					buyButton.onClick.RemoveAllListeners();
 					buyButton.onClick.AddListener(() => BuyKeyboardEquipment(keyboardData));
