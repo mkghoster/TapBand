@@ -343,8 +343,8 @@ public class AudioManagerTapBand : AudioManager
 
         PlayerPrefsManager.SetPrevAudioConcertID(randomNumber);
 
-        print("Type: "+ randomNumber);
-        print("ret: " + ret[0] + ret[1] + ret[2] + ret[3] + ret[4]);
+        //print("Type: "+ randomNumber);
+        //print("ret: " + ret[0] + ret[1] + ret[2] + ret[3] + ret[4]);
         /*for(int i = 0; i < ret.Length; i++)
         {
             print(i + ": "+ ret[i]);
