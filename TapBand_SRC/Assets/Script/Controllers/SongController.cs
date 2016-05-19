@@ -87,8 +87,8 @@ public class SongController : MonoBehaviour
                                  
         if (currentSong.bossBattle)
         {
-            if(!isEncoreOver)
-                timeCountDown += deltaTime;
+            /*if(!isEncoreOver)
+                timeCountDown += deltaTime;*/
 			if (extraTimeBoosterIsActive) {
                 timeCountDown -= bossBattleCountDownBooster;
 				extraTimeBoosterIsActive = false;
