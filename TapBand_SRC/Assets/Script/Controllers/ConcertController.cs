@@ -30,20 +30,16 @@ public class ConcertController : MonoBehaviour {
 	void OnEnable()
 	{
 		hud.NewConcert += DisplayNewConcert;
-		songController.GiveNextSong += GiveNextSongFromConcert;
-		songController.GiveFirstSongOfActualConcert += ResetToFirstSongOfConcert;
-        tourController.RestartConcert += RestartConcertFromTheFirst;
+		tourController.RestartConcert += RestartConcertFromTheFirst;
     }
 	void OnDisable()
 	{
 		hud.NewConcert -= DisplayNewConcert;
-		songController.GiveNextSong -= GiveNextSongFromConcert;
-		songController.GiveFirstSongOfActualConcert -= ResetToFirstSongOfConcert;
-        tourController.RestartConcert -= RestartConcertFromTheFirst;
+		tourController.RestartConcert -= RestartConcertFromTheFirst;
     }
 
     //mi a kövtetkező lejátszandó szám, értesíti
-    private SongData GiveNextSongFromConcert()
+    public SongData GetNextSong()
 	{
 		ConcertState state = GameState.instance.Concert;
 
