@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public delegate CharacterData EquipmentDataEvent();
 public delegate void BuyEquipmentEvent(CharacterData data);
+public delegate bool CanBuyEvent(int price);
 
 public class EquipmentUI : MonoBehaviour {
     public BuyEquipmentEvent OnEquipmentBought;
@@ -24,7 +25,7 @@ public class EquipmentUI : MonoBehaviour {
 	public event BuyEquipmentEvent BuyBassEquipment;
 	public event BuyEquipmentEvent BuyKeyboardEquipment;
 	
-	public delegate bool CanBuyEvent(int price);
+	
 	public event CanBuyEvent CanBuy;
 	
 	public GameObject drumPanel, guitarPanel, bassPanel, keyboardPanel;

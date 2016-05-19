@@ -45,7 +45,7 @@ public class AudioManagerTapBand : AudioManager
 
 
         ReadMusicFromResources();
-        ChooseConcertAudio();
+        ChooseConcertAudio(true);
     }
 
     void Start()
@@ -129,25 +129,29 @@ public class AudioManagerTapBand : AudioManager
     //concert success
     void EndOfConcertEvent(ConcertData concertData)
     {
-        StartNewOrPrevConcert(); 
+        //StartNewOrPrevConcert();
+        StartNewConcert();
     }
 
     //concert fail
     void ResetartConcert()
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartPrevConcert();
     }
 
     //OnPrestige
     void OnPrestigeEvent()
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartNewConcert();//---???
     }
 
     //Nem kapott OnPrestigeEventet a torubol ha az első concerten nyomtunk ismét restart-ot
     void RestartConcertFromTour()
     {
-        StartNewOrPrevConcert();
+        //StartNewOrPrevConcert();
+        StartNewConcert();
     }
 
     //Change to actual music bars volume
@@ -172,17 +176,26 @@ public class AudioManagerTapBand : AudioManager
 
     #region music bars handle methods
 
-    //concert fail/succ -> same stuff, just from different events
-    void StartNewOrPrevConcert()
+    void StartNewConcert()
     {
-        StopMusicSounds(); 
+        StopMusicSounds();
         actualIndex = 0;
 
-        ChooseConcertAudio();
+        ChooseConcertAudio(false);
 
         MuteAndPlayAllMusicBars();
-        FadeInMusicBarsUntilIndex(actualIndex);     
+        FadeInMusicBarsUntilIndex(actualIndex);
     }
+
+    void StartPrevConcert()
+    {
+        StopMusicSounds();
+        actualIndex = 0;
+
+        MuteAndPlayAllMusicBars();
+        FadeInMusicBarsUntilIndex(actualIndex);
+    }
+
 
     void StopMusicSounds()
     {
@@ -279,41 +292,59 @@ public class AudioManagerTapBand : AudioManager
 
     #region Concert mix order
 
-    private void ChooseConcertAudio() //átnevezeni
+    private void ChooseConcertAudio(bool isStarted)
     {
-        int[] ret = { -1,-1,-1,-1,-1 };
+        int[] ret = { -1, -1, -1, -1, -1 };
+        int randomNumber = -1;
 
-        
-
-        int randomNumber = Random.Range(0, 3);
-
-        while(randomNumber == PlayerPrefsManager.GetPrevAudioConcertID())
+        if (isStarted)
+            randomNumber = PlayerPrefsManager.GetPrevAudioConcertID();
+        else
         {
-            randomNumber = Random.Range(0,3);
+            randomNumber = Random.Range(0, 6);
+            while (randomNumber == PlayerPrefsManager.GetPrevAudioConcertID())
+            {
+                randomNumber = Random.Range(0, 6);
+            }
         }
+        
 
         switch (randomNumber)
         {
             case 0:
                 //print("0");               
-                ret = FirstConcertOrder();
+                ret = FirstConcertOrderType();
                 break;
             case 1:
                 //print("1");              
-                ret = SecondConcertOrder();
+                ret = SecondConcertOrderType();
                 break;
             case 2:
                 //print("2");            
-                ret = SecondConcertOrder();
+                ret = ThirdConecertOrderType();
                 break;
             case 3:
                 //print("3");               
-                ret = ThirdConecertOrder();
+                ret = FourthConcertOrderType();
+                break;
+            case 4:
+                //print("4");              
+                ret = SecondConcertOrderType();
+                break;
+            case 5:
+                //print("5");              
+                ret = SecondConcertOrderType();
+                break;
+            case 6:
+                //print("6");              
+                ret = FifthConcertOrderType();
                 break;
         }
 
         PlayerPrefsManager.SetPrevAudioConcertID(randomNumber);
 
+        //print("Type: "+ randomNumber);
+        //print("ret: " + ret[0] + ret[1] + ret[2] + ret[3] + ret[4]);
         /*for(int i = 0; i < ret.Length; i++)
         {
             print(i + ": "+ ret[i]);
@@ -358,74 +389,82 @@ public class AudioManagerTapBand : AudioManager
 
 
     //Happy Develeopers
-    private int[] FirstConcertOrder()
+    private int[] FirstConcertOrderType()
     {
-        float n = Random.Range(0f,1f);
-        int[] order = new int[5];
-        if (n >= 0.5f)
-            order[0] = 0;
-        else
-            order[0] = 1;
-
-
-        n = Random.Range(0f,1f);
-        if (order[0] == 1)
-            order[1] = 0;
-        else if ( order[0] == 0 && n <= 0.5f)
-            order[1] = 1;
-        else
-            order[1] = 2;
-
-
-        if (order[0] == 0 && order[1] == 2)
-            order[2] = 1;
-        else
-            order[2] = 2;
-
-        order[3] = 3;
-        order[4] = 4;
-
-        //print("order: "+ order[0] + order[1] + order[2] + order[3] + order[4]);
-        return order;
-
-    }
-
-    private int[] SecondConcertOrder()
-    {
-        float n = Random.Range(0,2);
-        //int("1. n: "+ n);
-        int[] order = new int[5];
+        float n = Random.Range(0, 2);
 
         if (n % 3 == 0)
-            order[0] = 0;
+        {
+            int[] order = { 0,1,2,3,4 };
+            return order;
+        }     
         else if (n % 3 == 1)
-            order[0] = 1;
+        {
+            int[] order = { 1,0,2,3,4 };
+            return order;
+        }     
         else
-            order[0] = 2;
-
-        n = Random.Range(0f, 1f);
-        if (order[0] == 1 || order[0] == 2)
-            order[1] = 0;
-        else if (order[0] == 0 && n >= 0.5f)
-            order[1] = 1;
-        else if (order[0] == 0 && n <= 0.5f)
-            order[1] = 2;
-
-        if ((order[0] == 0 && order[1] == 2) || (order[0] == 2 && order[1] == 0))  //----------TODO: előző kettőben a fordított eset lekezeése
-            order[2] = 1;
-        else   
-            order[2] = 2;
-
-        order[3] = 3;
-        order[4] = 4;
-
-
-        //print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
-        return order;
+        {
+            int[] order = { 1,2,0,3,4};
+            return order;
+        }
+           
     }
 
-    private int[] ThirdConecertOrder()
+    private int[] SecondConcertOrderType()
     {
+        float n = Random.Range(0, 2);
+
+        if (n % 3 == 0)
+        {
+            int[] order = { 1,2,0,3,4 };
+            return order;
+        }
+        else if (n % 3 == 1)
+        {
+            int[] order = { 1,0,2,3,4 };
+            return order;
+        }
+        else
+        {
+            int[] order = { 2,1,0,3,4 };
+            return order;
+        }
+    }
+
+    private int[] ThirdConecertOrderType()
+    {
+
+
+        float n = Random.Range(0, 3);
+
+        if (n % 4 == 0)
+        {
+            int[] order = { 0,1,2,3,4 };
+            return order;
+        }
+        else if (n % 4 == 1)
+        {
+            int[] order = { 1,2,0,3,4 };
+            return order;
+        }
+        else if (n % 4 == 2)
+        {
+            int[] order = { 1,0,2,3,4 };
+            return order;
+        }
+        else
+        {
+            int[] order = { 2, 1, 0, 3, 4 };
+            return order;
+        }
+
+    }
+
+    private int[] FourthConcertOrderType() //EZT IS ÁTÍRNI
+    {
+        //ez a kettős
+
         float n = Random.Range(0f, 1f);
         int[] order = new int[5];
 
@@ -446,6 +485,36 @@ public class AudioManagerTapBand : AudioManager
         //print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
         return order;
     }
+
+    private int[] FifthConcertOrderType()
+    {
+        float n = Random.Range(0, 3);
+
+        if (n % 4 == 0)
+        {
+            int[] order = { 0, 1, 2, 3, 4 };
+            return order;
+        }
+        else if (n % 4 == 1)
+        {
+            int[] order = { 1, 2, 0, 3, 4 };
+            return order;
+        }
+        else if (n % 4 == 2)
+        {
+            int[] order = { 1, 0, 2, 3, 4 };
+            return order;
+        }
+        else
+        {
+            int[] order = { 1,2,3,0,4 };
+            return order;
+        }
+    }
+
+
+
+
 
 
     #endregion

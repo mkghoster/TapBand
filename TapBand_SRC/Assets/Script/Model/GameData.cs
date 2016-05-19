@@ -66,6 +66,8 @@ public class GameData : LoadableData
     public IList<DailyRandomData> DailyRandomDataList { get; private set; }
     public IList<DailyStreakData> DailyStreakDataList { get; private set; }
 
+    public BoosterData BoosterData { get; private set; }
+
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {
@@ -98,6 +100,15 @@ public class GameData : LoadableData
 
         DailyRandomDataList = gd.DailyRandomDataList;
         DailyStreakDataList = gd.DailyStreakDataList;
+
+        BoosterData = new BoosterData() // nemt'om kell-e külön boosterData, de egye-fene
+        {
+            AutoTapBoosterDuration = gd.GeneralData.AutoTapBoosterDuration,
+            AutoTapBoosterTapsPerSecond = gd.GeneralData.AutoTapBoosterTapsPerSecond,
+            ExtraTimeBoosterBonus = gd.GeneralData.ExtraTimeBoosterBonus,
+            TapStrengthBoosterDuration = gd.GeneralData.TapStrengthBoosterDuration,
+            TapStrengthBoosterMultiplier = gd.GeneralData.TapStrengthBoosterMultiplier
+        };
     }
 
     public override string GetFileName()

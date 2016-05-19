@@ -17,8 +17,9 @@ public class SongController : MonoBehaviour
     public delegate void ShowEncoreButtonEvent();
     public event ShowEncoreButtonEvent ShowEncoreButton;
 
-    public delegate void SwitchTapableColliderEvent(bool value);
-    public event SwitchTapableColliderEvent SwitchTapableCollider;
+    //between 2 concert
+    public delegate void SwitchOnOffTapEvent(bool value);
+    public event SwitchOnOffTapEvent SwitchOnOffTap;
 
 
     private TapController tapController;
@@ -28,15 +29,16 @@ public class SongController : MonoBehaviour
     private EncoreButtonUI encoreButton;
 
     private float actualTapAmount = 0f;
-    private float bossBattleCountDown = 0f;
-
-    // private bool wasEncoreSongTry = false; 
+    private float timeCountDown = 0f;
+	private float bossBattleCountDownBooster = 0f;
+	private bool extraTimeBoosterIsActive = false;
 
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
     private const int beforeEncoreSongConstID = 3;
 
     //stop the boss time counter
     private bool isEncoreOver = false;
+    private bool stopTimeBeforeEncore = false;
 
     
 
@@ -77,21 +79,46 @@ public class SongController : MonoBehaviour
             if (GiveNextSong != null)
             {
                 currentSong = GiveNextSong();
-            }
+            }    
         }
+
+       
+        if(!stopTimeBeforeEncore && !isEncoreOver)
+            timeCountDown += deltaTime;
+
 
         if (currentSong.bossBattle)
         {
-            if(!isEncoreOver)
-                bossBattleCountDown += deltaTime;
+            /*if(!isEncoreOver)
+                timeCountDown += deltaTime;*/
+            if(stopTimeBeforeEncore)
+                stopTimeBeforeEncore = false;
 
-            if (bossBattleCountDown > currentSong.duration)
+			if (extraTimeBoosterIsActive) {
+                timeCountDown -= bossBattleCountDownBooster;
+				extraTimeBoosterIsActive = false;
+			}
+
+            if (timeCountDown > currentSong.duration)
             {
-                ResetControllerState();
-                currentSong = GiveFirstSongOfActualConcert();
+                ResetartConcert();
+            }        
+        }
+        else        //************************** ÁTMENETI   ********************************************************* amíg a nem boss songok hossza 0 !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        {
+            if (timeCountDown > 20f) ///--------------- MOST BEÉGETVE A SIMA SZÁMOKNÁL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            {
+                ResetartConcert();
             }
         }
-        //print("wasEncoreSongTry:" + PlayerPrefsManager.GetEncoreSongTry());
+
+    }
+
+
+    private void ResetartConcert()
+    {
+        ResetControllerState();
+        currentSong = GiveFirstSongOfActualConcert();
     }
 
     private float TapPassed()
@@ -101,7 +128,7 @@ public class SongController : MonoBehaviour
 
     private float TimePassed()
     {
-        return bossBattleCountDown;
+        return timeCountDown;
     }
 
     private void IncomingTapStrength(float tapStrength)
@@ -116,6 +143,7 @@ public class SongController : MonoBehaviour
                 //if there was already a try
                 if (PlayerPrefsManager.GetEncoreSongTry())
                 {
+                    stopTimeBeforeEncore = true;
                     if (ShowEncoreButton != null)
                     {
                         ShowEncoreButton();
@@ -135,9 +163,9 @@ public class SongController : MonoBehaviour
                 if (currentSong.bossBattle)
                 {
                     StartCoroutine(WaitAfterConcert(SongConcertTour.waitTimeBetweenConcerts));
-                    if(SwitchTapableCollider != null)
+                    if(SwitchOnOffTap != null)
                     {
-                        SwitchTapableCollider(false);
+                        SwitchOnOffTap(false);
                     }
                     isEncoreOver = true;
                 }
@@ -165,7 +193,7 @@ public class SongController : MonoBehaviour
     private void ResetControllerState()
     {
         actualTapAmount = 0f;
-        bossBattleCountDown = 0f;
+        timeCountDown = 0f;
         currentSong = null;
     }
 
@@ -174,6 +202,11 @@ public class SongController : MonoBehaviour
     {
         return currentSong.id;
     }
+
+	public void BossExtratime(float extraTime){
+		timeCountDown = -extraTime;
+		extraTimeBoosterIsActive = true;
+	}
 
     //when we push the encore button
     private void StartEncoreSong()
@@ -213,10 +246,11 @@ public class SongController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         
         //visszakapcsolás
-        if (SwitchTapableCollider != null)
+        if (SwitchOnOffTap != null)
         {
-            SwitchTapableCollider(true);
+            SwitchOnOffTap(true);
         }
+        isEncoreOver = false;
         StartNextSong();
     }
 }
