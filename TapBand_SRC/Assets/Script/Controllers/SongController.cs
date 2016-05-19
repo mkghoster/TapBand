@@ -38,6 +38,7 @@ public class SongController : MonoBehaviour
 
     //stop the boss time counter
     private bool isEncoreOver = false;
+    private bool stopTimeBeforeEncore = false;
 
     
 
@@ -82,13 +83,17 @@ public class SongController : MonoBehaviour
         }
 
        
-        if (!isEncoreOver)
+        if(!stopTimeBeforeEncore && !isEncoreOver)
             timeCountDown += deltaTime;
-                                 
+
+
         if (currentSong.bossBattle)
         {
             /*if(!isEncoreOver)
                 timeCountDown += deltaTime;*/
+            if(stopTimeBeforeEncore)
+                stopTimeBeforeEncore = false;
+
 			if (extraTimeBoosterIsActive) {
                 timeCountDown -= bossBattleCountDownBooster;
 				extraTimeBoosterIsActive = false;
@@ -138,6 +143,7 @@ public class SongController : MonoBehaviour
                 //if there was already a try
                 if (PlayerPrefsManager.GetEncoreSongTry())
                 {
+                    stopTimeBeforeEncore = true;
                     if (ShowEncoreButton != null)
                     {
                         ShowEncoreButton();
