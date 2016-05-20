@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class TapArgs
@@ -100,21 +99,23 @@ public class TapUI : MonoBehaviour
     //}
 
     public void AutoTap()
-    {
-        {
-            TapArgs args = RandomTapEventArgs();
-
-            AnimateCharacters();
-            if (OnTap != null)
-                OnTap(args);
+    {  
+      TapArgs args = RandomTapEventArgs();
+      AnimateCharacters();
+      if (OnTap != null)
+        { 
+           OnTap(args);
         }
-
     }
 
     private TapArgs RandomTapEventArgs()
     {
         TapArgs args = new TapArgs();
-        Vector2 autotapposition = new Vector3(4.0f, 30.0f);
+        //Vector2 autotapposition = new Vector2(4.0f, 30.0f);
+        System.Random rnd = new System.Random();
+        int x = rnd.Next(20, 480);
+        int y = rnd.Next(120, 700);
+        Vector2 autotapposition = new Vector2(x, y);
         CalculateWithPosition(autotapposition, args);
         args.positions.Add(autotapposition);
         return args;
@@ -148,7 +149,6 @@ public class TapUI : MonoBehaviour
 
     private void CalculateWithPosition(Vector2 pos, TapArgs args)
     {
-        
         Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
         Collider2D hit = Physics2D.OverlapPoint(wp);
         if (hit)

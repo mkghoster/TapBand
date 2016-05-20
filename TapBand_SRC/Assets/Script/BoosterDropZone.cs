@@ -8,13 +8,19 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler
 	public int tokenNumber=100;
 	private Image image;
 	private BoosterController boosterController;
-	Color baseColor;
+    //TODO token bekötés
+    //private CurrencyState currencyState;
 
-	public void Awake(){
+    Color defaultColor;
+    private int token;
+
+    public void Awake(){
 		image = GetComponent<Image> ();
         boosterController = (BoosterController)FindObjectOfType(typeof(BoosterController));
-		baseColor= image.color;
-	}
+        defaultColor = image.color;
+        //currencyState = GameState.instance.Currency;
+        //token = currencyState.Tokens;     
+    }
 
 	public void OnPointerEnter(PointerEventData eventData){
 	}
@@ -24,23 +30,15 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler
 	}
 
 	public void OnDrop(PointerEventData eventData){
-		image.color = baseColor;
-		Debug.Log (eventData.pointerDrag.name + " was dropped to " +gameObject.name);
-
-		BoosterUI bd = eventData.pointerDrag.GetComponent<BoosterUI> ();
-		if (bd.IsAvailable()) {
-			if (bd != null) {
-				tokenNumber -= bd.tokenCost;
-                //string BoosterName = eventData.pointerDrag.name;
-                //boosterController.HandleBoosters (BoosterName, bd);
-                boosterController.HandleBoosters(bd);
-                //bd.transform.localPosition = bd.basePosition;
+		image.color = defaultColor;
+        //Debug.Log (eventData.pointerDrag.name + " was dropped to " +gameObject.name);
+        BoosterUI currentBooster = eventData.pointerDrag.GetComponent<BoosterUI> ();
+		if (currentBooster.IsAvailable()) {
+			if (currentBooster != null) {
+				tokenNumber -= currentBooster.tokenCost;
+                boosterController.HandleBoosters(currentBooster);
                 Debug.Log (tokenNumber+" tokens left");
-                bd.boosterIsAvailable = false;
-				if (tokenNumber <= 0) 
-					{
-						eventData.pointerDrag.SetActive (false);
-					}
+                currentBooster.boosterIsAvailable = false;
 			}
 		} 
 	}

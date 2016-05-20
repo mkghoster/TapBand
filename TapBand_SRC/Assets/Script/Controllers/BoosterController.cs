@@ -14,11 +14,13 @@ public class BoosterController : MonoBehaviour {
     private TapController tapController;
     private SongController songController;
     private BoosterData boosterData;
+    //TODO AutoTapPerSec
     private float helpme=0.30f;
+    //TODO AutoTapPerSec*AutoTapBoosterInterval
     private int check=0;
 
-    public delegate void TapEvent(TapArgs args);
-    public event TapEvent OnTap;
+   // public delegate void TapEvent(TapArgs args);
+   // public event TapEvent OnTap;
 
     private TapUI tapUI;
 
@@ -44,9 +46,6 @@ public class BoosterController : MonoBehaviour {
         if (autoTapisActive)
         {
             CurrentAutoTapBoosterDuration -= Time.deltaTime;
-
-            //Debug.Log(CurrentAutoTapBoosterDuration);
-
             if (CurrentAutoTapBoosterDuration < boosterData.AutoTapBoosterDuration - helpme)
             {
                 helpme += 0.30f;
@@ -54,7 +53,6 @@ public class BoosterController : MonoBehaviour {
                 //Debug.Log(check);
                 tapUI.AutoTap();
             }
-
         }
 
         if (CurrentAutoTapBoosterDuration <= 0 || check==30)
@@ -63,58 +61,49 @@ public class BoosterController : MonoBehaviour {
             check = 0;
             helpme = 0.30f;
         }
-
-        if (CurrentAutoTapBoosterDuration > 0)
-        {
-            //		Debug.Log (CurrentAutoTapBoosterDuration);
-        }
     }
 
 
 
-    public void HandleBoosters(BoosterUI bd)
+    public void HandleBoosters(BoosterUI currentBooster)
     {
-        if (bd.name.Equals("TapStrengthBooster"))
+        if (currentBooster.name.Equals("TapStrengthBooster"))
         {
             tapController.BoosterMultiplier(boosterData.TapStrengthBoosterMultiplier);
             tapController.BoosterTimeInterval(boosterData.TapStrengthBoosterDuration);
             CurrentBoosterDuration = boosterData.TapStrengthBoosterDuration;
             tapStrengthBoosterisActive = true;
-            StartCoroutine(SetBoosterIsActive(bd));
+            StartCoroutine(SetBoosterIsActive(currentBooster));
         }
-        else if (bd.name.Equals("AutoTapBooster"))
+        else if (currentBooster.name.Equals("AutoTapBooster"))
         {
-
             CurrentAutoTapBoosterDuration = boosterData.AutoTapBoosterDuration;
-           // Debug.Log(CurrentAutoTapBoosterDuration);
             autoTapisActive = true;
             CurrentBoosterDuration = CurrentAutoTapBoosterDuration;
-            StartCoroutine(SetBoosterIsActive(bd));
-            //for (int i = 0; i < boosterData.AutoTapBoosterDuration; i++) {            
-            //    StartCoroutine(WaitForOneSecond());
-            //}
+            StartCoroutine(SetBoosterIsActive(currentBooster));
         }
-        else if (bd.name.Equals("ExtraTimeBooster"))
+        else if (currentBooster.name.Equals("ExtraTimeBooster"))
         {
+
+            //TODO currentsong.duration should be increased instead of decreasing the timecountdown
             songController.BossExtratime(boosterData.ExtraTimeBoosterBonus);
             CurrentBoosterDuration = boosterData.ExtraTimeBoosterBonus;
-            StartCoroutine(SetBoosterIsActive(bd));
+            StartCoroutine(SetBoosterIsActive(currentBooster));
         }
     }
 
-    IEnumerator SetBoosterIsActive(BoosterUI bd)
+    IEnumerator SetBoosterIsActive(BoosterUI currentBooster)
     {
-        bd.boosterIsActive = true;
-        bd.boosterIsAvailable = false;
-        bd.GetComponent<Button>().interactable = false;
-        Debug.Log(bd.name+ " is unavailable for actions");
+        currentBooster.boosterIsActive = true;
+        currentBooster.boosterIsAvailable = false;
+        currentBooster.GetComponent<Button>().interactable = false;
+        //Debug.Log(currentBooster.name+ " is unavailable for actions");
         yield return new WaitForSeconds(CurrentBoosterDuration);
-        Debug.Log(bd.name+" is available again");
-        bd.boosterIsAvailable = true;
-        bd.boosterIsActive = false;
-        bd.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        bd.GetComponent<Button>().interactable = true;
-       
+        Debug.Log(currentBooster.name+" is available again");
+        currentBooster.boosterIsAvailable = true;
+        currentBooster.boosterIsActive = false;
+        currentBooster.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        currentBooster.GetComponent<Button>().interactable = true;    
     }
 
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler{ 
 
@@ -8,7 +9,7 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public bool boosterIsActive;
     public bool boosterIsAvailable;
     private BoosterDropZone boosterDropzone;
-    public Vector3 basePosition;
+    private Vector3 basePosition;
 
     public void Awake()
     {
@@ -16,13 +17,11 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         basePosition = GetComponent<RectTransform>().localPosition;
         if (boosterDropzone.tokenNumber > tokenCost)
         {
-            //boosterIsActive = true;
             boosterIsAvailable = true;
             boosterIsActive = false;
         }
         else
         {
-            
             boosterIsAvailable = false;
         }
 
@@ -31,31 +30,27 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void Start()
     {
-        Debug.Log(basePosition);
-        Debug.Log(this.gameObject.name);
+        //Debug.Log(basePosition);
+        //Debug.Log(this.gameObject.name);
     }
 
     public void Update()
     {
+        //Debug.Log(boosterDropzone.tokenNumber);
         if (boosterDropzone.tokenNumber >= tokenCost && boosterIsAvailable)
         {
-            //boosterIsActive = true;
             boosterIsAvailable = true;
-            //Debug.Log(boosterIsActive);
         }
         else
         {
             boosterIsAvailable = false;
-            //boosterIsActive = false;
+            GetComponent<Button>().interactable = false;
         }
-
-       // Debug.Log(boosterIsActive);
 
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("boosteractice:"+boosterIsActive);
         Color color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
         boosterDropzone.setColor(color);
         if (boosterIsAvailable && !boosterIsActive)
@@ -85,7 +80,6 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         }   
         transform.localPosition = basePosition;
-       // Debug.Log("boosteractice end:" + boosterIsAvailable);
     }
 
     public bool IsActive()
