@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2ba6b89d50d47cf45ab9d50f612841c3
-timeCreated: 1463151574
+timeCreated: 1463679742
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -54,7 +54,7 @@ TextureImporter:
     - name: all_band_basic_elonezet_0
       rect:
         serializedVersion: 2
-        x: 393
+        x: 750
         y: 0
         width: 182
         height: 450
