@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
 
+[Serializable]
 public class DailyRandomData
 {
     public int id;

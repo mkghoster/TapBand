@@ -15,7 +15,7 @@ public class GameStateHolder : MonoBehaviour
         LoadDefaults();
 		LoadConnectionsInGameData();
     }
-
+    
     void OnDestroy()
     {
         GameState.instance.SaveToFile(Application.persistentDataPath);

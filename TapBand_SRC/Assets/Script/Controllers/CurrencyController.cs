@@ -14,6 +14,9 @@ public class CurrencyController : MonoBehaviour
 
     private CurrencyState currencyState;
 
+    public event CurrencyEvent OnCurrencyChanged;
+    public event CurrencyEvent OnInitialized;
+
     void Awake()
     {
         songController = (SongController)FindObjectOfType(typeof(SongController));
@@ -26,34 +29,36 @@ public class CurrencyController : MonoBehaviour
         currencyState = GameState.instance.Currency;
     }
 
+    void Start()
+    {
+        if (OnInitialized != null)
+        {
+            OnInitialized(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens));
+        }
+    }
+
     void OnEnable()
     {
-        songController.GiveRewardOfSong += AddCoins;
-        concertController.GiveCoinRewardOfConcert += AddCoins;
-        concertController.GiveFanRewardOfConcert += AddFans;
+        songController.OnSongFinished += HandleSongFinished;
+        concertController.OnConcertFinished += AddFans;
         tourController.OnPrestige += OnPrestige;
 
         merchController.MerchTransaction += MerchTransaction;
         merchController.CoinTransaction += AddCoins;
         //equipmentController.EquipmentTransaction += EquipmentTransaction;
         merchController.CanBuy += CanBuy;
-        hudUI.NewCoin += Coins;
-        hudUI.NewFans += Fans;
     }
 
     void OnDisable()
     {
-        songController.GiveRewardOfSong -= AddCoins;
-        concertController.GiveCoinRewardOfConcert -= AddCoins;
-        concertController.GiveFanRewardOfConcert -= AddFans;
+        songController.OnSongFinished -= HandleSongFinished;
+        concertController.OnConcertFinished -= AddFans;
         tourController.OnPrestige -= OnPrestige;
 
         merchController.MerchTransaction -= MerchTransaction;
         merchController.CoinTransaction -= AddCoins;
         //equipmentController.EquipmentTransaction -= EquipmentTransaction;
         merchController.CanBuy -= CanBuy;
-        hudUI.NewCoin -= Coins;
-        hudUI.NewFans -= Fans;
     }
 
     private void OnPrestige()
@@ -62,7 +67,7 @@ public class CurrencyController : MonoBehaviour
         currencyState.Fans = 0;
         //  currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
 
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     private void EquipmentTransaction(CharacterData equipment)
@@ -70,26 +75,34 @@ public class CurrencyController : MonoBehaviour
         currencyState.Coins -= equipment.upgradeCost;
         currencyState.TapMultipliers.Add(equipment.tapStrengthBonus);
 
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     private void MerchTransaction(MerchData merch)
     {
         currencyState.Coins -= merch.cost;
 
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void AddCoins(int coins)
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        if (e.Status == SongStatus.Successful)
+        {
+            AddCoins(e.Data.coinReward);
+        }
+    }
+
+    private void AddCoins(double coins)
     {
         currencyState.Coins += coins;
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void AddFans(int fans)
+    private void AddFans(object sender, ConcertEventArgs e)
     {
-        currencyState.Fans += fans;
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        currencyState.Fans += e.Data.fanReward;
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     private void AddTokens(int tokens)
@@ -102,15 +115,11 @@ public class CurrencyController : MonoBehaviour
         return currencyState.Coins >= price;
     }
 
-    private string Coins()
+    public void SynchronizeRealCurrencyAndScreenCurrency()
     {
-        // Temporal solution for test purposes
-        return currencyState.ScreenCoins.ToString();
-    }
-
-    private string Fans()
-    {
-        // Temporal solution for test purposes
-        return currencyState.ScreenFans.ToString();
+        if (OnCurrencyChanged != null)
+        {
+            OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens)); //TODO: ez nem teljesen korrekt így
+        }
     }
 }

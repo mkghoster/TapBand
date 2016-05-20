@@ -56,7 +56,7 @@ public class GameData : LoadableData
     public IList<MerchData> MerchData5List { get; private set; }
     public IList<MerchData> MerchData6List { get; private set; }
 
-    public IList<MerchSlotData> MerchSlotData { get; private set; }
+    public IList<MerchSlotData> MerchSlotDataList { get; private set; }
 
     public IapData IapData { get; private set; }
     public GeneralData GeneralData { get; private set; }
@@ -66,7 +66,51 @@ public class GameData : LoadableData
     public IList<DailyRandomData> DailyRandomDataList { get; private set; }
     public IList<DailyStreakData> DailyStreakDataList { get; private set; }
 
-    public BoosterData BoosterData { get; private set; }
+    [NonSerialized]
+    private BoosterData boosterData;
+    public BoosterData BoosterData
+    {
+        get
+        {
+            return boosterData;
+        }
+    }
+
+    public GameData()
+    {
+        SongDataList = new List<SongData>();
+        ConcertDataList = new List<ConcertData>();
+
+        CharacterData1List = new List<CharacterData>();
+        CharacterData2List = new List<CharacterData>();
+        CharacterData3List = new List<CharacterData>();
+        CharacterData4List = new List<CharacterData>();
+        CharacterData5List = new List<CharacterData>();
+
+        SkinData1List = new List<SkinData>();
+        SkinData2List = new List<SkinData>();
+        SkinData3List = new List<SkinData>();
+        SkinData4List = new List<SkinData>();
+        SkinData5List = new List<SkinData>();
+
+        MerchData1List = new List<MerchData>();
+        MerchData2List = new List<MerchData>();
+        MerchData3List = new List<MerchData>();
+        MerchData4List = new List<MerchData>();
+        MerchData5List = new List<MerchData>();
+        MerchData6List = new List<MerchData>();
+
+        MerchSlotDataList = new List<MerchSlotData>();
+
+        DroneRewardDataList = new List<DroneRewardData>();
+
+        DailyRandomDataList = new List<DailyRandomData>();
+        DailyStreakDataList = new List<DailyStreakData>();
+
+        IapData = new IapData();
+        GeneralData = new GeneralData();
+        boosterData = new BoosterData();
+    }
 
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
@@ -91,7 +135,7 @@ public class GameData : LoadableData
         MerchData5List = gd.MerchData5List;
         MerchData6List = gd.MerchData6List;
 
-        MerchSlotData = gd.MerchSlotData;
+        MerchSlotDataList = gd.MerchSlotDataList;
 
         IapData = gd.IapData;
         GeneralData = gd.GeneralData;
@@ -101,7 +145,7 @@ public class GameData : LoadableData
         DailyRandomDataList = gd.DailyRandomDataList;
         DailyStreakDataList = gd.DailyStreakDataList;
 
-        BoosterData = new BoosterData() // nemt'om kell-e külön boosterData, de egye-fene
+        boosterData = new BoosterData() // nemt'om kell-e külön boosterData, de egye-fene
         {
             AutoTapBoosterDuration = gd.GeneralData.AutoTapBoosterDuration,
             AutoTapBoosterTapsPerSecond = gd.GeneralData.AutoTapBoosterTapsPerSecond,

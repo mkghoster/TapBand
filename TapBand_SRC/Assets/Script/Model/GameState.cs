@@ -47,9 +47,7 @@ public class GameState : LoadableData
         Currency = gd.Currency == null ? new CurrencyState() : gd.Currency;
         Merch = gd.Merch == null ? new MerchState() : gd.Merch;
         Concert = gd.Concert == null ? new ConcertState() : gd.Concert;
-        Equipment = gd.Equipment == null ? new EquipmentState() : gd.Equipment;
-
-        Currency.SynchronizeRealCurrencyAndScreenCurrency();
+        Equipment = gd.Equipment == null ? new EquipmentState() : gd.Equipment;                
     }
 
     public override string GetFileName()

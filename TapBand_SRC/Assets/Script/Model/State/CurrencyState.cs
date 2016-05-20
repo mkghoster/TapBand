@@ -9,51 +9,6 @@ public class CurrencyState
     public double Coins { get; set; }
     public int Tokens { get; set; }
 
-    [NonSerialized]
-    private double screenFans;
-    public double ScreenFans
-    {
-        get
-        {
-            return screenFans;
-        }
-
-        set
-        {
-            screenFans = value;
-        }
-    }
-
-    [NonSerialized]
-    private double screenCoins;
-    public double ScreenCoins
-    {
-        get
-        {
-            return screenCoins;
-        }
-
-        set
-        {
-            screenCoins = value;
-        }
-    }
-
-    [NonSerialized]
-    private int screenTokens;
-    public int ScreenTokens
-    {
-        get
-        {
-            return screenTokens;
-        }
-
-        set
-        {
-            screenTokens = value;
-        }
-    }
-
     public IList<float> TapMultipliers { get; private set; }
 
     public CurrencyState()
@@ -74,12 +29,5 @@ public class CurrencyState
 
             return retVal;
         }
-    }
-
-    public void SynchronizeRealCurrencyAndScreenCurrency()
-    {
-        screenFans = Fans;
-        screenCoins = Coins;
-        screenTokens = Tokens;
     }
 }

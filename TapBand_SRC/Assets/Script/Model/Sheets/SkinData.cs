@@ -1,12 +1,12 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
 
 public enum SkinType
 {
-    Dress = 0,
-    Instrument = 1
+    DRESS = 0,
+    INSTRUMENT = 1
 }
 
+[Serializable]
 public class SkinData
 {
     public int id;

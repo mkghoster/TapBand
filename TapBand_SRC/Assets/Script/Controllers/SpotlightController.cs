@@ -18,7 +18,8 @@ public class SpotlightController : MonoBehaviour
 
     public GameObject[] musicians;
 
-    private bool canActivate = true;
+    // private bool canActivate = true;
+    private bool canActivate = false; // TODO: ideiglenesen kikapcsolva
 
     void Awake()
     {
@@ -42,12 +43,12 @@ public class SpotlightController : MonoBehaviour
 
     void OnEnable()
     {
-        songController.SwitchOnOffTap += SwitchOnOffSpotlight;
+
     }
 
     void OnDisable()
     {
-        songController.SwitchOnOffTap -= SwitchOnOffSpotlight;
+
     }
 
     void Update()
@@ -66,17 +67,18 @@ public class SpotlightController : MonoBehaviour
             {
                 initSpotlightCountdown -= dt;
             }
-        }     
+        }
     }
 
     private float CalculateAliveTime()
     {
         return UnityEngine.Random.Range(SpotlightMinDelay, SpotlightMaxDelay);
-    }    
+    }
 
     //between 2 concert
     private void SwitchOnOffSpotlight(bool value)
     {
-        canActivate = value;
+        // TODO: switched off until wireup
+        // canActivate = value;
     }
 }

@@ -261,7 +261,7 @@ public class RawGameDataLoader : IGameDataLoader
             TryLoadInt(i, "TapGoal", out songDataObject.tapGoal);
             TryLoadInt(i, "Duration", out songDataObject.duration);
             TryLoadInt(i, "CoinReward", out songDataObject.coinReward);
-            TryLoadBool(i, "BossBattle", out songDataObject.bossBattle);
+            TryLoadBool(i, "BossBattle", out songDataObject.isEncore);
             TryLoadInt(i, "ConcertID", out songDataObject.concertID);
 
             //TODO: mindenhol megcsinálni, vagy megírni rendesen a függvényeket nem tryra (esetleg végigpróbálja?)
@@ -333,6 +333,7 @@ public class RawGameDataLoader : IGameDataLoader
     {
         skillDataTarget.Clear();
         currentRows = dataReader.GetRows(sheetName);
+        currentSheet = sheetName; //mert az exceptionkezelőnek azért kell...
 
         int rowNum = currentRows.Count;
         bool success = true;
@@ -364,10 +365,13 @@ public class RawGameDataLoader : IGameDataLoader
         skinDataTarget.Clear();
 
         List<Dictionary<string, string>> rawData = dataReader.GetRows(sheetName);
+        currentSheet = sheetName;
+        currentRows = dataReader.GetRows(sheetName);
         bool success = true;
         for (var i = 0; i < rawData.Count; i++)
-        {
+        {            
             SkinData skinDataObject = new SkinData();
+            
             success = success && TryLoadInt(i, "ID", out skinDataObject.id);
             TryLoadString(i, "Name", out skinDataObject.name);
             TryLoadString(i, "Icon", out skinDataObject.icon);
@@ -388,7 +392,7 @@ public class RawGameDataLoader : IGameDataLoader
     private void LoadGeneralData(GeneralData generalDataTarget)
     {
         currentRows = dataReader.GetRows("GeneralData");
-
+        currentSheet = "GeneralData";
         int rowNum = currentRows.Count;
         for (int i = 0; i < rowNum; i++)
         {
@@ -449,7 +453,7 @@ public class RawGameDataLoader : IGameDataLoader
                     TryLoadInt(i, "Value", out generalDataTarget.MerchBoothBoostUnitsInMinute);
                     break;
                 default:
-                    AbortWithErrorMessage("General data key problems"); // TODO: error handling of the whole block
+                    //AbortWithErrorMessage("General data key problems"); // TODO: error handling of the whole block
                     break;
             }
         }
@@ -458,7 +462,8 @@ public class RawGameDataLoader : IGameDataLoader
     private void LoadDroneRewardData(IList<DroneRewardData> droneRewardDataTarget)
     {
         droneRewardDataTarget.Clear();
-
+        currentSheet = "DroneRewardData";
+        currentRows = dataReader.GetRows(currentSheet);
         List<Dictionary<string, string>> rawData = dataReader.GetRows("DroneRewardData");
         bool success = true;
         for (var i = 0; i < rawData.Count; i++)
@@ -487,7 +492,8 @@ public class RawGameDataLoader : IGameDataLoader
     private void LoadDailyRandomData(IList<DailyRandomData> dailyRandomDataTarget)
     {
         dailyRandomDataTarget.Clear();
-
+        currentSheet = "DailyRandomData";
+        currentRows = dataReader.GetRows(currentSheet);
         List<Dictionary<string, string>> rawData = dataReader.GetRows("DailyRandomData");
         bool success = true;
         for (var i = 0; i < rawData.Count; i++)
@@ -513,7 +519,8 @@ public class RawGameDataLoader : IGameDataLoader
     private void LoadDailyStreakData(IList<DailyStreakData> dailyStreakDataTarget)
     {
         dailyStreakDataTarget.Clear();
-
+        currentSheet = "DailyStreakData";
+        currentRows = dataReader.GetRows(currentSheet);
         List<Dictionary<string, string>> rawData = dataReader.GetRows("DailyStreakData");
         bool success = true;
         for (var i = 0; i < rawData.Count; i++)

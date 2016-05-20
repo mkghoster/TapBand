@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public delegate void RestartEvent();
 public delegate void OnPrestigeEvent();

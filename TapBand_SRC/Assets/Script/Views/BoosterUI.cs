@@ -31,8 +31,7 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void Start()
     {
-        Debug.Log(basePosition);
-        Debug.Log(this.gameObject.name);
+       
     }
 
     public void Update()

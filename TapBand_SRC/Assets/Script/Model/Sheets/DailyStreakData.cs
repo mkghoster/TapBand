@@ -1,4 +1,7 @@
-﻿public class DailyStreakData
+﻿using System;
+
+[Serializable]
+public class DailyStreakData
 {
     public int id;
     public string name;
