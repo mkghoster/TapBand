@@ -26,10 +26,12 @@ public class HudUI : MonoBehaviour
     private int screenToken;
 
     private CurrencyController currencyController;
+    private SongController songController;
 
     void Awake()
     {
         currencyController = (CurrencyController)FindObjectOfType(typeof(CurrencyController));
+        songController = (SongController)FindObjectOfType(typeof(SongController));
 
         var coinObj = GameObject.Find("CoinText");
         var fanObj = GameObject.Find("FanText");
@@ -46,12 +48,20 @@ public class HudUI : MonoBehaviour
     {
         currencyController.OnInitialized += HandleCurrencyInitialized;
         currencyController.OnCurrencyChanged += HandleCurrencyEvent;
+
+        songController.OnSongStarted += HandleSongStarted;
+        songController.OnSongFinished += HandleSongFinished;
+        songController.OnSongProgress += HandleSongProgress;
     }
 
     void OnDisable()
     {
         currencyController.OnInitialized -= HandleCurrencyInitialized;
         currencyController.OnCurrencyChanged += HandleCurrencyEvent;
+
+        songController.OnSongStarted -= HandleSongStarted;
+        songController.OnSongFinished -= HandleSongFinished;
+        songController.OnSongProgress -= HandleSongProgress;
     }
 
     void OnGUI()
@@ -94,12 +104,15 @@ public class HudUI : MonoBehaviour
         //        //print("TapGoal: "+actualSongData.tapGoal +  "  TapPassed: "+ TapPassed());
         //    }
         //    else
-        GUI.Box(
-            new Rect(
-                Screen.width / 4 - 25f,
-                startingVerticalPos,
-                (float)(progress / actualSongData.tapGoal) * (Screen.width / 2) + 50f,
-                heightOfBar), "Tap");
+        if (actualSongData != null)
+        {
+            GUI.Box(
+                new Rect(
+                    Screen.width / 4 - 25f,
+                    startingVerticalPos,
+                    (float)(progress / actualSongData.tapGoal) * (Screen.width / 2) + 50f,
+                    heightOfBar), "Tap");
+        }
         //}
 
         //if (TimePassed != null)
@@ -157,5 +170,18 @@ public class HudUI : MonoBehaviour
     {
         timePassed = e.TimePassed;
         progress = e.Progress;
+    }
+
+    private void HandleSongStarted(object sender, SongEventArgs e)
+    {
+        actualSongData = e.Data;
+
+        songText.text = "Song " + actualSongData.id.ToString();
+        concertText.text = "Concert " + actualSongData.concertID;
+    }
+
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        actualSongData = null;
     }
 }

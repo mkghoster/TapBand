@@ -13,9 +13,13 @@ public class GameStateHolder : MonoBehaviour
         GameState.instance.TryLoadFromAssets(Application.persistentDataPath);
 
         LoadDefaults();
-		LoadConnectionsInGameData();
+        LoadConnectionsInGameData();
+
+        ConcertState concertState = GameState.instance.Concert;
+        ConcertData currentConcert = gameData.ConcertDataList.FirstOrDefault(x => x.id == concertState.CurrentConcertID);
+        concertState.CurrentSong = currentConcert.songList[concertState.CurrentSongIndex];
     }
-    
+
     void OnDestroy()
     {
         GameState.instance.SaveToFile(Application.persistentDataPath);
@@ -23,25 +27,23 @@ public class GameStateHolder : MonoBehaviour
 
     private void LoadDefaults()
     {
-		if (GameState.instance.Concert.CurrentConcertID == 0) 
-		{
-			ConcertData firstConcert = GameData.instance.ConcertDataList[0];
-			GameState.instance.Concert.CurrentConcertID = firstConcert.id;
-		}
+        if (GameState.instance.Concert.CurrentConcertID == 0)
+        {
+            ConcertData firstConcert = GameData.instance.ConcertDataList[0];
+            GameState.instance.Concert.ResetToConcert(firstConcert);
+        }
     }
 
-	private void LoadConnectionsInGameData()
-	{
-		foreach (ConcertData cd in GameData.instance.ConcertDataList)
-		{
-			cd.songList = GetAllSongsForConcert(cd.id);
-		}
+    private void LoadConnectionsInGameData()
+    {
+        foreach (ConcertData cd in GameData.instance.ConcertDataList)
+        {
+            cd.songList = GetAllSongsForConcert(cd.id);
+        }
+    }
 
-	}
-
-	private List<SongData> GetAllSongsForConcert(int concertID)
-	{
-		return GameData.instance.SongDataList.Where(x => x.concertID == concertID).ToList(); // ez nem korrekt, a concert ismeri a songjait
-	}
-
+    private List<SongData> GetAllSongsForConcert(int concertID)
+    {
+        return GameData.instance.SongDataList.Where(x => x.concertID == concertID).ToList();
+    }
 }

@@ -207,8 +207,9 @@ public class RawGameDataLoader : IGameDataLoader
     public GameData LoadGameData()
     {
         GameData gameData = new GameData();
-        LoadSongData(gameData.SongDataList);
+
         LoadConcertData(gameData.ConcertDataList);
+        LoadSongData(gameData.SongDataList);
         // gameData.MerchDataList = LoadMerchData();
 
         LoadCharacterData(gameData.CharacterData1List, "CharacterData1");
@@ -267,11 +268,14 @@ public class RawGameDataLoader : IGameDataLoader
             //TODO: mindenhol megcsinálni, vagy megírni rendesen a függvényeket nem tryra (esetleg végigpróbálja?)
             if (!success)
             {
+                Debug.Log("Failed to load songs");
                 return;
             }
 
             songDataTarget.Add(songDataObject);
         }
+
+        Debug.Log("Loaded " + songDataTarget.Count + " Songs");
 
         return;
     }
@@ -369,9 +373,9 @@ public class RawGameDataLoader : IGameDataLoader
         currentRows = dataReader.GetRows(sheetName);
         bool success = true;
         for (var i = 0; i < rawData.Count; i++)
-        {            
+        {
             SkinData skinDataObject = new SkinData();
-            
+
             success = success && TryLoadInt(i, "ID", out skinDataObject.id);
             TryLoadString(i, "Name", out skinDataObject.name);
             TryLoadString(i, "Icon", out skinDataObject.icon);

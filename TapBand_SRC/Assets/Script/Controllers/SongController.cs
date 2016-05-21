@@ -52,6 +52,12 @@ public class SongController : MonoBehaviour
         encoreButton.GiveEncoreButtonPressedEvent -= StartEncoreSong;
     }
 
+    void Start()
+    {
+        currentSong = concertController.CurrentSongData;
+        OnSongStarted(this, new SongEventArgs(currentSong, SongStatus.InProgress));
+    }
+
     void Update()
     {
         float deltaTime = Time.deltaTime;

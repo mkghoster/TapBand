@@ -16,7 +16,8 @@ public class EncoreButtonUI : MonoBehaviour
 
     void Awake()
     {
-        songController = (SongController)FindObjectOfType(typeof(SongController));
+        songController = FindObjectOfType<SongController>();
+        concertController = FindObjectOfType<ConcertController>();
 
         encoreButton = gameObject.GetComponent<Button>();
         encoreButtonImage = gameObject.GetComponent<Image>();

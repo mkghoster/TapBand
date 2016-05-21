@@ -122,6 +122,7 @@ public class GameData : LoadableData
 
         SongDataList = gd.SongDataList;
         ConcertDataList = gd.ConcertDataList;
+
         CharacterData1List = gd.CharacterData1List;
         CharacterData2List = gd.CharacterData2List;
         CharacterData3List = gd.CharacterData3List;
