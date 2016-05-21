@@ -16,7 +16,6 @@ public class TapController : MonoBehaviour
     void Awake()
     {
         BindWithUI();
-
         songController = (SongController)FindObjectOfType(typeof(SongController));
     }
 
@@ -58,7 +57,7 @@ public class TapController : MonoBehaviour
             tapUI.DisplayTapValueAt(position, (ulong)tapValue, special);
 
             if (OnTap != null)
-            {
+            {                
                 OnTap(tapValue);
             }
         }

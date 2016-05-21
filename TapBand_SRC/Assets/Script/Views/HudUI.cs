@@ -89,58 +89,26 @@ public class HudUI : MonoBehaviour
             // no such ui element
         }
 
-        //if (TapPassed != null)
-        //{
-        GUI.color = Color.yellow;
-        //    if (TapPassed() >= (float)actualSongData.tapGoal && actualSongData.isEncore)
-        //    {
-        //        //print("vau");
-        //        /*GUI.Box(
-        //            new Rect(
-        //                Screen.width / 4 - 25f,
-        //                startingVerticalPos,
-        //                (actualSongData.tapGoal) * (Screen.width / 2) + 50f,
-        //                heightOfBar), "Tap");*/
-        //        //print("TapGoal: "+actualSongData.tapGoal +  "  TapPassed: "+ TapPassed());
-        //    }
-        //    else
         if (actualSongData != null)
         {
+            GUI.color = Color.yellow;
             GUI.Box(
                 new Rect(
                     Screen.width / 4 - 25f,
                     startingVerticalPos,
                     (float)(progress / actualSongData.tapGoal) * (Screen.width / 2) + 50f,
-                    heightOfBar), "Tap");
+                    heightOfBar), string.Format("Taps: {0} / {1}", progress, actualSongData.tapGoal));
+
+            GUI.color = Color.red;
+            GUI.Box(
+            new Rect(
+                Screen.width / 4 - 25f,
+                startingVerticalPos + heightOfBar + 5f,
+                (timePassed * 5 / actualSongData.tapGoal) * (Screen.width / 2) + 50f,
+                heightOfBar), string.Format("Time: {0} / {1}", timePassed, actualSongData.duration));
+
         }
-        //}
 
-        //if (TimePassed != null)
-        //{
-        //    GUI.color = Color.red;
-        //    if (actualSongData.isEncore)
-        //    {
-        //        GUI.Box(
-        //        new Rect(
-        //            Screen.width / 4 - 25f,
-        //            startingVerticalPos + heightOfBar + 5f,
-        //            (TimePassed() * 5 / actualSongData.tapGoal) * (Screen.width / 2) + 50f,
-        //            heightOfBar), "Time");
-
-        //        // print("bossbattle duration: " + actualSongData.duration);
-        //        //print("bossbattle tapGoal: "  + actualSongData.tapGoal);
-        //    }
-        //    else  //************************** ÁTMENETI   ********************************************************* amíg a nem boss songok hossza 0 !!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //    {
-        //        GUI.Box(
-        //        new Rect(
-        //           Screen.width / 4 - 25f,
-        //           startingVerticalPos + heightOfBar + 5f,
-        //           (TimePassed() * 5 / 80f) * (Screen.width / 2) + 50f,
-        //           heightOfBar), "Time");
-        //    }
-        //    //print("timepassed: "+TimePassed() + " || tapgoal: "+ actualSongData.tapGoal);
-        //}
     }
 
     private void HandleCurrencyEvent(object sender, CurrencyEventArgs e)

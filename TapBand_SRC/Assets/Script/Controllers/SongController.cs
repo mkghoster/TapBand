@@ -80,11 +80,23 @@ public class SongController : MonoBehaviour
             }
         }
 
+        // if we have finished the current song, notify the world about this, and reset the controller
+        if (actualTapAmount >= currentSong.tapGoal)
+        {            
+            if (OnSongFinished != null)
+            {
+                OnSongFinished(this, new SongEventArgs(currentSong, SongStatus.Successful));
+            }
+            ResetControllerState();
+            return;
+        }
+
         elapsedTime += deltaTime;
 
         if (elapsedTime > currentSong.duration)
         {
             FailSong();
+            return;
         }
 
         if (OnSongProgress != null)
@@ -110,21 +122,21 @@ public class SongController : MonoBehaviour
             actualTapAmount += tapStrength;
 
             //last song before encore
-            //TODO: why is this in the tap handler?
+            //TODO: this should be in it's own handler
             if (CastSongIndex(currentSong.id) == beforeEncoreSongConstID && currentSong.tapGoal < actualTapAmount)
             {
                 //if there was already a try
-                if (PlayerPrefsManager.GetEncoreSongTry()) //wtf?
+                if (PlayerPrefsManager.GetEncoreSongTry())
                 {
                     if (ShowEncoreButton != null)
                     {
-                        ShowEncoreButton(null, null); // todo: concert stuff still?
+                        ShowEncoreButton(null, null);
                     }
                 }
                 else
                 {
                     PlayerPrefsManager.SetEncoreSongTry(true);
-                    if (currentSong.isEncore) // should be concertcontroller
+                    if (currentSong.isEncore)
                     {
                         PlayerPrefsManager.SetEncoreSongTry(false);
                     }
@@ -133,16 +145,6 @@ public class SongController : MonoBehaviour
                 }
             }
             //else if, because we alawys do the same (except before the encore song)
-
-            // if we have finished the current song, notify the world about this, and reset the controller
-            if (actualTapAmount >= currentSong.tapGoal)
-            {
-                if (OnSongFinished != null)
-                {
-                    OnSongFinished(this, new SongEventArgs(currentSong, SongStatus.Successful));
-                }
-                ResetControllerState();
-            }
         }
     }
 

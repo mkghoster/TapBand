@@ -80,12 +80,12 @@ public class ConcertController : MonoBehaviour
     private void HandleSongFinished(object sender, SongEventArgs e)
     {
         bool isEncoreSong = e.Data.isEncore;
+
         if (e.Status == SongStatus.Successful)
         {
             // If the encore song is successful, notify the world about the succesful concert, get the next concert, and update the state
             if (isEncoreSong)
             {
-                Debug.Log("Encore finished");
                 OnConcertFinished(this, new ConcertEventArgs(currentConcertData, concertState));
                 currentConcertData = GetNextConcert();
                 concertState.ResetToConcert(currentConcertData);
@@ -117,7 +117,6 @@ public class ConcertController : MonoBehaviour
         }
         else if (e.Status == SongStatus.Failed)
         {
-            Debug.Log("Song failed");
             ResetToFirstSongOfConcert();
         }
         else if (e.Status == SongStatus.EncoreInitiated)
@@ -130,7 +129,6 @@ public class ConcertController : MonoBehaviour
     //Returns the next song to play.
     private SongData GetNextSong()
     {
-        Debug.Log("Getting next song. Current song index: " + concertState.CurrentSongIndex);
         if (currentConcertData.songList.Count <= concertState.CurrentSongIndex + 1)
         {
             return null;
