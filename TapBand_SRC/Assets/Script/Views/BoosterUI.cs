@@ -10,10 +10,14 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private BoosterDropZone boosterDropzone;
     public Vector3 basePosition;
 
+    bool debugBool = false;
+
     public void Awake()
     {
         boosterDropzone = GameObject.Find("BoosterDropZone").GetComponent<BoosterDropZone>();
-        basePosition = GetComponent<RectTransform>().localPosition;
+        //basePosition = GetComponent<RectTransform>().localPosition;
+        basePosition = GetComponent<RectTransform>().anchoredPosition;
+     
         if (boosterDropzone.tokenNumber > tokenCost)
         {
             //boosterIsActive = true;
@@ -29,10 +33,16 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     }
 
+    private void DebugInfo()
+    {
+        Debug.Log(this.gameObject.name + ": "+ basePosition);
+    }
+
     public void Start()
     {
-        Debug.Log(basePosition);
-        Debug.Log(this.gameObject.name);
+        // Debug.Log(basePosition);
+        //Debug.Log(this.gameObject.name);
+        //DebugInfo();
     }
 
     public void Update()
@@ -49,12 +59,20 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             //boosterIsActive = false;
         }
 
-       // Debug.Log(boosterIsActive);
+        // Debug.Log(boosterIsActive);
+
+        if (debugBool)
+        {
+            DebugInfo();
+            debugBool = false;
+        }
+            
 
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        debugBool = true;
         //Debug.Log("boosteractice:"+boosterIsActive);
         Color color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
         boosterDropzone.setColor(color);
@@ -83,8 +101,10 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         else
         {
             GetComponent<CanvasGroup>().blocksRaycasts = true;
-        }   
-        transform.localPosition = basePosition;
+        }
+        //transform.localPosition = basePosition;
+        gameObject.GetComponent<RectTransform>().anchoredPosition = basePosition;
+
        // Debug.Log("boosteractice end:" + boosterIsAvailable);
     }
 
