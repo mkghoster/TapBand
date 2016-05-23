@@ -9,9 +9,7 @@ public class CurrencyController : MonoBehaviour
     private TourController tourController;
     private MerchController merchController;
     //private EquipmentController equipmentController;
-
-    private HudUI hudUI;
-
+        
     private CurrencyState currencyState;
 
     public event CurrencyEvent OnCurrencyChanged;
@@ -23,9 +21,7 @@ public class CurrencyController : MonoBehaviour
         concertController = (ConcertController)FindObjectOfType(typeof(ConcertController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
         merchController = (MerchController)FindObjectOfType(typeof(MerchController));
-        //equipmentController = (EquipmentController)FindObjectOfType(typeof(EquipmentController));
-        hudUI = (HudUI)FindObjectOfType(typeof(HudUI));
-
+        
         currencyState = GameState.instance.Currency;
     }
 

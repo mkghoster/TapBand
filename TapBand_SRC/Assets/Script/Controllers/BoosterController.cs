@@ -17,9 +17,6 @@ public class BoosterController : MonoBehaviour {
     private float helpme=0.30f;
     private int check=0;
 
-    public delegate void TapEvent(TapArgs args);
-    public event TapEvent OnTap;
-
     private TapUI tapUI;
 
     void Start () {

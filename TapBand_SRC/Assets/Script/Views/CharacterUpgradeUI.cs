@@ -3,8 +3,6 @@ using System.Collections;
 
 public class CharacterUpgradeUI : MonoBehaviour
 {
-    public event CharacterEvent OnCharacterUpgrade;
-
     public CharacterType CharacterType { get; set; }
 
     private CharacterData upgradeableCharacter;
