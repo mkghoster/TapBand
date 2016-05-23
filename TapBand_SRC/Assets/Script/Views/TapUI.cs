@@ -165,10 +165,10 @@ public class TapUI : MonoBehaviour
     }
 
     public void SwitchOnOffCollider(bool value)
-    {
-        if (value)
-            _collider.enabled = true;
-        else
-            _collider.enabled = false;
+    {        
+        //if (value)
+        //    _collider.enabled = true;
+        //else
+        //    _collider.enabled = false;
     }
 }

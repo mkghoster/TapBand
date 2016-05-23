@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerPrefsManager : MonoBehaviour {
+public class PlayerPrefsManager : MonoBehaviour
+{
 
-   
+
     public static void SetMusicVolume(float volume)
     {
-       PlayerPrefs.SetFloat(PlayerPrefsConsts.MUSIC_VOLUME_KEY, Mathf.Clamp(volume, 0.0f, 1.0f));
+        PlayerPrefs.SetFloat(PlayerPrefsConsts.MUSIC_VOLUME_KEY, Mathf.Clamp(volume, 0.0f, 1.0f));
     }
 
     public static float GetMusicVolume()
@@ -16,7 +17,7 @@ public class PlayerPrefsManager : MonoBehaviour {
 
     public static void SetSFXVolume(float volume)
     {
-        PlayerPrefs.SetFloat(PlayerPrefsConsts.SFX_VOLUME_KEY, Mathf.Clamp( volume,0.0f,1.0f));
+        PlayerPrefs.SetFloat(PlayerPrefsConsts.SFX_VOLUME_KEY, Mathf.Clamp(volume, 0.0f, 1.0f));
     }
 
     public static float GetSFXVolume()
@@ -48,6 +49,4 @@ public class PlayerPrefsManager : MonoBehaviour {
     {
         return PlayerPrefs.GetInt(PlayerPrefsConsts.PREV_CONCERT_AUDIO_ID, 0);
     }
-
-
 }

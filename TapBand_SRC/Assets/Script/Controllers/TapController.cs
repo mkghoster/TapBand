@@ -7,8 +7,8 @@ public class TapController : MonoBehaviour
     private SongController songController;
 
     public float SpotlightTapMultiplier;
-	public float boosterMultiplier=0f;
-	public float boosterTimeInterval=0f;
+    public float boosterMultiplier = 0f;
+    public float boosterTimeInterval = 0f;
 
     public delegate void TapEvent(float value);
     public event TapEvent OnTap;
@@ -16,20 +16,20 @@ public class TapController : MonoBehaviour
     void Awake()
     {
         BindWithUI();
-
         songController = (SongController)FindObjectOfType(typeof(SongController));
     }
 
     void OnEnable()
     {
         tapUI.OnTap += HandleTap;
-        songController.SwitchOnOffTap += SwitchTapAreaCollider;
+        songController.OnSongStarted += HandleSongStarted;
+        songController.OnSongFinished += HandleSongFinished;
     }
 
     void OnDisable()
     {
-        tapUI.OnTap -= HandleTap;
-        songController.SwitchOnOffTap -= SwitchTapAreaCollider;
+        songController.OnSongStarted += HandleSongStarted;
+        songController.OnSongFinished += HandleSongFinished;
     }
 
     #region MVC bindings
@@ -50,13 +50,14 @@ public class TapController : MonoBehaviour
         foreach (Vector2 position in positions)
         {
             float tapValue = CalculateTapValue(position, special);
-			if (boosterMultiplier > 0 && boosterTimeInterval>0) {
-				tapValue *= boosterMultiplier;
-			}
+            if (boosterMultiplier > 0 && boosterTimeInterval > 0)
+            {
+                tapValue *= boosterMultiplier;
+            }
             tapUI.DisplayTapValueAt(position, (ulong)tapValue, special);
 
             if (OnTap != null)
-            {
+            {                
                 OnTap(tapValue);
             }
         }
@@ -78,16 +79,23 @@ public class TapController : MonoBehaviour
         return f == 0.0f ? 1.0f : f;
     }
 
-	public void BoosterMultiplier(float multiplierValue){
-		boosterMultiplier = multiplierValue;
-	}
-
-	public void BoosterTimeInterval(float multiplierIntervalValue){
-		boosterTimeInterval = multiplierIntervalValue;
-	}
-
-    private void SwitchTapAreaCollider(bool value)
+    public void BoosterMultiplier(float multiplierValue)
     {
-        tapUI.SwitchOnOffCollider(value);  //szebben???
+        boosterMultiplier = multiplierValue;
+    }
+
+    public void BoosterTimeInterval(float multiplierIntervalValue)
+    {
+        boosterTimeInterval = multiplierIntervalValue;
+    }
+
+    private void HandleSongStarted(object sender, SongEventArgs e)
+    {
+        tapUI.SwitchOnOffCollider(true);
+    }
+
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        tapUI.SwitchOnOffCollider(false);
     }
 }

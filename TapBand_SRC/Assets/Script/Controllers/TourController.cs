@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
-public class TourController : MonoBehaviour {
+public delegate void RestartEvent();
+public delegate void OnPrestigeEvent();
 
-    public delegate void RestartEvent();
+public class TourController : MonoBehaviour
+{
     public event RestartEvent RestartConcert;
     public event RestartEvent RestartSong;
-    public delegate void OnPrestigeEvent(TourData tour);
     public event OnPrestigeEvent OnPrestige;
 
     private RestartUI restart;
@@ -31,20 +33,17 @@ public class TourController : MonoBehaviour {
 
     private void UpgradeLevel()
     {
-        if (RestartConcert != null)RestartConcert();
-        if (RestartSong != null) RestartSong();
+        if (RestartConcert != null)
+        {
+            RestartConcert();
+        }
+        if (RestartSong != null)
+        {
+            RestartSong();
+        }
         if (OnPrestige != null)
         {
-            int fans = GameState.instance.Currency.Fans;
-            foreach (TourData tourData in GameData.instance.TourDataList)
-            {
-                if (fans > tourData.minFanCount)
-                {
-                    OnPrestige(tourData);
-                    break;
-                }
-            }
-            
+            OnPrestige();
         }
     }
 }

@@ -2,139 +2,32 @@
 using System.Collections.Generic;
 using System;
 
-[System.Serializable]
+[Serializable]
 public class CurrencyState
 {
-    private int fans;
-    [System.NonSerialized]
-    private int screenFans;
+    public double Fans { get; set; }
+    public double Coins { get; set; }
+    public int Tokens { get; set; }
 
-    private int coins;
-    [System.NonSerialized]
-    private int screenCoins;
+    public IList<float> TapMultipliers { get; private set; }
 
-    private int tokens;
-    [System.NonSerialized]
-    private int screenTokens;
-
-    private ICollection<Single> tapMultipliers = new List<Single>();
-
-    public void AddTapMultiplier(float multiplier)
+    public CurrencyState()
     {
-        tapMultipliers.Add(multiplier);
+        TapMultipliers = new List<float>();
     }
-    
+
     public float TapMultipliersProduct
     {
         get
         {
             float retVal = 1.0f;
 
-            foreach (float f in tapMultipliers)
+            for (int i = 0; i < TapMultipliers.Count; i++)
             {
-                retVal *= f;
+                retVal *= TapMultipliers[i];
             }
 
             return retVal;
         }
     }
-
-    public void SynchronizeRealCurrencyAndScreenCurrency()
-    {
-        screenFans = fans;
-        screenCoins = coins;
-        screenTokens = tokens;
-    }
-
-    public int Fans
-    {
-        get
-        {
-            return fans;
-        }
-
-        set
-        {
-            fans = value;
-        }
-    }
-
-    public int Coins
-    {
-        get
-        {
-            return coins;
-        }
-
-        set
-        {
-            coins = value;
-        }
-    }
-
-    public int Tokens
-    {
-        get
-        {
-            return tokens;
-        }
-
-        set
-        {
-            tokens = value;
-        }
-    }
-    
-    public int ScreenFans
-    {
-        get
-        {
-            return screenFans;
-        }
-
-        set
-        {
-            screenFans = value;
-        }
-    }
-
-    public int ScreenCoins
-    {
-        get
-        {
-            return screenCoins;
-        }
-
-        set
-        {
-            screenCoins = value;
-        }
-    }
-
-    public int ScreenTokens
-    {
-        get
-        {
-            return screenTokens;
-        }
-
-        set
-        {
-            screenTokens = value;
-        }
-    }
-
-    public ICollection<float> TapMultipliers
-    {
-        get
-        {
-            return tapMultipliers;
-        }
-
-        set
-        {
-            tapMultipliers = value;
-        }
-    }
-
 }

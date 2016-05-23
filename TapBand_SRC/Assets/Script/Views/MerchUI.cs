@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class MerchUI : MonoBehaviour {
+public class MerchUI : MonoBehaviour
+{
 
     public delegate MerchData MerchDataEvent();
     public event MerchDataEvent CurrentQualityMerchData;
@@ -24,7 +25,7 @@ public class MerchUI : MonoBehaviour {
         RefreshPanel(timePanel, CurrentTimeMerchData, NextTimeMerchData, BuyTimeMerch);
         RefreshPanel(qualityPanel, CurrentQualityMerchData, NextQualityMerchData, BuyQualityMerch);
     }
-    
+
     private void RefreshPanel(GameObject panel, MerchDataEvent currentData, MerchDataEvent nextData,
                               BuyMerchEvent buy)
     {
@@ -33,7 +34,7 @@ public class MerchUI : MonoBehaviour {
             MerchData merchData = currentData();
             if (merchData != null)
             {
-                GetTextComponentOfChild(panel, "CurrentLevelHolder").text = merchData.level.ToString();
+                GetTextComponentOfChild(panel, "CurrentLevelHolder").text = merchData.id.ToString();
                 GetTextComponentOfChild(panel, "CurrentNameHolder").text = merchData.name;
                 GetTextComponentOfChild(panel, "CurrentPropertiesHolder").text = MerchPropertiesToShow(merchData);
             }
@@ -46,13 +47,13 @@ public class MerchUI : MonoBehaviour {
             MerchData nextMerchData = nextData();
             if (nextMerchData != null)
             {
-                GetButtonTextComponentOfChild(panel, "BuyButton").text = "Buy " + nextMerchData.name + " (" + nextMerchData.upgradeCost + " coin)";
+                GetButtonTextComponentOfChild(panel, "BuyButton").text = "Buy " + nextMerchData.name + " (" + nextMerchData.cost + " coin)";
                 GetTextComponentOfChild(panel, "NextMerchProperties").text = "It'll give " + MerchPropertiesToShow(nextMerchData);
 
                 if (CanBuy != null)
                 {
                     Button buyButton = GetButtonComponentOfChild(panel, "BuyButton");
-                    buyButton.interactable = CanBuy(nextMerchData.upgradeCost);
+                    buyButton.interactable = CanBuy(nextMerchData.cost);
                     // FIXME: temporary solution
                     buyButton.onClick.RemoveAllListeners();
                     buyButton.onClick.AddListener(() => buy(nextMerchData));
@@ -65,13 +66,13 @@ public class MerchUI : MonoBehaviour {
     private string MerchPropertiesToShow(MerchData merchData)
     {
         string ret = "";
-        if (merchData.coinPerSecond != 0)
+        if (merchData.rewardMultiplier != 0)
         {
-            ret += merchData.coinPerSecond + " coin per sec ";
+            ret += merchData.rewardMultiplier + " coin per sec "; //ez szar, de úgyis Balázs csinálja
         }
-        if (merchData.timeLimit != 0)
+        if (merchData.duration != 0)
         {
-            ret += merchData.timeLimit + " sec ";
+            ret += merchData.duration + " sec ";
         }
         return ret;
     }

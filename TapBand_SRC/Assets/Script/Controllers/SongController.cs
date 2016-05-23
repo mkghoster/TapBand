@@ -3,136 +3,126 @@ using System.Collections;
 
 public class SongController : MonoBehaviour
 {
+    // Event to notify the world about the end of a song
+    public event SongEvent OnSongFinished;
 
-    public delegate SongData GiveNextSongEvent();
-    public event GiveNextSongEvent GiveNextSong;
-    public event GiveNextSongEvent GiveFirstSongOfActualConcert;
+    // Event to notify the world about the start of a song
+    public event SongEvent OnSongStarted;
 
-    public delegate void GiveEndOfSongEvent(SongData songData);
-    public event GiveEndOfSongEvent GiveEndOfSong;
+    // Event to notify the world about the current song progress
+    public event SongEvent OnSongProgress;
 
-    public delegate void GiveRewardOfSongEvent(int coinReward);
-    public event GiveRewardOfSongEvent GiveRewardOfSong;
+    public event SongEvent ShowEncoreButton; // TODO: this might be a concert event
 
-    public delegate void ShowEncoreButtonEvent();
-    public event ShowEncoreButtonEvent ShowEncoreButton;
-
-    //between 2 concert
-    public delegate void SwitchOnOffTapEvent(bool value);
-    public event SwitchOnOffTapEvent SwitchOnOffTap;
-
+    private ConcertController concertController;
 
     private TapController tapController;
     private TourController tourController;
-    private HudUI hudUI;
     private SongData currentSong;
     private EncoreButtonUI encoreButton;
 
     private float actualTapAmount = 0f;
-    private float timeCountDown = 0f;
-	private float bossBattleCountDownBooster = 0f;
-	private bool extraTimeBoosterIsActive = false;
+    private float elapsedTime = 0f;
 
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
-    private const int beforeEncoreSongConstID = 3;
-
-    //stop the boss time counter
-    private bool isEncoreOver = false;
-
-    
+    private const int beforeEncoreSongConstID = 3; //TODO: this still belongs to the concert
 
     void Awake()
     {
-        hudUI = (HudUI)FindObjectOfType(typeof(HudUI));
+        concertController = (ConcertController)FindObjectOfType(typeof(ConcertController));
+
         tapController = (TapController)FindObjectOfType(typeof(TapController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
+
         encoreButton = (EncoreButtonUI)FindObjectOfType(typeof(EncoreButtonUI));
     }
 
     void OnEnable()
     {
-        tapController.OnTap += IncomingTapStrength;
+        tapController.OnTap += HandleTap;
         tourController.RestartSong += ResetControllerState;
-        hudUI.TapPassed += TapPassed;
-        hudUI.TimePassed += TimePassed;
-        hudUI.newSongData += GetSongData;
         encoreButton.GiveEncoreButtonPressedEvent += StartEncoreSong;
     }
 
     void OnDisable()
     {
-        tapController.OnTap -= IncomingTapStrength;
+        tapController.OnTap -= HandleTap;
         tourController.RestartSong -= ResetControllerState;
-        hudUI.TapPassed -= TapPassed;
-        hudUI.TimePassed -= TimePassed;
-        hudUI.newSongData -= GetSongData;
+
         encoreButton.GiveEncoreButtonPressedEvent -= StartEncoreSong;
+    }
+
+    void Start()
+    {
+        currentSong = concertController.CurrentSongData;
+        OnSongStarted(this, new SongEventArgs(currentSong, SongStatus.InProgress));
     }
 
     void Update()
     {
         float deltaTime = Time.deltaTime;
 
+        // try to get the next song from the concertController
         if (currentSong == null)
         {
-            if (GiveNextSong != null)
+            currentSong = concertController.CurrentSongData;
+            // if we didn't get any (for example concert changing is in progress, do nothing)
+            if (currentSong == null)
             {
-                currentSong = GiveNextSong();
-            }    
-        }
-
-       
-        if (!isEncoreOver)
-            timeCountDown += deltaTime;
-                                 
-        if (currentSong.bossBattle)
-        {
-            if(!isEncoreOver)
-                timeCountDown += deltaTime;
-			if (extraTimeBoosterIsActive) {
-                timeCountDown -= bossBattleCountDownBooster;
-				extraTimeBoosterIsActive = false;
-			}
-
-            if (timeCountDown > currentSong.duration)
+                return;
+            }
+            else
             {
-                ResetartConcert();
-            }        
-        }
-        else        //************************** ÁTMENETI   ********************************************************* amíg a nem boss songok hossza 0 !!!!!!!!!!!!!!!!!!!!!!!!!!!
-        {
-            if (timeCountDown > 20f) ///--------------- MOST BEÉGETVE A SIMA SZÁMOKNÁL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            {
-                ResetartConcert();
+                if (OnSongStarted != null)
+                {
+                    OnSongStarted(this, new SongEventArgs(currentSong, SongStatus.InProgress, 0, 0));
+                }
             }
         }
 
+        // if we have finished the current song, notify the world about this, and reset the controller
+        if (actualTapAmount >= currentSong.tapGoal)
+        {            
+            if (OnSongFinished != null)
+            {
+                OnSongFinished(this, new SongEventArgs(currentSong, SongStatus.Successful));
+            }
+            ResetControllerState();
+            return;
+        }
+
+        elapsedTime += deltaTime;
+
+        if (elapsedTime > currentSong.duration)
+        {
+            FailSong();
+            return;
+        }
+
+        if (OnSongProgress != null)
+        {
+            OnSongProgress(this, new SongEventArgs(currentSong, SongStatus.InProgress, actualTapAmount, elapsedTime));
+        }
     }
 
 
-    private void ResetartConcert()
+    private void FailSong()
     {
+        if (OnSongFinished != null)
+        {
+            OnSongFinished(this, new SongEventArgs(currentSong, SongStatus.Failed));
+        }
         ResetControllerState();
-        currentSong = GiveFirstSongOfActualConcert();
     }
 
-    private float TapPassed()
-    {
-        return actualTapAmount;
-    }
-
-    private float TimePassed()
-    {
-        return timeCountDown;
-    }
-
-    private void IncomingTapStrength(float tapStrength)
+    private void HandleTap(float tapStrength)
     {
         if (currentSong != null)
         {
             actualTapAmount += tapStrength;
 
             //last song before encore
+            //TODO: this should be in it's own handler
             if (CastSongIndex(currentSong.id) == beforeEncoreSongConstID && currentSong.tapGoal < actualTapAmount)
             {
                 //if there was already a try
@@ -140,111 +130,61 @@ public class SongController : MonoBehaviour
                 {
                     if (ShowEncoreButton != null)
                     {
-                        ShowEncoreButton();
+                        ShowEncoreButton(null, null);
                     }
                 }
                 else
                 {
-                    PlayerPrefsManager.SetEncoreSongTry(true);          
-                    StartNextSong();
-                }
+                    PlayerPrefsManager.SetEncoreSongTry(true);
+                    if (currentSong.isEncore)
+                    {
+                        PlayerPrefsManager.SetEncoreSongTry(false);
+                    }
 
+                    ResetControllerState();
+                }
             }
             //else if, because we alawys do the same (except before the encore song)
-            else if (currentSong.tapGoal < actualTapAmount)
-            {
-                //Succes boss battle: waiting and switch off the taparea
-                if (currentSong.bossBattle)
-                {
-                    StartCoroutine(WaitAfterConcert(SongConcertTour.waitTimeBetweenConcerts));
-                    if(SwitchOnOffTap != null)
-                    {
-                        SwitchOnOffTap(false);
-                    }
-                    isEncoreOver = true;
-                }
-                else
-                {
-                    StartNextSong();
-                    isEncoreOver = false;
-                }
-                
-
-            }
         }
-    }
-
-    private string GetSongName()
-    {
-        return currentSong == null ? "" : currentSong.title;
-    }
-
-    private SongData GetSongData()
-    {
-        return currentSong;
     }
 
     private void ResetControllerState()
     {
         actualTapAmount = 0f;
-        timeCountDown = 0f;
+        elapsedTime = 0f;
         currentSong = null;
     }
 
-    //ATMENETI!!!!!!!!!!!!!!
-    public int GetSongID()
+    //TODO: ezt eventből kéne megkapni
+    public void BossExtratime(float extraTime)
     {
-        return currentSong.id;
+        elapsedTime -= extraTime;
     }
 
+<<<<<<< HEAD
 	public void BossExtratime(float extraTime){
         timeCountDown = -extraTime;
 		extraTimeBoosterIsActive = true;
 	}
 
+=======
+>>>>>>> remotes/origin/master
     //when we push the encore button
     private void StartEncoreSong()
     {
-        StartNextSong();
-    }
+        if (OnSongFinished != null)
+        {
+            OnSongFinished(this, new SongEventArgs(currentSong, SongStatus.EncoreInitiated));
+        }
 
-    private void StartNextSong()
-    {
-        if (GiveEndOfSong != null)
-        {
-            GiveEndOfSong(currentSong);
-            //when we complete the encore song : reset the try
-            if (currentSong.bossBattle)
-            {
-                PlayerPrefsManager.SetEncoreSongTry(false);
-            }
-        }
-        if (GiveRewardOfSong != null)
-        {
-            GiveRewardOfSong(currentSong.coinReward);
-        }
+        PlayerPrefsManager.SetEncoreSongTry(true); //TODO: ez concertstate lesz
+
         ResetControllerState();
-        currentSong = GiveNextSong();
     }
-
 
     private int CastSongIndex(int songID)
     {
         int newID = (songID - 1) % 5;
         return newID;
-    }
-
-    //wait and after switch on the TapArea collider and give next song
-    private IEnumerator WaitAfterConcert(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        
-        //visszakapcsolás
-        if (SwitchOnOffTap != null)
-        {
-            SwitchOnOffTap(true);
-        }
-        isEncoreOver = false;
-        StartNextSong();
     }
 }

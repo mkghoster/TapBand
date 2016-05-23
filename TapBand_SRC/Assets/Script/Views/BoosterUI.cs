@@ -11,10 +11,14 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private BoosterDropZone boosterDropzone;
     private Vector3 basePosition;
 
+    bool debugBool = false;
+
     public void Awake()
     {
         boosterDropzone = GameObject.Find("BoosterDropZone").GetComponent<BoosterDropZone>();
-        basePosition = GetComponent<RectTransform>().localPosition;
+        //basePosition = GetComponent<RectTransform>().localPosition;
+        basePosition = GetComponent<RectTransform>().anchoredPosition;
+     
         if (boosterDropzone.tokenNumber > tokenCost)
         {
             boosterIsAvailable = true;
@@ -28,10 +32,14 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     }
 
+    private void DebugInfo()
+    {
+        Debug.Log(this.gameObject.name + ": "+ basePosition);
+    }
+
     public void Start()
     {
-        //Debug.Log(basePosition);
-        //Debug.Log(this.gameObject.name);
+       
     }
 
     public void Update()
@@ -47,10 +55,19 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             GetComponent<Button>().interactable = false;
         }
 
+        if (debugBool)
+        {
+            DebugInfo();
+            debugBool = false;
+        }
+            
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        debugBool = true;
+        //Debug.Log("boosteractice:"+boosterIsActive);
         Color color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
         boosterDropzone.setColor(color);
         if (boosterIsAvailable && !boosterIsActive)
@@ -78,8 +95,10 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         else
         {
             GetComponent<CanvasGroup>().blocksRaycasts = true;
-        }   
-        transform.localPosition = basePosition;
+        }
+        //transform.localPosition = basePosition;
+        gameObject.GetComponent<RectTransform>().anchoredPosition = basePosition;
+
     }
 
     public bool IsActive()

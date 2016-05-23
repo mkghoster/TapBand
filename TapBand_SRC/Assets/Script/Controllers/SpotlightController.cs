@@ -18,7 +18,8 @@ public class SpotlightController : MonoBehaviour
 
     public GameObject[] musicians;
 
-    private bool canActivate = true;
+    // private bool canActivate = true;
+    private bool canActivate = false; // TODO: ideiglenesen kikapcsolva
 
     void Awake()
     {
@@ -27,10 +28,10 @@ public class SpotlightController : MonoBehaviour
 
     void Start()
     {
-        SpotlightInterval = ReadFloat(GeneralProperties.SPOTLIGHT_INTERVAL);
-        SpotlightMinDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MIN_DELAY);
-        SpotlightMaxDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MAX_DELAY);
-        SpotlightTapMultiplier = ReadFloat(GeneralProperties.SPOTLIGHT_TAP_MULTIPLIER);
+        SpotlightInterval = GameData.instance.GeneralData.SpotlightInterval;
+        SpotlightMinDelay = GameData.instance.GeneralData.RandomMechanismMinDelay;//Fix this
+        SpotlightMaxDelay = GameData.instance.GeneralData.RandomMechanismMaxDelay;
+        SpotlightTapMultiplier = GameData.instance.GeneralData.SpotlightTapMultiplier;
 
         initSpotlightCountdown = CalculateAliveTime();
 
@@ -42,12 +43,12 @@ public class SpotlightController : MonoBehaviour
 
     void OnEnable()
     {
-        songController.SwitchOnOffTap += SwitchOnOffSpotlight;
+
     }
 
     void OnDisable()
     {
-        songController.SwitchOnOffTap -= SwitchOnOffSpotlight;
+
     }
 
     void Update()
@@ -66,7 +67,7 @@ public class SpotlightController : MonoBehaviour
             {
                 initSpotlightCountdown -= dt;
             }
-        }     
+        }
     }
 
     private float CalculateAliveTime()
@@ -74,14 +75,10 @@ public class SpotlightController : MonoBehaviour
         return UnityEngine.Random.Range(SpotlightMinDelay, SpotlightMaxDelay);
     }
 
-    private float ReadFloat(string name)
-    {
-        return Convert.ToSingle(GameData.instance.FindGeneralDataByName(name).value);
-    }
-
     //between 2 concert
     private void SwitchOnOffSpotlight(bool value)
     {
-        canActivate = value;
+        // TODO: switched off until wireup
+        // canActivate = value;
     }
 }

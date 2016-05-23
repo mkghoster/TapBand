@@ -1,94 +1,108 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CurrencyController : MonoBehaviour {
+public class CurrencyController : MonoBehaviour
+{
 
-	private SongController songController;
-	private ConcertController concertController;
+    private SongController songController;
+    private ConcertController concertController;
     private TourController tourController;
     private MerchController merchController;
-    private EquipmentController equipmentController;
+    //private EquipmentController equipmentController;
 
     private HudUI hudUI;
 
     private CurrencyState currencyState;
 
+    public event CurrencyEvent OnCurrencyChanged;
+    public event CurrencyEvent OnInitialized;
+
     void Awake()
     {
-		songController = (SongController)FindObjectOfType (typeof(SongController));
-		concertController = (ConcertController)FindObjectOfType (typeof(ConcertController));
+        songController = (SongController)FindObjectOfType(typeof(SongController));
+        concertController = (ConcertController)FindObjectOfType(typeof(ConcertController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
         merchController = (MerchController)FindObjectOfType(typeof(MerchController));
-        equipmentController = (EquipmentController)FindObjectOfType(typeof(EquipmentController));
+        //equipmentController = (EquipmentController)FindObjectOfType(typeof(EquipmentController));
         hudUI = (HudUI)FindObjectOfType(typeof(HudUI));
 
         currencyState = GameState.instance.Currency;
     }
 
+    void Start()
+    {
+        if (OnInitialized != null)
+        {
+            OnInitialized(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens));
+        }
+    }
+
     void OnEnable()
     {
-		songController.GiveRewardOfSong += AddCoins;
-		concertController.GiveCoinRewardOfConcert += AddCoins;
-		concertController.GiveFanRewardOfConcert += AddFans;
+        songController.OnSongFinished += HandleSongFinished;
+        concertController.OnConcertFinished += AddFans;
         tourController.OnPrestige += OnPrestige;
 
         merchController.MerchTransaction += MerchTransaction;
         merchController.CoinTransaction += AddCoins;
-        equipmentController.EquipmentTransaction += EquipmentTransaction;
+        //equipmentController.EquipmentTransaction += EquipmentTransaction;
         merchController.CanBuy += CanBuy;
-        hudUI.NewCoin += Coins;
-		hudUI.NewFans += Fans;
     }
 
     void OnDisable()
     {
-		songController.GiveRewardOfSong -= AddCoins;
-		concertController.GiveCoinRewardOfConcert -= AddCoins;
-		concertController.GiveFanRewardOfConcert -= AddFans;
+        songController.OnSongFinished -= HandleSongFinished;
+        concertController.OnConcertFinished -= AddFans;
         tourController.OnPrestige -= OnPrestige;
 
         merchController.MerchTransaction -= MerchTransaction;
         merchController.CoinTransaction -= AddCoins;
-        equipmentController.EquipmentTransaction -= EquipmentTransaction;
+        //equipmentController.EquipmentTransaction -= EquipmentTransaction;
         merchController.CanBuy -= CanBuy;
-        hudUI.NewCoin -= Coins;
-		hudUI.NewFans -= Fans;
     }
 
-    private void OnPrestige(TourData tour)
+    private void OnPrestige()
     {
         currencyState.Coins = 0;
         currencyState.Fans = 0;
-        currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
+        //  currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
 
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void EquipmentTransaction(EquipmentData equipment)
+    private void EquipmentTransaction(CharacterData equipment)
     {
         currencyState.Coins -= equipment.upgradeCost;
-        currencyState.AddTapMultiplier(equipment.tapMultiplier);
+        currencyState.TapMultipliers.Add(equipment.tapStrengthBonus);
 
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     private void MerchTransaction(MerchData merch)
     {
-        currencyState.Coins -= merch.upgradeCost;
+        currencyState.Coins -= merch.cost;
 
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void AddCoins(int coins)
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        if (e.Status == SongStatus.Successful)
+        {
+            AddCoins(e.Data.coinReward);
+        }
+    }
+
+    private void AddCoins(double coins)
     {
         currencyState.Coins += coins;
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void AddFans(int fans)
-	{
-        currencyState.Fans += fans;
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+    private void AddFans(object sender, ConcertEventArgs e)
+    {
+        currencyState.Fans += e.Data.fanReward;
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     private void AddTokens(int tokens)
@@ -101,15 +115,11 @@ public class CurrencyController : MonoBehaviour {
         return currencyState.Coins >= price;
     }
 
-    private string Coins()
+    public void SynchronizeRealCurrencyAndScreenCurrency()
     {
-        // Temporal solution for test purposes
-        return currencyState.ScreenCoins.ToString();
+        if (OnCurrencyChanged != null)
+        {
+            OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens)); //TODO: ez nem teljesen korrekt így
+        }
     }
-
-	private string Fans()
-	{
-		// Temporal solution for test purposes
-		return currencyState.ScreenFans.ToString();
-	}
 }
