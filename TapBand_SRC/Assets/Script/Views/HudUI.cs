@@ -120,8 +120,6 @@ public class HudUI : MonoBehaviour
 
     private void HandleCurrencyInitialized(object sender, CurrencyEventArgs e)
     {
-        Debug.Log("HudUI: initialized currency controller");
-
         actualCoin = e.Coin;
         actualFan = e.Fan;
         actualToken = e.Token;

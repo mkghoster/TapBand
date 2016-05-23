@@ -12,8 +12,8 @@ public class GameStateHolder : MonoBehaviour
         GameData.instance.TryLoadFromAssets(Application.streamingAssetsPath);
         GameState.instance.TryLoadFromAssets(Application.persistentDataPath);
 
-        LoadDefaults();
         LoadConnectionsInGameData();
+        LoadDefaults();
 
         ConcertState concertState = GameState.instance.Concert;
         ConcertData currentConcert = gameData.ConcertDataList.FirstOrDefault(x => x.id == concertState.CurrentConcertID);
