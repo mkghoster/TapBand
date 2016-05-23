@@ -161,14 +161,7 @@ public class SongController : MonoBehaviour
         elapsedTime -= extraTime;
     }
 
-<<<<<<< HEAD
-	public void BossExtratime(float extraTime){
-        timeCountDown = -extraTime;
-		extraTimeBoosterIsActive = true;
-	}
 
-=======
->>>>>>> remotes/origin/master
     //when we push the encore button
     private void StartEncoreSong()
     {

@@ -38,7 +38,6 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler
 				tokenNumber -= currentBooster.tokenCost;
                 boosterController.HandleBoosters(currentBooster);
                 Debug.Log (tokenNumber+" tokens left");
-                currentBooster.boosterIsAvailable = false;
 			}
 		} 
 	}

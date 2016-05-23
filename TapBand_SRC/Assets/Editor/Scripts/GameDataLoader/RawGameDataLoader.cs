@@ -245,6 +245,9 @@ public class RawGameDataLoader : IGameDataLoader
                 case "ExtraTimeBoosterBonus":
                     generalDataTarget.ExtraTimeBoosterBonus = LoadFloat(i, "Value");
                     break;
+                case "AutoTapBoosterDuration":
+                    generalDataTarget.AutoTapBoosterDuration = LoadFloat(i, "Value");
+                    break;
                 case "AutoTapBoosterTapsPerSecond":
                     generalDataTarget.AutoTapBoosterTapsPerSecond = LoadFloat(i, "Value");
                     break;

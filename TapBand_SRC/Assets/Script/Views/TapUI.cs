@@ -24,7 +24,6 @@ public class TapUI : MonoBehaviour
     private Collider2D _collider;
 
     public GameObject risingText;
-
     public delegate void TapEvent(TapArgs args);
     public event TapEvent OnTap;
 
@@ -46,7 +45,6 @@ public class TapUI : MonoBehaviour
             if (OnTap != null)
                 OnTap(args);
         }
-
 	}
 
     private void AnimateCharacters()
@@ -106,6 +104,7 @@ public class TapUI : MonoBehaviour
         { 
            OnTap(args);
         }
+        
     }
 
     private TapArgs RandomTapEventArgs()
@@ -117,7 +116,7 @@ public class TapUI : MonoBehaviour
         int y = rnd.Next(120, 700);
         Vector2 autotapposition = new Vector2(x, y);
         CalculateWithPosition(autotapposition, args);
-        args.positions.Add(autotapposition);
+        //args.positions.Add(autotapposition);
         return args;
     }
 
