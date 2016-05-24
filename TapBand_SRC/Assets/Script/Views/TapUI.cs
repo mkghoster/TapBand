@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class TapArgs
@@ -25,7 +24,6 @@ public class TapUI : MonoBehaviour
     private Collider2D _collider;
 
     public GameObject risingText;
-
     public delegate void TapEvent(TapArgs args);
     public event TapEvent OnTap;
         
@@ -43,7 +41,6 @@ public class TapUI : MonoBehaviour
             if (OnTap != null)
                 OnTap(args);
         }
-
 	}
     
     // waaaaaaay too much parameters, should be less than 3
@@ -71,22 +68,6 @@ public class TapUI : MonoBehaviour
         rising.Init();
     }
 
-    //public IEnumerator AutoTap(float duration)
-    //{
-    //    float endTime = Time.realtimeSinceStartup + duration;
-    //    while (Time.realtimeSinceStartup < endTime)
-    //    {
-    //        TapArgs args = RandomTapEventArgs();
-
-    //        AnimateCharacters();
-    //        if (OnTap != null)
-    //            OnTap(args);
-
-    //        yield return new WaitForSeconds(duration);
-    //    }
-
-    //}
-
     public void AutoTap()
     {
         {
@@ -101,9 +82,11 @@ public class TapUI : MonoBehaviour
     private TapArgs RandomTapEventArgs()
     {
         TapArgs args = new TapArgs();
-        Vector2 autotapposition = new Vector3(4.0f, 30.0f);
+        System.Random rnd = new System.Random();
+        int x = rnd.Next(20, 480);
+        int y = rnd.Next(120, 700);
+        Vector2 autotapposition = new Vector2(x, y);
         CalculateWithPosition(autotapposition, args);
-        args.positions.Add(autotapposition);
         return args;
     }
 
@@ -135,7 +118,6 @@ public class TapUI : MonoBehaviour
 
     private void CalculateWithPosition(Vector2 pos, TapArgs args)
     {
-        
         Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
         Collider2D hit = Physics2D.OverlapPoint(wp);
         if (hit)

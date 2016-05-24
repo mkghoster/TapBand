@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler{ 
 
@@ -8,7 +9,7 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public bool boosterIsActive;
     public bool boosterIsAvailable;
     private BoosterDropZone boosterDropzone;
-    public Vector3 basePosition;
+    private Vector3 basePosition;
 
     bool debugBool = false;
 
@@ -20,13 +21,11 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
      
         if (boosterDropzone.tokenNumber > tokenCost)
         {
-            //boosterIsActive = true;
             boosterIsAvailable = true;
             boosterIsActive = false;
         }
         else
         {
-            
             boosterIsAvailable = false;
         }
 
@@ -45,19 +44,16 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void Update()
     {
+        //Debug.Log(boosterDropzone.tokenNumber);
         if (boosterDropzone.tokenNumber >= tokenCost && boosterIsAvailable)
         {
-            //boosterIsActive = true;
             boosterIsAvailable = true;
-            //Debug.Log(boosterIsActive);
         }
         else
         {
             boosterIsAvailable = false;
-            //boosterIsActive = false;
+            GetComponent<Button>().interactable = false;
         }
-
-        // Debug.Log(boosterIsActive);
 
         if (debugBool)
         {
@@ -103,7 +99,6 @@ public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         //transform.localPosition = basePosition;
         gameObject.GetComponent<RectTransform>().anchoredPosition = basePosition;
 
-       // Debug.Log("boosteractice end:" + boosterIsAvailable);
     }
 
     public bool IsActive()

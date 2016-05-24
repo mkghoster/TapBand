@@ -8,26 +8,30 @@ public class BoosterController : MonoBehaviour {
 
     enum BoosterDataType { TapStrengthBoosterMultiplier, TapStrengthBoosterDuration, ExtraTimeBoosterBonus, AutoTapBoosterInterval, AutoTapBoosterDuration };
     private float CurrentBoosterDuration;
-    private float CurrentAutoTapBoosterDuration;
+    private float CurrentAutoTapBoosterDuration=100;
     private bool tapStrengthBoosterisActive = false;
     private bool autoTapisActive = false;
     private TapController tapController;
     private SongController songController;
     private BoosterData boosterData;
-    private float helpme=0.30f;
-    private int check=0;
+    private float autoTapBoosterTapsPerSecond;
+    private double baseAutoTapRate;
+    private float expectedAutoTapCount;
+    private double autoTapRateSum;
+    private int currentAutoTapCount = 0;
 
     private TapUI tapUI;
 
-    void Start () {
+    void Start()
+    {
         boosterData = GameData.instance.BoosterData;
         tapController = (TapController)FindObjectOfType(typeof(TapController));
         songController = (SongController)FindObjectOfType(typeof(SongController));
         tapUI = (TapUI)FindObjectOfType(typeof(TapUI));
     }
-	
-	void Update () {
 
+    void Update()
+    {
         if (tapStrengthBoosterisActive)
         {
             CurrentBoosterDuration -= Time.deltaTime;
@@ -41,77 +45,66 @@ public class BoosterController : MonoBehaviour {
         if (autoTapisActive)
         {
             CurrentAutoTapBoosterDuration -= Time.deltaTime;
-
-            //Debug.Log(CurrentAutoTapBoosterDuration);
-
-            if (CurrentAutoTapBoosterDuration < boosterData.AutoTapBoosterDuration - helpme)
-            {
-                helpme += 0.30f;
-                check++;
-                //Debug.Log(check);
+            if (CurrentAutoTapBoosterDuration < (double)boosterData.AutoTapBoosterDuration - autoTapRateSum && CurrentAutoTapBoosterDuration > 0)
+            {             
+                currentAutoTapCount++;
+                expectedAutoTapCount++;
+                autoTapRateSum += baseAutoTapRate;
                 tapUI.AutoTap();
             }
-
         }
 
-        if (CurrentAutoTapBoosterDuration <= 0 || check==30)
+        if (CurrentAutoTapBoosterDuration <= 0 || currentAutoTapCount == expectedAutoTapCount)
         {
+            CurrentAutoTapBoosterDuration = boosterData.AutoTapBoosterDuration;
             autoTapisActive = false;
-            check = 0;
-            helpme = 0.30f;
-        }
-
-        if (CurrentAutoTapBoosterDuration > 0)
-        {
-            //		Debug.Log (CurrentAutoTapBoosterDuration);
+            currentAutoTapCount = 0;
+            autoTapRateSum = baseAutoTapRate;
         }
     }
 
 
 
-    public void HandleBoosters(BoosterUI bd)
+    public void HandleBoosters(BoosterUI currentBooster)
     {
-        if (bd.name.Equals("TapStrengthBooster"))
+        if (currentBooster.name.Equals("TapStrengthBooster"))
         {
             tapController.BoosterMultiplier(boosterData.TapStrengthBoosterMultiplier);
             tapController.BoosterTimeInterval(boosterData.TapStrengthBoosterDuration);
             CurrentBoosterDuration = boosterData.TapStrengthBoosterDuration;
             tapStrengthBoosterisActive = true;
-            StartCoroutine(SetBoosterIsActive(bd));
+            StartCoroutine(SetBoosterIsActive(currentBooster));
         }
-        else if (bd.name.Equals("AutoTapBooster"))
+        else if (currentBooster.name.Equals("AutoTapBooster"))
         {
-
             CurrentAutoTapBoosterDuration = boosterData.AutoTapBoosterDuration;
-           // Debug.Log(CurrentAutoTapBoosterDuration);
+            autoTapBoosterTapsPerSecond = boosterData.AutoTapBoosterTapsPerSecond;
+            baseAutoTapRate = (double)1 / autoTapBoosterTapsPerSecond;
+            expectedAutoTapCount = autoTapBoosterTapsPerSecond * CurrentAutoTapBoosterDuration;
             autoTapisActive = true;
             CurrentBoosterDuration = CurrentAutoTapBoosterDuration;
-            StartCoroutine(SetBoosterIsActive(bd));
-            //for (int i = 0; i < boosterData.AutoTapBoosterDuration; i++) {            
-            //    StartCoroutine(WaitForOneSecond());
-            //}
+            StartCoroutine(SetBoosterIsActive(currentBooster));
         }
-        else if (bd.name.Equals("ExtraTimeBooster"))
+        else if (currentBooster.name.Equals("ExtraTimeBooster"))
         {
+
+            //TODO currentsong.duration should be increased instead of decreasing the timecountdown
             songController.BossExtratime(boosterData.ExtraTimeBoosterBonus);
             CurrentBoosterDuration = boosterData.ExtraTimeBoosterBonus;
-            StartCoroutine(SetBoosterIsActive(bd));
+            StartCoroutine(SetBoosterIsActive(currentBooster));
         }
     }
 
-    IEnumerator SetBoosterIsActive(BoosterUI bd)
+    IEnumerator SetBoosterIsActive(BoosterUI currentBooster)
     {
-        bd.boosterIsActive = true;
-        bd.boosterIsAvailable = false;
-        bd.GetComponent<Button>().interactable = false;
-        Debug.Log(bd.name+ " is unavailable for actions");
+        currentBooster.boosterIsActive = true;
+        currentBooster.boosterIsAvailable = false;
+        currentBooster.GetComponent<Button>().interactable = false;
         yield return new WaitForSeconds(CurrentBoosterDuration);
-        Debug.Log(bd.name+" is available again");
-        bd.boosterIsAvailable = true;
-        bd.boosterIsActive = false;
-        bd.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        bd.GetComponent<Button>().interactable = true;
-       
+        currentBooster.boosterIsAvailable = true;
+        currentBooster.boosterIsActive = false;
+        currentBooster.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        currentBooster.GetComponent<Button>().interactable = true;
     }
 
 }

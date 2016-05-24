@@ -161,6 +161,7 @@ public class SongController : MonoBehaviour
         elapsedTime -= extraTime;
     }
 
+
     //when we push the encore button
     private void StartEncoreSong()
     {
