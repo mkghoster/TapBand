@@ -36,6 +36,6 @@ public class SkillUpgradeUI : MonoBehaviour
 
     private void UpdateText()
     {
-        childText.text = String.Format("Level: {0}, Cost: {1}", unlockableSkill.id, unlockableSkill.upgradeCost);
+        childText.text = String.Format("{0} Level: {1}, Cost: {2}", bandMember.ToString(), unlockableSkill.id, unlockableSkill.upgradeCost);
     }
 }
