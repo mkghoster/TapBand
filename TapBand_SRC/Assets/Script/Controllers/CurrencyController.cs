@@ -32,8 +32,9 @@ public class CurrencyController : MonoBehaviour {
 		concertController.GiveFanRewardOfConcert += AddFans;
         tourController.OnPrestige += OnPrestige;
 
+        /* What the hell is this?
         merchController.MerchTransaction += MerchTransaction;
-        merchController.CoinTransaction += AddCoins;
+        merchController.CoinTransaction += AddCoins;*/
         equipmentController.EquipmentTransaction += EquipmentTransaction;
         merchController.CanBuy += CanBuy;
         hudUI.NewCoin += Coins;
@@ -47,8 +48,9 @@ public class CurrencyController : MonoBehaviour {
 		concertController.GiveFanRewardOfConcert -= AddFans;
         tourController.OnPrestige -= OnPrestige;
 
+        /* What the hell is this?
         merchController.MerchTransaction -= MerchTransaction;
-        merchController.CoinTransaction -= AddCoins;
+        merchController.CoinTransaction -= AddCoins; */
         equipmentController.EquipmentTransaction -= EquipmentTransaction;
         merchController.CanBuy -= CanBuy;
         hudUI.NewCoin -= Coins;
@@ -72,12 +74,13 @@ public class CurrencyController : MonoBehaviour {
         currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
 
+    /* What the hell is this?
     private void MerchTransaction(MerchData merch)
     {
         currencyState.Coins -= merch.upgradeCost;
 
         currencyState.SynchronizeRealCurrencyAndScreenCurrency();
-    }
+    }*/
 
     private void AddCoins(int coins)
     {

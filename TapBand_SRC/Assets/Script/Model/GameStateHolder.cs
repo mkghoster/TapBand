@@ -10,7 +10,10 @@ public class GameStateHolder : MonoBehaviour
     void Awake()
     {
         GameData.instance.TryLoadFromAssets(Application.streamingAssetsPath);
-        GameState.instance.TryLoadFromAssets(Application.persistentDataPath);
+        if (!GameState.instance.TryLoadFromAssets(Application.persistentDataPath))
+        {
+            GameState.instance.Init();
+        }
 
         LoadDefaults();
 		LoadConnectionsInGameData();

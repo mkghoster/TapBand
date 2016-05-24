@@ -34,12 +34,23 @@ public class GameData : LoadableData
     */
     #endregion
 
+    #region Private fields
     private List<SongData> songDataList;
     private List<ConcertData> concertDataList;
     private List<TourData> tourDataList;
     private List<EquipmentData> equipmentDataList;
-    private List<MerchData> merchDataList;
-    private List<GeneralData> generalDataList;
+    private List<MerchData>[] merchDataLists;
+    private List<MerchSlotData> merchSlotDataList;
+    private List<GeneralDataRecord> generalDataList;
+
+    [System.NonSerialized]
+    private GeneralData generalDatas;
+    #endregion
+
+    public GameData()
+    {
+        generalDatas = new GeneralData();
+    }
 
     public List<SongData> SongDataList
     {
@@ -93,20 +104,33 @@ public class GameData : LoadableData
         }
     }
 
-    public List<MerchData> MerchDataList
+    public List<MerchSlotData> MerchSlotDataList
     {
         get
         {
-            return merchDataList;
+            return merchSlotDataList;
         }
 
         set
         {
-            merchDataList = value;
+            merchSlotDataList = value;
         }
     }
 
-    public List<GeneralData> GeneralDataList
+    public List<MerchData>[] MerchDataLists
+    {
+        get
+        {
+            return merchDataLists;
+        }
+
+        set
+        {
+            merchDataLists = value;
+        }
+    }
+
+    public List<GeneralDataRecord> GeneralDataList
     {
         get
         {
@@ -119,9 +143,9 @@ public class GameData : LoadableData
         }
     }
 
-    public GeneralData FindGeneralDataByName(string name)
+    public GeneralDataRecord FindGeneralDataByName(string name)
     {
-        foreach (GeneralData data in generalDataList)
+        foreach (GeneralDataRecord data in generalDataList)
         {
             if (data.name == name)
             {
@@ -130,6 +154,19 @@ public class GameData : LoadableData
         }
 
         return null;
+    }
+
+    public GeneralData GeneralDatas
+    {
+        get
+        {
+            return generalDatas;
+        }
+    }
+
+    public List<MerchData> GetMerchDataByType(MerchType type)
+    {
+        return merchDataLists[(int)type-1];
     }
 
     #region Overridden functions for loading/saving
@@ -141,9 +178,12 @@ public class GameData : LoadableData
         this.songDataList = gd.songDataList;
         this.concertDataList = gd.concertDataList;
         this.tourDataList = gd.tourDataList;
-        this.merchDataList = gd.merchDataList;
+        this.merchDataLists = gd.merchDataLists;
+        this.merchSlotDataList = gd.merchSlotDataList;
         this.equipmentDataList = gd.equipmentDataList;
         this.generalDataList = gd.generalDataList;
+
+        generalDatas.Init();
     }
 
     public override string GetFileName()
@@ -151,5 +191,4 @@ public class GameData : LoadableData
         return GAME_DATA_PATH;
     }
     #endregion
-
 }

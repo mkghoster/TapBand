@@ -9,13 +9,13 @@ public class CurrencyState
     [System.NonSerialized]
     private int screenFans;
 
-    private int coins;
+    private double coins;
     [System.NonSerialized]
-    private int screenCoins;
+    private double screenCoins;
 
-    private int tokens;
+    private double tokens;
     [System.NonSerialized]
-    private int screenTokens;
+    private double screenTokens;
 
     private ICollection<Single> tapMultipliers = new List<Single>();
 
@@ -59,7 +59,7 @@ public class CurrencyState
         }
     }
 
-    public int Coins
+    public double Coins
     {
         get
         {
@@ -72,7 +72,7 @@ public class CurrencyState
         }
     }
 
-    public int Tokens
+    public double Tokens
     {
         get
         {
@@ -98,7 +98,7 @@ public class CurrencyState
         }
     }
 
-    public int ScreenCoins
+    public double ScreenCoins
     {
         get
         {
@@ -111,7 +111,7 @@ public class CurrencyState
         }
     }
 
-    public int ScreenTokens
+    public double ScreenTokens
     {
         get
         {

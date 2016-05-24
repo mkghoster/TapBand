@@ -75,6 +75,21 @@ public class RawGameDataLoader : IGameDataLoader
         }
     }
 
+    private void TryLoadDouble(int rowIndex, string columnName, out double data)
+    {
+        if (!IsCellExist(rowIndex, columnName))
+        {
+            AbortWithErrorMessage(currentSheet + "::" + columnName + " column is invalid! Row number: " + (rowIndex + 2));
+        }
+
+        string cellValue = currentRows[rowIndex][columnName];
+
+        if (!double.TryParse(cellValue, out data))
+        {
+            AbortWithErrorMessage(currentSheet + "::" + columnName + " is not valid float! Row number: " + (rowIndex + 2));
+        }
+    }
+
     private void TryLoadBigInteger(int rowIndex, string columnName, out BigInteger data)
 	{
         data = new BigInteger(0);
@@ -130,7 +145,7 @@ public class RawGameDataLoader : IGameDataLoader
 		if(!IsCellExist(rowIndex, columnName) || string.IsNullOrEmpty(currentRows[rowIndex][columnName])) 
 		{
 			data = "";
-			AbortWithErrorMessage(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
+			//AbortWithErrorMessage(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
 		}
 		else
 		{
@@ -181,12 +196,15 @@ public class RawGameDataLoader : IGameDataLoader
     public GameData LoadGameData()
 	{
         GameData gameData = new GameData();
+
         gameData.SongDataList = LoadSongData();
         gameData.TourDataList = LoadTourData();
         gameData.ConcertDataList = LoadConcertData();
-        gameData.MerchDataList = LoadMerchData();
-		gameData.EquipmentDataList = LoadEquipmentData();
+        gameData.MerchDataLists = LoadMerchDataLists();
+        gameData.MerchSlotDataList = LoadMerchSlotData();
+        gameData.EquipmentDataList = LoadEquipmentData();
         gameData.GeneralDataList = LoadGeneralData();
+
 		return gameData;
 	}
 	
@@ -258,11 +276,23 @@ public class RawGameDataLoader : IGameDataLoader
 	
 	}
 
+    private List<MerchData>[] LoadMerchDataLists()
+    {
+        List<MerchData>[] merchDataLists = new List<MerchData>[(int) MerchType.NUM_OF_MERCH_TYPES];
+
+        for (int i = 0; i < (int) MerchType.NUM_OF_MERCH_TYPES; i++)
+        {
+            currentSheet = "MerchData" + (i+1).ToString();
+            currentRows = dataReader.GetRows(currentSheet);
+
+            merchDataLists[i] = LoadMerchData();
+        }
+
+        return merchDataLists;
+    }
+
     private List<MerchData> LoadMerchData()
     {
-        currentSheet = "MerchData";
-        currentRows = dataReader.GetRows(currentSheet);
-
         List<MerchData> merchDataList = new List<MerchData>();
 
         int rowNum = currentRows.Count;
@@ -271,17 +301,38 @@ public class RawGameDataLoader : IGameDataLoader
             MerchData merchDataObject = new MerchData();
 
             TryLoadInt(i, "ID", out merchDataObject.id);
-            TryLoadEnum(i, "MerchType", out merchDataObject.merchType);
-            TryLoadInt(i, "Level", out merchDataObject.level);
             TryLoadString(i, "Name", out merchDataObject.name);
-            TryLoadInt(i, "UpgradeCost", out merchDataObject.upgradeCost);
-            TryLoadInt(i, "CoinPerSecond", out merchDataObject.coinPerSecond);
-            TryLoadInt(i, "TimeLimit", out merchDataObject.timeLimit);
+            TryLoadString(i, "Icon", out merchDataObject.icon);
+            TryLoadDouble(i, "Cost", out merchDataObject.cost);
+            TryLoadInt(i, "Duration", out merchDataObject.duration);
+            TryLoadDouble(i, "RewardMultiplier", out merchDataObject.rewardMultiplier);
 
             merchDataList.Add(merchDataObject);
         }
 
         return merchDataList;
+    }
+
+    private List<MerchSlotData> LoadMerchSlotData()
+    {
+        currentSheet = "MerchSlotData";
+        currentRows = dataReader.GetRows(currentSheet);
+
+        List<MerchSlotData> merchSlotDataList = new List<MerchSlotData>();
+
+        int rowNum = currentRows.Count;
+        for (int i = 0; i < rowNum; i++)
+        {
+            MerchSlotData merchSlotDataObject = new MerchSlotData();
+
+            TryLoadInt(i, "ID", out merchSlotDataObject.id);
+            TryLoadInt(i, "CoinCost", out merchSlotDataObject.coinCost);
+            TryLoadInt(i, "TokenCost", out merchSlotDataObject.tokenCost);
+
+            merchSlotDataList.Add(merchSlotDataObject);
+        }
+
+        return merchSlotDataList;
     }
 
 	private List<EquipmentData> LoadEquipmentData()
@@ -310,17 +361,17 @@ public class RawGameDataLoader : IGameDataLoader
 		return equipmentDataList;
 	}
 
-    private List<GeneralData> LoadGeneralData()
+    private List<GeneralDataRecord> LoadGeneralData()
     {
         currentSheet = "GeneralData";
         currentRows = dataReader.GetRows(currentSheet);
 
-        List<GeneralData> generalDataList = new List<GeneralData>();
+        List<GeneralDataRecord> generalDataList = new List<GeneralDataRecord>();
 
         int rowNum = currentRows.Count;
         for (int i = 0; i < rowNum; i++)
         {
-            GeneralData dataObject = new GeneralData();
+            GeneralDataRecord dataObject = new GeneralDataRecord();
 
             TryLoadInt(i, "ID", out dataObject.id);
             TryLoadString(i, "Name", out dataObject.name);

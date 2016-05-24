@@ -1,93 +1,113 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class MerchUI : MonoBehaviour {
+public class MerchUI : MonoBehaviour
+{
+    public GameObject MerchSlotPanel;
+    public GameObject MerchScrollPanelContent;
+    public GameObject MerchItemUIPrefab;
+    public GameObject MerchSlotItemUIPrefab;
 
-    public delegate MerchData MerchDataEvent();
-    public event MerchDataEvent CurrentQualityMerchData;
-    public event MerchDataEvent NextQualityMerchData;
-    public event MerchDataEvent CurrentTimeMerchData;
-    public event MerchDataEvent NextTimeMerchData;
+    #region Private fields
+    private List<MerchItemUI> merchItems;
+    private List<MerchSlotItemUI> merchSlotItems;
+    MerchController merchController;
+    #endregion
 
-    public delegate void BuyMerchEvent(MerchData data);
-    public event BuyMerchEvent BuyQualityMerch;
-    public event BuyMerchEvent BuyTimeMerch;
-
-    public delegate bool CanBuyEvent(int price);
-    public event CanBuyEvent CanBuy;
-
-    public GameObject timePanel, qualityPanel;
-
-    void OnGUI()
+    void Awake()
     {
-        RefreshPanel(timePanel, CurrentTimeMerchData, NextTimeMerchData, BuyTimeMerch);
-        RefreshPanel(qualityPanel, CurrentQualityMerchData, NextQualityMerchData, BuyQualityMerch);
+        merchItems = new List<MerchItemUI>();
+        merchSlotItems = new List<MerchSlotItemUI>();
     }
-    
-    private void RefreshPanel(GameObject panel, MerchDataEvent currentData, MerchDataEvent nextData,
-                              BuyMerchEvent buy)
+
+    void Start()
     {
-        if (currentData != null)
+    }
+
+    void Update()
+    {
+    }
+
+    public void SetController(MerchController controller)
+    {
+        merchController = controller;
+    }
+
+    public void CreateMerchItems(List<MerchState> merchStates)
+    {
+        MerchScrollPanelContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, merchStates.Count * 100 + 10);
+        for (int i = 0; i < merchStates.Count; i++)
         {
-            MerchData merchData = currentData();
-            if (merchData != null)
-            {
-                GetTextComponentOfChild(panel, "CurrentLevelHolder").text = merchData.level.ToString();
-                GetTextComponentOfChild(panel, "CurrentNameHolder").text = merchData.name;
-                GetTextComponentOfChild(panel, "CurrentPropertiesHolder").text = MerchPropertiesToShow(merchData);
-            }
-        }
-
-        GetButtonComponentOfChild(panel, "BuyButton").interactable = false;
-
-        if (nextData != null)
-        {
-            MerchData nextMerchData = nextData();
-            if (nextMerchData != null)
-            {
-                GetButtonTextComponentOfChild(panel, "BuyButton").text = "Buy " + nextMerchData.name + " (" + nextMerchData.upgradeCost + " coin)";
-                GetTextComponentOfChild(panel, "NextMerchProperties").text = "It'll give " + MerchPropertiesToShow(nextMerchData);
-
-                if (CanBuy != null)
-                {
-                    Button buyButton = GetButtonComponentOfChild(panel, "BuyButton");
-                    buyButton.interactable = CanBuy(nextMerchData.upgradeCost);
-                    // FIXME: temporary solution
-                    buyButton.onClick.RemoveAllListeners();
-                    buyButton.onClick.AddListener(() => buy(nextMerchData));
-                }
-            }
-
+            merchItems.Add(CreateMerchItem(merchStates[i]));
         }
     }
 
-    private string MerchPropertiesToShow(MerchData merchData)
+    private MerchItemUI CreateMerchItem(MerchState merchState)
     {
-        string ret = "";
-        if (merchData.coinPerSecond != 0)
+        GameObject gameObject = Instantiate<GameObject>(MerchItemUIPrefab);
+        gameObject.transform.SetParent(MerchScrollPanelContent.transform, false);
+        MerchItemUI itemUI = gameObject.GetComponent<MerchItemUI>();
+        itemUI.SetupItem(this, merchState);
+        return itemUI;
+    }
+
+    public void CreateMerchSlotItems(List<MerchSlotState> slotStates)
+    {
+        for (int i = 0; i < slotStates.Count; i++)
         {
-            ret += merchData.coinPerSecond + " coin per sec ";
+            merchSlotItems.Add(CreateMerchSlotItem(slotStates[i]));
         }
-        if (merchData.timeLimit != 0)
+    }
+
+    private MerchSlotItemUI CreateMerchSlotItem(MerchSlotState slotState)
+    {
+        GameObject gameObject = Instantiate<GameObject>(MerchSlotItemUIPrefab);
+        gameObject.transform.SetParent(MerchSlotPanel.transform, false);
+        MerchSlotItemUI itemUI = gameObject.GetComponent<MerchSlotItemUI>();
+        itemUI.SetupItem(this, slotState);
+        return itemUI;
+    }
+
+    public void UpdateMerchItems()
+    {
+        for (int i = 0; i < merchItems.Count; i++)
         {
-            ret += merchData.timeLimit + " sec ";
+            merchItems[i].UpdateItem();
         }
-        return ret;
     }
 
-    private Text GetTextComponentOfChild(GameObject parent, string childName)
+    public void UpdateMerchSlotItems()
     {
-        return parent.transform.Find(childName).gameObject.GetComponent<Text>();
+        for (int i = 0; i < merchSlotItems.Count; i++)
+        {
+            merchSlotItems[i].UpdateItem();
+        }
     }
 
-    private Button GetButtonComponentOfChild(GameObject parent, string childName)
+    public void OnStartPressed(MerchState state)
     {
-        return parent.transform.Find(childName).gameObject.GetComponent<Button>();
+        merchController.OnStart(state);
     }
 
-    private Text GetButtonTextComponentOfChild(GameObject parent, string childName)
+    public void OnCollectPressed(MerchState state)
     {
-        return GetButtonComponentOfChild(parent, childName).transform.Find("Text").GetComponent<Text>();
+        merchController.OnCollect(state);
+    }
+
+    public void OnUpgradePressed(MerchState state)
+    {
+        merchController.OnUpgrade(state);
+    }
+
+    public void OnActivatePressed(MerchSlotState state)
+    {
+        merchController.OnActivate(state);
+    }
+
+    public bool HasFreeSlot()
+    {
+        return merchController.HasFreeSlot();
     }
 }

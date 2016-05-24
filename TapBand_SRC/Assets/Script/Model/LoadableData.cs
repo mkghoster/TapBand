@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 [System.Serializable]
 public abstract class LoadableData
 {
-    public void TryLoadFromAssets(string assetsPath)
+    public bool TryLoadFromAssets(string assetsPath)
     {
         string gameDataPath = ConstructDataPathAndFile(assetsPath);
 
@@ -29,8 +29,12 @@ public abstract class LoadableData
 
                 MemoryStream ms = new MemoryStream(byteArray);
                 LoadData(ms);
+
+                return true;
             }
         }
+
+        return false;
     }
 
     public abstract string GetFileName();
