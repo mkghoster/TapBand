@@ -1,9 +1,20 @@
 fileFormatVersion: 2
 guid: 303d6776bca62a14e890417d7b095500
-timeCreated: 1463677309
+timeCreated: 1464116460
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: koreankid_incan_head
+    21300002: koreankid_incan_hair
+    21300004: koreankid_incan_body
+    21300006: koreankid_incan_armR_UP
+    21300008: koreankid_incan_armL_UP
+    21300010: koreankid_incan_legR_UP
+    21300012: koreankid_incan_legL_UP
+    21300014: koreankid_incan_legR_LO
+    21300016: koreankid_incan_legL_LO
+    21300018: koreankid_incan_armR_LO
+    21300020: koreankid_incan_armL_LO
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,10 +38,10 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +49,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +60,293 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: koreankid_incan_head
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 429
+        width: 468
+        height: 590
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 115, y: 108}
+        - {x: 125, y: 109}
+        - {x: 130, y: 112}
+        - {x: 133, y: 120}
+        - {x: 138, y: 146}
+        - {x: 142, y: 176}
+        - {x: 143, y: 187}
+        - {x: 160, y: 206}
+        - {x: 171, y: 227}
+        - {x: 176, y: 242}
+        - {x: 181, y: 272}
+        - {x: 185, y: 298}
+        - {x: 186, y: 371}
+        - {x: 183, y: 385}
+        - {x: 180, y: 404}
+        - {x: 175, y: 418}
+        - {x: 182, y: 427}
+        - {x: 220, y: 486}
+        - {x: 234, y: 509}
+        - {x: 234, y: 519}
+        - {x: 227, y: 549}
+        - {x: 223, y: 555}
+        - {x: 170, y: 539}
+        - {x: 167, y: 536}
+        - {x: 140, y: 471}
+        - {x: 120, y: 489}
+        - {x: 120, y: 496}
+        - {x: 130, y: 527}
+        - {x: 133, y: 545}
+        - {x: 83, y: 587}
+        - {x: 82, y: 587}
+        - {x: 77, y: 585}
+        - {x: 71, y: 560}
+        - {x: 68, y: 548}
+        - {x: 68, y: 586}
+        - {x: 67, y: 587}
+        - {x: 55, y: 587}
+        - {x: -15, y: 570}
+        - {x: -18, y: 567}
+        - {x: -17, y: 551}
+        - {x: -13, y: 529}
+        - {x: -53, y: 547}
+        - {x: -57, y: 550}
+        - {x: -103, y: 553}
+        - {x: -115, y: 555}
+        - {x: -120, y: 553}
+        - {x: -122, y: 522}
+        - {x: -141, y: 501}
+        - {x: -150, y: 495}
+        - {x: -164, y: 484}
+        - {x: -187, y: 461}
+        - {x: -202, y: 438}
+        - {x: -212, y: 418}
+        - {x: -220, y: 398}
+        - {x: -222, y: 392}
+        - {x: -227, y: 375}
+        - {x: -233, y: 350}
+        - {x: -234, y: 343}
+        - {x: -234, y: 247}
+        - {x: -227, y: 209}
+        - {x: -217, y: 173}
+        - {x: -206, y: 144}
+        - {x: -187, y: 110}
+        - {x: -177, y: 98}
+        - {x: -176, y: 98}
+        - {x: -180, y: 98}
+        - {x: -180, y: 99}
+        - {x: -194, y: 98}
+        - {x: -202, y: 87}
+        - {x: -202, y: 72}
+        - {x: -194, y: 59}
+        - {x: -183, y: 54}
+        - {x: -167, y: 57}
+        - {x: -158, y: 42}
+        - {x: -138, y: 5}
+        - {x: -134, y: 0}
+        - {x: 87, y: 0}
+        - {x: 89, y: 6}
+        - {x: 100, y: 41}
+        - {x: 112, y: 95}
+    - name: koreankid_incan_hair
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 425
+        width: 474
+        height: 545
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -145, y: 241.5}
+        - {x: -165, y: 221.5}
+        - {x: -173, y: 212.5}
+        - {x: -173, y: 110.5}
+        - {x: -113, y: 110.5}
+        - {x: -46, y: 187.5}
+        - {x: -46, y: 241.5}
+    - name: koreankid_incan_body
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 18
+        width: 222
+        height: 333
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28385192}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 101, y: 11.47731}
+        - {x: 110, y: 67.47731}
+        - {x: 111, y: 80.47731}
+        - {x: 111, y: 160.47731}
+        - {x: 108, y: 203.47731}
+        - {x: 103, y: 237.47731}
+        - {x: 102, y: 238.47731}
+        - {x: -110, y: 238.47731}
+        - {x: -111, y: 237.47731}
+        - {x: -111, y: 127.47731}
+        - {x: -109, y: 106.47731}
+        - {x: -106, y: 78.47731}
+        - {x: -95, y: 23.47731}
+        - {x: -86, y: -6.52269}
+        - {x: -84, y: -7.52269}
+        - {x: -28, y: -7.52269}
+        - {x: -28, y: -83.52269}
+        - {x: -24, y: -88.52269}
+        - {x: 47, y: -88.52269}
+        - {x: 51, y: -84.52269}
+        - {x: 96, y: -7.52269}
+        - {x: 98, y: -5.52269}
+    - name: koreankid_incan_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 260
+        width: 161
+        height: 54
+      alignment: 9
+      pivot: {x: 0.08231482, y: 0.7512484}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.747314, y: 13.432587}
+        - {x: -13.252686, y: 13.432587}
+        - {x: -13.252686, y: -27.567413}
+        - {x: 52.747314, y: -40.567413}
+        - {x: 147.74731, y: -40.567413}
+        - {x: 147.74731, y: -14.567413}
+    - name: koreankid_incan_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 260
+        width: 160
+        height: 54
+      alignment: 9
+      pivot: {x: 0.087077715, y: 0.24875104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 81.067566, y: 40.567444}
+        - {x: 65.067566, y: 37.567444}
+        - {x: 25.067566, y: 30.567444}
+        - {x: 4.067566, y: 25.567444}
+        - {x: -13.932434, y: 10.567444}
+        - {x: -13.932434, y: -8.432556}
+        - {x: -10.932434, y: -12.432556}
+        - {x: -9.932434, y: -13.432556}
+        - {x: 12.067566, y: -13.432556}
+        - {x: 140.06757, y: 16.567444}
+        - {x: 146.06757, y: 19.567444}
+        - {x: 146.06757, y: 40.567444}
+    - name: koreankid_incan_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 53
+        width: 31
+        height: 117
+      alignment: 9
+      pivot: {x: 0.61417216, y: 0.91342646}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_incan_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 52
+        width: 31
+        height: 120
+      alignment: 9
+      pivot: {x: 0.63320035, y: 0.9129218}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_incan_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 31
+        width: 94
+        height: 129
+      alignment: 9
+      pivot: {x: 0.24458508, y: 0.938735}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.990997, y: -121.09682}
+        - {x: 71.009, y: -121.09682}
+        - {x: 71.009, y: -73.09682}
+        - {x: 48.009003, y: 7.903183}
+        - {x: -13.990997, y: 7.903183}
+        - {x: -22.990997, y: -21.096817}
+    - name: koreankid_incan_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 31
+        width: 93
+        height: 129
+      alignment: 9
+      pivot: {x: 0.2370192, y: 0.9372949}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.957214, y: 8.088959}
+        - {x: -15.042786, y: 8.088959}
+        - {x: -22.042786, y: -18.911041}
+        - {x: -22.042786, y: -120.91104}
+        - {x: 70.957214, y: -120.91104}
+        - {x: 70.957214, y: -96.91104}
+        - {x: 16.957214, y: 6.0889587}
+    - name: koreankid_incan_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 30
+        width: 64
+        height: 191
+      alignment: 9
+      pivot: {x: 0.15896988, y: 0.9416444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.1740723, y: 11.14592}
+        - {x: -10.174072, y: 8.14592}
+        - {x: -10.174072, y: -48.85408}
+        - {x: -8.174072, y: -62.85408}
+        - {x: -4.1740723, y: -83.85408}
+        - {x: 1.8259277, y: -107.85408}
+        - {x: 3.8259277, y: -113.85408}
+        - {x: 6.8259277, y: -151.85408}
+        - {x: 8.825928, y: -164.85408}
+        - {x: 29.825928, y: -179.85408}
+        - {x: 51.825928, y: -179.85408}
+        - {x: 53.825928, y: -175.85408}
+        - {x: 53.825928, y: -103.85408}
+        - {x: 13.825928, y: 11.14592}
+    - name: koreankid_incan_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 30
+        width: 62
+        height: 191
+      alignment: 9
+      pivot: {x: 0.8425155, y: 0.9478211}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.764038, y: 9.966171}
+        - {x: -14.235962, y: 9.966171}
+        - {x: -16.235962, y: 8.966171}
+        - {x: -52.235962, y: -120.03383}
+        - {x: -52.235962, y: -178.03383}
+        - {x: -51.235962, y: -181.03383}
+        - {x: -32.235962, y: -181.03383}
+        - {x: -24.235962, y: -179.03383}
+        - {x: -11.235962, y: -167.03383}
+        - {x: -6.235962, y: -149.03383}
+        - {x: 9.764038, y: -81.03383}
     outline: []
   spritePackingTag: 
   userData: 
