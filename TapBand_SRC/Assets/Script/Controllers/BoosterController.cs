@@ -79,13 +79,8 @@ public class BoosterController : MonoBehaviour {
         {
             CurrentAutoTapBoosterDuration = boosterData.AutoTapBoosterDuration;
             autoTapBoosterTapsPerSecond = boosterData.AutoTapBoosterTapsPerSecond;
-            //Debug.Log(CurrentAutoTapBoosterDuration);
-            // Debug.Log(autoTapBoosterTapsPerSecond);
             baseAutoTapRate = (double)1 / autoTapBoosterTapsPerSecond;
             expectedAutoTapCount = autoTapBoosterTapsPerSecond * CurrentAutoTapBoosterDuration;
-
-            // Debug.Log(baseAutoTapRate);
-            //Debug.Log(expectedAutoTapCount);
             autoTapisActive = true;
             CurrentBoosterDuration = CurrentAutoTapBoosterDuration;
             StartCoroutine(SetBoosterIsActive(currentBooster));
@@ -105,9 +100,7 @@ public class BoosterController : MonoBehaviour {
         currentBooster.boosterIsActive = true;
         currentBooster.boosterIsAvailable = false;
         currentBooster.GetComponent<Button>().interactable = false;
-        //Debug.Log(currentBooster.name+ " is unavailable for actions");
         yield return new WaitForSeconds(CurrentBoosterDuration);
-        Debug.Log(currentBooster.name + " is available again");
         currentBooster.boosterIsAvailable = true;
         currentBooster.boosterIsActive = false;
         currentBooster.GetComponent<CanvasGroup>().blocksRaycasts = true;

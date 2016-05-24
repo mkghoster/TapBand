@@ -80,22 +80,6 @@ public class TapUI : MonoBehaviour
         rising.Init();
     }
 
-    //public IEnumerator AutoTap(float duration)
-    //{
-    //    float endTime = Time.realtimeSinceStartup + duration;
-    //    while (Time.realtimeSinceStartup < endTime)
-    //    {
-    //        TapArgs args = RandomTapEventArgs();
-
-    //        AnimateCharacters();
-    //        if (OnTap != null)
-    //            OnTap(args);
-
-    //        yield return new WaitForSeconds(duration);
-    //    }
-
-    //}
-
     public void AutoTap()
     {  
       TapArgs args = RandomTapEventArgs();
@@ -103,20 +87,17 @@ public class TapUI : MonoBehaviour
       if (OnTap != null)
         { 
            OnTap(args);
-        }
-        
+        } 
     }
 
     private TapArgs RandomTapEventArgs()
     {
         TapArgs args = new TapArgs();
-        //Vector2 autotapposition = new Vector2(4.0f, 30.0f);
         System.Random rnd = new System.Random();
         int x = rnd.Next(20, 480);
         int y = rnd.Next(120, 700);
         Vector2 autotapposition = new Vector2(x, y);
         CalculateWithPosition(autotapposition, args);
-        //args.positions.Add(autotapposition);
         return args;
     }
 
