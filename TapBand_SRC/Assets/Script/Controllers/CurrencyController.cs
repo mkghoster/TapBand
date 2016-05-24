@@ -42,7 +42,7 @@ public class CurrencyController : MonoBehaviour
 
         merchController.MerchTransaction += MerchTransaction;
         merchController.CoinTransaction += AddCoins;
-        merchController.CanBuy += CanBuy;
+        merchController.CanBuy += CanBuyFromCoin;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -58,7 +58,7 @@ public class CurrencyController : MonoBehaviour
 
         merchController.MerchTransaction -= MerchTransaction;
         merchController.CoinTransaction -= AddCoins;
-        merchController.CanBuy -= CanBuy;
+        merchController.CanBuy -= CanBuyFromCoin;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -112,18 +112,24 @@ public class CurrencyController : MonoBehaviour
     private void AddTokens(int tokens)
     {
         currencyState.Tokens += tokens;
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private bool CanBuy(int price)
+    private bool CanBuyFromCoin(int price)
     {
         return currencyState.Coins >= price;
+    }
+
+    private bool CanBuyFromToken(int price)
+    {
+        return currencyState.Tokens >= price;
     }
 
     public void SynchronizeRealCurrencyAndScreenCurrency()
     {
         if (OnCurrencyChanged != null)
         {
-            OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens)); //TODO: ez nem teljesen korrekt így
+            OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens));
         }
     }
 }
