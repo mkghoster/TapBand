@@ -32,20 +32,20 @@ public class DebugController : MonoBehaviour {
 
     }
 
-
-    public void AddCoin()
+    //double-al error
+    public void AddCoins(int coins)
     {
-       
+        currencyController.GiveCoins(coins);
     }
 
-    public void AddToken()
+    public void AddTokens(int tokens)
     {
-
+        currencyController.GiveTokens(tokens);
     }
 
-    public void AddFan()
+    public void AddFans(int fans)
     {
-
+        currencyController.GiveFans(fans);
     }
 
 
