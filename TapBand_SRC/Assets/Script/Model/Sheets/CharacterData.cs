@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 public enum CharacterType
 {
-    Guitar1 = 0,
-    Guitar2 = 1,
-    Bass = 2,
-    Keyboards = 3,
-    Drums = 4
+    Bass = 0,
+    Drums = 1,
+    Guitar1 = 2,
+    Guitar2 = 3,
+    Keyboards = 4,
+
 }
 
 [System.Serializable]

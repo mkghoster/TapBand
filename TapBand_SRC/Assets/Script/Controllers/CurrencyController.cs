@@ -42,8 +42,7 @@ public class CurrencyController : MonoBehaviour
 
         merchController.MerchTransaction += MerchTransaction;
         merchController.CoinTransaction += AddCoins;
-        merchController.CanBuy += CanBuyFromCoin;
-
+        
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
             skillUpgradeUIs[i].OnSkillUpgrade += HandleSkillUpgrade;
@@ -58,12 +57,21 @@ public class CurrencyController : MonoBehaviour
 
         merchController.MerchTransaction -= MerchTransaction;
         merchController.CoinTransaction -= AddCoins;
-        merchController.CanBuy -= CanBuyFromCoin;
-
+        
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
             skillUpgradeUIs[i].OnSkillUpgrade -= HandleSkillUpgrade;
         }
+    }
+
+    public bool CanBuyFromCoin(double price)
+    {
+        return currencyState.Coins >= price;
+    }
+
+    public bool CanBuyFromToken(int price)
+    {
+        return currencyState.Tokens >= price;
     }
 
     private void OnPrestige()
@@ -113,16 +121,6 @@ public class CurrencyController : MonoBehaviour
     {
         currencyState.Tokens += tokens;
         SynchronizeRealCurrencyAndScreenCurrency();
-    }
-
-    private bool CanBuyFromCoin(int price)
-    {
-        return currencyState.Coins >= price;
-    }
-
-    private bool CanBuyFromToken(int price)
-    {
-        return currencyState.Tokens >= price;
     }
 
     public void SynchronizeRealCurrencyAndScreenCurrency()
