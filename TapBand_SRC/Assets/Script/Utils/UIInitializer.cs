@@ -10,7 +10,8 @@ public class UIInitializer : MonoBehaviour
         // Turn off unnecessary UI elements
         transform.FindChild("SettingsUI").gameObject.SetActive(false);
 
-        transform.FindChild("BackstageUI").gameObject.SetActive(false); ;
+        transform.FindChild("BackstageUI").gameObject.SetActive(false);
+        transform.FindChild("DebugPanel").gameObject.SetActive(false);
 
         var dressingRoomUI = transform.FindChild("DressingRoomUI");
         dressingRoomUI.FindChild("Drums").gameObject.SetActive(false);
