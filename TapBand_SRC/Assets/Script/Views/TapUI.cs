@@ -26,13 +26,10 @@ public class TapUI : MonoBehaviour
     public GameObject risingText;
     public delegate void TapEvent(TapArgs args);
     public event TapEvent OnTap;
-
-    private BandMemberView[] bandMembers;
-
+        
 	void Start()
     {
-        _collider = GetComponent<Collider2D>();
-        bandMembers = FindObjectsOfType<BandMemberView>();
+        _collider = GetComponent<Collider2D>();        
 	}
 	
 	// Update is called once per frame
@@ -41,19 +38,10 @@ public class TapUI : MonoBehaviour
         TapArgs args = CalculateTapEventArgs();
         if (args.HasAnyTap())
         {
-            AnimateCharacters();
             if (OnTap != null)
                 OnTap(args);
         }
 	}
-
-    private void AnimateCharacters()
-    {
-        foreach (BandMemberView view in bandMembers)
-        {
-            view.ForceClickOnBandMember();
-        }
-    }
     
     // waaaaaaay too much parameters, should be less than 3
     public void DisplayTapValueAt(Vector2 position, BigInteger value, bool special)
@@ -81,13 +69,14 @@ public class TapUI : MonoBehaviour
     }
 
     public void AutoTap()
-    {  
-      TapArgs args = RandomTapEventArgs();
-      AnimateCharacters();
-      if (OnTap != null)
-        { 
-           OnTap(args);
-        } 
+    {
+        {
+            TapArgs args = RandomTapEventArgs();
+            
+            if (OnTap != null)
+                OnTap(args);
+        }
+
     }
 
     private TapArgs RandomTapEventArgs()

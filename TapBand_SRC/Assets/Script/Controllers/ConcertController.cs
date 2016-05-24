@@ -5,7 +5,6 @@ public class ConcertController : MonoBehaviour
 {
     private const float START_ENCORE_DELAY = 1f;//TODO: set the delay from param?
 
-    private HudUI hud;
     private SongController songController;
     private TourController tourController;
 
@@ -43,7 +42,6 @@ public class ConcertController : MonoBehaviour
 
     void Awake()
     {
-        hud = (HudUI)FindObjectOfType(typeof(HudUI));
         songController = (SongController)FindObjectOfType(typeof(SongController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
 

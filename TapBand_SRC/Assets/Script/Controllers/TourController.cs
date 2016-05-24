@@ -13,12 +13,10 @@ public class TourController : MonoBehaviour
     public event OnPrestigeEvent OnPrestige;
 
     private RestartUI restart;
-    private HudUI hud;
 
     void Awake()
     {
         restart = FindObjectOfType<RestartUI>();
-        hud = FindObjectOfType<HudUI>();
     }
 
     void OnEnable()

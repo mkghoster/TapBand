@@ -5,18 +5,21 @@ public class TapController : MonoBehaviour
 {
     private TapUI tapUI;
     private SongController songController;
+    private BandMemberController bandMemberController;
 
     public float SpotlightTapMultiplier;
-    public float boosterMultiplier = 0f;
+    public float boosterMultiplier = 1f;
     public float boosterTimeInterval = 0f;
 
-    public delegate void TapEvent(float value);
     public event TapEvent OnTap;
+
+
 
     void Awake()
     {
         BindWithUI();
-        songController = (SongController)FindObjectOfType(typeof(SongController));
+        songController = FindObjectOfType<SongController>();
+        bandMemberController = FindObjectOfType<BandMemberController>();
     }
 
     void OnEnable()
@@ -57,26 +60,40 @@ public class TapController : MonoBehaviour
             tapUI.DisplayTapValueAt(position, (ulong)tapValue, special);
 
             if (OnTap != null)
-            {                
-                OnTap(tapValue);
+            {
+                OnTap(this, new TapEventArgs(tapValue));
             }
         }
     }
 
     private float CalculateTapValue(Vector2 position, bool special)
     {
-        float tapMultiplier = GameState.instance.Currency.TapMultipliersProduct;
-        // we should rename this parameter to isSpotlight, if there will be no other special cases
-        if (special)
-        {
-            tapMultiplier *= DefaultOrSelf(SpotlightTapMultiplier);
-        }
-        return tapMultiplier;
-    }
+        float tapMultiplier = 1;
 
-    private float DefaultOrSelf(float f)
-    {
-        return f == 0.0f ? 1.0f : f;
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Bass].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Bass][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Drums].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Drums][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Guitar1].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Guitar1][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Guitar2].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Guitar2][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Keyboards].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Keyboards][i].tapStrengthBonus;
+        }
+
+        //tapMultiplier *= boosterMultiplier;
+
+        return tapMultiplier;
     }
 
     public void BoosterMultiplier(float multiplierValue)
