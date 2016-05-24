@@ -132,4 +132,24 @@ public class CurrencyController : MonoBehaviour
             OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens));
         }
     }
+
+
+    //DEBUG CONTROLLER-----------------------------
+    public void GiveCoins(double coins)
+    {
+        currencyState.Coins += coins;
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    public void GiveFans(int fans)
+    {
+        currencyState.Fans += fans;
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    public void GiveTokens(int tokens)
+    {
+        currencyState.Tokens += tokens;
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
 }
