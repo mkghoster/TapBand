@@ -8,6 +8,8 @@ public class BandMemberController : MonoBehaviour
     public Dictionary<CharacterType, IList<CharacterData>> UnlockedUpgrades { get; private set; }
     public Dictionary<CharacterType, CharacterData> NextUpgrades { get; private set; }
 
+    private SkillUpgradeUI[] skillUpgradeUIs;
+
     private EquipmentState currentEquipmentState;
     private GameData gameData;
 
@@ -19,15 +21,105 @@ public class BandMemberController : MonoBehaviour
 
     void Awake()
     {
+        gameData = GameData.instance;
+        currentEquipmentState = GameState.instance.Equipment;
 
+        skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
+
+        UnlockedUpgrades[CharacterType.Bass] = new List<CharacterData>();
+        UnlockedUpgrades[CharacterType.Drums] = new List<CharacterData>();
+        UnlockedUpgrades[CharacterType.Guitar1] = new List<CharacterData>();
+        UnlockedUpgrades[CharacterType.Guitar2] = new List<CharacterData>();
+        UnlockedUpgrades[CharacterType.Keyboards] = new List<CharacterData>();
+
+        // Fill bass data, and state
+        for (int i = 0; i < gameData.CharacterData1List.Count; i++)
+        {
+            var currentDataItem = gameData.CharacterData1List[i];
+            if (currentDataItem.id <= currentEquipmentState.BassEquipmentId)
+            {
+                UnlockedUpgrades[CharacterType.Bass].Add(currentDataItem);
+            }
+            else if (currentDataItem.id == currentEquipmentState.BassEquipmentId + 1)
+            {
+                NextUpgrades[CharacterType.Bass] = currentDataItem;
+            }
+        }
+
+        //Fill drums data and state
+        for (int i = 0; i < gameData.CharacterData2List.Count; i++)
+        {
+            var currentDataItem = gameData.CharacterData2List[i];
+            if (currentDataItem.id <= currentEquipmentState.DrumEquipmentId)
+            {
+                UnlockedUpgrades[CharacterType.Drums].Add(currentDataItem);
+            }
+            else if (currentDataItem.id == currentEquipmentState.DrumEquipmentId + 1)
+            {
+                NextUpgrades[CharacterType.Drums] = currentDataItem;
+            }
+        }
+
+        // Guitar 1 data
+        for (int i = 0; i < gameData.CharacterData3List.Count; i++)
+        {
+            var currentDataItem = gameData.CharacterData3List[i];
+            if (currentDataItem.id <= currentEquipmentState.Guitar1EquipmentId)
+            {
+                UnlockedUpgrades[CharacterType.Guitar1].Add(currentDataItem);
+            }
+            else if (currentDataItem.id == currentEquipmentState.Guitar1EquipmentId + 1)
+            {
+                NextUpgrades[CharacterType.Guitar1] = currentDataItem;
+            }
+        }
+
+        // Guitar 2 data
+        for (int i = 0; i < gameData.CharacterData4List.Count; i++)
+        {
+            var currentDataItem = gameData.CharacterData4List[i];
+            if (currentDataItem.id <= currentEquipmentState.Guitar2EquipmentId)
+            {
+                UnlockedUpgrades[CharacterType.Guitar2].Add(currentDataItem);
+            }
+            else if (currentDataItem.id == currentEquipmentState.Guitar2EquipmentId + 1)
+            {
+                NextUpgrades[CharacterType.Guitar2] = currentDataItem;
+            }
+        }
+
+        // Keyboard data
+        for (int i = 0; i < gameData.CharacterData5List.Count; i++)
+        {
+            var currentDataItem = gameData.CharacterData5List[i];
+            if (currentDataItem.id <= currentEquipmentState.KeyboardEquipmentId)
+            {
+                UnlockedUpgrades[CharacterType.Keyboards].Add(currentDataItem);
+            }
+            else if (currentDataItem.id == currentEquipmentState.KeyboardEquipmentId + 1)
+            {
+                NextUpgrades[CharacterType.Keyboards] = currentDataItem;
+            }
+        }
     }
 
-    void Start()
+    void OnEnable()
     {
-
+        for (int i = 0; i < skillUpgradeUIs.Length; i++)
+        {
+            skillUpgradeUIs[i].OnSkillUpgrade += HandleSkillUpgrade;
+        }
     }
 
-    private void UnlockUpgrade(object sender, BandMemberSkillEventArgs e)
+    void OnDisable()
+    {
+        for (int i = 0; i < skillUpgradeUIs.Length; i++)
+        {
+            skillUpgradeUIs[i].OnSkillUpgrade -= HandleSkillUpgrade;
+        }
+    }
+
+    private void HandleSkillUpgrade(object sender, BandMemberSkillEventArgs e)
     {
         UnlockedUpgrades[e.Character].Add(e.UnlockedSkill);
 

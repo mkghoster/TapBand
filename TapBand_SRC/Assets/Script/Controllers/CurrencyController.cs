@@ -8,8 +8,8 @@ public class CurrencyController : MonoBehaviour
     private ConcertController concertController;
     private TourController tourController;
     private MerchController merchController;
-    //private EquipmentController equipmentController;
-        
+    private SkillUpgradeUI[] skillUpgradeUIs;
+
     private CurrencyState currencyState;
 
     public event CurrencyEvent OnCurrencyChanged;
@@ -17,11 +17,12 @@ public class CurrencyController : MonoBehaviour
 
     void Awake()
     {
-        songController = (SongController)FindObjectOfType(typeof(SongController));
-        concertController = (ConcertController)FindObjectOfType(typeof(ConcertController));
-        tourController = (TourController)FindObjectOfType(typeof(TourController));
-        merchController = (MerchController)FindObjectOfType(typeof(MerchController));
-        
+        songController = FindObjectOfType<SongController>();
+        concertController = FindObjectOfType<ConcertController>();
+        tourController = FindObjectOfType<TourController>();
+        merchController = FindObjectOfType<MerchController>();
+        skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
+
         currencyState = GameState.instance.Currency;
     }
 
@@ -41,8 +42,12 @@ public class CurrencyController : MonoBehaviour
 
         merchController.MerchTransaction += MerchTransaction;
         merchController.CoinTransaction += AddCoins;
-        //equipmentController.EquipmentTransaction += EquipmentTransaction;
         merchController.CanBuy += CanBuy;
+
+        for (int i = 0; i < skillUpgradeUIs.Length; i++)
+        {
+            skillUpgradeUIs[i].OnSkillUpgrade += HandleSkillUpgrade;
+        }
     }
 
     void OnDisable()
@@ -53,8 +58,12 @@ public class CurrencyController : MonoBehaviour
 
         merchController.MerchTransaction -= MerchTransaction;
         merchController.CoinTransaction -= AddCoins;
-        //equipmentController.EquipmentTransaction -= EquipmentTransaction;
         merchController.CanBuy -= CanBuy;
+
+        for (int i = 0; i < skillUpgradeUIs.Length; i++)
+        {
+            skillUpgradeUIs[i].OnSkillUpgrade -= HandleSkillUpgrade;
+        }
     }
 
     private void OnPrestige()
@@ -66,10 +75,9 @@ public class CurrencyController : MonoBehaviour
         SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void EquipmentTransaction(CharacterData equipment)
+    private void HandleSkillUpgrade(object sender, BandMemberSkillEventArgs e)
     {
-        currencyState.Coins -= equipment.upgradeCost;
-        currencyState.TapMultipliers.Add(equipment.tapStrengthBonus);
+        currencyState.Coins -= e.UnlockedSkill.upgradeCost;
 
         SynchronizeRealCurrencyAndScreenCurrency();
     }

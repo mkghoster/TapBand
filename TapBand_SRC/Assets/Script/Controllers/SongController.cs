@@ -82,7 +82,7 @@ public class SongController : MonoBehaviour
 
         // if we have finished the current song, notify the world about this, and reset the controller
         if (actualTapAmount >= currentSong.tapGoal)
-        {            
+        {
             if (OnSongFinished != null)
             {
                 OnSongFinished(this, new SongEventArgs(currentSong, SongStatus.Successful));
@@ -115,11 +115,11 @@ public class SongController : MonoBehaviour
         ResetControllerState();
     }
 
-    private void HandleTap(float tapStrength)
+    private void HandleTap(object sender, TapEventArgs e)
     {
         if (currentSong != null)
         {
-            actualTapAmount += tapStrength;
+            actualTapAmount += e.TapStrength;
 
             //last song before encore
             //TODO: this should be in it's own handler
