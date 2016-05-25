@@ -4,31 +4,34 @@ using System.Collections;
 public class DroneCaller : MonoBehaviour {
 
     public GameObject Drone;
-    public int DroneMaxInterval = 10;
-    public int DroneMinDelay = 10;
-    public int DroneMaxDelay = 30;
+    public int DroneMaxInterval = 5; //max alivetime
+    int DroneMinDelay;
+    int DroneMaxDelay;
     int deltaTime;
-    //int deltaTime = Random.Range(DroneMinDelay, DroneMaxDelay);
+    DroneHandler StarterScript;
+    public bool starterr;
+    public int ihandler;
 
-    // Use this for initialization
     void Start () {
-        //deltaTime = Random.Range(2, 4);
+        DroneMinDelay = 10;
+        DroneMaxDelay = 13;
+        deltaTime = Random.Range(DroneMinDelay, DroneMaxDelay);
         StartCoroutine(waitSomeSeconds());
-
     }
-	
 
     IEnumerator waitSomeSeconds()
     {
         while(true)
         {
-            deltaTime = Random.Range(2, 4);
+            StarterScript = Drone.GetComponent<DroneHandler>();
+            starterr = StarterScript.starter;
             yield return new WaitForSeconds(deltaTime);
-            Drone.transform.position = new Vector3(10, 6, 0);
+            Drone.transform.position = new Vector3(0, -0, 0);
+            //ihandler = StarterScript.i;
+            //ihandler = 0;
+            starterr = true;
             Drone.SetActive(true);
-            //Drone.transform.position = new Vector3(10, 6, 0);
-            //Drone.SetActive(true);
-
+            //starterr = false;
         }
 
     }
