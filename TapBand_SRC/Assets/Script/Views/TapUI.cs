@@ -26,11 +26,15 @@ public class TapUI : MonoBehaviour
     public GameObject risingText;
     public delegate void TapEvent(TapArgs args);
     public event TapEvent OnTap;
-        
-	void Start()
+    public GameObject firework;
+
+    void Start()
     {
-        _collider = GetComponent<Collider2D>();        
-	}
+        _collider = GetComponent<Collider2D>();
+        firework = GameObject.Find("Firework");
+
+        //firework = (GameObject)FindObjectOfType(typeof(GameObject));
+    }
 	
 	// Update is called once per frame
 	void Update()
@@ -50,6 +54,11 @@ public class TapUI : MonoBehaviour
         GameObject text = (GameObject) Instantiate(risingText);
         text.transform.position = position;
         text.transform.SetParent(canvas.transform);
+        Vector2 mouseScreenPositionToWorld = Camera.main.ScreenToWorldPoint(position);
+        GameObject firework = (GameObject)Instantiate(Resources.Load("Firework"), mouseScreenPositionToWorld, Quaternion.identity);
+        ParticleSystem tapParticle = firework.GetComponent<ParticleSystem>();
+        tapParticle.Play();
+        Destroy(firework, 2);
 
         RisingText rising = text.GetComponent<RisingText>();
         rising.Text = "+" + value.ToString();
