@@ -9816,16 +9816,16 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11465340, guid: 5c89c9a639297c34eb6aebfef4eeea9c, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11465340, guid: 5c89c9a639297c34eb6aebfef4eeea9c, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1108179046}
-    - target: {fileID: 130690, guid: 5c89c9a639297c34eb6aebfef4eeea9c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 11465340, guid: 5c89c9a639297c34eb6aebfef4eeea9c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 855507276}
+    - target: {fileID: 11465340, guid: 5c89c9a639297c34eb6aebfef4eeea9c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c89c9a639297c34eb6aebfef4eeea9c, type: 2}
