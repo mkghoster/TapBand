@@ -9,6 +9,6 @@ public class SongData
     public int tapGoal;
     public int duration;
     public int coinReward;
-    public bool bossBattle;
+    public bool isEncore;
     public int concertID;
 }

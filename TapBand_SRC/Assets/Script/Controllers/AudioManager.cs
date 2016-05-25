@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour {
         PoolsManager.RegisterPool(audioPool); //register pool if you want to use extention method Despawn
         audioPool.Initialize();
 
-        settingsUI = (SettingsUI)GameObject.FindObjectOfType(typeof(SettingsUI));
+        settingsUI = GameObject.FindObjectOfType<SettingsUI>();
 
         //musicVolume = PlayerPrefsManager.GetMusicVolume();
         //sfxVolume = PlayerPrefsManager.GetSFXVolume();

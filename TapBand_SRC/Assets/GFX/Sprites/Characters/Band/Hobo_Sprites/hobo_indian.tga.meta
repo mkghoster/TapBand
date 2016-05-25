@@ -1,0 +1,473 @@
+fileFormatVersion: 2
+guid: 03835b0ae92eb3a40800afb1be74db19
+timeCreated: 1463163268
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hobo_indian_hair
+    21300002: hobo_indian_head
+    21300004: hobo_indian_body
+    21300006: hobo_indian_armR_LO
+    21300008: hobo_indian_armR_UP
+    21300010: hobo_indian_armL_LO
+    21300012: hobo_indian_armL_UP
+    21300014: hobo_indian_eyeR_brow
+    21300016: hobo_indian_eyeL_brow
+    21300018: hobo_indian_legR_UP
+    21300020: hobo_indian_legL_UP
+    21300022: hobo_indian_eyeR_closed
+    21300024: hobo_indian_eyeL_closed
+    21300026: hobo_indian_legR_LO
+    21300028: hobo_indian_legL_LO
+    21300030: hobo_indian_eyeR
+    21300032: hobo_indian_eyeL
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: hobo_indian_hair
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 576
+        width: 508
+        height: 428
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: -172}
+        - {x: 45, y: -167}
+        - {x: 100, y: -146}
+        - {x: 93, y: -165}
+        - {x: 99, y: -167}
+        - {x: 128, y: -149}
+        - {x: 137, y: -139}
+        - {x: 142, y: -159}
+        - {x: 147, y: -169}
+        - {x: 150, y: -171}
+        - {x: 160, y: -168}
+        - {x: 185, y: -156}
+        - {x: 192, y: -155}
+        - {x: 213, y: -128}
+        - {x: 232, y: -99}
+        - {x: 244, y: -72}
+        - {x: 251, y: -49}
+        - {x: 254, y: -33}
+        - {x: 254, y: 35}
+        - {x: 248, y: 59}
+        - {x: 239, y: 83}
+        - {x: 219, y: 120}
+        - {x: 202, y: 139}
+        - {x: 198, y: 137}
+        - {x: 199, y: 126}
+        - {x: 185, y: 142}
+        - {x: 159, y: 169}
+        - {x: 139, y: 185}
+        - {x: 104, y: 203}
+        - {x: 83, y: 213}
+        - {x: 77, y: 214}
+        - {x: 57, y: 214}
+        - {x: 58, y: 213}
+        - {x: 76, y: 187}
+        - {x: 60, y: 196}
+        - {x: 29, y: 204}
+        - {x: -22, y: 204}
+        - {x: -63, y: 195}
+        - {x: -91, y: 184}
+        - {x: -93, y: 180}
+        - {x: -93, y: 174}
+        - {x: -97, y: 159}
+        - {x: -102, y: 151}
+        - {x: -144, y: 132}
+        - {x: -168, y: 113}
+        - {x: -186, y: 95}
+        - {x: -193, y: 101}
+        - {x: -217, y: 69}
+        - {x: -227, y: 48}
+        - {x: -247, y: -1}
+        - {x: -254, y: -35}
+        - {x: -254, y: -107}
+        - {x: -252, y: -114}
+        - {x: -248, y: -125}
+        - {x: -245, y: -132}
+        - {x: -241, y: -138}
+        - {x: -229, y: -150}
+        - {x: -144, y: -204}
+        - {x: -141, y: -214}
+        - {x: -128, y: -214}
+        - {x: -43, y: -173}
+        - {x: 1, y: -151}
+        - {x: -17, y: -170}
+    - name: hobo_indian_head
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 603
+        width: 435
+        height: 402
+      alignment: 9
+      pivot: {x: 0.61889017, y: 0.30117768}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76.782776, y: -117.073425}
+        - {x: 84.782776, y: -121.073425}
+        - {x: 91.782776, y: -121.073425}
+        - {x: 100.782776, y: -105.073425}
+        - {x: 113.782776, y: -44.073425}
+        - {x: 121.782776, y: 1.9265747}
+        - {x: 126.782776, y: -1.0734253}
+        - {x: 129.78278, y: -0.07342529}
+        - {x: 132.78278, y: 17.926575}
+        - {x: 137.78278, y: 50.926575}
+        - {x: 161.78278, y: 56.926575}
+        - {x: 165.78278, y: 70.926575}
+        - {x: 165.78278, y: 100.926575}
+        - {x: 155.78278, y: 127.926575}
+        - {x: 165.78278, y: 165.92657}
+        - {x: 165.78278, y: 234.92657}
+        - {x: 152.78278, y: 244.92657}
+        - {x: 139.78278, y: 245.92657}
+        - {x: 139.78278, y: 280.92657}
+        - {x: 60.782776, y: 280.92657}
+        - {x: -94.217224, y: 273.92657}
+        - {x: -155.21722, y: 272.92657}
+        - {x: -158.21722, y: 260.92657}
+        - {x: -155.21722, y: 204.92657}
+        - {x: -175.21722, y: 223.92657}
+        - {x: -187.21722, y: 231.92657}
+        - {x: -201.21722, y: 237.92657}
+        - {x: -217.21722, y: 243.92657}
+        - {x: -251.21722, y: 245.92657}
+        - {x: -254.21722, y: 204.92657}
+        - {x: -269.21722, y: 135.92657}
+        - {x: -269.21722, y: 83.926575}
+        - {x: -267.21722, y: 74.926575}
+        - {x: -251.21722, y: 47.926575}
+        - {x: -246.21722, y: 50.926575}
+        - {x: -221.21722, y: 21.926575}
+        - {x: -199.21722, y: 12.926575}
+        - {x: -198.21722, y: 16.926575}
+        - {x: -198.21722, y: 21.926575}
+        - {x: -162.21722, y: 5.9265747}
+        - {x: -141.21722, y: 5.9265747}
+        - {x: -138.21722, y: -8.073425}
+        - {x: -120.217224, y: -28.073425}
+        - {x: -99.217224, y: -64.073425}
+        - {x: -79.217224, y: -93.073425}
+        - {x: -76.217224, y: -91.073425}
+        - {x: -60.217224, y: -102.073425}
+        - {x: -42.217224, y: -121.073425}
+        - {x: -34.217224, y: -121.073425}
+        - {x: -30.217224, y: -112.073425}
+        - {x: -6.217224, y: -121.073425}
+        - {x: 60.782776, y: -121.073425}
+    - name: hobo_indian_body
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 48
+        width: 292
+        height: 451
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2159256}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: -73.38245}
+        - {x: 55, y: -79.38245}
+        - {x: 58, y: -79.38245}
+        - {x: 142, y: -72.38245}
+        - {x: 143, y: -71.38245}
+        - {x: 143, y: -55.382446}
+        - {x: 141, y: -16.382446}
+        - {x: 139, y: 23.617554}
+        - {x: 135, y: 86.61755}
+        - {x: 131, y: 135.61755}
+        - {x: 128, y: 167.61755}
+        - {x: 125, y: 194.61755}
+        - {x: 122, y: 217.61755}
+        - {x: 119, y: 238.61755}
+        - {x: 116, y: 257.61755}
+        - {x: 111, y: 286.61755}
+        - {x: 105, y: 324.61755}
+        - {x: 99, y: 348.61755}
+        - {x: 97, y: 350.61755}
+        - {x: 81, y: 351.61755}
+        - {x: 46, y: 353.61755}
+        - {x: 45, y: 353.61755}
+        - {x: 43, y: 348.61755}
+        - {x: -22, y: 346.61755}
+        - {x: -21, y: 352.61755}
+        - {x: -24, y: 353.61755}
+        - {x: -34, y: 353.61755}
+        - {x: -37, y: 352.61755}
+        - {x: -100, y: 346.61755}
+        - {x: -117, y: 344.61755}
+        - {x: -118, y: 342.61755}
+        - {x: -119, y: 331.61755}
+        - {x: -129, y: 197.61755}
+        - {x: -139, y: 56.617554}
+        - {x: -142, y: 11.617554}
+        - {x: -145, y: -20.382446}
+        - {x: -145, y: -66.38245}
+        - {x: -137, y: -70.38245}
+        - {x: -123, y: -74.38245}
+        - {x: -84, y: -78.38245}
+        - {x: -78, y: -79.38245}
+        - {x: -31, y: -79.38245}
+        - {x: -27, y: -78.38245}
+        - {x: -30, y: -74.38245}
+        - {x: -31, y: -42.382446}
+        - {x: 55, y: -43.382446}
+    - name: hobo_indian_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 479
+        width: 236
+        height: 93
+      alignment: 9
+      pivot: {x: 0.905411, y: 0.66910285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -213.677, y: -62.226562}
+        - {x: -101.677, y: -62.226562}
+        - {x: 21.322998, y: -22.226562}
+        - {x: 21.322998, y: 25.773438}
+        - {x: 20.322998, y: 27.773438}
+        - {x: 4.322998, y: 30.773438}
+        - {x: -172.677, y: 30.773438}
+        - {x: -213.677, y: -36.226562}
+    - name: hobo_indian_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 448
+        width: 224
+        height: 118
+      alignment: 9
+      pivot: {x: 0.8702521, y: 0.26571888}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -193.93646, y: 86.64517}
+        - {x: -193.93646, y: 40.645172}
+        - {x: -188.93646, y: 35.645172}
+        - {x: -35.936462, y: -31.354828}
+        - {x: 29.063538, y: -31.354828}
+        - {x: 29.063538, y: 30.645172}
+        - {x: -21.936462, y: 86.64517}
+    - name: hobo_indian_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 304
+        width: 236
+        height: 94
+      alignment: 9
+      pivot: {x: 0.89960206, y: 0.3331724}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -212.30609, y: 62.681793}
+        - {x: -212.30609, y: -22.318207}
+        - {x: -162.30609, y: -31.318207}
+        - {x: 22.693909, y: -31.318207}
+        - {x: 22.693909, y: 36.681793}
+        - {x: -147.30609, y: 62.681793}
+    - name: hobo_indian_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 310
+        width: 223
+        height: 119
+      alignment: 9
+      pivot: {x: 0.86575276, y: 0.7326465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -193.06287, y: 31.815063}
+        - {x: -193.06287, y: -87.18494}
+        - {x: -79.06287, y: -87.18494}
+        - {x: 29.937134, y: -58.184937}
+        - {x: 29.937134, y: 31.815063}
+    - name: hobo_indian_eyeR_brow
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 161
+        width: 78
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_indian_eyeL_brow
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 163
+        width: 78
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_indian_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 155
+        width: 20
+        height: 133
+      alignment: 9
+      pivot: {x: 0.46571046, y: 0.94173276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_indian_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 155
+        width: 20
+        height: 133
+      alignment: 9
+      pivot: {x: 0.46571046, y: 0.9417511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_indian_eyeR_closed
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 124
+        width: 41
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_indian_eyeL_closed
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 124
+        width: 41
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hobo_indian_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 5
+        width: 97
+        height: 133
+      alignment: 9
+      pivot: {x: 0.097002484, y: 0.9451706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.409241, y: -125.70769}
+        - {x: 87.59076, y: -125.70769}
+        - {x: 87.59076, y: -71.70769}
+        - {x: 55.59076, y: 7.2923126}
+        - {x: -9.409241, y: 7.2923126}
+    - name: hobo_indian_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 5
+        width: 97
+        height: 133
+      alignment: 9
+      pivot: {x: 0.096152395, y: 0.9520772}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.673218, y: 6.3737335}
+        - {x: -9.326782, y: 6.3737335}
+        - {x: -9.326782, y: -126.62627}
+        - {x: 87.67322, y: -126.62627}
+        - {x: 87.67322, y: -102.62627}
+        - {x: 14.673218, y: 5.3737335}
+    - name: hobo_indian_eyeR
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 68
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15.5, y: 16}
+        - {x: -16.5, y: 15}
+        - {x: -16.5, y: -12}
+        - {x: -12.5, y: -16}
+        - {x: 14.5, y: -16}
+        - {x: 16.5, y: -14}
+        - {x: 16.5, y: 16}
+    - name: hobo_indian_eyeL
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 68
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 14, y: -16}
+        - {x: 16, y: -13}
+        - {x: 16, y: 12}
+        - {x: 13, y: 16}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

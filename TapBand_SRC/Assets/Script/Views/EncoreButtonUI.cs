@@ -2,9 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class EncoreButtonUI : MonoBehaviour {
+public class EncoreButtonUI : MonoBehaviour
+{
 
     private SongController songController;
+    private ConcertController concertController;
     private Button encoreButton;
     private Image encoreButtonImage;
     private Text childText;
@@ -12,22 +14,25 @@ public class EncoreButtonUI : MonoBehaviour {
     public delegate void GiveEncoreButtonPressed();
     public event GiveEncoreButtonPressed GiveEncoreButtonPressedEvent;
 
-	void Awake () {
-        songController = (SongController)FindObjectOfType(typeof(SongController));
+    void Awake()
+    {
+        songController = FindObjectOfType<SongController>();
+        concertController = FindObjectOfType<ConcertController>();
 
         encoreButton = gameObject.GetComponent<Button>();
         encoreButtonImage = gameObject.GetComponent<Image>();
         childText = gameObject.GetComponentInChildren<Text>();
         DeactivateEncoreButton();
     }
-	
-	void Update () {
-	    
-	}
+
+    void Update()
+    {
+
+    }
 
     public void GiveEncoreSong()
     {
-        if(GiveEncoreButtonPressedEvent != null)
+        if (GiveEncoreButtonPressedEvent != null)
         {
             GiveEncoreButtonPressedEvent();
             DeactivateEncoreButton();
@@ -36,21 +41,36 @@ public class EncoreButtonUI : MonoBehaviour {
 
     void OnEnable()
     {
-        songController.ShowEncoreButton += ActiveEncoreButton;
+        songController.OnSongStarted += HandleSongStarted;
+        songController.OnSongFinished += HandleSongFinished;
     }
 
     void OnDisable()
     {
-        songController.ShowEncoreButton -= ActiveEncoreButton;
+        songController.OnSongStarted -= HandleSongStarted;
+        songController.OnSongFinished -= HandleSongFinished;
     }
 
-    private void ActiveEncoreButton()
+    private void HandleSongStarted(object sender, SongEventArgs e)
+    {
+        if (concertController.HasTriedEncore && concertController.IsNextSongEncore)
+        {
+            ActivateEncoreButton();
+        }
+    }
+
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        DeactivateEncoreButton();
+    }
+
+    private void ActivateEncoreButton()
     {
         encoreButton.enabled = true;
         encoreButtonImage.enabled = true;
         childText.enabled = true;
 
-      //  gameObject.SetActive(true);
+        //  gameObject.SetActive(true);
     }
 
     private void DeactivateEncoreButton()
@@ -59,7 +79,7 @@ public class EncoreButtonUI : MonoBehaviour {
         encoreButtonImage.enabled = false;
         childText.enabled = false;
 
-       // gameObject.SetActive(false);
+        // gameObject.SetActive(false);
     }
 
 }

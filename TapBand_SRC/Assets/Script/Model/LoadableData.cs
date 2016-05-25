@@ -80,7 +80,7 @@ public abstract class LoadableData
 #endif
 
         gameDataPath += GetFileName();
-        Debug.Log(gameDataPath);
+        
 #if UNITY_ANDROID && !UNITY_EDITOR
 #else
         if (!File.Exists(gameDataPath))

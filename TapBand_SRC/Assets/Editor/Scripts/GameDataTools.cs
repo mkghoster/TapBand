@@ -10,11 +10,11 @@ public class GameDataTools : EditorWindow
     private const string dataRawPath = "Assets/Data/";
     private const string gameDataDirectory = "Assets/StreamingAssets/";
 
-    private string sourceURL;
+    private string documentId;
     private string gameDataDownloadFileName;
     private string gameDataConvertFileName;
     private static byte[] fileAsBinary;
-
+    
     [MenuItem("PGI/GameData Tools")]
     public static void ShowWindow()
     {
@@ -52,7 +52,7 @@ public class GameDataTools : EditorWindow
 
     private void RestoreDefaultValues()
     {
-        sourceURL = @"Insert source URL here";
+        documentId = "insert document id here";//@"Insert source URL here";
         gameDataDownloadFileName = "GameData.xlsx";
         gameDataConvertFileName = "GameData.xlsx";
     }
@@ -61,35 +61,32 @@ public class GameDataTools : EditorWindow
     {
         GUILayout.Label("Download GameData", EditorStyles.boldLabel);
 
-        sourceURL = EditorGUILayout.TextField("Remote URL", sourceURL);
+        documentId = EditorGUILayout.TextField("Remote URL", documentId);
         gameDataDownloadFileName = EditorGUILayout.TextField("Local filename", gameDataDownloadFileName);
 
         if (GUILayout.Button("Download"))
         {
-			System.Net.ServicePointManager.ServerCertificateValidationCallback =((sender, certificate, chain, sslPolicyErrors) => true);
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
             using (var client = new WebClient())
             {
-				ConvertURL();
-				client.DownloadFile(sourceURL, dataRawPath+gameDataDownloadFileName);
+                client.DownloadFile(ConvertURL(), dataRawPath + gameDataDownloadFileName);
             }
         }
     }
 
-	//works only with sharable link from google drive
-	private void ConvertURL()
-	{
-		
-		if (sourceURL.Contains ("drive.google"))
-		{
-			var valueArray = sourceURL.Split('/');
-			sourceURL="https://drive.google.com/uc?export=download&id="+valueArray[5];
-		}
-		//else if (sourceURL.Contains ("dropbox"))
-		//{
-		//	
-		//} 
-		
-	}
+    //works only with sharable link from google drive
+    private string ConvertURL()
+    {
+
+        //https://docs.google.com/spreadsheets/d/1kPvlgNTmOn7k-ipQl_bzPssV2TQZ7dhUi0MMM54TLCA/export?format=xlsx&id=1kPvlgNTmOn7k-ipQl_bzPssV2TQZ7dhUi0MMM54TLCA
+        return "https://docs.google.com/spreadsheets/d/" + documentId + "/export?format=xlsx&id=" + documentId;
+
+        //else if (sourceURL.Contains ("dropbox"))
+        //{
+        //	
+        //} 
+
+    }
 
     private void ConvertToResourceFileGUI()
     {

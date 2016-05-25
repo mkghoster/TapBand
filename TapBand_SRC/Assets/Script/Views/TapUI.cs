@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class TapArgs
@@ -25,16 +24,12 @@ public class TapUI : MonoBehaviour
     private Collider2D _collider;
 
     public GameObject risingText;
-
     public delegate void TapEvent(TapArgs args);
     public event TapEvent OnTap;
-
-    private BandMemberView[] bandMembers;
-
+        
 	void Start()
     {
-        _collider = GetComponent<Collider2D>();
-        bandMembers = FindObjectsOfType<BandMemberView>();
+        _collider = GetComponent<Collider2D>();        
 	}
 	
 	// Update is called once per frame
@@ -43,20 +38,10 @@ public class TapUI : MonoBehaviour
         TapArgs args = CalculateTapEventArgs();
         if (args.HasAnyTap())
         {
-            AnimateCharacters();
             if (OnTap != null)
                 OnTap(args);
         }
-
 	}
-
-    private void AnimateCharacters()
-    {
-        foreach (BandMemberView view in bandMembers)
-        {
-            view.ForceClickOnBandMember();
-        }
-    }
     
     // waaaaaaay too much parameters, should be less than 3
     public void DisplayTapValueAt(Vector2 position, BigInteger value, bool special)
@@ -81,6 +66,28 @@ public class TapUI : MonoBehaviour
         }
 
         rising.Init();
+    }
+
+    public void AutoTap()
+    {
+        {
+            TapArgs args = RandomTapEventArgs();
+            
+            if (OnTap != null)
+                OnTap(args);
+        }
+
+    }
+
+    private TapArgs RandomTapEventArgs()
+    {
+        TapArgs args = new TapArgs();
+        System.Random rnd = new System.Random();
+        int x = rnd.Next(20, 480);
+        int y = rnd.Next(120, 700);
+        Vector2 autotapposition = new Vector2(x, y);
+        CalculateWithPosition(autotapposition, args);
+        return args;
     }
 
     private TapArgs CalculateTapEventArgs()
@@ -111,7 +118,6 @@ public class TapUI : MonoBehaviour
 
     private void CalculateWithPosition(Vector2 pos, TapArgs args)
     {
-        
         Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
         Collider2D hit = Physics2D.OverlapPoint(wp);
         if (hit)
@@ -128,10 +134,10 @@ public class TapUI : MonoBehaviour
     }
 
     public void SwitchOnOffCollider(bool value)
-    {
-        if (value)
-            _collider.enabled = true;
-        else
-            _collider.enabled = false;
+    {        
+        //if (value)
+        //    _collider.enabled = true;
+        //else
+        //    _collider.enabled = false;
     }
 }

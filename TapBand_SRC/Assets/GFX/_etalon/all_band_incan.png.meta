@@ -1,0 +1,82 @@
+fileFormatVersion: 2
+guid: 2070f25eb552cdf4f97d9996b33d00f2
+timeCreated: 1463680997
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: all_band_incan
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: all_band_incan
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 17
+        width: 644
+        height: 1416
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8.04187, y: 168.64214}
+        - {x: -18.95813, y: 168.64214}
+        - {x: -68.95813, y: 154.64214}
+        - {x: -86.95813, y: 104.642136}
+        - {x: -86.95813, y: 53.642136}
+        - {x: -15.95813, y: -91.357864}
+        - {x: -13.95813, y: -94.357864}
+        - {x: 0.041870117, y: -179.35786}
+        - {x: 6.04187, y: -181.35786}
+        - {x: 48.04187, y: -181.35786}
+        - {x: 79.04187, y: -63.357864}
+        - {x: 89.04187, y: -41.357864}
+        - {x: 89.04187, y: 111.642136}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

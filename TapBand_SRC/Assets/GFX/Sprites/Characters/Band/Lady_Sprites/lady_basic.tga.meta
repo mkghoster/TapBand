@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 229b6f8dfa3f60348902d8a23d0b0485
+timeCreated: 1463678293
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: lady_basic_body
+    21300002: lady_basic_armL_LO
+    21300004: lady_basic_hair
+    21300006: lady_basic_armL_UP
+    21300008: lady_basic_legs
+    21300010: lady_basic_armR_LO
+    21300012: lady_basic_head
+    21300014: lady_basic_armR_UP
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: lady_basic_body
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 349
+        width: 274
+        height: 670
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -137, y: 335}
+        - {x: -137, y: -335}
+        - {x: 137, y: -335}
+        - {x: 137, y: 335}
+    - name: lady_basic_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 797
+        width: 45
+        height: 185
+      alignment: 9
+      pivot: {x: 0.2649224, y: 0.07379612}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.921509, y: 171.34772}
+        - {x: -11.921509, y: -13.652283}
+        - {x: 33.07849, y: -13.652283}
+        - {x: 33.07849, y: 171.34772}
+    - name: lady_basic_hair
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 518
+        width: 597
+        height: 506
+      alignment: 9
+      pivot: {x: 0.7558242, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -451.22705, y: 253}
+        - {x: -451.22705, y: -253}
+        - {x: 145.77295, y: -253}
+        - {x: 145.77295, y: 253}
+    - name: lady_basic_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 542
+        width: 73
+        height: 185
+      alignment: 9
+      pivot: {x: 0.7380317, y: 0.12297297}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.876312, y: 162.25}
+        - {x: -53.876312, y: -22.75}
+        - {x: 19.123688, y: -22.75}
+        - {x: 19.123688, y: 162.25}
+    - name: lady_basic_legs
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 12
+        width: 295
+        height: 328
+      alignment: 9
+      pivot: {x: 0.958203, y: 0.5035835}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -282.6699, y: 162.82462}
+        - {x: -282.6699, y: -165.17538}
+        - {x: 12.330109, y: -165.17538}
+        - {x: 12.330109, y: 162.82462}
+    - name: lady_basic_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 268
+        width: 57
+        height: 185
+      alignment: 9
+      pivot: {x: 0.76377845, y: 0.09021029}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -43.53537, y: 168.3111}
+        - {x: -43.53537, y: -16.688904}
+        - {x: 13.46463, y: -16.688904}
+        - {x: 13.46463, y: 168.3111}
+    - name: lady_basic_head
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 6
+        width: 558
+        height: 506
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -279, y: 253}
+        - {x: -279, y: -253}
+        - {x: 279, y: -253}
+        - {x: 279, y: 253}
+    - name: lady_basic_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 25
+        width: 73
+        height: 185
+      alignment: 9
+      pivot: {x: 0.26384997, y: 0.115617864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.261047, y: 163.61069}
+        - {x: -19.261047, y: -21.389305}
+        - {x: 53.738953, y: -21.389305}
+        - {x: 53.738953, y: 163.61069}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant:  
