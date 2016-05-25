@@ -48,5 +48,9 @@ public class DebugController : MonoBehaviour {
         currencyController.GiveFans(fans);
     }
 
+    public void IncTapStrength()
+    {
+
+    }
 
 }

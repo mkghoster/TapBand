@@ -52,7 +52,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &112800
 GameObject:
   m_ObjectHideFlags: 1
@@ -172,7 +172,7 @@ GameObject:
   - 114: {fileID: 11470164}
   - 114: {fileID: 11423660}
   m_Layer: 5
-  m_Name: BackstagePanelButton
+  m_Name: BackstageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1059,6 +1059,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: HandleSongPaused
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11470810
@@ -1767,7 +1789,7 @@ RectTransform:
   m_Children:
   - {fileID: 22433612}
   m_Father: {fileID: 22461658}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.34027553, y: 0.5}
   m_AnchorMax: {x: 0.661, y: 1}
   m_AnchoredPosition: {x: -0.1000061, y: 0}
@@ -1892,8 +1914,8 @@ RectTransform:
   - {fileID: 22447948}
   - {fileID: 22447972}
   - {fileID: 22435496}
-  - {fileID: 22428478}
   - {fileID: 22495158}
+  - {fileID: 22428478}
   m_Father: {fileID: 22469620}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -2003,7 +2025,7 @@ RectTransform:
   m_Children:
   - {fileID: 22459096}
   m_Father: {fileID: 22461658}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0.33, y: 1}
   m_AnchoredPosition: {x: 427.1, y: 0.0000076293945}
