@@ -21,7 +21,7 @@ public class SongController : MonoBehaviour
     private SongData currentSong;
     private EncoreButtonUI encoreButton;
 
-    private float actualTapAmount = 0f;
+    private double actualTapAmount = 0f;
     private float elapsedTime = 0f;
 
     private bool isSongPaused = false;
