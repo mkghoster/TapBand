@@ -37,7 +37,7 @@ public class CurrencyController : MonoBehaviour
     void OnEnable()
     {
         songController.OnSongFinished += HandleSongFinished;
-        concertController.OnConcertFinished += AddFans;
+        concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
         merchController.MerchTransaction += MerchTransaction;
@@ -52,7 +52,7 @@ public class CurrencyController : MonoBehaviour
     void OnDisable()
     {
         songController.OnSongFinished -= HandleSongFinished;
-        concertController.OnConcertFinished -= AddFans;
+        concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
         merchController.MerchTransaction -= MerchTransaction;
@@ -111,7 +111,7 @@ public class CurrencyController : MonoBehaviour
         SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void AddFans(object sender, ConcertEventArgs e)
+    private void HandleConcertFinished(object sender, ConcertEventArgs e)
     {
         currencyState.Fans += e.Data.fanReward;
         SynchronizeRealCurrencyAndScreenCurrency();
@@ -139,7 +139,7 @@ public class CurrencyController : MonoBehaviour
         SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    public void GiveFans(int fans)
+    public void GiveFans(double fans)
     {
         currencyState.Fans += fans;
         SynchronizeRealCurrencyAndScreenCurrency();
