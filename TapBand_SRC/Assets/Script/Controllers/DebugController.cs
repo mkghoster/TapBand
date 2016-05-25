@@ -10,9 +10,9 @@ public class DebugController : MonoBehaviour {
 
 	
 	void Start () {
-        songController = FindObjectOfType<SongController>();
-        concertController = FindObjectOfType<ConcertController>();
-        tourController = FindObjectOfType<TourController>();
+        //songController = FindObjectOfType<SongController>();
+        //concertController = FindObjectOfType<ConcertController>();
+        //tourController = FindObjectOfType<TourController>();
         currencyController = FindObjectOfType<CurrencyController>();
     }
 	
