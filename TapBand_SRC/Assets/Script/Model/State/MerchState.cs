@@ -10,8 +10,8 @@ public class MerchState
     private DateTime startTime;
     private MerchType merchType;
 
-    //[System.NonSerialized]
-    //private MerchData merchData;
+    [System.NonSerialized]
+    private MerchData merchData;
     #endregion
 
     public MerchState(MerchType type)
@@ -65,7 +65,7 @@ public class MerchState
     {
         get
         {
-            return (int) Math.Round((float) SecsToFinish / 60.0f / (float) GameData.instance.GeneralDatas.MerchBoothBoostUnitsInMinute * (float) GameData.instance.GeneralDatas.MerchBoothBoostPrice);
+            return (int) Math.Ceiling((float) SecsToFinish / 60.0f / (float) GameData.instance.GeneralDatas.MerchBoothBoostUnitsInMinute * (float) GameData.instance.GeneralDatas.MerchBoothBoostPrice);
         }
     }
 
@@ -132,7 +132,7 @@ public class MerchState
             }
             else
             {
-                return GameData.instance.GetMerchDataByType(merchType).Find(c => c.id == merchId);
+                return merchData;
             }
         }
     }
@@ -144,10 +144,10 @@ public class MerchState
 
     public void UpdateLinks()
     {
-        /*if (MerchId != 0)
+        if (MerchId != 0)
         {
             merchData = GameData.instance.GetMerchDataByType(merchType).Find(c => c.id == merchId);
-        }*/
+        }
     }
 
     public bool CanCollect()
@@ -173,7 +173,6 @@ public class MerchState
 
     public bool CanUpgrade()
     {
-        //MerchData data = GameData.instance.GetMerchDataByType(merchType).Find(c => c.id == merchId+1);
         return UpgradeCost <= GameState.instance.Currency.Coins;
     }
 

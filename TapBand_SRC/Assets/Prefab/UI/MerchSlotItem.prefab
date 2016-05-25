@@ -10,7 +10,6 @@ GameObject:
   - 224: {fileID: 22475538}
   - 222: {fileID: 22299144}
   - 114: {fileID: 11490068}
-  - 225: {fileID: 22534528}
   m_Layer: 5
   m_Name: MerchImage
   m_TagString: Untagged
@@ -28,7 +27,6 @@ GameObject:
   - 224: {fileID: 22436390}
   - 222: {fileID: 22224378}
   - 114: {fileID: 11460506}
-  - 225: {fileID: 22570808}
   m_Layer: 5
   m_Name: CollectedCoinsText
   m_TagString: Untagged
@@ -63,7 +61,6 @@ GameObject:
   - 224: {fileID: 22408328}
   - 222: {fileID: 22248960}
   - 114: {fileID: 11460814}
-  - 225: {fileID: 22511710}
   m_Layer: 5
   m_Name: TimeLeftText
   m_TagString: Untagged
@@ -82,7 +79,6 @@ GameObject:
   - 222: {fileID: 22210544}
   - 114: {fileID: 11475024}
   - 114: {fileID: 11417242}
-  - 225: {fileID: 22593906}
   m_Layer: 5
   m_Name: CollectActivateButton
   m_TagString: Untagged
@@ -118,7 +114,6 @@ GameObject:
   - 224: {fileID: 22434896}
   - 222: {fileID: 22298356}
   - 114: {fileID: 11435782}
-  - 225: {fileID: 22506428}
   m_Layer: 5
   m_Name: EmptyText
   m_TagString: Untagged
@@ -564,61 +559,6 @@ RectTransform:
   m_AnchoredPosition: {x: -37, y: -40}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &22506428
-CanvasGroup:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191936}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!225 &22511710
-CanvasGroup:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180334}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!225 &22534528
-CanvasGroup:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109058}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!225 &22570808
-CanvasGroup:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147578}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!225 &22593906
-CanvasGroup:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184578}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

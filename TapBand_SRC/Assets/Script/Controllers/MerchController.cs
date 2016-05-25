@@ -4,10 +4,6 @@ using System;
 
 public class MerchController : MonoBehaviour
 {
-    public delegate void MerchTransactionEvent(MerchData merch);
-    public event MerchTransactionEvent MerchTransaction;
-    public delegate void CoinTransactionEvent(int coins);
-    public event CoinTransactionEvent CoinTransaction;
     public delegate bool CanBuyEvent(int price);
     public event CanBuyEvent CanBuy;
 

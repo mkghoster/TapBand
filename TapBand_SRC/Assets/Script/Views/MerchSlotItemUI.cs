@@ -11,7 +11,6 @@ public class MerchSlotItemUI : MonoBehaviour
     public Text TimeLeftText;
     public Text CollectedCoinsText;
     public Text SlotEmptyText;
-    //public Text SlotCostText;
 
     #region Private fields
     private MerchSlotState merchSlotState;
@@ -79,66 +78,38 @@ public class MerchSlotItemUI : MonoBehaviour
 
     private void SetComponentsToActive()
     {
-        CollectActivateButton.GetComponent<CanvasGroup>().alpha = 1;
-        CollectActivateButton.GetComponent<CanvasGroup>().interactable = true;
-        MerchImage.GetComponent<CanvasGroup>().alpha = 1;
-        MerchImage.GetComponent<CanvasGroup>().interactable = true;
-        TimeLeftText.GetComponent<CanvasGroup>().alpha = 1;
-        TimeLeftText.GetComponent<CanvasGroup>().interactable = true;
-        CollectedCoinsText.GetComponent<CanvasGroup>().alpha = 1;
-        CollectedCoinsText.GetComponent<CanvasGroup>().interactable = true;
-        SlotEmptyText.GetComponent<CanvasGroup>().alpha = 0;
-        SlotEmptyText.GetComponent<CanvasGroup>().interactable = false;
-        //SlotCostText.GetComponent<CanvasGroup>().alpha = 0;
-        //SlotCostText.GetComponent<CanvasGroup>().interactable = false;
+        CollectActivateButton.gameObject.SetActive(true);
+        MerchImage.gameObject.SetActive(true);
+        TimeLeftText.gameObject.SetActive(true);
+        CollectedCoinsText.gameObject.SetActive(true);
+        SlotEmptyText.gameObject.SetActive(false);
     }
 
     private void SetComponentsToClosed()
     {
-        CollectActivateButton.GetComponent<CanvasGroup>().alpha = 1;
-        CollectActivateButton.GetComponent<CanvasGroup>().interactable = true;
-        MerchImage.GetComponent<CanvasGroup>().alpha = 0;
-        MerchImage.GetComponent<CanvasGroup>().interactable = false;
-        TimeLeftText.GetComponent<CanvasGroup>().alpha = 0;
-        TimeLeftText.GetComponent<CanvasGroup>().interactable = false;
-        CollectedCoinsText.GetComponent<CanvasGroup>().alpha = 0;
-        CollectedCoinsText.GetComponent<CanvasGroup>().interactable = false;
-        SlotEmptyText.GetComponent<CanvasGroup>().alpha = 0;
-        SlotEmptyText.GetComponent<CanvasGroup>().interactable = false;
-        //SlotCostText.GetComponent<CanvasGroup>().alpha = 1;
-        //SlotCostText.GetComponent<CanvasGroup>().interactable = true;
+        CollectActivateButton.gameObject.SetActive(true);
+        MerchImage.gameObject.SetActive(false);
+        TimeLeftText.gameObject.SetActive(false);
+        CollectedCoinsText.gameObject.SetActive(false);
+        SlotEmptyText.gameObject.SetActive(false);
     }
 
     private void SetComponentsToEmpty()
     {
-        CollectActivateButton.GetComponent<CanvasGroup>().alpha = 0;
-        CollectActivateButton.GetComponent<CanvasGroup>().interactable = false;
-        MerchImage.GetComponent<CanvasGroup>().alpha = 0;
-        MerchImage.GetComponent<CanvasGroup>().interactable = false;
-        TimeLeftText.GetComponent<CanvasGroup>().alpha = 0;
-        TimeLeftText.GetComponent<CanvasGroup>().interactable = false;
-        CollectedCoinsText.GetComponent<CanvasGroup>().alpha = 0;
-        CollectedCoinsText.GetComponent<CanvasGroup>().interactable = false;
-        SlotEmptyText.GetComponent<CanvasGroup>().alpha = 1;
-        SlotEmptyText.GetComponent<CanvasGroup>().interactable = true;
-        //SlotCostText.GetComponent<CanvasGroup>().alpha = 0;
-        //SlotCostText.GetComponent<CanvasGroup>().interactable = false;
+        CollectActivateButton.gameObject.SetActive(false);
+        MerchImage.gameObject.SetActive(false);
+        TimeLeftText.gameObject.SetActive(false);
+        CollectedCoinsText.gameObject.SetActive(false);
+        SlotEmptyText.gameObject.SetActive(true);
     }
 
     private void SetComponentsToComplete()
     {
-        CollectActivateButton.GetComponent<CanvasGroup>().alpha = 1;
-        CollectActivateButton.GetComponent<CanvasGroup>().interactable = true;
-        MerchImage.GetComponent<CanvasGroup>().alpha = 1;
-        MerchImage.GetComponent<CanvasGroup>().interactable = true;
-        TimeLeftText.GetComponent<CanvasGroup>().alpha = 0;
-        TimeLeftText.GetComponent<CanvasGroup>().interactable = false;
-        CollectedCoinsText.GetComponent<CanvasGroup>().alpha = 1;
-        CollectedCoinsText.GetComponent<CanvasGroup>().interactable = true;
-        SlotEmptyText.GetComponent<CanvasGroup>().alpha = 0;
-        SlotEmptyText.GetComponent<CanvasGroup>().interactable = false;
-        //SlotCostText.GetComponent<CanvasGroup>().alpha = 0;
-        //SlotCostText.GetComponent<CanvasGroup>().interactable = false;
+        CollectActivateButton.gameObject.SetActive(true);
+        MerchImage.gameObject.SetActive(true);
+        TimeLeftText.gameObject.SetActive(false);
+        CollectedCoinsText.gameObject.SetActive(true);
+        SlotEmptyText.gameObject.SetActive(false);
     }
 
     private void OnCollectActivatePressed()
