@@ -582,7 +582,7 @@ GameObject:
   - 4: {fileID: 492858}
   - 95: {fileID: 9588830}
   m_Layer: 0
-  m_Name: Character_HOBO 1
+  m_Name: Character_HOBO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

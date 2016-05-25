@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 303d6776bca62a14e890417d7b095500
-timeCreated: 1464116460
+timeCreated: 1464191906
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -159,17 +159,17 @@ TextureImporter:
         y: 425
         width: 474
         height: 545
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.23466936, y: 0.84722555}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -145, y: 241.5}
-        - {x: -165, y: 221.5}
-        - {x: -173, y: 212.5}
-        - {x: -173, y: 110.5}
-        - {x: -113, y: 110.5}
-        - {x: -46, y: 187.5}
-        - {x: -46, y: 241.5}
+      - - {x: -19.233276, y: 52.262085}
+        - {x: -39.233276, y: 32.262085}
+        - {x: -47.233276, y: 23.262085}
+        - {x: -47.233276, y: -78.737915}
+        - {x: 12.766724, y: -78.737915}
+        - {x: 79.76672, y: -1.737915}
+        - {x: 79.76672, y: 52.262085}
     - name: koreankid_incan_body
       rect:
         serializedVersion: 2
