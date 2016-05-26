@@ -12,7 +12,8 @@ public class RandomMechanismController : MonoBehaviour
     private float minDelay;
     private float maxDelay;
 
-    private float nextStartTime;
+    private float currentDelay;
+    private float elapsedTime;
 
     private bool isMechanismActive;
     private bool isPaused = false;
@@ -26,7 +27,7 @@ public class RandomMechanismController : MonoBehaviour
         minDelay = generalData.RandomMechanismMinDelay;
         maxDelay = generalData.RandomMechanismMaxDelay;
 
-        nextStartTime = Random.Range(minDelay, maxDelay);
+        currentDelay = Random.Range(minDelay, maxDelay);
 
         spotlightController = FindObjectOfType<SpotlightController>();
     }
@@ -49,9 +50,13 @@ public class RandomMechanismController : MonoBehaviour
             return;
         }
 
-        if (Time.time >= nextStartTime)
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime >= currentDelay)
         {
             StartRandomMechanism();
+            currentDelay = Random.Range(minDelay, maxDelay);
+            elapsedTime = 0;
         }
     }
 
@@ -64,12 +69,10 @@ public class RandomMechanismController : MonoBehaviour
             case RandomMechanismType.Spotlight:
                 spotlightController.StartSpotlight();
                 break;
-
             default:
                 isMechanismActive = false;
                 Debug.LogWarningFormat("RandomMechanismController: Starting {0} mechanism is not implemented", mechanismToStart);
                 break;
-
         }
     }
 
@@ -79,7 +82,7 @@ public class RandomMechanismController : MonoBehaviour
 
         //if (mechanismSelector < 0.5)
         //{
-            return RandomMechanismType.Spotlight;
+        return RandomMechanismType.Spotlight;
         //}
         //else
         //{
@@ -87,7 +90,7 @@ public class RandomMechanismController : MonoBehaviour
         //}
     }
 
-    private void SetPaused(bool paused)
+    public void SetPaused(bool paused)
     {
         isPaused = paused;
         spotlightController.SetPaused(paused);
@@ -96,7 +99,16 @@ public class RandomMechanismController : MonoBehaviour
 
     private void HandleRandomMechanismFinished(object sender, RandomMechanismEventArgs e)
     {
-        isMechanismActive = false; // good enough
-        nextStartTime = Time.time + Random.Range(minDelay, maxDelay);
+        isMechanismActive = false; // good enough        
+    }
+
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        SetPaused(true);
+    }
+
+    private void HandleSongStarted(object sender, SongEventArgs e)
+    {
+        SetPaused(false);
     }
 }
