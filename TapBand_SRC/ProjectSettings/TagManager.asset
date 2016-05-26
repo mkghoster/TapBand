@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spotlight
   - Stage Prefab
+  - Taparea
   layers:
   - Default
   - TransparentFX

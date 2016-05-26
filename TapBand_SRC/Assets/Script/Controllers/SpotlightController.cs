@@ -4,81 +4,73 @@ using System;
 
 public class SpotlightController : MonoBehaviour
 {
+    private float spotlightInterval;
+    private float spotlightChangeInterval;
 
-    private float SpotlightInterval;
-    private float SpotlightMinDelay;
-    private float SpotlightMaxDelay;
-    private float SpotlightTapMultiplier;
+    private bool isActive;
+    private float timeToLive;
+    private float timeToChange;
 
-    private float initSpotlightCountdown;
+    private SpotlightUI spotlightUI;
 
-    public SpotlightUI spotlightUI;
-    public TapController tapController;
-    private SongController songController;
+    private bool isPaused;
 
-    public GameObject[] musicians;
-
-    // private bool canActivate = true;
-    private bool canActivate = false; // TODO: ideiglenesen kikapcsolva
+    public event RandomMechanismEvent OnSpotlightFinished;
 
     void Awake()
     {
-        songController = (SongController)FindObjectOfType(typeof(SongController));
-    }
+        var generalData = GameData.instance.GeneralData;
 
-    void Start()
-    {
-        SpotlightInterval = GameData.instance.GeneralData.SpotlightInterval;
-        SpotlightMinDelay = GameData.instance.GeneralData.RandomMechanismMinDelay;//Fix this
-        SpotlightMaxDelay = GameData.instance.GeneralData.RandomMechanismMaxDelay;
-        SpotlightTapMultiplier = GameData.instance.GeneralData.SpotlightTapMultiplier;
+        spotlightUI = FindObjectOfType<SpotlightUI>();
 
-        initSpotlightCountdown = CalculateAliveTime();
-
-        spotlightUI.aliveTime = SpotlightInterval;
-
-        tapController = FindObjectOfType<TapController>();
-        tapController.SpotlightTapMultiplier = SpotlightTapMultiplier;
-    }
-
-    void OnEnable()
-    {
-
-    }
-
-    void OnDisable()
-    {
-
+        spotlightInterval = generalData.SpotlightInterval;
+        spotlightChangeInterval = generalData.SpotlightChangeInterval;
     }
 
     void Update()
     {
-        float dt = Time.deltaTime;
-
-        if (canActivate)
+        if (!isActive || isPaused)
         {
-            if (initSpotlightCountdown <= 0)
-            {
-                int indexToActivate = UnityEngine.Random.Range(0, musicians.Length);
-                spotlightUI.Activate(musicians[indexToActivate]);
-                initSpotlightCountdown = CalculateAliveTime();
-            }
-            else
-            {
-                initSpotlightCountdown -= dt;
-            }
+            return;
+        }
+        var dt = Time.deltaTime;
+        timeToLive -= dt;
+        timeToChange -= dt;
+
+        if (timeToLive <= 0)
+        {
+            EndSpotlight();
+        }
+        if (timeToChange <= 0)
+        {
+            spotlightUI.ChangeSpotlight();
+            timeToChange = spotlightChangeInterval;
+        }
+
+
+    }
+
+    public void StartSpotlight()
+    {
+        timeToLive = spotlightInterval;
+        timeToChange = spotlightChangeInterval;
+        isActive = true;
+
+        spotlightUI.ChangeSpotlight();
+    }
+
+    public void EndSpotlight()
+    {
+        isActive = false;
+        spotlightUI.DeactivateAll();
+        if (OnSpotlightFinished != null)
+        {
+            OnSpotlightFinished(this, new RandomMechanismEventArgs(RandomMechanismType.Spotlight));
         }
     }
 
-    private float CalculateAliveTime()
+    public void SetPaused(bool paused)
     {
-        return UnityEngine.Random.Range(SpotlightMinDelay, SpotlightMaxDelay);
-    }
-
-    //between 2 concert
-    private void SwitchOnOffSpotlight(bool value)
-    {
-        // TODO: switched off until wireup
-        // canActivate = value;
+        isPaused = paused;
     }
 }

@@ -12,6 +12,9 @@ public class GameStateHolder : MonoBehaviour
         GameData.instance.TryLoadFromAssets(Application.streamingAssetsPath);
         GameState.instance.TryLoadFromAssets(Application.persistentDataPath);
 
+        //Debug info
+        print("GameState path: "+ Application.persistentDataPath);
+
         LoadConnectionsInGameData();
         LoadDefaults();
 

@@ -21,8 +21,10 @@ public class SongController : MonoBehaviour
     private SongData currentSong;
     private EncoreButtonUI encoreButton;
 
-    private float actualTapAmount = 0f;
+    private double actualTapAmount = 0f;
     private float elapsedTime = 0f;
+
+    private bool isSongPaused = false;
 
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
     private const int beforeEncoreSongConstID = 3; //TODO: this still belongs to the concert
@@ -60,6 +62,11 @@ public class SongController : MonoBehaviour
 
     void Update()
     {
+        if (isSongPaused)
+        {
+            return;
+        }
+
         float deltaTime = Time.deltaTime;
 
         // try to get the next song from the concertController
@@ -179,5 +186,10 @@ public class SongController : MonoBehaviour
     {
         int newID = (songID - 1) % 5;
         return newID;
+    }
+
+    public void HandleSongPaused(bool paused)
+    {
+        isSongPaused = paused;
     }
 }

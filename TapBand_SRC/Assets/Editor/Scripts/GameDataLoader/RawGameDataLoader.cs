@@ -115,7 +115,7 @@ public class RawGameDataLoader : IGameDataLoader
             concertDataObject.fanReward = LoadInt(i, "FanReward");
             concertDataObject.rewardBase = LoadDouble(i, "RewardBase");
             concertDataObject.levelRange = LoadDouble(i, "LevelRange");
-            concertDataObject.background = LoadString(i, "Background");
+            concertDataObject.background = LoadEnum<BackgroundType>(i, "Background");
 
             concertDataTarget.Add(concertDataObject);
         }
@@ -235,6 +235,9 @@ public class RawGameDataLoader : IGameDataLoader
                     break;
                 case "RandomMechanismMaxDelay":
                     generalDataTarget.RandomMechanismMaxDelay = LoadFloat(i, "Value");
+                    break;
+                case "SpotlightChangeInterval":
+                    generalDataTarget.SpotlightChangeInterval = LoadFloat(i, "Value");
                     break;
                 case "TapStrengthBoosterMultiplier":
                     generalDataTarget.TapStrengthBoosterMultiplier = LoadFloat(i, "Value");

@@ -37,13 +37,12 @@ public class CurrencyController : MonoBehaviour
     void OnEnable()
     {
         songController.OnSongFinished += HandleSongFinished;
-        concertController.OnConcertFinished += AddFans;
+        concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
         merchController.MerchTransaction += MerchTransaction;
         merchController.CoinTransaction += AddCoins;
-        merchController.CanBuy += CanBuy;
-
+        
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
             skillUpgradeUIs[i].OnSkillUpgrade += HandleSkillUpgrade;
@@ -53,17 +52,26 @@ public class CurrencyController : MonoBehaviour
     void OnDisable()
     {
         songController.OnSongFinished -= HandleSongFinished;
-        concertController.OnConcertFinished -= AddFans;
+        concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
         merchController.MerchTransaction -= MerchTransaction;
         merchController.CoinTransaction -= AddCoins;
-        merchController.CanBuy -= CanBuy;
-
+        
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
             skillUpgradeUIs[i].OnSkillUpgrade -= HandleSkillUpgrade;
         }
+    }
+
+    public bool CanBuyFromCoin(double price)
+    {
+        return currencyState.Coins >= price;
+    }
+
+    public bool CanBuyFromToken(int price)
+    {
+        return currencyState.Tokens >= price;
     }
 
     private void OnPrestige()
@@ -103,7 +111,7 @@ public class CurrencyController : MonoBehaviour
         SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void AddFans(object sender, ConcertEventArgs e)
+    private void HandleConcertFinished(object sender, ConcertEventArgs e)
     {
         currencyState.Fans += e.Data.fanReward;
         SynchronizeRealCurrencyAndScreenCurrency();
@@ -112,18 +120,34 @@ public class CurrencyController : MonoBehaviour
     private void AddTokens(int tokens)
     {
         currencyState.Tokens += tokens;
-    }
-
-    private bool CanBuy(int price)
-    {
-        return currencyState.Coins >= price;
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     public void SynchronizeRealCurrencyAndScreenCurrency()
     {
         if (OnCurrencyChanged != null)
         {
-            OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens)); //TODO: ez nem teljesen korrekt így
+            OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens));
         }
+    }
+
+
+    //DEBUG CONTROLLER-----------------------------
+    public void GiveCoins(double coins)
+    {
+        currencyState.Coins += coins;
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    public void GiveFans(double fans)
+    {
+        currencyState.Fans += fans;
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    public void GiveTokens(int tokens)
+    {
+        currencyState.Tokens += tokens;
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 }
