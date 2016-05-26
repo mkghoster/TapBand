@@ -28,10 +28,10 @@ public class AnimController : MonoBehaviour {
     void OnEnable()
     {
         songController.OnSongFinished += HandleSongFinished;
-        tapUI.OnTap += CountTapsPerSecond;
+        tapUI.OnScreenTap += CountTapsPerSecond;
     }
 
-    private void CountTapsPerSecond(TapArgs args)
+    private void CountTapsPerSecond(object sender, RawTapEventArgs args)
     {
         tapsPerSecond++;
         taps.Add(Time.timeSinceLevelLoad);
