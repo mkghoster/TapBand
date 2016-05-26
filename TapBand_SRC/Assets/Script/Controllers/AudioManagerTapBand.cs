@@ -24,8 +24,6 @@ public class AudioManagerTapBand : AudioManager
     //index for Concert and MusicBars
     private int actualIndex;
 
-    //private int prevConcertAudioID; // kmenetni az előző concert audio id-t és ellenőrizni  volt e 
-
     private AudioClip[] clips;
 
 
@@ -59,7 +57,7 @@ public class AudioManagerTapBand : AudioManager
         {
             //it's the previous song id, need to inc
             actualIndex = CastSongIndex(concertState.LastCompletedSongID + 1);
-
+           
             //encore song : only the last bar need to fade in
             if (actualIndex == 4)
             {
@@ -67,7 +65,7 @@ public class AudioManagerTapBand : AudioManager
             }
             else
             {
-                FadeInMusicBarsUntilIndex(actualIndex);
+                FadeInMusicBarsUntilIndex(actualIndex+1); // actualIndex + 1 : if it's 0  it doesn't fade anything
             }
         }
         else
@@ -354,11 +352,7 @@ public class AudioManagerTapBand : AudioManager
 
     }
 
-    //0 - Guitar
-    //1 - Drum
-    //2 - Bass
-    //3 - Synth
-    //4 - Encore
+   
 
     private void SetCorrectOrderAudioClips(int[] order)
     {
@@ -372,23 +366,20 @@ public class AudioManagerTapBand : AudioManager
 
     private void ReadMusicFromResources()
     {
-        //--------------------------------------------------------------------- TODO, try catchbe
         var array = Resources.LoadAll("PlaceHolder", typeof(AudioClip));
         clips = new AudioClip[array.Length];
         for (int i = 0; i < clips.Length; i++)
         {
             clips[i] = array[i] as AudioClip;
         }
-
-        /*for(int i = 0; i < clips.Length; i++)
-        {
-            print("name: "+ clips[i].name);
-        }*/
-
     }
 
+    //0 - Guitar
+    //1 - Drum
+    //2 - Bass
+    //3 - Synth
+    //4 - Encore
 
-    //Happy Develeopers
     private int[] FirstConcertOrderType()
     {
         float n = Random.Range(0, 2);
@@ -461,10 +452,8 @@ public class AudioManagerTapBand : AudioManager
 
     }
 
-    private int[] FourthConcertOrderType() //EZT IS ÁTÍRNI
+    private int[] FourthConcertOrderType()
     {
-        //ez a kettős
-
         float n = Random.Range(0f, 1f);
         int[] order = new int[5];
 
@@ -511,11 +500,6 @@ public class AudioManagerTapBand : AudioManager
             return order;
         }
     }
-
-
-
-
-
 
     #endregion
 

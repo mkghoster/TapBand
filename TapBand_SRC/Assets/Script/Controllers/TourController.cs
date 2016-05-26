@@ -14,15 +14,9 @@ public class TourController : MonoBehaviour
 
     private RestartUI restart;
 
-    private CurrencyController currencyController;
-    private ConcertController concertController;
-
     void Awake()
     {
         restart = FindObjectOfType<RestartUI>();
-
-        currencyController = FindObjectOfType<CurrencyController>();
-        concertController = FindObjectOfType<ConcertController>();
     }
 
     void OnEnable()
