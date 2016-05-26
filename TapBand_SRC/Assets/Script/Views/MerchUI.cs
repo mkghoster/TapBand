@@ -35,7 +35,7 @@ public class MerchUI : MonoBehaviour
         merchController = controller;
     }
 
-    public void CreateMerchItems(List<MerchState> merchStates)
+    public void CreateMerchItems(IList<MerchState> merchStates)
     {
         MerchScrollPanelContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, merchStates.Count * 100 + 10);
         for (int i = 0; i < merchStates.Count; i++)
@@ -53,7 +53,7 @@ public class MerchUI : MonoBehaviour
         return itemUI;
     }
 
-    public void CreateMerchSlotItems(List<MerchSlotState> slotStates)
+    public void CreateMerchSlotItems(IList<MerchSlotState> slotStates)
     {
         for (int i = 0; i < slotStates.Count; i++)
         {
