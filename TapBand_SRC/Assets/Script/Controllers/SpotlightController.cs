@@ -12,7 +12,6 @@ public class SpotlightController : MonoBehaviour
     private float timeToChange;
 
     private SpotlightUI spotlightUI;
-    private SongController songController;
 
     private bool isPaused;
 
@@ -22,7 +21,6 @@ public class SpotlightController : MonoBehaviour
     {
         var generalData = GameData.instance.GeneralData;
 
-        songController = FindObjectOfType<SongController>();
         spotlightUI = FindObjectOfType<SpotlightUI>();
 
         spotlightInterval = generalData.SpotlightInterval;

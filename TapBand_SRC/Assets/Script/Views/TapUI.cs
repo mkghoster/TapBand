@@ -5,6 +5,7 @@ public class TapUI : MonoBehaviour
 {
     private Collider2D _collider;
     private SongController songController;
+    private GameObject canvas;
 
     public GameObject risingText;
 
@@ -14,6 +15,7 @@ public class TapUI : MonoBehaviour
     {
         _collider = GetComponent<Collider2D>();
         songController = FindObjectOfType<SongController>();
+        canvas = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
@@ -40,7 +42,6 @@ public class TapUI : MonoBehaviour
 
     public void DisplayTapValueAt(RawTapData data, double value)
     {
-        GameObject canvas = GameObject.Find("Canvas");
         GameObject text = Instantiate(risingText);
         text.transform.position = data.position;
         text.transform.SetParent(canvas.transform);
@@ -93,7 +94,11 @@ public class TapUI : MonoBehaviour
                 Touch touch = Input.GetTouch(i);
                 if (touch.phase == TouchPhase.Began)
                 {
-                    result.Add(new RawTapData(touch.position, IsSpotlightTap(touch.position)));
+                    RawTapData tap;
+                    if (GetValidTap(touch.position, out tap))
+                    {
+                        result.Add(tap);
+                    }
                 }
             }
         }
@@ -101,23 +106,35 @@ public class TapUI : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                result.Add(new RawTapData(Input.mousePosition, IsSpotlightTap(Input.mousePosition)));
+                RawTapData tap;
+                if (GetValidTap(Input.mousePosition, out tap))
+                {
+                    result.Add(tap);
+                }
             }
         }
 
         return result;
     }
 
-    private bool IsSpotlightTap(Vector2 pos)
+    private bool GetValidTap(Vector2 pos, out RawTapData tapData)
     {
         Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
         Collider2D hit = Physics2D.OverlapPoint(wp);
+        bool isValid = false;
+        bool isSpotlight = false;
 
         if (hit != null && hit.gameObject.tag == Tags.SPOTLIGHT)
         {
-            return true;
+            isSpotlight = true;
+            isValid = true;
         }
-        return false;
+        else if (hit != null && hit.gameObject.tag == Tags.TAPAREA)
+        {
+            isValid = true;
+        }
+        tapData = new RawTapData(pos, isSpotlight);
+        return isValid;
     }
 
     private void HandleSongStarted(object sender, SongEventArgs e)
