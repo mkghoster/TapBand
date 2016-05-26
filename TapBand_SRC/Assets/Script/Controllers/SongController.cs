@@ -21,7 +21,7 @@ public class SongController : MonoBehaviour
     private SongData currentSong;
     private EncoreButtonUI encoreButton;
 
-    private float actualTapAmount = 0f;
+    private double actualTapAmount = 0f;
     private float elapsedTime = 0f;
 
     private bool isSongPaused = false;
@@ -42,16 +42,19 @@ public class SongController : MonoBehaviour
     void OnEnable()
     {
         tapController.OnTap += HandleTap;
-        tourController.RestartSong += ResetControllerState;
+       
         encoreButton.GiveEncoreButtonPressedEvent += StartEncoreSong;
+
+        tourController.RestartSong += ResetControllerState;
     }
 
     void OnDisable()
     {
         tapController.OnTap -= HandleTap;
-        tourController.RestartSong -= ResetControllerState;
-
+        
         encoreButton.GiveEncoreButtonPressedEvent -= StartEncoreSong;
+
+        tourController.RestartSong -= ResetControllerState;
     }
 
     void Start()

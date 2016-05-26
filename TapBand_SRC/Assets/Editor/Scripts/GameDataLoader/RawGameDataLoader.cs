@@ -280,6 +280,9 @@ public class RawGameDataLoader : IGameDataLoader
                 case "RandomMechanismMaxDelay":
                     generalDataTarget.RandomMechanismMaxDelay = LoadFloat(i, "Value");
                     break;
+                case "SpotlightChangeInterval":
+                    generalDataTarget.SpotlightChangeInterval = LoadFloat(i, "Value");
+                    break;
                 case "TapStrengthBoosterMultiplier":
                     generalDataTarget.TapStrengthBoosterMultiplier = LoadFloat(i, "Value");
                     break;

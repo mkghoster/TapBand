@@ -7,6 +7,7 @@ public class DebugController : MonoBehaviour {
     private ConcertController concertController;
     private TourController tourController;
     private CurrencyController currencyController;
+    private TapController tapController;
 
 	
 	void Start () {
@@ -14,6 +15,7 @@ public class DebugController : MonoBehaviour {
         //concertController = FindObjectOfType<ConcertController>();
         //tourController = FindObjectOfType<TourController>();
         currencyController = FindObjectOfType<CurrencyController>();
+        tapController = FindObjectOfType<TapController>();
     }
 	
 	// Update is called once per frame
@@ -50,7 +52,14 @@ public class DebugController : MonoBehaviour {
 
     public void IncTapStrength()
     {
+        double tapMultipiler = 2.0;
 
+        tapController.IncDebugTapMultiplier(tapMultipiler);
+    }
+
+    public void SetToOneDebugTapSterngth()//TODO ezt bekötni egy gombra !!!!!
+    {
+        tapController.SetToOneDebugTapMultiplier();
     }
 
 }

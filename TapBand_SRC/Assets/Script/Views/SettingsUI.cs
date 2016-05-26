@@ -24,7 +24,6 @@ public class SettingsUI : MonoBehaviour {
         //Init volumes from preferences
         musicSlider.value = PlayerPrefsManager.GetMusicVolume();
         sfxSlider.value = PlayerPrefsManager.GetSFXVolume();
-
     }
 	
 	

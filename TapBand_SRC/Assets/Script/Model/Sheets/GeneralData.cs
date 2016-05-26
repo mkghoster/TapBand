@@ -13,6 +13,7 @@ public class GeneralData
     public float DroneCoinLossRatio;
     public float RandomMechanismMinDelay;
     public float RandomMechanismMaxDelay;
+    public float SpotlightChangeInterval;
     public float TapStrengthBoosterMultiplier;
     public float TapStrengthBoosterDuration;
     public float ExtraTimeBoosterBonus;
