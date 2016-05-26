@@ -115,7 +115,7 @@ public class RawGameDataLoader : IGameDataLoader
             concertDataObject.fanReward = LoadInt(i, "FanReward");
             concertDataObject.rewardBase = LoadDouble(i, "RewardBase");
             concertDataObject.levelRange = LoadDouble(i, "LevelRange");
-            concertDataObject.background = LoadString(i, "Background");
+            concertDataObject.background = LoadEnum<BackgroundType>(i, "Background");
 
             concertDataTarget.Add(concertDataObject);
         }

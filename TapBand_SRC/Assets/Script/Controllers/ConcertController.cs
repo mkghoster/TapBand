@@ -24,6 +24,14 @@ public class ConcertController : MonoBehaviour
         }
     }
 
+    public ConcertData CurrentConcertData
+    {
+        get
+        {
+            return currentConcertData;
+        }
+    }
+
     public bool HasTriedEncore
     {
         get
