@@ -10,7 +10,7 @@ public class TapUI : MonoBehaviour
 
     public event RawTapEvent OnScreenTap;
 
-    void Start()
+    void Awake()
     {
         _collider = GetComponent<Collider2D>();
         songController = FindObjectOfType<SongController>();
@@ -38,7 +38,6 @@ public class TapUI : MonoBehaviour
         songController.OnSongFinished -= HandleSongFinished;
     }
 
-    // waaaaaaay too much parameters, should be less than 3
     public void DisplayTapValueAt(RawTapData data, double value)
     {
         GameObject canvas = GameObject.Find("Canvas");
