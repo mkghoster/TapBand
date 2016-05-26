@@ -120,4 +120,9 @@ public class TapController : MonoBehaviour
         debugTapMultiplier *= multiplier;
         PlayerPrefsManager.SetDebugTapMultip( (float) debugTapMultiplier);
     }
+
+    public void SetToOneDebugTapMultiplier()
+    {
+        PlayerPrefsManager.SetDebugTapMultip( 1.0f );
+    }
 }

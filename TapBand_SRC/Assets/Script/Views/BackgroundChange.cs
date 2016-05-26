@@ -4,6 +4,7 @@ using System.Collections;
 public class BackgroundChange : MonoBehaviour {
 
     private ConcertController concertController;
+    private TourController tourController;
 
     public GameObject[] backgrounds;
 
@@ -15,15 +16,19 @@ public class BackgroundChange : MonoBehaviour {
     void OnEnable()
     {
         concertController.OnConcertStarted += ChangeBackground;
+        tourController.OnPrestige += ResetBackground;
     }
 
     void OnDisable()
     {
         concertController.OnConcertStarted -= ChangeBackground;
+        tourController.OnPrestige -= ResetBackground;
     }
 	
 	void Awake () {
         concertController = FindObjectOfType<ConcertController>();
+        tourController = FindObjectOfType<TourController>();
+
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 	
@@ -36,6 +41,12 @@ public class BackgroundChange : MonoBehaviour {
     private void ChangeBackground(object sender, ConcertEventArgs e)
     {
         actualBackgroundID = e.Data.background;
+        spriteRenderer.sprite = backgrounds[(int)actualBackgroundID].GetComponent<SpriteRenderer>().sprite;
+    }
+
+    private void ResetBackground()
+    {
+        actualBackgroundID = 0;
         spriteRenderer.sprite = backgrounds[(int)actualBackgroundID].GetComponent<SpriteRenderer>().sprite;
     }
 

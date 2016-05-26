@@ -42,16 +42,21 @@ public class SongController : MonoBehaviour
     void OnEnable()
     {
         tapController.OnTap += HandleTap;
-        tourController.RestartSong += ResetControllerState;
+       
         encoreButton.GiveEncoreButtonPressedEvent += StartEncoreSong;
+
+        //tourController.RestartSong += ResetControllerState;
+        tourController.RestartSong += FailSong;
     }
 
     void OnDisable()
     {
         tapController.OnTap -= HandleTap;
-        tourController.RestartSong -= ResetControllerState;
-
+        
         encoreButton.GiveEncoreButtonPressedEvent -= StartEncoreSong;
+
+        //tourController.RestartSong -= ResetControllerState;
+        tourController.RestartSong -= FailSong;
     }
 
     void Start()

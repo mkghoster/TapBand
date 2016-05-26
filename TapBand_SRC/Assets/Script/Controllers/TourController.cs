@@ -40,7 +40,7 @@ public class TourController : MonoBehaviour
         {
             RestartSong();
         }
-        if (OnPrestige != null)
+        if (OnPrestige != null) //------ ezzel adni rewardot a currencybe: Petivel átdumálni.
         {
             OnPrestige();
         }
