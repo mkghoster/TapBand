@@ -54,19 +54,10 @@ public class TapController : MonoBehaviour
         }
     }
 
-    private void IterateOverPositions(ICollection<Vector2> positions, bool special)
-    {
-        foreach (Vector2 position in positions)
-        {
-
-
-        }
-    }
-
     private double CalculateTapValue(Vector2 position, bool isSpotlight)
     {
         //double tapMultiplier = 1;
-        debugTapMultiplier = (double) PlayerPrefsManager.GetDebugTapMultip();
+        debugTapMultiplier = (double)PlayerPrefsManager.GetDebugTapMultip();
         double tapMultiplier = 1 * debugTapMultiplier;  //DEBUG
 
         for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Bass].Count; i++)
@@ -118,7 +109,7 @@ public class TapController : MonoBehaviour
     public void IncDebugTapMultiplier(double multiplier)
     {
         debugTapMultiplier *= multiplier;
-        PlayerPrefsManager.SetDebugTapMultip( (float) debugTapMultiplier);
+        PlayerPrefsManager.SetDebugTapMultip((float)debugTapMultiplier);
     }
 
     public void SetToOneDebugTapMultiplier()
