@@ -61,7 +61,7 @@ public class SpotlightController : MonoBehaviour
         spotlightUI.ChangeSpotlight();
     }
 
-    private void EndSpotlight()
+    public void EndSpotlight()
     {
         isActive = false;
         spotlightUI.DeactivateAll();
