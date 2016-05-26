@@ -170,20 +170,34 @@ public class ConcertController : MonoBehaviour
 
     private void RestartConcertFromTheFirst() // TODO: wat?
     {
-        DebugInfo();
-        ConcertState state = GameState.instance.Concert;
-        state.CurrentConcertID = GameData.instance.ConcertDataList[0].id;
-        state.LastCompletedSongID = -1;
-        DebugInfo();
-        state.CurrentSong = null;
-        
+        /* DebugInfo();
+         concertState.CurrentConcertID = GameData.instance.ConcertDataList[0].id;
+         concertState.LastCompletedSongID = -1;
+         concertState.CurrentSongIndex = 0;
+         concertState.HasTriedEncore = false;
+
+         //concertState.CurrentSong = null;
+         DebugInfo();*/
+
+
+        concertState.ResetToConcert(GameData.instance.ConcertDataList[0]);
+        GameState.instance.SaveToFile(Application.persistentDataPath);
+        //concertState.LastCompletedSongID = -1;
+        //concertState.CurrentSong = null;
+
     }
 
     private void DebugInfo()
     {
         ConcertState state = GameState.instance.Concert;
         print("concert id: "+ state.CurrentConcertID );
-        print("song id: "+ state.CurrentSong.id);
+        if(state.CurrentSong == null)
+        {
+            print("song id: null");
+        }
+        else
+            print("song id: "+ state.CurrentSong.id);
+        print("lastcomp:  "+ state.LastCompletedSongID);
     }
 
     private ConcertData GetNextConcert()
