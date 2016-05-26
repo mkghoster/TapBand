@@ -18,16 +18,16 @@ public class MerchController : MonoBehaviour
 
     void Start()
     {
-        merchUI = FindObjectOfType<MerchUI>();
+        /*merchUI = FindObjectOfType<MerchUI>();
         merchUI.SetController(this);
         merchUI.CreateMerchItems(GameState.instance.MerchStates);
-        merchUI.CreateMerchSlotItems(GameState.instance.MerchSlotStates);
+        merchUI.CreateMerchSlotItems(GameState.instance.MerchSlotStates);*/
     }
 
     void Update()
     {
-        merchUI.UpdateMerchItems();
-        merchUI.UpdateMerchSlotItems();
+        /*merchUI.UpdateMerchItems();
+        merchUI.UpdateMerchSlotItems();*/
     }
 
     public bool HasFreeSlot()

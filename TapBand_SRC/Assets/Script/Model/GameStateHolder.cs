@@ -15,6 +15,9 @@ public class GameStateHolder : MonoBehaviour
             GameState.instance.Init();
         }
 
+        //Debug info
+        print("GameState path: "+ Application.persistentDataPath);
+
         LoadConnectionsInGameData();
         LoadDefaults();
 
