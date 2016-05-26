@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MerchSlotData
 {
     public int id;
-    public int coinCost;
+    public double coinCost;
     public int tokenCost;
 }
+

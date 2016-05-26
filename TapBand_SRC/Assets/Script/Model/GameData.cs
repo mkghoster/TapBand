@@ -24,7 +24,7 @@ public class GameData : LoadableData
             return _instance;
         }
     }
-    
+
     // TODO: solve its protection level issues in RawGameDataLoader
     /*
     private GameData()
@@ -34,139 +34,103 @@ public class GameData : LoadableData
     */
     #endregion
 
-    #region Private fields
-    private List<SongData> songDataList;
-    private List<ConcertData> concertDataList;
-    private List<TourData> tourDataList;
-    private List<EquipmentData> equipmentDataList;
-    private List<MerchData>[] merchDataLists;
-    private List<MerchSlotData> merchSlotDataList;
-    private List<GeneralDataRecord> generalDataList;
+    public IList<SongData> SongDataList { get; private set; }
+    public IList<ConcertData> ConcertDataList { get; private set; }
 
-    [System.NonSerialized]
-    private GeneralData generalDatas;
-    #endregion
+    public IList<CharacterData> CharacterData1List { get; private set; }
+    public IList<CharacterData> CharacterData2List { get; private set; }
+    public IList<CharacterData> CharacterData3List { get; private set; }
+    public IList<CharacterData> CharacterData4List { get; private set; }
+    public IList<CharacterData> CharacterData5List { get; private set; }
+
+    public IList<SkinData> SkinData1List { get; private set; }
+    public IList<SkinData> SkinData2List { get; private set; }
+    public IList<SkinData> SkinData3List { get; private set; }
+    public IList<SkinData> SkinData4List { get; private set; }
+    public IList<SkinData> SkinData5List { get; private set; }
+
+    public IList<MerchData> MerchData1List { get; private set; }
+    public IList<MerchData> MerchData2List { get; private set; }
+    public IList<MerchData> MerchData3List { get; private set; }
+    public IList<MerchData> MerchData4List { get; private set; }
+    public IList<MerchData> MerchData5List { get; private set; }
+    public IList<MerchData> MerchData6List { get; private set; }
+
+    public IList<MerchSlotData> MerchSlotDataList { get; private set; }
+
+    public IapData IapData { get; private set; }
+    public GeneralData GeneralData { get; private set; }
+
+    public IList<DroneRewardData> DroneRewardDataList { get; private set; }
+
+    public IList<DailyRandomData> DailyRandomDataList { get; private set; }
+    public IList<DailyStreakData> DailyStreakDataList { get; private set; }
+
+    [NonSerialized]
+    private BoosterData boosterData;
+    public BoosterData BoosterData
+    {
+        get
+        {
+            return boosterData;
+        }
+    }
 
     public GameData()
     {
-        generalDatas = new GeneralData();
+        SongDataList = new List<SongData>();
+        ConcertDataList = new List<ConcertData>();
+
+        CharacterData1List = new List<CharacterData>();
+        CharacterData2List = new List<CharacterData>();
+        CharacterData3List = new List<CharacterData>();
+        CharacterData4List = new List<CharacterData>();
+        CharacterData5List = new List<CharacterData>();
+
+        SkinData1List = new List<SkinData>();
+        SkinData2List = new List<SkinData>();
+        SkinData3List = new List<SkinData>();
+        SkinData4List = new List<SkinData>();
+        SkinData5List = new List<SkinData>();
+
+        MerchData1List = new List<MerchData>();
+        MerchData2List = new List<MerchData>();
+        MerchData3List = new List<MerchData>();
+        MerchData4List = new List<MerchData>();
+        MerchData5List = new List<MerchData>();
+        MerchData6List = new List<MerchData>();
+
+        MerchSlotDataList = new List<MerchSlotData>();
+
+        DroneRewardDataList = new List<DroneRewardData>();
+
+        DailyRandomDataList = new List<DailyRandomData>();
+        DailyStreakDataList = new List<DailyStreakData>();
+
+        IapData = new IapData();
+        GeneralData = new GeneralData();
+        boosterData = new BoosterData();
     }
 
-    public List<SongData> SongDataList
+    public IList<MerchData> GetMerchDataByType(MerchType type)
     {
-        get
+        switch (type)
         {
-            return songDataList;
+            case MerchType.MERCH_1:
+                return MerchData1List;
+            case MerchType.MERCH_2:
+                return MerchData2List;
+            case MerchType.MERCH_3:
+                return MerchData3List;
+            case MerchType.MERCH_4:
+                return MerchData4List;
+            case MerchType.MERCH_5:
+                return MerchData5List;
+            case MerchType.MERCH_6:
+                return MerchData6List;
         }
-
-        set
-        {
-            songDataList = value;
-        }
-    }
-
-    public List<ConcertData> ConcertDataList
-    {
-        get
-        {
-            return concertDataList;
-        }
-
-        set
-        {
-            concertDataList = value;
-        }
-    }
-
-    public List<TourData> TourDataList
-    {
-        get
-        {
-            return tourDataList;
-        }
-
-        set
-        {
-            tourDataList = value;
-        }
-    }
-
-    public List<EquipmentData> EquipmentDataList
-    {
-        get
-        {
-            return equipmentDataList;
-        }
-
-        set
-        {
-            equipmentDataList = value;
-        }
-    }
-
-    public List<MerchSlotData> MerchSlotDataList
-    {
-        get
-        {
-            return merchSlotDataList;
-        }
-
-        set
-        {
-            merchSlotDataList = value;
-        }
-    }
-
-    public List<MerchData>[] MerchDataLists
-    {
-        get
-        {
-            return merchDataLists;
-        }
-
-        set
-        {
-            merchDataLists = value;
-        }
-    }
-
-    public List<GeneralDataRecord> GeneralDataList
-    {
-        get
-        {
-            return generalDataList;
-        }
-
-        set
-        {
-            generalDataList = value;
-        }
-    }
-
-    public GeneralDataRecord FindGeneralDataByName(string name)
-    {
-        foreach (GeneralDataRecord data in generalDataList)
-        {
-            if (data.name == name)
-            {
-                return data;
-            }
-        }
-
-        return null;
-    }
-
-    public GeneralData GeneralDatas
-    {
-        get
-        {
-            return generalDatas;
-        }
-    }
-
-    public List<MerchData> GetMerchDataByType(MerchType type)
-    {
-        return merchDataLists[(int)type-1];
+        return MerchData1List;
+        //return merchDataLists[(int)type - 1];
     }
 
     #region Overridden functions for loading/saving
@@ -175,15 +139,42 @@ public class GameData : LoadableData
         IFormatter formatter = new BinaryFormatter();
         GameData gd = (GameData)formatter.Deserialize(ms);
 
-        this.songDataList = gd.songDataList;
-        this.concertDataList = gd.concertDataList;
-        this.tourDataList = gd.tourDataList;
-        this.merchDataLists = gd.merchDataLists;
-        this.merchSlotDataList = gd.merchSlotDataList;
-        this.equipmentDataList = gd.equipmentDataList;
-        this.generalDataList = gd.generalDataList;
+        // nem lenne egyszerűbb staticcá tenni a loaddatát, és az instancet beállítani a deserializált cuccra?
 
-        generalDatas.Init();
+        SongDataList = gd.SongDataList;
+        ConcertDataList = gd.ConcertDataList;
+
+        CharacterData1List = gd.CharacterData1List;
+        CharacterData2List = gd.CharacterData2List;
+        CharacterData3List = gd.CharacterData3List;
+        CharacterData4List = gd.CharacterData4List;
+        CharacterData5List = gd.CharacterData5List;
+
+        MerchData1List = gd.MerchData1List;
+        MerchData2List = gd.MerchData2List;
+        MerchData3List = gd.MerchData3List;
+        MerchData4List = gd.MerchData4List;
+        MerchData5List = gd.MerchData5List;
+        MerchData6List = gd.MerchData6List;
+
+        MerchSlotDataList = gd.MerchSlotDataList;
+
+        IapData = gd.IapData;
+        GeneralData = gd.GeneralData;
+
+        DroneRewardDataList = gd.DroneRewardDataList;
+
+        DailyRandomDataList = gd.DailyRandomDataList;
+        DailyStreakDataList = gd.DailyStreakDataList;
+
+        boosterData = new BoosterData() // nemt'om kell-e külön boosterData, de egye-fene
+        {
+            AutoTapBoosterDuration = gd.GeneralData.AutoTapBoosterDuration,
+            AutoTapBoosterTapsPerSecond = gd.GeneralData.AutoTapBoosterTapsPerSecond,
+            ExtraTimeBoosterBonus = gd.GeneralData.ExtraTimeBoosterBonus,
+            TapStrengthBoosterDuration = gd.GeneralData.TapStrengthBoosterDuration,
+            TapStrengthBoosterMultiplier = gd.GeneralData.TapStrengthBoosterMultiplier
+        };
     }
 
     public override string GetFileName()
@@ -191,4 +182,5 @@ public class GameData : LoadableData
         return GAME_DATA_PATH;
     }
     #endregion
+
 }

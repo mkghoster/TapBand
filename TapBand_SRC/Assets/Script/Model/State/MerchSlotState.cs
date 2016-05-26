@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public enum MerchSlotStatus
 {
@@ -65,11 +66,11 @@ public class MerchSlotState
             {
                 throw new Exception("Wololo!");
             }
-            return GameState.instance.MerchStates.Find(c => c.Type == activeMerchType);
+            return GameState.instance.MerchStates.FirstOrDefault(c => c.Type == activeMerchType);
         }
     }
 
-    public int CoinCost
+    public double CoinCost
     {
         get
         {
@@ -125,12 +126,12 @@ public class MerchSlotState
         {
             throw new Exception("Wololo!");
         }
-        merchSlotData = GameData.instance.MerchSlotDataList.Find(c => c.id == merchSlotId);
+        merchSlotData = GameData.instance.MerchSlotDataList.FirstOrDefault(c => c.id == merchSlotId);
     }
 
     public bool CanActivate()
     {
-        if ( CoinCost > 0 )
+        if (CoinCost > 0)
         {
             return GameState.instance.Currency.Coins >= CoinCost;
         }
@@ -142,7 +143,7 @@ public class MerchSlotState
 
     public void Activate()
     {
-        if ( !CanActivate() )
+        if (!CanActivate())
         {
             Debug.LogError("Wololo!");
             return;

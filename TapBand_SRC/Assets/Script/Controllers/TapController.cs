@@ -4,25 +4,35 @@ using UnityEngine;
 public class TapController : MonoBehaviour
 {
     private TapUI tapUI;
+    private SongController songController;
+    private BandMemberController bandMemberController;
 
     public float SpotlightTapMultiplier;
+    public float boosterMultiplier = 1f;
+    public float boosterTimeInterval = 0f;
 
-    public delegate void TapEvent(float value);
     public event TapEvent OnTap;
+
+
 
     void Awake()
     {
         BindWithUI();
+        songController = FindObjectOfType<SongController>();
+        bandMemberController = FindObjectOfType<BandMemberController>();
     }
 
     void OnEnable()
     {
         tapUI.OnTap += HandleTap;
+        songController.OnSongStarted += HandleSongStarted;
+        songController.OnSongFinished += HandleSongFinished;
     }
 
     void OnDisable()
     {
-        tapUI.OnTap -= HandleTap;
+        songController.OnSongStarted += HandleSongStarted;
+        songController.OnSongFinished += HandleSongFinished;
     }
 
     #region MVC bindings
@@ -43,28 +53,66 @@ public class TapController : MonoBehaviour
         foreach (Vector2 position in positions)
         {
             float tapValue = CalculateTapValue(position, special);
+            if (boosterMultiplier > 0 && boosterTimeInterval > 0)
+            {
+                tapValue *= boosterMultiplier;
+            }
             tapUI.DisplayTapValueAt(position, (ulong)tapValue, special);
 
             if (OnTap != null)
             {
-                OnTap(tapValue);
+                OnTap(this, new TapEventArgs(tapValue));
             }
         }
     }
 
     private float CalculateTapValue(Vector2 position, bool special)
     {
-        float tapMultiplier = GameState.instance.Currency.TapMultipliersProduct;
-        // we should rename this parameter to isSpotlight, if there will be no other special cases
-        if (special)
+        float tapMultiplier = 1;
+
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Bass].Count; i++)
         {
-            tapMultiplier *= DefaultOrSelf(SpotlightTapMultiplier);
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Bass][i].tapStrengthBonus;
         }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Drums].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Drums][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Guitar1].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Guitar1][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Guitar2].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Guitar2][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Keyboards].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Keyboards][i].tapStrengthBonus;
+        }
+
+        //tapMultiplier *= boosterMultiplier;
+
         return tapMultiplier;
     }
 
-    private float DefaultOrSelf(float f)
+    public void BoosterMultiplier(float multiplierValue)
     {
-        return f == 0.0f ? 1.0f : f;
+        boosterMultiplier = multiplierValue;
+    }
+
+    public void BoosterTimeInterval(float multiplierIntervalValue)
+    {
+        boosterTimeInterval = multiplierIntervalValue;
+    }
+
+    private void HandleSongStarted(object sender, SongEventArgs e)
+    {
+        tapUI.SwitchOnOffCollider(true);
+    }
+
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        tapUI.SwitchOnOffCollider(false);
     }
 }

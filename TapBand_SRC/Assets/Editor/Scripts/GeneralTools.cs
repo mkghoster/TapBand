@@ -6,7 +6,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class GeneralTools : EditorWindow
 {
-    [MenuItem ("PGI/General Tools")]
+    [MenuItem("PGI/General Tools")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(GeneralTools));
@@ -25,7 +25,15 @@ public class GeneralTools : EditorWindow
     {
         if (GUILayout.Button("Delete PlayerPrefs and Persistence"))
         {
-            Debug.LogError("Implement PlayerPrefs and Persistence delete!");
+            // delete playerprefs
+            Debug.Log("Deleting PlayerPrefs");
+            PlayerPrefs.DeleteAll();
+
+            // delete persistend data
+
+            DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);
+            Debug.Log("Deleting persistent data from " + dataDir.FullName);
+            dataDir.Delete(true);
         }
     }
 }

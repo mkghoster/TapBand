@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 
 [System.Serializable]
 public class MerchState
@@ -49,7 +50,8 @@ public class MerchState
     {
         get
         {
-            return GameState.instance.Concert.CurrentConcert.rewardBase * RewardMultiplier;
+            return RewardMultiplier *
+                GameData.instance.ConcertDataList.FirstOrDefault(c => c.id == GameState.instance.Concert.CurrentConcertID).rewardBase;
         }
     }
 
@@ -65,7 +67,7 @@ public class MerchState
     {
         get
         {
-            return (int) Math.Ceiling((float) SecsToFinish / 60.0f / (float) GameData.instance.GeneralDatas.MerchBoothBoostUnitsInMinute * (float) GameData.instance.GeneralDatas.MerchBoothBoostPrice);
+            return (int)Math.Ceiling((float)SecsToFinish / 60.0f / (float)GameData.instance.GeneralData.MerchBoothBoostUnitsInMinute * (float)GameData.instance.GeneralData.MerchBoothBoostPrice);
         }
     }
 
@@ -117,7 +119,7 @@ public class MerchState
     {
         get
         {
-            MerchData merch = GameData.instance.GetMerchDataByType(merchType).Find(c => c.id == merchId+1);
+            MerchData merch = GameData.instance.GetMerchDataByType(merchType).FirstOrDefault(c => c.id == merchId + 1);
             return merch.cost;
         }
     }
@@ -128,7 +130,7 @@ public class MerchState
         {
             if (merchId == 0)
             {
-                return GameData.instance.GetMerchDataByType(merchType).Find(c => c.id == merchId + 1);
+                return GameData.instance.GetMerchDataByType(merchType).FirstOrDefault(c => c.id == merchId + 1);
             }
             else
             {
@@ -146,7 +148,7 @@ public class MerchState
     {
         if (MerchId != 0)
         {
-            merchData = GameData.instance.GetMerchDataByType(merchType).Find(c => c.id == merchId);
+            merchData = GameData.instance.GetMerchDataByType(merchType).FirstOrDefault(c => c.id == merchId);
         }
     }
 

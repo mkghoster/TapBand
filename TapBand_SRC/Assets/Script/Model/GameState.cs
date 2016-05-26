@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
-[System.Serializable]
-public class GameState : LoadableData {
+[Serializable]
+public class GameState : LoadableData
+{
 
     #region Singleton access
     private static GameState _instance;
@@ -22,106 +23,36 @@ public class GameState : LoadableData {
             return _instance;
         }
     }
-    #endregion
 
-    #region Private fields
-    private CurrencyState currencyState;
-    private List<MerchState> merchStates;
-    private List<MerchSlotState> merchSlotStates;
-    private ConcertState concertState;
-    private EquipmentState equipmentState;
-    #endregion
-
-    [SerializeField]
     private GameState()
     {
-        currencyState = new CurrencyState();
-        merchStates = new List<MerchState>();
-        merchSlotStates = new List<MerchSlotState>();
-        concertState = new ConcertState();
-        equipmentState = new EquipmentState();
+        Currency = new CurrencyState();
+        MerchStates = new List<MerchState>();
+        MerchSlotStates = new List<MerchSlotState>();
+        Concert = new ConcertState();
+        Equipment = new EquipmentState();
     }
+    #endregion
 
-    public CurrencyState Currency
-    {
-        get
-        {
-            return currencyState;
-        }
-
-        set
-        {
-            currencyState = value;
-        }
-    }
-
-    public List<MerchState> MerchStates
-    {
-        get
-        {
-            return merchStates;
-        }
-
-        set
-        {
-            merchStates = value;
-        }
-    }
-
-    public List<MerchSlotState> MerchSlotStates
-    {
-        get
-        {
-            return merchSlotStates;
-        }
-
-        set
-        {
-            merchSlotStates = value;
-        }
-    }
-
-    public ConcertState Concert
-	{
-		get
-		{
-			return concertState;
-		}
-		
-		set
-		{
-			concertState = value;
-		}
-	}
-
-    public EquipmentState Equipment
-    {
-        get
-        {
-            return equipmentState;
-        }
-
-        set
-        {
-            equipmentState = value;
-        }
-    }
+    public CurrencyState Currency { get; private set; }
+    public IList<MerchState> MerchStates { get; private set; }
+    public IList<MerchSlotState> MerchSlotStates { get; private set; }
+    public ConcertState Concert { get; private set; }
+    public EquipmentState Equipment { get; private set; }
 
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {
         IFormatter formatter = new BinaryFormatter();
-        GameState gs = (GameState)formatter.Deserialize(ms);
-        
-        this.currencyState = gs.currencyState == null ? new CurrencyState() : gs.currencyState;
-        this.merchStates = gs.merchStates == null ? new List<MerchState>() : gs.merchStates;
-        this.merchSlotStates = gs.merchSlotStates == null ? new List<MerchSlotState>() : gs.merchSlotStates;
-		this.concertState = gs.concertState == null ? new ConcertState() : gs.concertState;
-        this.equipmentState = gs.equipmentState == null ? new EquipmentState() : gs.equipmentState;
+        GameState gd = (GameState)formatter.Deserialize(ms);
+
+        Currency = gd.Currency == null ? new CurrencyState() : gd.Currency;
+        MerchStates = gd.MerchStates == null ? new List<MerchState>() : gd.MerchStates;
+        MerchSlotStates = gd.MerchSlotStates == null ? new List<MerchSlotState>() : gd.MerchSlotStates;
+        Concert = gd.Concert == null ? new ConcertState() : gd.Concert;
+        Equipment = gd.Equipment == null ? new EquipmentState() : gd.Equipment;
 
         Init();
-
-        this.currencyState.SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     public override string GetFileName()
@@ -132,28 +63,28 @@ public class GameState : LoadableData {
 
     public void Init()
     {
-        if (merchStates.Count == 0)
+        if (MerchStates.Count == 0)
         {
             for (int i = 1; i <= (int)MerchType.NUM_OF_MERCH_TYPES; i++)
             {
-                merchStates.Add(new MerchState((MerchType)i));
+                MerchStates.Add(new MerchState((MerchType)i));
             }
         }
-        if (merchSlotStates.Count == 0)
+        if (MerchSlotStates.Count == 0)
         {
             for (int i = 1; i <= 4; i++)
             {
-                merchSlotStates.Add(new MerchSlotState(i));
+                MerchSlotStates.Add(new MerchSlotState(i));
             }
         }
 
-        for (int i = 0; i < merchStates.Count; i++)
+        for (int i = 0; i < MerchStates.Count; i++)
         {
-            merchStates[i].Init();
+            MerchStates[i].Init();
         }
-        for (int i = 0; i < merchSlotStates.Count; i++)
+        for (int i = 0; i < MerchSlotStates.Count; i++)
         {
-            merchSlotStates[i].Init();
+            MerchSlotStates[i].Init();
         }
     }
 }

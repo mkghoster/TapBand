@@ -1,105 +1,186 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ConcertController : MonoBehaviour {
+public class ConcertController : MonoBehaviour
+{
+    private const float START_ENCORE_DELAY = 1f;//TODO: set the delay from param?
 
-	private HudUI hud;
-	private SongController songController;
+    private SongController songController;
     private TourController tourController;
 
-    public delegate void RestartConcertEvent();
-	public event RestartConcertEvent RestartConcert;
+    public event ConcertEvent OnConcertRestart;
 
-    public delegate void ConcertEvent(ConcertData concertData);
-	public event ConcertEvent EndOfConcert;
-    public event ConcertEvent StartOfConcert;
+    public event ConcertEvent OnConcertFinished;
+    public event ConcertEvent OnConcertStarted;
 
-    public delegate void GiveFanRewardOfConcertEvent(int fanReward);
-	public event GiveFanRewardOfConcertEvent GiveFanRewardOfConcert;
+    private ConcertData currentConcertData;
+    private ConcertState concertState;
 
-	public delegate void GiveCoinRewardOfConcertEvent(int coinReward);
-	public event GiveCoinRewardOfConcertEvent GiveCoinRewardOfConcert;
+    public SongData CurrentSongData
+    {
+        get
+        {
+            return concertState.CurrentSong;
+        }
+    }
 
-	void Awake()
-	{
-		hud = (HudUI)FindObjectOfType (typeof(HudUI));
+    public bool HasTriedEncore
+    {
+        get
+        {
+            return concertState.HasTriedEncore;
+        }
+    }
+
+    public bool IsNextSongEncore
+    {
+        get
+        {
+            return concertState.CurrentSongIndex == 4; // good enough
+        }
+    }
+
+    void Awake()
+    {
         songController = (SongController)FindObjectOfType(typeof(SongController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
+
+        concertState = GameState.instance.Concert;
+        var concertDataList = GameData.instance.ConcertDataList;
+        for (int i = 0; i < concertDataList.Count; i++)
+        {
+            if (concertDataList[i].id == concertState.CurrentConcertID)
+            {
+                currentConcertData = concertDataList[i];
+                break;
+            }
+        }
     }
-	
-	void OnEnable()
-	{
-		hud.NewConcert += DisplayNewConcert;
-		songController.GiveNextSong += GiveNextSongFromConcert;
-		songController.GiveFirstSongOfActualConcert += ResetToFirstSongOfConcert;
+
+    void OnEnable()
+    {
+        songController.OnSongFinished += HandleSongFinished;
+
         tourController.RestartConcert += RestartConcertFromTheFirst;
     }
-	void OnDisable()
-	{
-		hud.NewConcert -= DisplayNewConcert;
-		songController.GiveNextSong -= GiveNextSongFromConcert;
-		songController.GiveFirstSongOfActualConcert -= ResetToFirstSongOfConcert;
+    void OnDisable()
+    {
+        songController.OnSongFinished -= HandleSongFinished;
+
         tourController.RestartConcert -= RestartConcertFromTheFirst;
     }
 
-	//mi a kövtetkező lejátszandó szám, értesíti
-	private SongData GiveNextSongFromConcert()
-	{
-		ConcertState state = GameState.instance.Concert;
+    void Start()
+    {
+        concertState.CurrentSong = currentConcertData.songList[concertState.CurrentSongIndex];
+    }
 
-		//ha boss battle
-		if (state.CurrentSong != null) 
-		{
-            //új indítása
-            if (state.CurrentSong.bossBattle)
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        bool isEncoreSong = e.Data.isEncore;
+
+        if (e.Status == SongStatus.Successful)
+        {
+            // If the encore song is successful, notify the world about the succesful concert, get the next concert, and update the state
+            if (isEncoreSong)
             {
-				if(EndOfConcert != null)
-				{
-					EndOfConcert(state.CurrentConcert);
-				}
-				if(GiveFanRewardOfConcert != null)
-				{
-					GiveFanRewardOfConcert(state.CurrentConcert.fanReward);
-				}
-                state.CurrentConcertID = state.GetNextConcert().id;
+                OnConcertFinished(this, new ConcertEventArgs(currentConcertData, concertState));
+                currentConcertData = GetNextConcert();
+                concertState.ResetToConcert(currentConcertData);
 
-                if (StartOfConcert != null)
+                if (OnConcertStarted != null)
                 {
-                    StartOfConcert(state.CurrentConcert);
+                    OnConcertStarted(this, new ConcertEventArgs(currentConcertData, concertState));
                 }
             }
+            else
+            {
+                SongData nextSongData = GetNextSong(); // Ha itt null van, az para, rossz a táblázat. TODO: kéne kezelni
+                concertState.LastCompletedSongID = e.Data.id;
 
-            state.LastComplatedSongID = state.CurrentSong.id;
+                // The updated song id
+                if (concertState.CurrentSong.isEncore)
+                {
+                    concertState.CurrentSong = null;
+                    //TODO: pre-encore sequence (probably an event)
+                    StartCoroutine(SetNextSongDelayed(START_ENCORE_DELAY, nextSongData));
+                    concertState.HasTriedEncore = true;
+                    PlayerPrefsManager.SetEncoreSongTry(true);
+                }
+                else
+                {
+                    SetNextSong(nextSongData);
+                }
+            }
         }
-		state.CurrentSong = state.GetNextSong();
-
-		return state.CurrentSong;
-	}
-    
-	private SongData ResetToFirstSongOfConcert()
-	{
-		ConcertState state = GameState.instance.Concert;
-        if (RestartConcert != null)
+        else if (e.Status == SongStatus.Failed)
         {
-            RestartConcert();
+            ResetToFirstSongOfConcert();
         }
-        //TODO: kikeresni az előző koncert utolsó számát
-        state.CurrentSong = state.CurrentConcert.songList[0];
-        state.LastComplatedSongID = state.CurrentSong.id;
-        return state.CurrentSong;
-	}
-	
-	private string DisplayNewConcert()
-	{
-		return GameState.instance.Concert.CurrentConcert.name;
-	}
+        else if (e.Status == SongStatus.EncoreInitiated)
+        {
+            concertState.CurrentSong = null;
+            StartCoroutine(SetNextSongDelayed(START_ENCORE_DELAY, currentConcertData.GetEncoreSongData()));
+        }
+    }
 
-    private void RestartConcertFromTheFirst()
+    //Returns the next song to play.
+    private SongData GetNextSong()
+    {
+        if (currentConcertData.songList.Count <= concertState.CurrentSongIndex + 1)
+        {
+            return null;
+        }
+        else
+        {
+            return currentConcertData.songList[concertState.CurrentSongIndex + 1];
+        }
+    }
+
+    // Sets the next song to play, and increments the current song index
+    // This is required because of the pre-encore sequence
+    private void SetNextSong(SongData nextSongData)
+    {
+        concertState.CurrentSongIndex++;
+        concertState.CurrentSong = nextSongData;
+    }
+
+    private IEnumerator SetNextSongDelayed(float delay, SongData nextSongData)
+    {
+        yield return new WaitForSeconds(delay);
+        SetNextSong(nextSongData);
+    }
+
+    private void ResetToFirstSongOfConcert()
+    {
+        if (OnConcertRestart != null)
+        {
+            OnConcertRestart(this, new ConcertEventArgs(currentConcertData, concertState));
+        }
+        concertState.ResetToConcert(currentConcertData);
+    }
+
+    private void RestartConcertFromTheFirst() // TODO: wat?
     {
         ConcertState state = GameState.instance.Concert;
         state.CurrentConcertID = GameData.instance.ConcertDataList[0].id;
-        state.LastComplatedSongID = 0;
+        state.LastCompletedSongID = -1;
         state.CurrentSong = null;
     }
-    
+
+    private ConcertData GetNextConcert()
+    {
+        var concertDataList = GameData.instance.ConcertDataList;
+        for (int i = 0; i < concertDataList.Count; i++)
+        {
+            if (concertDataList[i].id == currentConcertData.id)
+            {
+                if (concertDataList.Count > i + 1)
+                {
+                    return concertDataList[i + 1];
+                }
+            }
+        }
+        return currentConcertData; // if for some reason we couldn't find the next one, return the current one
+    }
 }

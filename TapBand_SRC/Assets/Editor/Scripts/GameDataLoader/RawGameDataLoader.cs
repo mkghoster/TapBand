@@ -9,174 +9,474 @@ using UnityEditor;
 
 public class RawGameDataLoader : IGameDataLoader
 {
-	private string gameDataFilePath;
-	private string currentSheet;
-	private List<Dictionary<string, string>> currentRows;
-	private NPOIExcelReader dataReader;
+    private string gameDataFilePath;
+    private string currentSheet;
+    private List<Dictionary<string, string>> currentRows;
+    private NPOIExcelReader dataReader;
 
-	public RawGameDataLoader(string _gameDataFilePath)
-	{
-		gameDataFilePath = _gameDataFilePath;
-		currentSheet = "";
-		dataReader = new NPOIExcelReader(gameDataFilePath);
-	}
+    public RawGameDataLoader(string _gameDataFilePath)
+    {
+        gameDataFilePath = _gameDataFilePath;
+        currentSheet = "";
+        dataReader = new NPOIExcelReader(gameDataFilePath);
+    }
 
-	private bool IsCellExist(int rowIndex, string columnName)
-	{
-		return rowIndex < currentRows.Count && currentRows[rowIndex].ContainsKey(columnName);
-	}
+    public GameData LoadGameData()
+    {
+        GameData gameData = new GameData();
 
-	private void AbortWithErrorMessage(string msg)
-	{
-		EditorUtility.DisplayDialog ("GameData Loading Error", msg, "Ok");
-		throw new GameDataException(msg);
-	}
+        LoadConcertData(gameData.ConcertDataList);
+        LoadSongData(gameData.SongDataList);
+        // gameData.MerchDataList = LoadMerchData();
 
-	#region Type Specific Loaders
+        LoadCharacterData(gameData.CharacterData1List, "CharacterData1");
+        LoadCharacterData(gameData.CharacterData2List, "CharacterData2");
+        LoadCharacterData(gameData.CharacterData3List, "CharacterData3");
+        LoadCharacterData(gameData.CharacterData4List, "CharacterData4");
+        LoadCharacterData(gameData.CharacterData5List, "CharacterData5");
 
-	// loads from consecutive columns
-	private void TryLoadIntArray (int rowIndex, string baseColumnName, int columnNum, out int[] array)
-	{
-		array = new int[columnNum];
-		
-		for (int i = 0; i < columnNum; i++) 
-		{
-			TryLoadInt(rowIndex, baseColumnName + i, out array[i]);
-		}
-	}
+        LoadSkinData(gameData.SkinData1List, "SkinData1");
+        LoadSkinData(gameData.SkinData2List, "SkinData2");
+        LoadSkinData(gameData.SkinData3List, "SkinData3");
+        LoadSkinData(gameData.SkinData4List, "SkinData4");
+        LoadSkinData(gameData.SkinData5List, "SkinData5");
 
-	private void TryLoadInt(int rowIndex, string columnName, out int data)
-	{
-		if(!IsCellExist(rowIndex,  columnName))
-		{				
-			AbortWithErrorMessage(currentSheet + "::" + columnName + " column is invalid! Row number: " + (rowIndex + 2) );
-		}
+        LoadMerchData(gameData.MerchData1List, "MerchData1");
+        LoadMerchData(gameData.MerchData2List, "MerchData2");
+        LoadMerchData(gameData.MerchData3List, "MerchData3");
+        LoadMerchData(gameData.MerchData4List, "MerchData4");
+        LoadMerchData(gameData.MerchData5List, "MerchData5");
+        LoadMerchData(gameData.MerchData6List, "MerchData6");
 
-		string[] splitCellValue = currentRows[rowIndex][columnName].Split('.'); // may contain number in format 10.0 etc
+        LoadMerchSlotData(gameData.MerchSlotDataList);
 
-		if (!int.TryParse(splitCellValue[0], out data)) 
-		{
-			AbortWithErrorMessage(currentSheet + "::" + columnName + " is not valid int! Row number: " + (rowIndex + 2));
-		}
-	}
+        LoadGeneralData(gameData.GeneralData);
 
-    private void TryLoadFloat(int rowIndex, string columnName, out float data)
+        LoadDroneRewardData(gameData.DroneRewardDataList);
+
+        LoadDailyRandomData(gameData.DailyRandomDataList);
+        LoadDailyStreakData(gameData.DailyStreakDataList);
+
+        return gameData;
+    }
+
+    private void LoadSongData(IList<SongData> songDataTarget)
+    {
+        songDataTarget.Clear();
+
+        currentSheet = "SongData";
+        currentRows = dataReader.GetRows(currentSheet);
+
+        int rowNum = currentRows.Count;
+        var success = true;
+        for (int i = 0; i < rowNum; i++)
+        {
+            SongData songDataObject = new SongData();
+
+            songDataObject.id = LoadInt(i, "ID");
+
+            songDataObject.title = LoadString(i, "Title");
+            songDataObject.tapGoal = LoadInt(i, "TapGoal");
+            songDataObject.duration = LoadInt(i, "Duration");
+            songDataObject.coinReward = LoadInt(i, "CoinReward");
+            songDataObject.isEncore = LoadBool(i, "BossBattle");
+            songDataObject.concertID = LoadInt(i, "ConcertID");
+
+            //TODO: mindenhol megcsinálni, vagy megírni rendesen a függvényeket nem tryra (esetleg végigpróbálja?)
+            if (!success)
+            {
+                Debug.Log("Failed to load songs");
+                return;
+            }
+
+            songDataTarget.Add(songDataObject);
+        }
+
+        Debug.Log("Loaded " + songDataTarget.Count + " Songs");
+
+        return;
+    }
+
+    private void LoadConcertData(IList<ConcertData> concertDataTarget)
+    {
+        concertDataTarget.Clear();
+
+        currentSheet = "ConcertData";
+        currentRows = dataReader.GetRows(currentSheet);
+
+        int rowNum = currentRows.Count;
+
+        for (int i = 0; i < rowNum; i++)
+        {
+            ConcertData concertDataObject = new ConcertData();
+
+            concertDataObject.id = LoadInt(i, "ID");
+            concertDataObject.name = LoadString(i, "Name");
+            concertDataObject.fanReward = LoadInt(i, "FanReward");
+            concertDataObject.rewardBase = LoadDouble(i, "RewardBase");
+            concertDataObject.levelRange = LoadDouble(i, "LevelRange");
+            concertDataObject.background = LoadString(i, "Background");
+
+            concertDataTarget.Add(concertDataObject);
+        }
+    }
+
+    private void LoadMerchData(IList<MerchData> merchDataTarget, string sheetName)
+    {
+        merchDataTarget.Clear();
+        currentRows = dataReader.GetRows(sheetName);
+        currentSheet = sheetName;
+
+        int rowNum = currentRows.Count;
+
+        for (int i = 0; i < rowNum; i++)
+        {
+            MerchData merchDataObject = new MerchData();
+
+            merchDataObject.id = LoadInt(i, "ID");
+            merchDataObject.name = LoadString(i, "Name");
+            merchDataObject.icon = LoadString(i, "Icon");
+            merchDataObject.cost = LoadDouble(i, "Cost");
+            merchDataObject.duration = LoadInt(i, "Duration");
+            merchDataObject.rewardMultiplier = LoadDouble(i, "RewardMultiplier");
+
+            merchDataTarget.Add(merchDataObject);
+        }
+    }
+
+    private void LoadMerchSlotData(IList<MerchSlotData> merchSlotDataTarget)
+    {
+        merchSlotDataTarget.Clear();
+
+        currentSheet = "MerchSlotData";
+        currentRows = dataReader.GetRows(currentSheet);
+
+        int rowNum = currentRows.Count;
+
+        for (int i = 0; i < rowNum; i++)
+        {
+            MerchSlotData merchSlotDataObject = new MerchSlotData();
+
+            merchSlotDataObject.id = LoadInt(i, "Id");
+            merchSlotDataObject.coinCost = LoadDouble(i, "CoinCost");
+            merchSlotDataObject.tokenCost = LoadInt(i, "TokenCost");
+
+            merchSlotDataTarget.Add(merchSlotDataObject);
+        }
+    }
+
+    //private List<MerchData> LoadMerchData()
+    //{
+    //    currentSheet = "MerchData";
+    //    currentRows = dataReader.GetRows(currentSheet);
+
+    //    List<MerchData> merchDataList = new List<MerchData>();
+
+    //    int rowNum = currentRows.Count;
+    //    for (int i = 0; i < rowNum; i++)
+    //    {
+    //        MerchData merchDataObject = new MerchData();
+
+    //        TryLoadInt(i, "ID", out merchDataObject.id);
+    //        TryLoadEnum(i, "MerchType", out merchDataObject.merchType);
+    //        TryLoadInt(i, "Level", out merchDataObject.level);
+    //        TryLoadString(i, "Name", out merchDataObject.name);
+    //        TryLoadInt(i, "UpgradeCost", out merchDataObject.upgradeCost);
+    //        TryLoadInt(i, "CoinPerSecond", out merchDataObject.coinPerSecond);
+    //        TryLoadInt(i, "TimeLimit", out merchDataObject.timeLimit);
+
+    //        merchDataList.Add(merchDataObject);
+    //    }
+
+    //    return merchDataList;
+    //}
+
+    private void LoadCharacterData(IList<CharacterData> skillDataTarget, string sheetName)
+    {
+        skillDataTarget.Clear();
+        currentRows = dataReader.GetRows(sheetName);
+        currentSheet = sheetName; //mert az exceptionkezelőnek azért kell...
+
+        int rowNum = currentRows.Count;
+
+        for (int i = 0; i < rowNum; i++)
+        {
+            CharacterData equipmentDataObject = new CharacterData();
+
+            equipmentDataObject.id = LoadInt(i, "ID");
+            equipmentDataObject.name = LoadString(i, "Name");
+            equipmentDataObject.upgradeCost = LoadDouble(i, "UpgradeCost");
+            equipmentDataObject.tapStrengthBonus = LoadFloat(i, "TapStrengthBonus");
+            equipmentDataObject.merchBoothBonus = LoadFloat(i, "MerchBoothBonus");
+            equipmentDataObject.fanGainBonus = LoadFloat(i, "FanGainBonus");
+            equipmentDataObject.boosterTimeBonus = LoadFloat(i, "BoosterTimeBonus");
+            equipmentDataObject.spotlightBonus = LoadFloat(i, "SpotlightBonus");
+            equipmentDataObject.songIncomeBonus = LoadFloat(i, "SongIncomeBonus");
+
+            skillDataTarget.Add(equipmentDataObject);
+        }
+    }
+
+    private void LoadSkinData(IList<SkinData> skinDataTarget, string sheetName)
+    {
+        skinDataTarget.Clear();
+
+        List<Dictionary<string, string>> rawData = dataReader.GetRows(sheetName);
+        currentSheet = sheetName;
+        currentRows = dataReader.GetRows(sheetName);
+
+        for (var i = 0; i < rawData.Count; i++)
+        {
+            SkinData skinDataObject = new SkinData();
+
+            skinDataObject.id = LoadInt(i, "ID");
+            skinDataObject.name = LoadString(i, "Name");
+            skinDataObject.icon = LoadString(i, "Icon");
+            skinDataObject.asset = LoadString(i, "Asset");
+            skinDataObject.type = LoadEnum<SkinType>(i, "Type");
+            skinDataObject.tapStrengthBonus = LoadFloat(i, "TapStrengthBonus");
+            skinDataObject.tokenCost = LoadInt(i, "TokenCost");
+
+            skinDataTarget.Add(skinDataObject);
+        }
+    }
+
+    private void LoadGeneralData(GeneralData generalDataTarget)
+    {
+        currentRows = dataReader.GetRows("GeneralData");
+        currentSheet = "GeneralData";
+        int rowNum = currentRows.Count;
+        for (int i = 0; i < rowNum; i++)
+        {
+            string currentRowName = null;
+            currentRowName = LoadString(i, "Name");
+
+            switch (currentRowName)
+            {
+                case "DebugMessages":
+                    generalDataTarget.DebugMessages = LoadBool(i, "Value");
+                    break;
+                case "SpotlightInterval":
+                    generalDataTarget.SpotlightInterval = LoadFloat(i, "Value");
+                    break;
+                case "SpotlightTapMultiplier":
+                    generalDataTarget.SpotlightTapMultiplier = LoadFloat(i, "Value");
+                    break;
+                case "DroneMaxInterval":
+                    generalDataTarget.DroneMaxInterval = LoadFloat(i, "Value");
+                    break;
+                case "DroneIdleTime":
+                    generalDataTarget.DroneIdleTime = LoadFloat(i, "Value");
+                    break;
+                case "DroneMaxTaps":
+                    generalDataTarget.DroneMaxTaps = LoadInt(i, "Value");
+                    break;
+                case "DroneCoinLossRatio":
+                    generalDataTarget.DroneCoinLossRatio = LoadFloat(i, "Value");
+                    break;
+                case "RandomMechanismMinDelay":
+                    generalDataTarget.RandomMechanismMinDelay = LoadFloat(i, "Value");
+                    break;
+                case "RandomMechanismMaxDelay":
+                    generalDataTarget.RandomMechanismMaxDelay = LoadFloat(i, "Value");
+                    break;
+                case "TapStrengthBoosterMultiplier":
+                    generalDataTarget.TapStrengthBoosterMultiplier = LoadFloat(i, "Value");
+                    break;
+                case "TapStrengthBoosterDuration":
+                    generalDataTarget.TapStrengthBoosterDuration = LoadFloat(i, "Value");
+                    break;
+                case "ExtraTimeBoosterBonus":
+                    generalDataTarget.ExtraTimeBoosterBonus = LoadFloat(i, "Value");
+                    break;
+                case "AutoTapBoosterDuration":
+                    generalDataTarget.AutoTapBoosterDuration = LoadFloat(i, "Value");
+                    break;
+                case "AutoTapBoosterTapsPerSecond":
+                    generalDataTarget.AutoTapBoosterTapsPerSecond = LoadFloat(i, "Value");
+                    break;
+                case "DailyRandomResetHour":
+                    generalDataTarget.DailyRandomResetHour = LoadInt(i, "Value");
+                    break;
+                case "DailyRandomAdMultiplier":
+                    generalDataTarget.DailyRandomAdMultiplier = LoadFloat(i, "Value");
+                    break;
+                case "MerchBoothBoostPrice":
+                    generalDataTarget.MerchBoothBoostPrice = LoadInt(i, "Value");
+                    break;
+                case "MerchBoothBoostUnitsInMinute":
+                    generalDataTarget.MerchBoothBoostUnitsInMinute = LoadInt(i, "Value");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void LoadDroneRewardData(IList<DroneRewardData> droneRewardDataTarget)
+    {
+        droneRewardDataTarget.Clear();
+        currentSheet = "DroneRewardData";
+        currentRows = dataReader.GetRows(currentSheet);
+        List<Dictionary<string, string>> rawData = dataReader.GetRows("DroneRewardData");
+
+        for (var i = 0; i < rawData.Count; i++)
+        {
+            var droneRewardDataObject = new DroneRewardData();
+            droneRewardDataObject.id = LoadInt(i, "ID");
+            droneRewardDataObject.name = LoadString(i, "Name");
+            droneRewardDataObject.asset = LoadString(i, "Asset");
+            droneRewardDataObject.possibility = LoadFloat(i, "Possibility");
+            droneRewardDataObject.coinMultiplier = LoadFloat(i, "CoinMultiplier");
+            droneRewardDataObject.tokenAmount = LoadInt(i, "TokenAmount");
+            droneRewardDataObject.tapStrengthBoostMultiplier = LoadFloat(i, "TapStrengthBoostMultiplier");
+            droneRewardDataObject.autoTapPerSecond = LoadFloat(i, "AutoTapPerSecond");
+            droneRewardDataObject.boostDuration = LoadFloat(i, "BoostDuration");
+            droneRewardDataObject.isAdRequired = LoadBool(i, "IsAdRequired");
+
+            droneRewardDataTarget.Add(droneRewardDataObject);
+        }
+    }
+
+    private void LoadDailyRandomData(IList<DailyRandomData> dailyRandomDataTarget)
+    {
+        dailyRandomDataTarget.Clear();
+        currentSheet = "DailyRandomData";
+        currentRows = dataReader.GetRows(currentSheet);
+        List<Dictionary<string, string>> rawData = dataReader.GetRows("DailyRandomData");
+
+        for (var i = 0; i < rawData.Count; i++)
+        {
+            var dailyRandomDataObject = new DailyRandomData();
+            dailyRandomDataObject.id = LoadInt(i, "ID");
+            dailyRandomDataObject.name = LoadString(i, "Name");
+            dailyRandomDataObject.asset = LoadString(i, "Asset");
+            dailyRandomDataObject.possibility = LoadFloat(i, "Possibility");
+            dailyRandomDataObject.coinMultiplier = LoadFloat(i, "CoinMultiplier");
+            dailyRandomDataObject.boosterDiscount = LoadFloat(i, "BoosterDiscount");
+            dailyRandomDataObject.adMultiplier = LoadFloat(i, "AdMultiplier");
+
+            dailyRandomDataTarget.Add(dailyRandomDataObject);
+        }
+    }
+
+    private void LoadDailyStreakData(IList<DailyStreakData> dailyStreakDataTarget)
+    {
+        dailyStreakDataTarget.Clear();
+        currentSheet = "DailyStreakData";
+        currentRows = dataReader.GetRows(currentSheet);
+        List<Dictionary<string, string>> rawData = dataReader.GetRows("DailyStreakData");
+
+        for (var i = 0; i < rawData.Count; i++)
+        {
+            var dailyStreakDataObject = new DailyStreakData();
+            dailyStreakDataObject.id = LoadInt(i, "ID");
+            dailyStreakDataObject.name = LoadString(i, "Name");
+            dailyStreakDataObject.asset = LoadString(i, "Asset");
+            dailyStreakDataObject.coinMultiplier = LoadFloat(i, "CoinMultiplier");
+            dailyStreakDataObject.tokenAmount = LoadInt(i, "TokenAmount");
+
+            dailyStreakDataTarget.Add(dailyStreakDataObject);
+        }
+    }
+
+    private bool IsCellExist(int rowIndex, string columnName)
+    {
+        return rowIndex < currentRows.Count && currentRows[rowIndex].ContainsKey(columnName);
+    }
+
+    #region Type Specific Loaders
+
+    // loads from consecutive columns
+    private void TryLoadIntArray(int rowIndex, string baseColumnName, int columnNum, out int[] array)
+    {
+        array = new int[columnNum];
+
+        for (int i = 0; i < columnNum; i++)
+        {
+            array[i] = LoadInt(rowIndex, baseColumnName + i);
+        }
+    }
+
+    private int LoadInt(int rowIndex, string columnName)
     {
         if (!IsCellExist(rowIndex, columnName))
         {
-            AbortWithErrorMessage(currentSheet + "::" + columnName + " column is invalid! Row number: " + (rowIndex + 2));
+            throw new GameDataException(currentSheet + "::" + columnName + " column is invalid!Row number: " + (rowIndex + 2));
         }
 
-        string cellValue = currentRows[rowIndex][columnName];
+        string[] splitCellValue = currentRows[rowIndex][columnName].Split('.'); // may contain number in format 10.0 etc
 
-        if (!float.TryParse(cellValue, out data))
+        int data;
+
+        if (!int.TryParse(splitCellValue[0], out data))
         {
-            AbortWithErrorMessage(currentSheet + "::" + columnName + " is not valid float! Row number: " + (rowIndex + 2));
+            throw new GameDataException(currentSheet + "::" + columnName + " column is invalid! Row number: " + (rowIndex + 2));
         }
+
+        return data;
     }
 
-    private void TryLoadDouble(int rowIndex, string columnName, out double data)
+    private float LoadFloat(int rowIndex, string columnName)
     {
         if (!IsCellExist(rowIndex, columnName))
         {
-            AbortWithErrorMessage(currentSheet + "::" + columnName + " column is invalid! Row number: " + (rowIndex + 2));
+            throw new GameDataException(currentSheet + "::" + columnName + " column is invalid! Row number: " + (rowIndex + 2));
         }
 
-        string cellValue = currentRows[rowIndex][columnName];
-
-        if (!double.TryParse(cellValue, out data))
+        float data;
+        if (!float.TryParse(currentRows[rowIndex][columnName], out data))
         {
-            AbortWithErrorMessage(currentSheet + "::" + columnName + " is not valid float! Row number: " + (rowIndex + 2));
+            throw new GameDataException(currentSheet + "::" + columnName + " is not valid float! Row number: " + (rowIndex + 2));
         }
+
+        return data;
     }
 
-    private void TryLoadBigInteger(int rowIndex, string columnName, out BigInteger data)
-	{
-        data = new BigInteger(0);
-        try
-        {
-    		string originalCellValue = "";
-    		try 
-    		{
-    			originalCellValue = currentRows[rowIndex][columnName]; 
-    		}
-    		catch( Exception e)
-    		{
-                AbortWithErrorMessage(currentSheet +  "::" + columnName + " failed to parse as biginteger! Row number: " + (rowIndex + 1).ToString() + ". Error: " + e.Message);
-    		}
-    		if (originalCellValue.Contains("E"))
-    		{
-    			string cellValue = originalCellValue.Replace("E", ","); // to be easier to split
-
-				if (cellValue.Contains("+"))
-				{
-					cellValue = cellValue.Replace("+","");
-				}
-
-    			string[] splitValue = cellValue.Split(','); // {integerpart.fractionalpart , exponent}
-
-    			string[] baseNumStr = splitValue[0].Split('.');
-
-    			int exponent = int.Parse(splitValue[1]);
-    			BigInteger tempInt = new BigInteger(baseNumStr[0] + baseNumStr[1]);
-
-    			for (int i=1; i <= (exponent - baseNumStr[1].Length); i++)
-    			{
-    				tempInt *= 10;
-    			}
-
-    			data = tempInt;
-    		}
-    		else
-    		{
-    			string[] splitCellValue = originalCellValue.Split('.'); // may contain number in format 10.0 etc
-
-    			data = new BigInteger(splitCellValue[0]);
-    		}
-        } 
-        catch (Exception e)
-        {
-            AbortWithErrorMessage(currentSheet +  "::" + columnName + " failed to parse as biginteger! Row number: " + (rowIndex + 1).ToString() + ". Error: " + e.Message);
-        }
-	}
-	
-	private void TryLoadString(int rowIndex, string columnName, out string data)
-	{		
-		if(!IsCellExist(rowIndex, columnName) || string.IsNullOrEmpty(currentRows[rowIndex][columnName])) 
-		{
-			data = "";
-			//AbortWithErrorMessage(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
-		}
-		else
-		{
-			data = currentRows[rowIndex][columnName];
-		}
-	}
-
-    private void TryLoadBool(int rowIndex, string columnName, out bool data)
+    private string LoadString(int rowIndex, string columnName)
     {
         if (!IsCellExist(rowIndex, columnName) || string.IsNullOrEmpty(currentRows[rowIndex][columnName]))
         {
-            data = false;
-            AbortWithErrorMessage(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
+            throw new GameDataException(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
         }
-        else
-        {
-            data = currentRows[rowIndex][columnName].Equals("TRUE") ? true : false;
-        }
+        return currentRows[rowIndex][columnName];
     }
 
-    private void TryLoadEnum<TEnum>(int rowIndex, string columnName, out TEnum data) where TEnum : struct, IConvertible
+    private bool LoadBool(int rowIndex, string columnName)
     {
         if (!IsCellExist(rowIndex, columnName) || string.IsNullOrEmpty(currentRows[rowIndex][columnName]))
         {
-            data = default(TEnum);
-            AbortWithErrorMessage(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
+            throw new GameDataException(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
+        }
+        return currentRows[rowIndex][columnName].Equals("TRUE") ? true : false;
+    }
+
+    private double LoadDouble(int rowIndex, string columnName)
+    {
+        if (!IsCellExist(rowIndex, columnName))
+        {
+            throw new GameDataException(currentSheet + "::" + columnName + " column is invalid! Row number: " + (rowIndex + 2));
+        }
+
+        double data;
+
+        if (!Double.TryParse(currentRows[rowIndex][columnName], out data))
+        {
+            throw new GameDataException(currentSheet + "::" + columnName + " is not valid double! Row number: " + (rowIndex + 2));
+        }
+        return data;
+    }
+
+    private TEnum LoadEnum<TEnum>(int rowIndex, string columnName) where TEnum : struct, IConvertible
+    {
+        if (!IsCellExist(rowIndex, columnName) || string.IsNullOrEmpty(currentRows[rowIndex][columnName]))
+        {
+            throw new GameDataException(currentSheet + "::" + columnName + " is empty or null! Row number: " + (rowIndex + 2));
         }
         else
         {
             string enumString = currentRows[rowIndex][columnName];
-            data = GetEnumFromString<TEnum>(enumString);
+            return GetEnumFromString<TEnum>(enumString);
         }
     }
 
@@ -189,197 +489,7 @@ public class RawGameDataLoader : IGameDataLoader
 
         return (T)Enum.Parse(typeof(T), value);
     }
-    
+
 
     #endregion
-
-    public GameData LoadGameData()
-	{
-        GameData gameData = new GameData();
-
-        gameData.SongDataList = LoadSongData();
-        gameData.TourDataList = LoadTourData();
-        gameData.ConcertDataList = LoadConcertData();
-        gameData.MerchDataLists = LoadMerchDataLists();
-        gameData.MerchSlotDataList = LoadMerchSlotData();
-        gameData.EquipmentDataList = LoadEquipmentData();
-        gameData.GeneralDataList = LoadGeneralData();
-
-		return gameData;
-	}
-	
-	private List<SongData> LoadSongData()
-	{
-		currentSheet = "SongData";
-		currentRows = dataReader.GetRows(currentSheet);
-
-        List<SongData> songDataList = new List<SongData>();
-
-        int rowNum = currentRows.Count;
-		for (int i = 0; i < rowNum; i++)
-		{
-            SongData songDataObject = new SongData();
-
-            TryLoadInt(i, "ID", out songDataObject.id);
-            TryLoadString(i, "Title", out songDataObject.title);
-            TryLoadInt(i, "TapGoal", out songDataObject.tapGoal);
-            TryLoadInt(i, "Duration", out songDataObject.duration);
-            TryLoadInt(i, "CoinReward", out songDataObject.coinReward);
-            TryLoadBool(i, "BossBattle", out songDataObject.bossBattle);
-            TryLoadInt(i, "ConcertID", out songDataObject.concertID);
-            songDataList.Add(songDataObject);
-		}
-		
-		return songDataList;
-	}
-
-    private List<TourData> LoadTourData()
-    {
-        currentSheet = "TourData";
-        currentRows = dataReader.GetRows(currentSheet);
-
-        List<TourData> tourDataList = new List<TourData>();
-
-        int rowNum = currentRows.Count;
-        for (int i = 0; i < rowNum; i++)
-        {
-            TourData tourDataObject = new TourData();
-
-            TryLoadInt(i, "ID", out tourDataObject.id);
-            TryLoadInt(i, "MinFanCount", out tourDataObject.minFanCount);
-            TryLoadFloat(i, "TapStrengthMultiplier", out tourDataObject.tapStrengthMultiplier);
-            tourDataList.Add(tourDataObject);
-        }
-
-        return tourDataList;
-    }
-
-	private List<ConcertData> LoadConcertData()
-	{
-		currentSheet = "ConcertData";
-		currentRows = dataReader.GetRows (currentSheet);
-
-		List<ConcertData> concertDataList = new List<ConcertData> ();
-
-		int rowNum = currentRows.Count;
-		for (int i = 0; i<rowNum; i++) 
-		{
-			ConcertData concertDataObject = new ConcertData();
-
-			TryLoadInt(i, "ID", out concertDataObject.id);
-			TryLoadString(i, "Name", out concertDataObject.name);
-			TryLoadInt(i, "FanReward", out concertDataObject.fanReward);
-			concertDataList.Add(concertDataObject);
-		}
-
-		return concertDataList;
-	
-	}
-
-    private List<MerchData>[] LoadMerchDataLists()
-    {
-        List<MerchData>[] merchDataLists = new List<MerchData>[(int) MerchType.NUM_OF_MERCH_TYPES];
-
-        for (int i = 0; i < (int) MerchType.NUM_OF_MERCH_TYPES; i++)
-        {
-            currentSheet = "MerchData" + (i+1).ToString();
-            currentRows = dataReader.GetRows(currentSheet);
-
-            merchDataLists[i] = LoadMerchData();
-        }
-
-        return merchDataLists;
-    }
-
-    private List<MerchData> LoadMerchData()
-    {
-        List<MerchData> merchDataList = new List<MerchData>();
-
-        int rowNum = currentRows.Count;
-        for (int i = 0; i < rowNum; i++)
-        {
-            MerchData merchDataObject = new MerchData();
-
-            TryLoadInt(i, "ID", out merchDataObject.id);
-            TryLoadString(i, "Name", out merchDataObject.name);
-            TryLoadString(i, "Icon", out merchDataObject.icon);
-            TryLoadDouble(i, "Cost", out merchDataObject.cost);
-            TryLoadInt(i, "Duration", out merchDataObject.duration);
-            TryLoadDouble(i, "RewardMultiplier", out merchDataObject.rewardMultiplier);
-
-            merchDataList.Add(merchDataObject);
-        }
-
-        return merchDataList;
-    }
-
-    private List<MerchSlotData> LoadMerchSlotData()
-    {
-        currentSheet = "MerchSlotData";
-        currentRows = dataReader.GetRows(currentSheet);
-
-        List<MerchSlotData> merchSlotDataList = new List<MerchSlotData>();
-
-        int rowNum = currentRows.Count;
-        for (int i = 0; i < rowNum; i++)
-        {
-            MerchSlotData merchSlotDataObject = new MerchSlotData();
-
-            TryLoadInt(i, "ID", out merchSlotDataObject.id);
-            TryLoadInt(i, "CoinCost", out merchSlotDataObject.coinCost);
-            TryLoadInt(i, "TokenCost", out merchSlotDataObject.tokenCost);
-
-            merchSlotDataList.Add(merchSlotDataObject);
-        }
-
-        return merchSlotDataList;
-    }
-
-	private List<EquipmentData> LoadEquipmentData()
-	{
-		currentSheet = "EquipmentData";
-		currentRows = dataReader.GetRows(currentSheet);
-		
-		List<EquipmentData> equipmentDataList = new List<EquipmentData>();
-		
-		int rowNum = currentRows.Count;
-		for (int i = 0; i < rowNum; i++)
-		{
-			EquipmentData equipmentDataObject = new EquipmentData();
-			
-			TryLoadInt(i, "ID", out equipmentDataObject.id);
-			TryLoadEnum(i, "EquipmentType", out equipmentDataObject.equipmentType);
-			TryLoadInt(i, "Level", out equipmentDataObject.level);
-			TryLoadString(i, "Name", out equipmentDataObject.name);
-			TryLoadInt(i, "UpgradeCost", out equipmentDataObject.upgradeCost);
-			TryLoadFloat(i, "TapMultiplier", out equipmentDataObject.tapMultiplier);
-
-			
-			equipmentDataList.Add(equipmentDataObject);
-		}
-		
-		return equipmentDataList;
-	}
-
-    private List<GeneralDataRecord> LoadGeneralData()
-    {
-        currentSheet = "GeneralData";
-        currentRows = dataReader.GetRows(currentSheet);
-
-        List<GeneralDataRecord> generalDataList = new List<GeneralDataRecord>();
-
-        int rowNum = currentRows.Count;
-        for (int i = 0; i < rowNum; i++)
-        {
-            GeneralDataRecord dataObject = new GeneralDataRecord();
-
-            TryLoadInt(i, "ID", out dataObject.id);
-            TryLoadString(i, "Name", out dataObject.name);
-            TryLoadString(i, "Value", out dataObject.value);
-
-            generalDataList.Add(dataObject);
-        }
-
-        return generalDataList;
-    }
 }

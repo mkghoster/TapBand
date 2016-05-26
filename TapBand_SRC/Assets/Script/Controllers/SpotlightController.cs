@@ -14,15 +14,24 @@ public class SpotlightController : MonoBehaviour
 
     public SpotlightUI spotlightUI;
     public TapController tapController;
+    private SongController songController;
 
     public GameObject[] musicians;
 
+    // private bool canActivate = true;
+    private bool canActivate = false; // TODO: ideiglenesen kikapcsolva
+
+    void Awake()
+    {
+        songController = (SongController)FindObjectOfType(typeof(SongController));
+    }
+
     void Start()
     {
-        SpotlightInterval = ReadFloat(GeneralProperties.SPOTLIGHT_INTERVAL);
-        SpotlightMinDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MIN_DELAY);
-        SpotlightMaxDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MAX_DELAY);
-        SpotlightTapMultiplier = ReadFloat(GeneralProperties.SPOTLIGHT_TAP_MULTIPLIER);
+        SpotlightInterval = GameData.instance.GeneralData.SpotlightInterval;
+        SpotlightMinDelay = GameData.instance.GeneralData.RandomMechanismMinDelay;//Fix this
+        SpotlightMaxDelay = GameData.instance.GeneralData.RandomMechanismMaxDelay;
+        SpotlightTapMultiplier = GameData.instance.GeneralData.SpotlightTapMultiplier;
 
         initSpotlightCountdown = CalculateAliveTime();
 
@@ -32,18 +41,32 @@ public class SpotlightController : MonoBehaviour
         tapController.SpotlightTapMultiplier = SpotlightTapMultiplier;
     }
 
+    void OnEnable()
+    {
+
+    }
+
+    void OnDisable()
+    {
+
+    }
+
     void Update()
     {
         float dt = Time.deltaTime;
 
-        if (initSpotlightCountdown <= 0)
+        if (canActivate)
         {
-            int indexToActivate = UnityEngine.Random.Range(0, musicians.Length);
-            spotlightUI.Activate(musicians[indexToActivate]);
-            initSpotlightCountdown = CalculateAliveTime();
-        } else
-        {
-            initSpotlightCountdown -= dt;
+            if (initSpotlightCountdown <= 0)
+            {
+                int indexToActivate = UnityEngine.Random.Range(0, musicians.Length);
+                spotlightUI.Activate(musicians[indexToActivate]);
+                initSpotlightCountdown = CalculateAliveTime();
+            }
+            else
+            {
+                initSpotlightCountdown -= dt;
+            }
         }
     }
 
@@ -52,8 +75,10 @@ public class SpotlightController : MonoBehaviour
         return UnityEngine.Random.Range(SpotlightMinDelay, SpotlightMaxDelay);
     }
 
-    private float ReadFloat(string name)
+    //between 2 concert
+    private void SwitchOnOffSpotlight(bool value)
     {
-        return Convert.ToSingle(GameData.instance.FindGeneralDataByName(name).value);
+        // TODO: switched off until wireup
+        // canActivate = value;
     }
 }

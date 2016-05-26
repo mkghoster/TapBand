@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 
 public class MerchController : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class MerchController : MonoBehaviour
 
     public MerchSlotState GetSlotOfMerch(MerchType type)
     {
-        return GameState.instance.MerchSlotStates.Find(c => c.ActiveMerchType == type);
+        return GameState.instance.MerchSlotStates.FirstOrDefault(c => c.ActiveMerchType == type);
     }
 
     public void OnStart(MerchState state)
@@ -75,7 +76,7 @@ public class MerchController : MonoBehaviour
         }
         state.Collect();
         MerchSlotState slotState = GetSlotOfMerch(state.Type);
-        slotState.ActiveMerchType = MerchType.NONE; 
+        slotState.ActiveMerchType = MerchType.NONE;
         merchUI.UpdateMerchItems();
         merchUI.UpdateMerchSlotItems();
     }
