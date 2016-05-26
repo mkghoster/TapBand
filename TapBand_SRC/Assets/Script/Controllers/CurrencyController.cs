@@ -64,6 +64,14 @@ public class CurrencyController : MonoBehaviour
         }
     }
 
+    public double TapMultiplierFromPrestige
+    {
+        get
+        {
+            return currencyState.TapMultiplierFromPrestige; 
+        }
+    }
+
     public bool CanBuyFromCoin(double price)
     {
         return currencyState.Coins >= price;
@@ -74,11 +82,16 @@ public class CurrencyController : MonoBehaviour
         return currencyState.Tokens >= price;
     }
 
-    private void OnPrestige()
+    private void OnPrestige() 
     {
+        //elveszik
         currencyState.Coins = 0;
-        currencyState.Fans = 0;
-        //  currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
+
+        double tapStrengthMultiplier = 1.2f;                                 //TODO: képlettel meghatározni a pontos értékét egy fvben
+        currencyState.TapMultiplierFromPrestige *= tapStrengthMultiplier;
+
+        print("new tapStrength bonus after Prestige: "+ currencyState.TapMultiplierFromPrestige);
+        
 
         SynchronizeRealCurrencyAndScreenCurrency();
     }

@@ -45,8 +45,7 @@ public class SongController : MonoBehaviour
        
         encoreButton.GiveEncoreButtonPressedEvent += StartEncoreSong;
 
-        //tourController.RestartSong += ResetControllerState;
-        tourController.RestartSong += FailSong;
+        tourController.RestartSong += ResetControllerState;
     }
 
     void OnDisable()
@@ -55,8 +54,7 @@ public class SongController : MonoBehaviour
         
         encoreButton.GiveEncoreButtonPressedEvent -= StartEncoreSong;
 
-        //tourController.RestartSong -= ResetControllerState;
-        tourController.RestartSong -= FailSong;
+        tourController.RestartSong -= ResetControllerState;
     }
 
     void Start()

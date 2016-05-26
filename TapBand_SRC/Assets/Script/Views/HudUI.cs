@@ -27,14 +27,12 @@ public class HudUI : MonoBehaviour
 
     private CurrencyController currencyController;
     private SongController songController;
-    private TourController tourController;
 
     void Awake()
     {
         currencyController = (CurrencyController)FindObjectOfType(typeof(CurrencyController));
         songController = (SongController)FindObjectOfType(typeof(SongController));
-        tourController = (TourController)FindObjectOfType(typeof(TourController));
-
+      
         var coinObj = GameObject.Find("CoinText");
         var fanObj = GameObject.Find("FanText");
         var concertObj = GameObject.Find("ConcertText");
@@ -54,8 +52,6 @@ public class HudUI : MonoBehaviour
         songController.OnSongStarted += HandleSongStarted;
         songController.OnSongFinished += HandleSongFinished;
         songController.OnSongProgress += HandleSongProgress;
-
-        tourController.OnPrestige += HandlePrestige;
     }
 
     void OnDisable()
@@ -66,8 +62,6 @@ public class HudUI : MonoBehaviour
         songController.OnSongStarted -= HandleSongStarted;
         songController.OnSongFinished -= HandleSongFinished;
         songController.OnSongProgress -= HandleSongProgress;
-
-        tourController.OnPrestige -= HandlePrestige;
     }
 
     void OnGUI()
@@ -155,10 +149,5 @@ public class HudUI : MonoBehaviour
     private void HandleSongFinished(object sender, SongEventArgs e)
     {
         actualSongData = null;
-    }
-
-    private void HandlePrestige()
-    {
-        //actualSongData = null;
     }
 }

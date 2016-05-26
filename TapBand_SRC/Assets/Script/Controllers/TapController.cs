@@ -7,6 +7,7 @@ public class TapController : MonoBehaviour
 
     private BandMemberController bandMemberController;
 
+    //private double prestigeTapMultiplier = 1f; 
     private float spotlightTapMultiplier;
     public float boosterMultiplier = 1f;
     public float boosterTimeInterval = 0f;
@@ -15,10 +16,13 @@ public class TapController : MonoBehaviour
 
     private double debugTapMultiplier;
 
+    private CurrencyController currencyController;
+
     void Awake()
     {
         BindWithUI();
         bandMemberController = FindObjectOfType<BandMemberController>();
+        currencyController = FindObjectOfType<CurrencyController>();
 
         spotlightTapMultiplier = GameData.instance.GeneralData.SpotlightTapMultiplier;
     }
@@ -92,6 +96,9 @@ public class TapController : MonoBehaviour
         }
 
         //tapMultiplier *= boosterMultiplier;
+        //print("currencyController.TapMultiplierFromPrestige;: "+ currencyController.TapMultiplierFromPrestige);
+        tapMultiplier *= currencyController.TapMultiplierFromPrestige;
+
 
         return tapMultiplier;
     }
