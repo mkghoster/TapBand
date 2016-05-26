@@ -8,54 +8,48 @@ AnimatorController:
   m_Name: Character_LADY
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Blend
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: anim_idle
+  - m_Name: start
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: anim_start
+    m_Controller: {fileID: 0}
+  - m_Name: stop
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: anim_basic_01
+    m_Controller: {fileID: 0}
+  - m_Name: basic_01
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: anim_basic_02
+    m_Controller: {fileID: 0}
+  - m_Name: basic_02
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: anim_basic_03
+    m_Controller: {fileID: 0}
+  - m_Name: basic_03
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: anim_rolling
+    m_Controller: {fileID: 0}
+  - m_Name: roll
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: anim_palmy
+    m_Controller: {fileID: 0}
+  - m_Name: palmy
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -339,7 +333,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_idle
+    m_ConditionEvent: stop
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110216684}
@@ -363,7 +357,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_idle
+    m_ConditionEvent: stop
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110216684}
@@ -432,7 +426,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_basic_01
+    m_ConditionEvent: basic_01
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110200142}
@@ -456,7 +450,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_palmy
+    m_ConditionEvent: palmy
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110243496}
@@ -522,7 +516,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_palmy
+    m_ConditionEvent: palmy
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110243496}
@@ -591,7 +585,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_palmy
+    m_ConditionEvent: palmy
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110243496}
@@ -636,7 +630,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_rolling
+    m_ConditionEvent: roll
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110279832}
@@ -765,7 +759,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_rolling
+    m_ConditionEvent: roll
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110279832}
@@ -789,7 +783,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_idle
+    m_ConditionEvent: stop
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110216684}
@@ -834,7 +828,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_rolling
+    m_ConditionEvent: roll
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110279832}
@@ -879,7 +873,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_basic_01
+    m_ConditionEvent: basic_01
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110200142}
@@ -927,7 +921,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_basic_03
+    m_ConditionEvent: basic_03
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110270504}
@@ -1020,7 +1014,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_basic_03
+    m_ConditionEvent: basic_03
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110270504}
@@ -1044,7 +1038,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_start
+    m_ConditionEvent: start
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110290028}
@@ -1068,7 +1062,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_basic_02
+    m_ConditionEvent: basic_02
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110217172}
@@ -1092,7 +1086,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: anim_basic_02
+    m_ConditionEvent: basic_02
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110217172}
@@ -1847,22 +1841,22 @@ AnimatorStateMachine:
     m_Position: {x: 144, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110217458}
-    m_Position: {x: 132, y: -180, z: 0}
+    m_Position: {x: 384, y: -192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110216684}
-    m_Position: {x: 432, y: -156, z: 0}
+    m_Position: {x: 384, y: -108, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110290028}
-    m_Position: {x: 120, y: -96, z: 0}
+    m_Position: {x: 72, y: -24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110248360}
-    m_Position: {x: 348, y: -312, z: 0}
+    m_Position: {x: 348, y: -348, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110270504}
     m_Position: {x: 636, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110221478}
-    m_Position: {x: 348, y: -264, z: 0}
+    m_Position: {x: 348, y: -300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110243496}
     m_Position: {x: 228, y: 300, z: 0}
@@ -1872,10 +1866,10 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 144, y: -300, z: 0}
-  m_EntryPosition: {x: 144, y: -228, z: 0}
+  m_EntryPosition: {x: 84, y: -156, z: 0}
   m_ExitPosition: {x: 144, y: -264, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 110217458}
+  m_DefaultState: {fileID: 110290028}
 --- !u!1107 &110735752
 AnimatorStateMachine:
   serializedVersion: 5

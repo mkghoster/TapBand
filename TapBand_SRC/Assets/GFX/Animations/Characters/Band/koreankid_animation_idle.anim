@@ -169,7 +169,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 0, y: 0, z: 0.36479998}
+        value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -181,7 +181,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 0, y: 0, z: -1.0332999}
+        value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -205,7 +205,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 0, y: 0, z: 0.3712}
+        value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -342,27 +342,27 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 0.28, y: 0.60485965, z: -2}
+        value: {x: 0.28, y: 0.60485965, z: -1}
         inSlope: {x: 0, y: -0.12442799, z: 0}
-        outSlope: {x: 0, y: -0.12442799, z: 0}
+        outSlope: {x: 0, y: -0.12442799, z: -0}
         tangentMode: 0
       - time: 0.2
-        value: {x: 0.28, y: 0.5889739, z: -2}
+        value: {x: 0.28, y: 0.5889739, z: -1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - time: 0.5
-        value: {x: 0.28, y: 0.6145654, z: -2}
+        value: {x: 0.28, y: 0.6145654, z: -1}
         inSlope: {x: 0, y: 0.119427025, z: 0}
-        outSlope: {x: 0, y: 0.119427025, z: 0}
+        outSlope: {x: 0, y: 0.119427025, z: -0}
         tangentMode: 0
       - time: 0.73333335
-        value: {x: 0.28, y: 0.63211083, z: -2}
+        value: {x: 0.28, y: 0.63211083, z: -1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - time: 1
-        value: {x: 0.28, y: 0.60485965, z: -2}
+        value: {x: 0.28, y: 0.60485965, z: -1}
         inSlope: {x: 0, y: -0.12442799, z: 0}
         outSlope: {x: 0, y: -0.12442799, z: 0}
         tangentMode: 0
@@ -1058,20 +1058,20 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -2
+        value: -1
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        outSlope: -0
+        tangentMode: 21
       - time: 0.5
-        value: -2
+        value: -1
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        outSlope: -0
+        tangentMode: 21
       - time: 1
-        value: -2
+        value: -1
         inSlope: 0
         outSlope: 0
-        tangentMode: 10
+        tangentMode: 21
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1978,7 +1978,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.36479998
+        value: 0
         inSlope: 110.15828
         outSlope: 110.15828
         tangentMode: 10
@@ -2068,7 +2068,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -1.0332999
+        value: 0
         inSlope: -175.85742
         outSlope: -175.85742
         tangentMode: 10
@@ -2203,7 +2203,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.3712
+        value: 0
         inSlope: 449.67426
         outSlope: 449.67426
         tangentMode: 10
@@ -2342,7 +2342,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KOREANKID_CENTER/KOREANKID_legL_UP/KOREANKID_legL_LO
+    path: KOREANKID_CENTER/KOREANKID_legR_UP/KOREANKID_legR_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2352,7 +2352,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KOREANKID_CENTER/KOREANKID_legL_UP/KOREANKID_legL_LO
+    path: KOREANKID_CENTER/KOREANKID_legR_UP/KOREANKID_legR_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2362,7 +2362,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KOREANKID_CENTER/KOREANKID_legL_UP/KOREANKID_legL_LO
+    path: KOREANKID_CENTER/KOREANKID_legR_UP/KOREANKID_legR_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2402,7 +2402,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KOREANKID_CENTER/KOREANKID_legL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_HEAD
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2412,7 +2412,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KOREANKID_CENTER/KOREANKID_legL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_HEAD
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2422,7 +2422,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KOREANKID_CENTER/KOREANKID_legL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_HEAD
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2612,7 +2612,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KOREANKID_CENTER/KOREANKID_legR_UP/KOREANKID_legR_LO
+    path: KOREANKID_CENTER/KOREANKID_legL_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2622,7 +2622,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KOREANKID_CENTER/KOREANKID_legR_UP/KOREANKID_legR_LO
+    path: KOREANKID_CENTER/KOREANKID_legL_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2632,7 +2632,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KOREANKID_CENTER/KOREANKID_legR_UP/KOREANKID_legR_LO
+    path: KOREANKID_CENTER/KOREANKID_legL_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2672,7 +2672,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_HEAD
+    path: KOREANKID_CENTER/KOREANKID_legL_UP/KOREANKID_legL_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2682,7 +2682,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_HEAD
+    path: KOREANKID_CENTER/KOREANKID_legL_UP/KOREANKID_legL_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2692,7 +2692,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_HEAD
+    path: KOREANKID_CENTER/KOREANKID_legL_UP/KOREANKID_legL_LO
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
