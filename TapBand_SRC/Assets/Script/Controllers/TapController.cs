@@ -13,6 +13,8 @@ public class TapController : MonoBehaviour
 
     public event TapEvent OnTap;
 
+    private double debugTapMultiplier;
+
     void Awake()
     {
         BindWithUI();
@@ -63,7 +65,9 @@ public class TapController : MonoBehaviour
 
     private double CalculateTapValue(Vector2 position, bool isSpotlight)
     {
-        double tapMultiplier = 1;
+        //double tapMultiplier = 1;
+        debugTapMultiplier = (double) PlayerPrefsManager.GetDebugTapMultip();
+        double tapMultiplier = 1 * debugTapMultiplier;  //DEBUG
 
         for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Bass].Count; i++)
         {
@@ -109,5 +113,11 @@ public class TapController : MonoBehaviour
     public void BoosterTimeInterval(float multiplierIntervalValue)
     {
         boosterTimeInterval = multiplierIntervalValue;
+    }
+
+    public void IncDebugTapMultiplier(double multiplier)
+    {
+        debugTapMultiplier *= multiplier;
+        PlayerPrefsManager.SetDebugTapMultip( (float) debugTapMultiplier);
     }
 }
