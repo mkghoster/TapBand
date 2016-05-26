@@ -1,65 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
-public class TapArgs
-{
-    public ICollection<Vector2> positions;
-    public ICollection<Vector2> spotlightPositions;
-
-    public TapArgs()
-    {
-        positions = new List<Vector2>();
-        spotlightPositions = new List<Vector2>();
-    }
-
-    public bool HasAnyTap()
-    {
-        return positions.Count > 0 || spotlightPositions.Count > 0;
-    }
-}
 
 public class TapUI : MonoBehaviour
 {
     private Collider2D _collider;
+    private SongController songController;
 
     public GameObject risingText;
-    public delegate void TapEvent(TapArgs args);
-    public event TapEvent OnTap;
-        
-	void Start()
+
+    public event RawTapEvent OnScreenTap;
+
+    void Awake()
     {
-        _collider = GetComponent<Collider2D>();        
-	}
-	
-	// Update is called once per frame
-	void Update()
+        _collider = GetComponent<Collider2D>();
+        songController = FindObjectOfType<SongController>();
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-        TapArgs args = CalculateTapEventArgs();
-        if (args.HasAnyTap())
+        var taps = CalculateTaps();
+        if (taps.Count > 0 && OnScreenTap != null)
         {
-            if (OnTap != null)
-                OnTap(args);
+            OnScreenTap(this, new RawTapEventArgs(taps));
         }
-	}
-    
-    // waaaaaaay too much parameters, should be less than 3
-    public void DisplayTapValueAt(Vector2 position, BigInteger value, bool special)
+    }
+
+    void OnEnable()
+    {
+        songController.OnSongStarted += HandleSongStarted;
+        songController.OnSongFinished += HandleSongFinished;
+    }
+
+    void OnDisable()
+    {
+        songController.OnSongStarted -= HandleSongStarted;
+        songController.OnSongFinished -= HandleSongFinished;
+    }
+
+    public void DisplayTapValueAt(RawTapData data, double value)
     {
         GameObject canvas = GameObject.Find("Canvas");
-        GameObject text = (GameObject) Instantiate(risingText);
-        text.transform.position = position;
+        GameObject text = Instantiate(risingText);
+        text.transform.position = data.position;
         text.transform.SetParent(canvas.transform);
 
         RisingText rising = text.GetComponent<RisingText>();
-        rising.Text = "+" + value.ToString();
+        rising.Text = "+" + value.ToString("F0");
         rising.Duration = 3f;
         rising.UpSpeed = 100f;
-        
-        if (special) {
+
+        if (data.isSpotlight)
+        {
             rising.Color = Color.yellow;
             rising.FontSize = 20;
-        } else
+        }
+        else
         {
             rising.Color = Color.white;
             rising.FontSize = 16;
@@ -70,74 +66,66 @@ public class TapUI : MonoBehaviour
 
     public void AutoTap()
     {
+        RawTapData rawTapData = RandomTapEventArgs();
+        if (OnScreenTap != null)
         {
-            TapArgs args = RandomTapEventArgs();
-            
-            if (OnTap != null)
-                OnTap(args);
+            OnScreenTap(this, new RawTapEventArgs(new RawTapData[] { rawTapData }));
         }
-
     }
 
-    private TapArgs RandomTapEventArgs()
+    private RawTapData RandomTapEventArgs()
     {
-        TapArgs args = new TapArgs();
-        System.Random rnd = new System.Random();
-        int x = rnd.Next(20, 480);
-        int y = rnd.Next(120, 700);
-        Vector2 autotapposition = new Vector2(x, y);
-        CalculateWithPosition(autotapposition, args);
-        return args;
+        int x = Random.Range(20, 481);
+        int y = Random.Range(120, 701);
+        Vector2 autoTapPosition = new Vector2(x, y);
+        return new RawTapData(autoTapPosition, false);
     }
 
-    private TapArgs CalculateTapEventArgs()
+    private IList<RawTapData> CalculateTaps()
     {
-        TapArgs args = new TapArgs();
+        var result = new List<RawTapData>();
 
         if (Application.platform == RuntimePlatform.Android ||
             Application.platform == RuntimePlatform.IPhonePlayer)
         {
-
             for (var i = 0; i < Input.touchCount; ++i)
             {
                 Touch touch = Input.GetTouch(i);
                 if (touch.phase == TouchPhase.Began)
                 {
-                    CalculateWithPosition(touch.position, args);
+                    result.Add(new RawTapData(touch.position, IsSpotlightTap(touch.position)));
                 }
             }
-        } else
+        }
+        else
         {
             if (Input.GetMouseButtonDown(0))
             {
-                CalculateWithPosition(Input.mousePosition, args);
+                result.Add(new RawTapData(Input.mousePosition, IsSpotlightTap(Input.mousePosition)));
             }
         }
-        return args;
+
+        return result;
     }
 
-    private void CalculateWithPosition(Vector2 pos, TapArgs args)
+    private bool IsSpotlightTap(Vector2 pos)
     {
         Vector2 wp = Camera.main.ScreenToWorldPoint(pos);
         Collider2D hit = Physics2D.OverlapPoint(wp);
-        if (hit)
+
+        if (hit != null && hit.gameObject.tag == Tags.SPOTLIGHT)
         {
-            if (hit.gameObject.tag == Tags.SPOTLIGHT)
-            {
-                args.spotlightPositions.Add(pos);
-            }
-            else if (hit == _collider)
-            {
-                args.positions.Add(pos);
-            }
+            return true;
         }
+        return false;
     }
 
-    public void SwitchOnOffCollider(bool value)
-    {        
-        //if (value)
-        //    _collider.enabled = true;
-        //else
-        //    _collider.enabled = false;
+    private void HandleSongStarted(object sender, SongEventArgs e)
+    {
+        _collider.enabled = true;
+    }
+    private void HandleSongFinished(object sender, SongEventArgs e)
+    {
+        _collider.enabled = false;
     }
 }
