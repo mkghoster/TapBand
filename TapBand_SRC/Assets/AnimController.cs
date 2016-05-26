@@ -5,12 +5,12 @@ using System;
 
 public class AnimController : MonoBehaviour {
 
-    public event SongEvent OnSongFinished;
-    public event TapEvent OnTap;
+    //public event SongEvent OnSongFinished;
+    //public event TapEvent OnTap;
     private SongController songController;
     private Animator anim;
     private List<float> taps = new List<float>();
-    public float tapsPerSecond;
+    private float tapsPerSecond;
 
     private TapUI tapUI;
 
@@ -35,7 +35,6 @@ public class AnimController : MonoBehaviour {
     {
         tapsPerSecond++;
         taps.Add(Time.timeSinceLevelLoad);
-        // Debug.Log("szopdki");
     }
 
     void OnDisable()

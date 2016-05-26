@@ -12,6 +12,7 @@ public class TapController : MonoBehaviour
     public float boosterTimeInterval = 0f;
 
     public event TapEvent OnTap;
+    int i = 0;
 
 
 

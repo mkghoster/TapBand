@@ -26,14 +26,13 @@ public class TapUI : MonoBehaviour
     public GameObject risingText;
     public delegate void TapEvent(TapArgs args);
     public event TapEvent OnTap;
-    public GameObject firework;
+    private GameObject firework;
+    public int tapAddedToInventory=0;
 
     void Start()
     {
         _collider = GetComponent<Collider2D>();
         firework = GameObject.Find("Firework");
-
-        //firework = (GameObject)FindObjectOfType(typeof(GameObject));
     }
 	
 	// Update is called once per frame
@@ -81,7 +80,7 @@ public class TapUI : MonoBehaviour
     {
         {
             TapArgs args = RandomTapEventArgs();
-            
+            tapAddedToInventory++;
             if (OnTap != null)
                 OnTap(args);
         }
@@ -91,9 +90,12 @@ public class TapUI : MonoBehaviour
     private TapArgs RandomTapEventArgs()
     {
         TapArgs args = new TapArgs();
-        System.Random rnd = new System.Random();
-        int x = rnd.Next(20, 480);
-        int y = rnd.Next(120, 700);
+        //System.Random rnd = new System.Random();
+        //TODO make the correct values
+        //int x = rnd.Next(20, 480);
+        //int y = rnd.Next(120, 700);
+        int x =200;
+        int y = 500;
         Vector2 autotapposition = new Vector2(x, y);
         CalculateWithPosition(autotapposition, args);
         return args;
