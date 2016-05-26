@@ -1,9 +1,20 @@
 fileFormatVersion: 2
 guid: 6b63d26d9b5cfa648a0b7cce98ce5be7
-timeCreated: 1463677312
+timeCreated: 1464189010
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: koreankid_basic_head
+    21300002: koreankid_basic_hair
+    21300004: koreankid_basic_body
+    21300006: koreankid_basic_armR_UP
+    21300008: koreankid_basic_armL_UP
+    21300010: koreankid_basic_legR_UP
+    21300012: koreankid_basic_legL_UP
+    21300014: koreankid_basic_legR_LO
+    21300016: koreankid_basic_legL_LO
+    21300018: koreankid_basic_armR_LO
+    21300020: koreankid_basic_armL_LO
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,10 +38,10 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +49,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +60,271 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: koreankid_basic_head
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 429
+        width: 417
+        height: 527
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 137.5, y: 96}
+        - {x: 139.5, y: 106}
+        - {x: 150.5, y: 109}
+        - {x: 157.5, y: 114}
+        - {x: 161.5, y: 130}
+        - {x: 164.5, y: 152}
+        - {x: 167.5, y: 176}
+        - {x: 168.5, y: 187}
+        - {x: 175.5, y: 197}
+        - {x: 186.5, y: 209}
+        - {x: 193.5, y: 223}
+        - {x: 199.5, y: 236}
+        - {x: 204.5, y: 260}
+        - {x: 208.5, y: 286}
+        - {x: 208.5, y: 385}
+        - {x: 204.5, y: 404}
+        - {x: 198.5, y: 424}
+        - {x: 183.5, y: 451}
+        - {x: 176.5, y: 459}
+        - {x: 156.5, y: 480}
+        - {x: 141.5, y: 491}
+        - {x: 126.5, y: 501}
+        - {x: 97.5, y: 515}
+        - {x: 74.5, y: 521}
+        - {x: 60.5, y: 524}
+        - {x: 45.5, y: 527}
+        - {x: -40.5, y: 527}
+        - {x: -47.5, y: 526}
+        - {x: -69.5, y: 522}
+        - {x: -93.5, y: 512}
+        - {x: -115.5, y: 501}
+        - {x: -124.5, y: 495}
+        - {x: -133.5, y: 488}
+        - {x: -155.5, y: 467}
+        - {x: -164.5, y: 456}
+        - {x: -181.5, y: 431}
+        - {x: -192.5, y: 407}
+        - {x: -197.5, y: 393}
+        - {x: -205.5, y: 358}
+        - {x: -208.5, y: 344}
+        - {x: -208.5, y: 256}
+        - {x: -206.5, y: 242}
+        - {x: -201.5, y: 209}
+        - {x: -194.5, y: 186}
+        - {x: -188.5, y: 168}
+        - {x: -185.5, y: 160}
+        - {x: -179.5, y: 145}
+        - {x: -164.5, y: 115}
+        - {x: -160.5, y: 109}
+        - {x: -151.5, y: 98}
+        - {x: -150.5, y: 98}
+        - {x: -151.5, y: 98}
+        - {x: -160.5, y: 99}
+        - {x: -169.5, y: 97}
+        - {x: -176.5, y: 87}
+        - {x: -175.5, y: 72}
+        - {x: -172.5, y: 65}
+        - {x: -165.5, y: 59}
+        - {x: -160.5, y: 56}
+        - {x: -149.5, y: 55}
+        - {x: -136.5, y: 54}
+        - {x: -132.5, y: 42}
+        - {x: -113.5, y: 5}
+        - {x: -108.5, y: 0}
+        - {x: 112.5, y: 0}
+        - {x: 114.5, y: 6}
+        - {x: 123.5, y: 38}
+        - {x: 133.5, y: 78}
+    - name: koreankid_basic_hair
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 348
+        width: 545
+        height: 668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_basic_body
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 18
+        width: 222
+        height: 336
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28385192}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 111, y: 163.62576}
+        - {x: 109, y: 181.62576}
+        - {x: 104, y: 236.62576}
+        - {x: 97, y: 240.62576}
+        - {x: 35, y: 240.62576}
+        - {x: -23, y: 238.62576}
+        - {x: -28, y: 240.62576}
+        - {x: -94, y: 240.62576}
+        - {x: -110, y: 239.62576}
+        - {x: -111, y: 236.62576}
+        - {x: -111, y: 124.625755}
+        - {x: -109, y: 105.625755}
+        - {x: -106, y: 75.625755}
+        - {x: -96, y: 21.625755}
+        - {x: -86, y: -7.3742447}
+        - {x: -84, y: -9.374245}
+        - {x: 96, y: -9.374245}
+        - {x: 98, y: -8.374245}
+        - {x: 105, y: 34.625755}
+        - {x: 111, y: 72.625755}
+    - name: koreankid_basic_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 259
+        width: 162
+        height: 58
+      alignment: 9
+      pivot: {x: 0.08231482, y: 0.7512484}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25.664978, y: 14.427582}
+        - {x: -10.335022, y: 14.427582}
+        - {x: -13.335022, y: 13.427582}
+        - {x: -13.335022, y: -10.572418}
+        - {x: -12.335022, y: -16.572418}
+        - {x: 32.664978, y: -32.57242}
+        - {x: 52.664978, y: -37.57242}
+        - {x: 92.66498, y: -43.57242}
+        - {x: 145.66498, y: -43.57242}
+        - {x: 148.66498, y: -40.57242}
+        - {x: 148.66498, y: -21.572418}
+        - {x: 139.66498, y: -14.572418}
+    - name: koreankid_basic_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 260
+        width: 162
+        height: 54
+      alignment: 9
+      pivot: {x: 0.087077715, y: 0.24875104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10.893433, y: 40.567444}
+        - {x: -14.106567, y: 13.567444}
+        - {x: -14.106567, y: -13.432556}
+        - {x: 24.893433, y: -13.432556}
+        - {x: 114.89343, y: 6.567444}
+        - {x: 147.89343, y: 14.567444}
+        - {x: 147.89343, y: 40.567444}
+    - name: koreankid_basic_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 53
+        width: 31
+        height: 117
+      alignment: 9
+      pivot: {x: 0.64521444, y: 0.91342634}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_basic_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 52
+        width: 31
+        height: 120
+      alignment: 9
+      pivot: {x: 0.63320035, y: 0.9129218}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_basic_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 31
+        width: 94
+        height: 129
+      alignment: 9
+      pivot: {x: 0.24009088, y: 0.93441415}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.568542, y: -47.53943}
+        - {x: -22.568542, y: -120.53943}
+        - {x: 71.43146, y: -120.53943}
+        - {x: 71.43146, y: -83.53943}
+        - {x: 20.431458, y: 8.460571}
+        - {x: -9.5685425, y: 8.460571}
+        - {x: -14.5685425, y: 1.4605713}
+    - name: koreankid_basic_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 31
+        width: 94
+        height: 129
+      alignment: 9
+      pivot: {x: 0.22841303, y: 0.93441415}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.529175, y: 8.460571}
+        - {x: -11.470825, y: 8.460571}
+        - {x: -14.470825, y: 3.4605713}
+        - {x: -21.470825, y: -66.53943}
+        - {x: -21.470825, y: -120.53943}
+        - {x: 71.529175, y: -120.53943}
+        - {x: 72.529175, y: -119.53943}
+        - {x: 72.529175, y: -85.53943}
+        - {x: 17.529175, y: 7.4605713}
+    - name: koreankid_basic_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 30
+        width: 64
+        height: 191
+      alignment: 9
+      pivot: {x: 0.18642998, y: 0.94558764}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15.068481, y: 10.392761}
+        - {x: -11.931519, y: 10.392761}
+        - {x: -11.931519, y: -100.60724}
+        - {x: -1.9315186, y: -156.60724}
+        - {x: 25.068481, y: -180.60724}
+        - {x: 49.06848, y: -180.60724}
+        - {x: 50.06848, y: -179.60724}
+        - {x: 52.06848, y: -168.60724}
+        - {x: 52.06848, y: -118.60724}
+        - {x: 20.068481, y: 8.392761}
+    - name: koreankid_basic_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 30
+        width: 62
+        height: 191
+      alignment: 9
+      pivot: {x: 0.8425155, y: 0.9478211}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.235962, y: 9.966171}
+        - {x: -14.235962, y: 5.9661713}
+        - {x: -52.235962, y: -126.03383}
+        - {x: -52.235962, y: -170.03383}
+        - {x: -51.235962, y: -181.03383}
+        - {x: -28.235962, y: -181.03383}
+        - {x: -15.235962, y: -177.03383}
+        - {x: -4.235962, y: -152.03383}
+        - {x: 9.764038, y: -70.03383}
+        - {x: 9.764038, y: 9.966171}
     outline: []
   spritePackingTag: 
   userData: 
