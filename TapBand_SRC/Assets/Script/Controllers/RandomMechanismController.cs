@@ -18,6 +18,9 @@ public class RandomMechanismController : MonoBehaviour
     private bool isMechanismActive;
     private bool isPaused = false;
 
+    private ConcertController concertController;
+    private SongController songController;
+
     // This is a directly controlled by this controller. It will fire the correct events.
     private SpotlightController spotlightController;
 
@@ -29,17 +32,28 @@ public class RandomMechanismController : MonoBehaviour
 
         currentDelay = Random.Range(minDelay, maxDelay);
 
+        concertController = FindObjectOfType<ConcertController>();
+        songController = FindObjectOfType<SongController>();
+
         spotlightController = FindObjectOfType<SpotlightController>();
     }
 
     void OnEnable()
     {
         spotlightController.OnSpotlightFinished += HandleRandomMechanismFinished;
+
+        concertController.OnConcertFinished += HandleConcertFinished;
+        songController.OnSongFinished += HandleSongFinished;
+        songController.OnSongStarted += HandleSongStarted;
     }
 
     void OnDisable()
     {
         spotlightController.OnSpotlightFinished -= HandleRandomMechanismFinished;
+
+        concertController.OnConcertFinished -= HandleConcertFinished;
+        songController.OnSongFinished -= HandleSongFinished;
+        songController.OnSongStarted -= HandleSongStarted;
     }
 
     // Update is called once per frame
@@ -100,6 +114,13 @@ public class RandomMechanismController : MonoBehaviour
     private void HandleRandomMechanismFinished(object sender, RandomMechanismEventArgs e)
     {
         isMechanismActive = false; // good enough        
+    }
+
+    private void HandleConcertFinished(object sender, ConcertEventArgs e)
+    {
+        // If the concert ends, end spotlights.
+        // Pausing is handled by song events
+        spotlightController.EndSpotlight();
     }
 
     private void HandleSongFinished(object sender, SongEventArgs e)
