@@ -157,19 +157,8 @@ public class MerchState
         return TokenToFinish <= GameState.instance.Currency.Tokens;
     }
 
-    public void Collect()
+    public void ResetTimer()
     {
-        if (!CanCollect())
-        {
-            return;
-        }
-        else
-        {
-            // TODO: Call currency controller to ask for Token
-        }
-
-        GameState.instance.Currency.Tokens -= TokenToFinish;
-        GameState.instance.Currency.Coins += CollectibleCoins;
         startTime = DateTime.MaxValue;
     }
 
@@ -180,11 +169,6 @@ public class MerchState
 
     public void Upgrade()
     {
-        if (!CanUpgrade())
-        {
-            return;
-        }
-
         merchId += 1;
         UpdateLinks();
     }

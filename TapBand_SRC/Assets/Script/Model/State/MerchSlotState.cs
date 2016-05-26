@@ -143,21 +143,6 @@ public class MerchSlotState
 
     public void Activate()
     {
-        if (!CanActivate())
-        {
-            Debug.LogError("Wololo!");
-            return;
-        }
-
-        if (CoinCost > 0)
-        {
-            GameState.instance.Currency.Coins -= CoinCost;
-        }
-        else
-        {
-            GameState.instance.Currency.Tokens -= TokenCost;
-        }
-
         activated = true;
     }
 }

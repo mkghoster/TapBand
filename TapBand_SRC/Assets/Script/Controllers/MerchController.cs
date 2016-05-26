@@ -5,29 +5,28 @@ using System.Linq;
 
 public class MerchController : MonoBehaviour
 {
-    public delegate bool CanBuyEvent(int price);
-    public event CanBuyEvent CanBuy;
-
     #region Private fields
     private MerchUI merchUI;
+    private CurrencyController currencyController;
     #endregion
 
     void Awake()
     {
+        currencyController = (CurrencyController)FindObjectOfType(typeof(CurrencyController));
+        merchUI = FindObjectOfType<MerchUI>();
+        merchUI.SetController(this);
     }
 
     void Start()
     {
-        /*merchUI = FindObjectOfType<MerchUI>();
-        merchUI.SetController(this);
         merchUI.CreateMerchItems(GameState.instance.MerchStates);
-        merchUI.CreateMerchSlotItems(GameState.instance.MerchSlotStates);*/
+        merchUI.CreateMerchSlotItems(GameState.instance.MerchSlotStates);
     }
 
     void Update()
     {
-        /*merchUI.UpdateMerchItems();
-        merchUI.UpdateMerchSlotItems();*/
+        merchUI.UpdateMerchItems();
+        merchUI.UpdateMerchSlotItems();
     }
 
     public bool HasFreeSlot()
@@ -74,7 +73,9 @@ public class MerchController : MonoBehaviour
         {
             return;
         }
-        state.Collect();
+        currencyController.BuyFromToken(state.TokenToFinish);
+        currencyController.AddCoins(state.CollectibleCoins);
+        state.ResetTimer();
         MerchSlotState slotState = GetSlotOfMerch(state.Type);
         slotState.ActiveMerchType = MerchType.NONE;
         merchUI.UpdateMerchItems();
@@ -88,6 +89,7 @@ public class MerchController : MonoBehaviour
             return;
         }
         state.Upgrade();
+        currencyController.BuyFromCoin(state.UpgradeCost);
         merchUI.UpdateMerchItems();
         merchUI.UpdateMerchSlotItems();
     }
@@ -99,6 +101,16 @@ public class MerchController : MonoBehaviour
             return;
         }
         state.Activate();
+
+        if (state.CoinCost > 0)
+        {
+            currencyController.BuyFromCoin(state.CoinCost);
+        }
+        else
+        {
+            currencyController.BuyFromToken(state.TokenCost);
+        }
+
         merchUI.UpdateMerchSlotItems();
     }
 }

@@ -7,7 +7,6 @@ public class CurrencyController : MonoBehaviour
     private SongController songController;
     private ConcertController concertController;
     private TourController tourController;
-    private MerchController merchController;
     private SkillUpgradeUI[] skillUpgradeUIs;
 
     private CurrencyState currencyState;
@@ -20,7 +19,6 @@ public class CurrencyController : MonoBehaviour
         songController = FindObjectOfType<SongController>();
         concertController = FindObjectOfType<ConcertController>();
         tourController = FindObjectOfType<TourController>();
-        merchController = FindObjectOfType<MerchController>();
         skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
 
         currencyState = GameState.instance.Currency;
@@ -39,9 +37,6 @@ public class CurrencyController : MonoBehaviour
         songController.OnSongFinished += HandleSongFinished;
         concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
-
-        /*merchController.MerchTransaction += MerchTransaction;
-        merchController.CoinTransaction += AddCoins;*/
         
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -54,9 +49,6 @@ public class CurrencyController : MonoBehaviour
         songController.OnSongFinished -= HandleSongFinished;
         concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
-
-        /*merchController.MerchTransaction -= MerchTransaction;
-        merchController.CoinTransaction -= AddCoins;*/
         
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -72,6 +64,25 @@ public class CurrencyController : MonoBehaviour
     public bool CanBuyFromToken(int price)
     {
         return currencyState.Tokens >= price;
+    }
+
+    public void BuyFromCoin(double price)
+    {
+        if (!CanBuyFromCoin(price))
+        {
+            return;
+        }
+        currencyState.Coins -= price;
+    }
+
+    public void BuyFromToken(int price)
+    {
+        if (!CanBuyFromToken(price))
+        {
+            return;
+        }
+        // TODO: should request confirmation
+        currencyState.Tokens -= price;
     }
 
     private void OnPrestige()
@@ -90,13 +101,6 @@ public class CurrencyController : MonoBehaviour
         SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void MerchTransaction(MerchData merch)
-    {
-        currencyState.Coins -= merch.cost;
-
-        SynchronizeRealCurrencyAndScreenCurrency();
-    }
-
     private void HandleSongFinished(object sender, SongEventArgs e)
     {
         if (e.Status == SongStatus.Successful)
@@ -105,7 +109,7 @@ public class CurrencyController : MonoBehaviour
         }
     }
 
-    private void AddCoins(double coins)
+    public void AddCoins(double coins)
     {
         currencyState.Coins += coins;
         SynchronizeRealCurrencyAndScreenCurrency();
