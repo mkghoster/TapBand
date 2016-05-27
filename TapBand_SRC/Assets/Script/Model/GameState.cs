@@ -48,11 +48,11 @@ public class GameState : LoadableData
         IFormatter formatter = new BinaryFormatter();
         GameState gs = (GameState)formatter.Deserialize(ms);
 
-        Currency = gs.Currency == null ? new CurrencyState() : gd.Currency;
-        MerchStates = gs.MerchStates == null ? new List<MerchState>() : gd.MerchStates;
-        MerchSlotStates = gs.MerchSlotStates == null ? new List<MerchSlotState>() : gd.MerchSlotStates;
-        Concert = gs.Concert == null ? new ConcertState() : gd.Concert;
-        Equipment = gd.Equipment == null ? new EquipmentState() : gd.Equipment;
+        Currency = gs.Currency == null ? new CurrencyState() : gs.Currency;
+        MerchStates = gs.MerchStates == null ? new List<MerchState>() : gs.MerchStates;
+        MerchSlotStates = gs.MerchSlotStates == null ? new List<MerchSlotState>() : gs.MerchSlotStates;
+        Concert = gs.Concert == null ? new ConcertState() : gs.Concert;
+        Equipment = gs.Equipment == null ? new EquipmentState() : gs.Equipment;
         DailyEvent = gs.DailyEvent == null ? new DailyEventState() : gs.DailyEvent;
 
         Init();
