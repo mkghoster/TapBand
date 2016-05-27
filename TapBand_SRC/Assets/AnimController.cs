@@ -11,7 +11,6 @@ public class AnimController : MonoBehaviour {
     private Animator anim;
     private List<float> taps = new List<float>();
     private float tapsPerSecond;
-
     private TapUI tapUI;
 
     void Awake()
@@ -50,11 +49,11 @@ public class AnimController : MonoBehaviour {
             bool isEncoreSong = e.Data.isEncore;
             if (isEncoreSong)
             {
-                anim.SetTrigger("anim_palmy");
+                anim.SetTrigger("palmy");
             }
             else
             {
-                anim.SetTrigger("anim_rolling");
+                anim.SetTrigger("roll");
             }
             
         }
@@ -81,18 +80,30 @@ public class AnimController : MonoBehaviour {
                // taps.Remove(i);
             }
         }
+        //Debug.Log(asd);
         tapsPerSecond = taps.Count;
         if (tapsPerSecond > 5)
         {
-            anim.SetTrigger("anim_basic_02");
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("lady_animation_basic_02"))
+            {
+                anim.SetTrigger("basic_02");
+            }
+            
         }
         else if (tapsPerSecond > 3)
         {
-            anim.SetTrigger("anim_basic_01");
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("lady_animation_basic_01"))
+            {
+                anim.SetTrigger("basic_01");
+            }
+            
         }
         else
         {
-            anim.SetTrigger("anim_basic_03");
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("lady_animation_basic_03"))
+            {
+                anim.SetTrigger("basic_03");
+            }
         }
 
         //Debug.Log(tapsPerSecond);
