@@ -7,7 +7,6 @@ public class CurrencyController : MonoBehaviour
     private SongController songController;
     private ConcertController concertController;
     private TourController tourController;
-    private MerchController merchController;
     private DailyEventController dailyEventController;
     private SkillUpgradeUI[] skillUpgradeUIs;
 
@@ -21,7 +20,6 @@ public class CurrencyController : MonoBehaviour
         songController = FindObjectOfType<SongController>();
         concertController = FindObjectOfType<ConcertController>();
         tourController = FindObjectOfType<TourController>();
-        merchController = FindObjectOfType<MerchController>();
         dailyEventController = FindObjectOfType<DailyEventController>();
 
         skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
@@ -43,9 +41,6 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
-        merchController.MerchTransaction += MerchTransaction;
-        merchController.CoinTransaction += AddCoins;
-
         dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
@@ -60,14 +55,19 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
-        merchController.MerchTransaction -= MerchTransaction;
-        merchController.CoinTransaction -= AddCoins;
-
         dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
             skillUpgradeUIs[i].OnSkillUpgrade -= HandleSkillUpgrade;
+        }
+    }
+
+    public double TapMultiplierFromPrestige
+    {
+        get
+        {
+            return currencyState.TapMultiplierFromPrestige; 
         }
     }
 
@@ -81,11 +81,35 @@ public class CurrencyController : MonoBehaviour
         return currencyState.Tokens >= price;
     }
 
-    private void OnPrestige()
+    public void BuyFromCoin(double price)
     {
+        if (!CanBuyFromCoin(price))
+        {
+            return;
+        }
+        currencyState.Coins -= price;
+    }
+
+    public void BuyFromToken(int price)
+    {
+        if (!CanBuyFromToken(price))
+        {
+            return;
+        }
+        // TODO: should request confirmation
+        currencyState.Tokens -= price;
+    }
+
+    private void OnPrestige() 
+    {
+        //elveszik
         currencyState.Coins = 0;
-        currencyState.Fans = 0;
-        //  currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
+
+        double tapStrengthMultiplier = 1.2f;                                 //TODO: képlettel meghatározni a pontos értékét egy fvben
+        currencyState.TapMultiplierFromPrestige *= tapStrengthMultiplier;
+
+        print("new tapStrength bonus after Prestige: "+ currencyState.TapMultiplierFromPrestige);
+        
 
         SynchronizeRealCurrencyAndScreenCurrency();
     }
@@ -93,13 +117,6 @@ public class CurrencyController : MonoBehaviour
     private void HandleSkillUpgrade(object sender, BandMemberSkillEventArgs e)
     {
         currencyState.Coins -= e.UnlockedSkill.upgradeCost;
-
-        SynchronizeRealCurrencyAndScreenCurrency();
-    }
-
-    private void MerchTransaction(MerchData merch)
-    {
-        currencyState.Coins -= merch.cost;
 
         SynchronizeRealCurrencyAndScreenCurrency();
     }
@@ -112,7 +129,7 @@ public class CurrencyController : MonoBehaviour
         }
     }
 
-    private void AddCoins(double coins)
+    public void AddCoins(double coins)
     {
         currencyState.Coins += Math.Floor(coins); // Currencies are using doubles
         SynchronizeRealCurrencyAndScreenCurrency();

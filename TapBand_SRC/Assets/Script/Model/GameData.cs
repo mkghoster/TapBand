@@ -112,6 +112,27 @@ public class GameData : LoadableData
         boosterData = new BoosterData();
     }
 
+    public IList<MerchData> GetMerchDataByType(MerchType type)
+    {
+        switch (type)
+        {
+            case MerchType.MERCH_1:
+                return MerchData1List;
+            case MerchType.MERCH_2:
+                return MerchData2List;
+            case MerchType.MERCH_3:
+                return MerchData3List;
+            case MerchType.MERCH_4:
+                return MerchData4List;
+            case MerchType.MERCH_5:
+                return MerchData5List;
+            case MerchType.MERCH_6:
+                return MerchData6List;
+        }
+        return MerchData1List;
+        //return merchDataLists[(int)type - 1];
+    }
+
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {

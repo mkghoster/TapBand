@@ -11,6 +11,8 @@ public class TapUI : MonoBehaviour
 
     private GameObject canvas;
 
+    private GameObject firework;
+
     public GameObject risingText;
 
     public event RawTapEvent OnScreenTap;
@@ -21,6 +23,9 @@ public class TapUI : MonoBehaviour
         songController = FindObjectOfType<SongController>();
         dailyEventController = FindObjectOfType<DailyEventController>();
         canvas = GameObject.Find("Canvas");
+
+        _collider = GetComponent<Collider2D>();
+        firework = GameObject.Find("Firework");
     }
 
     // Update is called once per frame
@@ -57,6 +62,12 @@ public class TapUI : MonoBehaviour
         text.transform.position = data.position;
         text.transform.SetParent(canvas.transform);
 
+        Vector2 mouseScreenPositionToWorld = Camera.main.ScreenToWorldPoint(data.position);
+        GameObject firework = (GameObject)Instantiate(Resources.Load("Firework"), mouseScreenPositionToWorld, Quaternion.identity);
+        ParticleSystem tapParticle = firework.GetComponent<ParticleSystem>();
+        tapParticle.Play();
+        Destroy(firework, 2);
+
         RisingText rising = text.GetComponent<RisingText>();
         rising.Text = "+" + value.ToString("F0");
         rising.Duration = 3f;
@@ -87,8 +98,9 @@ public class TapUI : MonoBehaviour
 
     private RawTapData RandomTapEventArgs()
     {
-        int x = UnityEngine.Random.Range(20, 481);
-        int y = UnityEngine.Random.Range(120, 701);
+        //TODO make the correct values
+        int x = 200;
+        int y = 500;
         Vector2 autoTapPosition = new Vector2(x, y);
         return new RawTapData(autoTapPosition, false);
     }

@@ -41,14 +41,14 @@ public class RawGameDataLoader : IGameDataLoader
         LoadSkinData(gameData.SkinData4List, "SkinData4");
         LoadSkinData(gameData.SkinData5List, "SkinData5");
 
-        //LoadMerchData(gameData.MerchData1List, "MerchData1");
-        //LoadMerchData(gameData.MerchData2List, "MerchData2");
-        //LoadMerchData(gameData.MerchData3List, "MerchData3");
-        //LoadMerchData(gameData.MerchData4List, "MerchData4");
-        //LoadMerchData(gameData.MerchData5List, "MerchData5");
-        //LoadMerchData(gameData.MerchData6List, "MerchData6");
+        LoadMerchData(gameData.MerchData1List, "MerchData1");
+        LoadMerchData(gameData.MerchData2List, "MerchData2");
+        LoadMerchData(gameData.MerchData3List, "MerchData3");
+        LoadMerchData(gameData.MerchData4List, "MerchData4");
+        LoadMerchData(gameData.MerchData5List, "MerchData5");
+        LoadMerchData(gameData.MerchData6List, "MerchData6");
 
-        //LoadMerchSlotData(gameData.MerchSlotDataList);
+        LoadMerchSlotData(gameData.MerchSlotDataList);
 
         LoadGeneralData(gameData.GeneralData);
 
@@ -118,6 +118,50 @@ public class RawGameDataLoader : IGameDataLoader
             concertDataObject.background = LoadEnum<BackgroundType>(i, "Background");
 
             concertDataTarget.Add(concertDataObject);
+        }
+    }
+
+    private void LoadMerchData(IList<MerchData> merchDataTarget, string sheetName)
+    {
+        merchDataTarget.Clear();
+        currentRows = dataReader.GetRows(sheetName);
+        currentSheet = sheetName;
+
+        int rowNum = currentRows.Count;
+
+        for (int i = 0; i < rowNum; i++)
+        {
+            MerchData merchDataObject = new MerchData();
+
+            merchDataObject.id = LoadInt(i, "ID");
+            merchDataObject.name = LoadString(i, "Name");
+            merchDataObject.icon = LoadString(i, "Icon");
+            merchDataObject.cost = LoadDouble(i, "Cost");
+            merchDataObject.duration = LoadInt(i, "Duration");
+            merchDataObject.rewardMultiplier = LoadDouble(i, "RewardMultiplier");
+
+            merchDataTarget.Add(merchDataObject);
+        }
+    }
+
+    private void LoadMerchSlotData(IList<MerchSlotData> merchSlotDataTarget)
+    {
+        merchSlotDataTarget.Clear();
+
+        currentSheet = "MerchSlotData";
+        currentRows = dataReader.GetRows(currentSheet);
+
+        int rowNum = currentRows.Count;
+
+        for (int i = 0; i < rowNum; i++)
+        {
+            MerchSlotData merchSlotDataObject = new MerchSlotData();
+
+            merchSlotDataObject.id = LoadInt(i, "Id");
+            merchSlotDataObject.coinCost = LoadDouble(i, "CoinCost");
+            merchSlotDataObject.tokenCost = LoadInt(i, "TokenCost");
+
+            merchSlotDataTarget.Add(merchSlotDataObject);
         }
     }
 

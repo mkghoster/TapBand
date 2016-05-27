@@ -32,7 +32,7 @@ public class HudUI : MonoBehaviour
     {
         currencyController = (CurrencyController)FindObjectOfType(typeof(CurrencyController));
         songController = (SongController)FindObjectOfType(typeof(SongController));
-
+      
         var coinObj = GameObject.Find("CoinText");
         var fanObj = GameObject.Find("FanText");
         var concertObj = GameObject.Find("ConcertText");

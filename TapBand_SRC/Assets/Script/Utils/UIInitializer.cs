@@ -8,8 +8,6 @@ public class UIInitializer : MonoBehaviour
     void Start()
     {
         // Turn off unnecessary UI elements
-        transform.FindChild("SettingsUI").gameObject.SetActive(false);
-
         transform.FindChild("BackstageUI").gameObject.SetActive(false);
         transform.FindChild("DebugPanel").gameObject.SetActive(false);
         transform.FindChild("SettingsPanel").gameObject.SetActive(false);
