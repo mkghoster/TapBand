@@ -333,44 +333,30 @@ public class AudioManagerTapBand : AudioManager
 
         switch (randomNumber)
         {
-            case 0:
-                //print("0");               
+            case 0:          
                 correctAudioClipsOrderByConcert = FirstConcertOrderType();
                 break;
-            case 1:
-                //print("1");              
+            case 1:         
                 correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 2:
-                //print("2");            
+            case 2:    
                 correctAudioClipsOrderByConcert = ThirdConecertOrderType();
                 break;
-            case 3:
-                //print("3");               
+            case 3:          
                 correctAudioClipsOrderByConcert = FourthConcertOrderType();
                 break;
-            case 4:
-                //print("4");              
+            case 4:           
                 correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 5:
-                //print("5");              
+            case 5:         
                 correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 6:
-                //print("6");              
+            case 6:        
                 correctAudioClipsOrderByConcert = FifthConcertOrderType();
                 break;
         }
 
         PlayerPrefsManager.SetPrevAudioConcertID(randomNumber);
-
-        //print("Type: "+ randomNumber);
-        //print("ret: " + ret[0] + ret[1] + ret[2] + ret[3] + ret[4]);
-        /*for(int i = 0; i < ret.Length; i++)
-        {
-            print(i + ": "+ ret[i]);
-        }*/
 
         SetCorrectOrderAudioClips(correctAudioClipsOrderByConcert);
 
@@ -387,9 +373,8 @@ public class AudioManagerTapBand : AudioManager
             musicSources[i].clip = clips[order[i] + (currentConcertAudioID * 6)];
         }
 
-        //save the encore loop clip index
+        //save the current concert encore loop clip
         currentConcertEncoreLoopClip = clips[ order[ order.Length - 1 ] + (currentConcertAudioID * 6)];
-        print(currentConcertEncoreLoopClip.name);
     }
 
     private void ReadMusicFromResources()
@@ -408,6 +393,8 @@ public class AudioManagerTapBand : AudioManager
     //3 - Synth
     //4 - Encore
 
+    //music bar orders by gdd
+    
     private int[] FirstConcertOrderType()
     {
         float n = Random.Range(0, 2);
