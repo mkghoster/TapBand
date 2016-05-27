@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CurrencyController : MonoBehaviour
 {
-
     private SongController songController;
     private ConcertController concertController;
     private TourController tourController;
+    private DailyEventController dailyEventController;
     private SkillUpgradeUI[] skillUpgradeUIs;
 
     private CurrencyState currencyState;
@@ -19,6 +20,8 @@ public class CurrencyController : MonoBehaviour
         songController = FindObjectOfType<SongController>();
         concertController = FindObjectOfType<ConcertController>();
         tourController = FindObjectOfType<TourController>();
+        dailyEventController = FindObjectOfType<DailyEventController>();
+
         skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
 
         currencyState = GameState.instance.Currency;
@@ -38,6 +41,8 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
+        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
+
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
             skillUpgradeUIs[i].OnSkillUpgrade += HandleSkillUpgrade;
@@ -49,6 +54,8 @@ public class CurrencyController : MonoBehaviour
         songController.OnSongFinished -= HandleSongFinished;
         concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
+
+        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -124,7 +131,7 @@ public class CurrencyController : MonoBehaviour
 
     public void AddCoins(double coins)
     {
-        currencyState.Coins += coins;
+        currencyState.Coins += Math.Floor(coins); // Currencies are using doubles
         SynchronizeRealCurrencyAndScreenCurrency();
     }
 
@@ -145,6 +152,29 @@ public class CurrencyController : MonoBehaviour
         if (OnCurrencyChanged != null)
         {
             OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens));
+        }
+    }
+
+    private void HandleDailyEventFinished(object sender, DailyEventEventArgs e)
+    {
+        if (e.DailyStreakReward.tokenAmount > 0)
+        {
+            AddTokens(e.DailyStreakReward.tokenAmount);
+        }
+        else
+        {
+            var coinReward = concertController.CurrentConcertData.rewardBase * e.DailyStreakReward.coinMultiplier;
+            AddCoins(coinReward);
+        }
+
+        if (e.DailyRandomReward.tokenAmount > 0)
+        {
+            AddTokens(e.DailyRandomReward.tokenAmount);
+        }
+        else if (e.DailyRandomReward.coinMultiplier > 0)
+        {
+            var coinReward = concertController.CurrentConcertData.rewardBase * e.DailyRandomReward.coinMultiplier;
+            AddCoins(coinReward);
         }
     }
 
