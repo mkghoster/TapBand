@@ -17,9 +17,8 @@ public class BoosterController : MonoBehaviour {
     private float autoTapBoosterTapsPerSecond;
     private double baseAutoTapRate;
     private float expectedAutoTapCount;
-    private double autoTapRateSum;
+    private double autoTapRateSum=0;
     private int currentAutoTapCount = 0;
-
     private TapUI tapUI;
 
     void Start()
@@ -28,10 +27,12 @@ public class BoosterController : MonoBehaviour {
         tapController = (TapController)FindObjectOfType(typeof(TapController));
         songController = (SongController)FindObjectOfType(typeof(SongController));
         tapUI = (TapUI)FindObjectOfType(typeof(TapUI));
+        
     }
 
     void Update()
     {
+
         if (tapStrengthBoosterisActive)
         {
             CurrentBoosterDuration -= Time.deltaTime;
@@ -41,20 +42,21 @@ public class BoosterController : MonoBehaviour {
             tapStrengthBoosterisActive = false;
             tapController.BoosterTimeInterval(0);
         }
-
+        
         if (autoTapisActive)
         {
+            
             CurrentAutoTapBoosterDuration -= Time.deltaTime;
-            if (CurrentAutoTapBoosterDuration < (double)boosterData.AutoTapBoosterDuration - autoTapRateSum && CurrentAutoTapBoosterDuration > 0)
-            {             
+            //currentAutoTapCount != expectedAutoTapCount
+            if (CurrentAutoTapBoosterDuration < (double)boosterData.AutoTapBoosterDuration - autoTapRateSum && currentAutoTapCount != expectedAutoTapCount)
+            {
                 currentAutoTapCount++;
-                expectedAutoTapCount++;
                 autoTapRateSum += baseAutoTapRate;
                 tapUI.AutoTap();
             }
         }
-
-        if (CurrentAutoTapBoosterDuration <= 0 || currentAutoTapCount == expectedAutoTapCount)
+        //currentAutoTapCount
+        if (currentAutoTapCount == expectedAutoTapCount)
         {
             CurrentAutoTapBoosterDuration = boosterData.AutoTapBoosterDuration;
             autoTapisActive = false;
