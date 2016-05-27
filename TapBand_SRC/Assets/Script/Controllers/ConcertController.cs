@@ -170,10 +170,7 @@ public class ConcertController : MonoBehaviour
 
     private void RestartConcertFromTheFirst() // TODO: wat?
     {
-        ConcertState state = GameState.instance.Concert;
-        state.CurrentConcertID = GameData.instance.ConcertDataList[0].id;
-        state.LastCompletedSongID = -1;
-        state.CurrentSong = null;
+        concertState.ResetToConcert(GameData.instance.ConcertDataList[0]);       
     }
 
     private ConcertData GetNextConcert()

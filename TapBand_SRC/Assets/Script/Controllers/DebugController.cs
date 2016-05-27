@@ -57,4 +57,9 @@ public class DebugController : MonoBehaviour {
         tapController.IncDebugTapMultiplier(tapMultipiler);
     }
 
+    public void SetToOneDebugTapSterngth()//TODO ezt bekötni egy gombra !!!!!
+    {
+        tapController.SetToOneDebugTapMultiplier();
+    }
+
 }

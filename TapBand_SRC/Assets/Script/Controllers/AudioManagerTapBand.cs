@@ -24,10 +24,9 @@ public class AudioManagerTapBand : AudioManager
     //index for Concert and MusicBars
     private int actualIndex;
 
-    //private int prevConcertAudioID; // kmenetni az előző concert audio id-t és ellenőrizni  volt e 
-
     private AudioClip[] clips;
 
+    private AudioClip currentConcertEncoreLoopClip ;
 
     void Awake()
     {
@@ -59,7 +58,7 @@ public class AudioManagerTapBand : AudioManager
         {
             //it's the previous song id, need to inc
             actualIndex = CastSongIndex(concertState.LastCompletedSongID + 1);
-
+           
             //encore song : only the last bar need to fade in
             if (actualIndex == 4)
             {
@@ -67,7 +66,7 @@ public class AudioManagerTapBand : AudioManager
             }
             else
             {
-                FadeInMusicBarsUntilIndex(actualIndex);
+                FadeInMusicBarsUntilIndex(actualIndex+1); // actualIndex + 1 : if it's 0  it doesn't fade anything
             }
         }
         else
@@ -79,11 +78,20 @@ public class AudioManagerTapBand : AudioManager
 
     }
 
+    void Update()
+    {
+       if (concertController.CurrentSongData.isEncore  && musicSources[4].time >= musicSources[4].clip.length )
+       {
+            StartEncoreLoopClip();
+       }
+    }
 
-
+    
     void OnEnable()
     {
         songController.OnSongFinished += EndOfSongEvent;
+        songController.OnSongStarted += SetUpEncoreLoopClip;
+
         concertController.OnConcertFinished += EndOfConcertEvent;
         concertController.OnConcertRestart += RestartConcert;
         tourController.OnPrestige += OnPrestigeEvent;
@@ -96,6 +104,8 @@ public class AudioManagerTapBand : AudioManager
     void OnDisable()
     {
         songController.OnSongFinished -= EndOfSongEvent;
+        songController.OnSongStarted -= SetUpEncoreLoopClip;
+
         concertController.OnConcertFinished -= EndOfConcertEvent;
         concertController.OnConcertRestart -= RestartConcert;
         tourController.OnPrestige -= OnPrestigeEvent;
@@ -126,31 +136,35 @@ public class AudioManagerTapBand : AudioManager
         }
     }
 
+
+    private void SetUpEncoreLoopClip(object sender, SongEventArgs e)
+    {
+        if (e.Data.isEncore)
+            musicSources[0].clip = currentConcertEncoreLoopClip;
+    }
+
+
     //concert success
     void EndOfConcertEvent(object sender, ConcertEventArgs e)
     {
-        //StartNewOrPrevConcert();
         StartNewConcert();
     }
 
     //concert fail
     void RestartConcert(object sender, ConcertEventArgs e)
     {
-        //StartNewOrPrevConcert();
         StartPrevConcert();
     }
 
     //OnPrestige
     void OnPrestigeEvent()
     {
-        //StartNewOrPrevConcert();
-        StartNewConcert();//---???
+        StartNewConcert();
     }
 
     //Nem kapott OnPrestigeEventet a torubol ha az első concerten nyomtunk ismét restart-ot
     void RestartConcertFromTour()
     {
-        //StartNewOrPrevConcert();
         StartNewConcert();
     }
 
@@ -238,6 +252,14 @@ public class AudioManagerTapBand : AudioManager
         FadeClip(musicSources[actualIndex], FadeState.FadeIn);
     }
 
+    private void StartEncoreLoopClip()
+    {
+        musicSources[4].Stop();
+        musicSources[0].volume = base.musicVolume;
+        musicSources[0].Play();
+        musicSources[0].loop = true;
+    }
+
 
 
     //mute, loop and start all music bars 
@@ -294,7 +316,7 @@ public class AudioManagerTapBand : AudioManager
 
     private void ChooseConcertAudio(bool isStarted)
     {
-        int[] ret = { -1, -1, -1, -1, -1 };
+        int[] correctAudioClipsOrderByConcert = { -1, -1, -1, -1, -1, -1 };
         int randomNumber = -1;
 
         if (isStarted)
@@ -311,47 +333,58 @@ public class AudioManagerTapBand : AudioManager
 
         switch (randomNumber)
         {
-            case 0:
-                //print("0");               
-                ret = FirstConcertOrderType();
+            case 0:          
+                correctAudioClipsOrderByConcert = FirstConcertOrderType();
                 break;
-            case 1:
-                //print("1");              
-                ret = SecondConcertOrderType();
+            case 1:         
+                correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 2:
-                //print("2");            
-                ret = ThirdConecertOrderType();
+            case 2:    
+                correctAudioClipsOrderByConcert = ThirdConecertOrderType();
                 break;
-            case 3:
-                //print("3");               
-                ret = FourthConcertOrderType();
+            case 3:          
+                correctAudioClipsOrderByConcert = FourthConcertOrderType();
                 break;
-            case 4:
-                //print("4");              
-                ret = SecondConcertOrderType();
+            case 4:           
+                correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 5:
-                //print("5");              
-                ret = SecondConcertOrderType();
+            case 5:         
+                correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 6:
-                //print("6");              
-                ret = FifthConcertOrderType();
+            case 6:        
+                correctAudioClipsOrderByConcert = FifthConcertOrderType();
                 break;
         }
 
         PlayerPrefsManager.SetPrevAudioConcertID(randomNumber);
 
-        //print("Type: "+ randomNumber);
-        //print("ret: " + ret[0] + ret[1] + ret[2] + ret[3] + ret[4]);
-        /*for(int i = 0; i < ret.Length; i++)
+        SetCorrectOrderAudioClips(correctAudioClipsOrderByConcert);
+
+    }
+
+   
+
+    private void SetCorrectOrderAudioClips(int[] order)
+    {
+        int currentConcertAudioID = PlayerPrefsManager.GetPrevAudioConcertID();
+
+        for (int i = 0; i < musicSources.Length; i++)
         {
-            print(i + ": "+ ret[i]);
-        }*/
+            musicSources[i].clip = clips[order[i] + (currentConcertAudioID * 6)];
+        }
 
-        SetCorrectOrderAudioClips(ret);
+        //save the current concert encore loop clip
+        currentConcertEncoreLoopClip = clips[ order[ order.Length - 1 ] + (currentConcertAudioID * 6)];
+    }
 
+    private void ReadMusicFromResources()
+    {
+        var array = Resources.LoadAll("PlaceHolder", typeof(AudioClip));
+        clips = new AudioClip[array.Length];
+        for (int i = 0; i < clips.Length; i++)
+        {
+            clips[i] = array[i] as AudioClip;
+        }
     }
 
     //0 - Guitar
@@ -360,52 +393,25 @@ public class AudioManagerTapBand : AudioManager
     //3 - Synth
     //4 - Encore
 
-    private void SetCorrectOrderAudioClips(int[] order)
-    {
-        int currentConcertAudioID = PlayerPrefsManager.GetPrevAudioConcertID();
-
-        for (int i = 0; i < order.Length; i++)
-        {
-            musicSources[i].clip = clips[order[i] + (currentConcertAudioID * 5)];
-        }
-    }
-
-    private void ReadMusicFromResources()
-    {
-        //--------------------------------------------------------------------- TODO, try catchbe
-        var array = Resources.LoadAll("PlaceHolder", typeof(AudioClip));
-        clips = new AudioClip[array.Length];
-        for (int i = 0; i < clips.Length; i++)
-        {
-            clips[i] = array[i] as AudioClip;
-        }
-
-        /*for(int i = 0; i < clips.Length; i++)
-        {
-            print("name: "+ clips[i].name);
-        }*/
-
-    }
-
-
-    //Happy Develeopers
+    //music bar orders by gdd
+    
     private int[] FirstConcertOrderType()
     {
         float n = Random.Range(0, 2);
 
         if (n % 3 == 0)
         {
-            int[] order = { 0, 1, 2, 3, 4 };
+            int[] order = { 0, 1, 2, 3, 4 , 5 };
             return order;
         }
         else if (n % 3 == 1)
         {
-            int[] order = { 1, 0, 2, 3, 4 };
+            int[] order = { 1, 0, 2, 3, 4 , 5 };
             return order;
         }
         else
         {
-            int[] order = { 1, 2, 0, 3, 4 };
+            int[] order = { 1, 2, 0, 3, 4, 5 };
             return order;
         }
 
@@ -417,17 +423,17 @@ public class AudioManagerTapBand : AudioManager
 
         if (n % 3 == 0)
         {
-            int[] order = { 1, 2, 0, 3, 4 };
+            int[] order = { 1, 2, 0, 3, 4, 5 };
             return order;
         }
         else if (n % 3 == 1)
         {
-            int[] order = { 1, 0, 2, 3, 4 };
+            int[] order = { 1, 0, 2, 3, 4, 5 };
             return order;
         }
         else
         {
-            int[] order = { 2, 1, 0, 3, 4 };
+            int[] order = { 2, 1, 0, 3, 4, 5 };
             return order;
         }
     }
@@ -440,33 +446,31 @@ public class AudioManagerTapBand : AudioManager
 
         if (n % 4 == 0)
         {
-            int[] order = { 0, 1, 2, 3, 4 };
+            int[] order = { 0, 1, 2, 3, 4, 5 };
             return order;
         }
         else if (n % 4 == 1)
         {
-            int[] order = { 1, 2, 0, 3, 4 };
+            int[] order = { 1, 2, 0, 3, 4, 5 };
             return order;
         }
         else if (n % 4 == 2)
         {
-            int[] order = { 1, 0, 2, 3, 4 };
+            int[] order = { 1, 0, 2, 3, 4, 5 };
             return order;
         }
         else
         {
-            int[] order = { 2, 1, 0, 3, 4 };
+            int[] order = { 2, 1, 0, 3, 4, 5 };
             return order;
         }
 
     }
 
-    private int[] FourthConcertOrderType() //EZT IS ÁTÍRNI
+    private int[] FourthConcertOrderType()
     {
-        //ez a kettős
-
         float n = Random.Range(0f, 1f);
-        int[] order = new int[5];
+        int[] order = new int[6];
 
         if (n >= 0.5f)
             order[0] = 1;
@@ -481,6 +485,7 @@ public class AudioManagerTapBand : AudioManager
         order[2] = 0;
         order[3] = 3;
         order[4] = 4;
+        order[5] = 5;
 
         //print("order: " + order[0] + order[1] + order[2] + order[3] + order[4]);
         return order;
@@ -492,30 +497,25 @@ public class AudioManagerTapBand : AudioManager
 
         if (n % 4 == 0)
         {
-            int[] order = { 0, 1, 2, 3, 4 };
+            int[] order = { 0, 1, 2, 3, 4, 5 };
             return order;
         }
         else if (n % 4 == 1)
         {
-            int[] order = { 1, 2, 0, 3, 4 };
+            int[] order = { 1, 2, 0, 3, 4, 5 };
             return order;
         }
         else if (n % 4 == 2)
         {
-            int[] order = { 1, 0, 2, 3, 4 };
+            int[] order = { 1, 0, 2, 3, 4, 5 };
             return order;
         }
         else
         {
-            int[] order = { 1, 2, 3, 0, 4 };
+            int[] order = { 1, 2, 3, 0, 4, 5 };
             return order;
         }
     }
-
-
-
-
-
 
     #endregion
 

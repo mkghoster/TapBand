@@ -40,9 +40,9 @@ public class TourController : MonoBehaviour
         {
             RestartSong();
         }
-        if (OnPrestige != null)
+        if (OnPrestige != null)     //TODO: Reward átbeszélse
         {
             OnPrestige();
-        }
+        }       
     }
 }
