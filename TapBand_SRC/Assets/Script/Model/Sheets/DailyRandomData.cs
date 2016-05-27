@@ -9,6 +9,8 @@ public class DailyRandomData
     public float possibility;
     public float coinMultiplier;
     public int tokenAmount;
-    public float boosterDiscount;
+    public float tapStrengthBoosterDiscount;
+    public float autoTapBoosterDiscount;
+    public float extraTimeBoosterDiscount;
     public float adMultiplier;
 }

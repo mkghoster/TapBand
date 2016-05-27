@@ -85,7 +85,23 @@ public class DailyEventController : MonoBehaviour
         state.lastEventCompleted = DateTime.Now;
         CalculateResetTime();
         shouldCheck = true;
-        Debug.Log("Daily event completed. Reset time: " + resetTime.ToShortDateString());
+        
+        if (e.DailyRandomReward.autoTapBoosterDiscount > 0)
+        {
+            state.autoTapBoosterDiscount = e.DailyRandomReward.autoTapBoosterDiscount;
+            state.autoTapBoosterDiscountUntil = DateTime.Now.AddDays(1); // TODO: read time from param
+        }
+        else if (e.DailyRandomReward.extraTimeBoosterDiscount > 0)
+        {
+            state.extraTimeBoosterDiscount = e.DailyRandomReward.autoTapBoosterDiscount;
+            state.extraTimeBoosterDiscountUntil = DateTime.Now.AddDays(1); // TODO: read time from param
+        }
+        else if (e.DailyRandomReward.tapStrengthBoosterDiscount > 0)
+        {
+            state.tapStrengthBoosterDiscount = e.DailyRandomReward.autoTapBoosterDiscount;
+            state.tapStrengthBoosterDiscountUntil = DateTime.Now.AddDays(1); // TODO: read time from param
+        }
+
 
         if (OnDailyEventFinished != null)
         {
@@ -128,7 +144,7 @@ public class DailyEventController : MonoBehaviour
         {
             var dataItem = dailyRandomData[i];
             passedPossibility += dataItem.possibility;
-            if (passedPossibility > dailyRandomSelector)
+            if (passedPossibility >= dailyRandomSelector)
             {
                 return dataItem;
             }

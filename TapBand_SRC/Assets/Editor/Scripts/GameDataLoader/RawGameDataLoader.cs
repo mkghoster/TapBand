@@ -312,7 +312,9 @@ public class RawGameDataLoader : IGameDataLoader
             dailyRandomDataObject.asset = LoadString(i, "Asset");
             dailyRandomDataObject.possibility = LoadFloat(i, "Possibility");
             dailyRandomDataObject.coinMultiplier = LoadFloat(i, "CoinMultiplier");
-            dailyRandomDataObject.boosterDiscount = LoadFloat(i, "BoosterDiscount");
+            dailyRandomDataObject.tapStrengthBoosterDiscount = LoadFloat(i, "TapStrengthBoosterDiscount");
+            dailyRandomDataObject.autoTapBoosterDiscount = LoadFloat(i, "AutoTapBoosterDiscount");
+            dailyRandomDataObject.extraTimeBoosterDiscount = LoadFloat(i, "ExtraTimeBoosterDiscount");
             dailyRandomDataObject.adMultiplier = LoadFloat(i, "AdMultiplier");
 
             dailyRandomDataTarget.Add(dailyRandomDataObject);
