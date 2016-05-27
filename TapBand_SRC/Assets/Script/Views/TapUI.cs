@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TapUI : MonoBehaviour
 {
     private Collider2D _collider;
+
     private SongController songController;
+    private DailyEventController dailyEventController;
+
     private GameObject canvas;
 
     public GameObject risingText;
@@ -15,6 +19,7 @@ public class TapUI : MonoBehaviour
     {
         _collider = GetComponent<Collider2D>();
         songController = FindObjectOfType<SongController>();
+        dailyEventController = FindObjectOfType<DailyEventController>();
         canvas = GameObject.Find("Canvas");
     }
 
@@ -30,14 +35,20 @@ public class TapUI : MonoBehaviour
 
     void OnEnable()
     {
-        songController.OnSongStarted += HandleSongStarted;
-        songController.OnSongFinished += HandleSongFinished;
+        songController.OnSongStarted += TurnOnColliderHandler;
+        songController.OnSongFinished += TurnOffColliderHandler;
+
+        dailyEventController.OnDailyEventStarted += TurnOffColliderHandler;
+        dailyEventController.OnDailyEventFinished += TurnOnColliderHandler;
     }
 
     void OnDisable()
     {
-        songController.OnSongStarted -= HandleSongStarted;
-        songController.OnSongFinished -= HandleSongFinished;
+        songController.OnSongStarted -= TurnOnColliderHandler;
+        songController.OnSongFinished -= TurnOffColliderHandler;
+
+        dailyEventController.OnDailyEventStarted -= TurnOffColliderHandler;
+        dailyEventController.OnDailyEventFinished -= TurnOnColliderHandler;
     }
 
     public void DisplayTapValueAt(RawTapData data, double value)
@@ -76,8 +87,8 @@ public class TapUI : MonoBehaviour
 
     private RawTapData RandomTapEventArgs()
     {
-        int x = Random.Range(20, 481);
-        int y = Random.Range(120, 701);
+        int x = UnityEngine.Random.Range(20, 481);
+        int y = UnityEngine.Random.Range(120, 701);
         Vector2 autoTapPosition = new Vector2(x, y);
         return new RawTapData(autoTapPosition, false);
     }
@@ -137,11 +148,11 @@ public class TapUI : MonoBehaviour
         return isValid;
     }
 
-    private void HandleSongStarted(object sender, SongEventArgs e)
+    private void TurnOnColliderHandler(object sender, EventArgs e)
     {
         _collider.enabled = true;
     }
-    private void HandleSongFinished(object sender, SongEventArgs e)
+    private void TurnOffColliderHandler(object sender, EventArgs e)
     {
         _collider.enabled = false;
     }

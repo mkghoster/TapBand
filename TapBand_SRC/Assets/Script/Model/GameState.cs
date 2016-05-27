@@ -30,6 +30,7 @@ public class GameState : LoadableData
         Merch = new MerchState();
         Concert = new ConcertState();
         Equipment = new EquipmentState();
+        DailyEvent = new DailyEventState();
     }
     #endregion
 
@@ -37,17 +38,19 @@ public class GameState : LoadableData
     public MerchState Merch { get; private set; }
     public ConcertState Concert { get; private set; }
     public EquipmentState Equipment { get; private set; }
+    public DailyEventState DailyEvent { get; private set; }
 
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {
         IFormatter formatter = new BinaryFormatter();
-        GameState gd = (GameState)formatter.Deserialize(ms);
+        GameState gs = (GameState)formatter.Deserialize(ms);
 
-        Currency = gd.Currency == null ? new CurrencyState() : gd.Currency;
-        Merch = gd.Merch == null ? new MerchState() : gd.Merch;
-        Concert = gd.Concert == null ? new ConcertState() : gd.Concert;
-        Equipment = gd.Equipment == null ? new EquipmentState() : gd.Equipment;                
+        Currency = gs.Currency == null ? new CurrencyState() : gs.Currency;
+        Merch = gs.Merch == null ? new MerchState() : gs.Merch;
+        Concert = gs.Concert == null ? new ConcertState() : gs.Concert;
+        Equipment = gs.Equipment == null ? new EquipmentState() : gs.Equipment;
+        DailyEvent = gs.DailyEvent == null ? new DailyEventState() : gs.DailyEvent;
     }
 
     public override string GetFileName()
