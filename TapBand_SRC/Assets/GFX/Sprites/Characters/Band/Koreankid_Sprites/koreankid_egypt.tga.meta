@@ -1,9 +1,20 @@
 fileFormatVersion: 2
 guid: 57b92f2efec46a1478e5d226b44f28a8
-timeCreated: 1463677311
+timeCreated: 1464191692
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: koreankid_egypt_head
+    21300002: koreankid_egypt_hair
+    21300004: koreankid_egypt_body
+    21300006: koreankid_egypt_armR_UP
+    21300008: koreankid_egypt_armL_UP
+    21300010: koreankid_egypt_legR_UP
+    21300012: koreankid_egypt_legL_UP
+    21300014: koreankid_egypt_legR_LO
+    21300016: koreankid_egypt_legL_LO
+    21300018: koreankid_egypt_armR_LO
+    21300020: koreankid_egypt_armL_LO
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,10 +38,10 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +49,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +60,342 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: koreankid_egypt_head
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 429
+        width: 417
+        height: 527
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 133.5, y: 78}
+        - {x: 137.5, y: 96}
+        - {x: 140.5, y: 108}
+        - {x: 150.5, y: 109}
+        - {x: 155.5, y: 112}
+        - {x: 158.5, y: 120}
+        - {x: 163.5, y: 146}
+        - {x: 167.5, y: 176}
+        - {x: 168.5, y: 187}
+        - {x: 175.5, y: 197}
+        - {x: 184.5, y: 207}
+        - {x: 188.5, y: 212}
+        - {x: 195.5, y: 228}
+        - {x: 201.5, y: 242}
+        - {x: 206.5, y: 272}
+        - {x: 208.5, y: 287}
+        - {x: 208.5, y: 385}
+        - {x: 204.5, y: 404}
+        - {x: 199.5, y: 419}
+        - {x: 189.5, y: 440}
+        - {x: 177.5, y: 458}
+        - {x: 155.5, y: 481}
+        - {x: 145.5, y: 489}
+        - {x: 133.5, y: 498}
+        - {x: 102.5, y: 512}
+        - {x: 91.5, y: 516}
+        - {x: 74.5, y: 521}
+        - {x: 50.5, y: 526}
+        - {x: 43.5, y: 527}
+        - {x: -41.5, y: 527}
+        - {x: -47.5, y: 526}
+        - {x: -65.5, y: 522}
+        - {x: -87.5, y: 515}
+        - {x: -110.5, y: 504}
+        - {x: -124.5, y: 495}
+        - {x: -138.5, y: 484}
+        - {x: -156.5, y: 466}
+        - {x: -167.5, y: 452}
+        - {x: -176.5, y: 438}
+        - {x: -187.5, y: 418}
+        - {x: -197.5, y: 393}
+        - {x: -201.5, y: 375}
+        - {x: -207.5, y: 350}
+        - {x: -208.5, y: 343}
+        - {x: -208.5, y: 247}
+        - {x: -206.5, y: 234}
+        - {x: -201.5, y: 209}
+        - {x: -191.5, y: 173}
+        - {x: -179.5, y: 145}
+        - {x: -167.5, y: 120}
+        - {x: -161.5, y: 110}
+        - {x: -151.5, y: 98}
+        - {x: -150.5, y: 98}
+        - {x: -154.5, y: 98}
+        - {x: -154.5, y: 99}
+        - {x: -168.5, y: 98}
+        - {x: -176.5, y: 87}
+        - {x: -176.5, y: 72}
+        - {x: -168.5, y: 59}
+        - {x: -157.5, y: 54}
+        - {x: -141.5, y: 57}
+        - {x: -136.5, y: 54}
+        - {x: -132.5, y: 42}
+        - {x: -112.5, y: 5}
+        - {x: -108.5, y: 0}
+        - {x: 112.5, y: 0}
+        - {x: 114.5, y: 6}
+        - {x: 120.5, y: 27}
+        - {x: 124.5, y: 42}
+    - name: koreankid_egypt_hair
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 348
+        width: 545
+        height: 668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -169.5, y: -257}
+        - {x: -139.5, y: -252}
+        - {x: -127.5, y: -247}
+        - {x: -96.5, y: -232}
+        - {x: -87.5, y: -227}
+        - {x: -80.5, y: -241}
+        - {x: -74.5, y: -248}
+        - {x: -46.5, y: -244}
+        - {x: -42.5, y: -241}
+        - {x: -42.5, y: -236}
+        - {x: -76.5, y: -160}
+        - {x: -56.5, y: -170}
+        - {x: -50.5, y: -168}
+        - {x: -63.5, y: -52}
+        - {x: -63.5, y: -13}
+        - {x: -44.5, y: -6}
+        - {x: 50.5, y: -5}
+        - {x: 51.5, y: -6}
+        - {x: 147.5, y: -9}
+        - {x: 182.5, y: -11}
+        - {x: 239.5, y: -10}
+        - {x: 257.5, y: 0}
+        - {x: 267.5, y: 12}
+        - {x: 271.5, y: 23}
+        - {x: 272.5, y: 39}
+        - {x: 268.5, y: 65}
+        - {x: 270.5, y: 77}
+        - {x: 272.5, y: 91}
+        - {x: 272.5, y: 167}
+        - {x: 271.5, y: 173}
+        - {x: 265.5, y: 203}
+        - {x: 251.5, y: 235}
+        - {x: 242.5, y: 249}
+        - {x: 215.5, y: 278}
+        - {x: 198.5, y: 291}
+        - {x: 167.5, y: 309}
+        - {x: 151.5, y: 316}
+        - {x: 117.5, y: 327}
+        - {x: 85.5, y: 333}
+        - {x: 69.5, y: 334}
+        - {x: 17.5, y: 334}
+        - {x: -18.5, y: 327}
+        - {x: -39.5, y: 319}
+        - {x: -70.5, y: 304}
+        - {x: -85.5, y: 295}
+        - {x: -101.5, y: 284}
+        - {x: -120.5, y: 270}
+        - {x: -158.5, y: 229}
+        - {x: -174.5, y: 204}
+        - {x: -189.5, y: 171}
+        - {x: -196.5, y: 143}
+        - {x: -200.5, y: 124}
+        - {x: -203.5, y: 110}
+        - {x: -204.5, y: 65}
+        - {x: -204.5, y: 44}
+        - {x: -199.5, y: 8}
+        - {x: -251.5, y: -75}
+        - {x: -261.5, y: -96}
+        - {x: -271.5, y: -127}
+        - {x: -272.5, y: -134}
+        - {x: -272.5, y: -188}
+        - {x: -270.5, y: -197}
+        - {x: -260.5, y: -220}
+        - {x: -239.5, y: -241}
+        - {x: -248.5, y: -251}
+        - {x: -255.5, y: -263}
+        - {x: -268.5, y: -289}
+        - {x: -272.5, y: -307}
+        - {x: -272.5, y: -322}
+        - {x: -271.5, y: -329}
+        - {x: -263.5, y: -334}
+        - {x: -230.5, y: -334}
+        - {x: -226.5, y: -331}
+        - {x: -219.5, y: -294}
+        - {x: -198.5, y: -256}
+    - name: koreankid_egypt_body
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 28
+        width: 222
+        height: 321
+      alignment: 9
+      pivot: {x: 0.5, y: 0.265}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 77, y: -32.064995}
+        - {x: 77, y: -11.064995}
+        - {x: 100, y: -9.064995}
+        - {x: 105, y: 26.935005}
+        - {x: 111, y: 80.935005}
+        - {x: 111, y: 176.935}
+        - {x: 103, y: 235.935}
+        - {x: -111, y: 235.935}
+        - {x: -111, y: 100.935005}
+        - {x: -95, y: 13.935005}
+        - {x: -85, y: -10.064995}
+        - {x: -20, y: -12.064995}
+        - {x: -21, y: -34.064995}
+        - {x: -10, y: -51.064995}
+        - {x: -15, y: -76.064995}
+        - {x: -15, y: -80.064995}
+        - {x: -10, y: -85.064995}
+        - {x: 61, y: -85.064995}
+        - {x: 66, y: -82.064995}
+        - {x: 66, y: -65.064995}
+        - {x: 63, y: -49.064995}
+    - name: koreankid_egypt_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 260
+        width: 161
+        height: 54
+      alignment: 9
+      pivot: {x: 0.08231482, y: 0.7512484}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.747314, y: 13.432587}
+        - {x: -13.252686, y: 13.432587}
+        - {x: -13.252686, y: -27.567413}
+        - {x: 52.747314, y: -40.567413}
+        - {x: 147.74731, y: -40.567413}
+        - {x: 147.74731, y: -14.567413}
+    - name: koreankid_egypt_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 260
+        width: 160
+        height: 54
+      alignment: 9
+      pivot: {x: 0.087077715, y: 0.24875104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 81.067566, y: 40.567444}
+        - {x: 65.067566, y: 37.567444}
+        - {x: 25.067566, y: 30.567444}
+        - {x: 4.067566, y: 25.567444}
+        - {x: -13.932434, y: 10.567444}
+        - {x: -13.932434, y: -8.432556}
+        - {x: -10.932434, y: -12.432556}
+        - {x: -9.932434, y: -13.432556}
+        - {x: 12.067566, y: -13.432556}
+        - {x: 140.06757, y: 16.567444}
+        - {x: 146.06757, y: 19.567444}
+        - {x: 146.06757, y: 40.567444}
+    - name: koreankid_egypt_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 53
+        width: 31
+        height: 117
+      alignment: 9
+      pivot: {x: 0.61417216, y: 0.91342646}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_egypt_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 52
+        width: 31
+        height: 120
+      alignment: 9
+      pivot: {x: 0.63320035, y: 0.9129218}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: koreankid_egypt_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 31
+        width: 90
+        height: 129
+      alignment: 9
+      pivot: {x: 0.20505574, y: 0.93441415}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.455017, y: -120.53943}
+        - {x: 71.54498, y: -120.53943}
+        - {x: 71.54498, y: -56.53943}
+        - {x: 52.544983, y: 8.460571}
+        - {x: -13.455017, y: 8.460571}
+        - {x: -18.455017, y: -51.53943}
+    - name: koreankid_egypt_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 30
+        width: 90
+        height: 129
+      alignment: 9
+      pivot: {x: 0.20505574, y: 0.93441415}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.455017, y: 8.460571}
+        - {x: -15.455017, y: 6.4605713}
+        - {x: -18.455017, y: -48.53943}
+        - {x: -18.455017, y: -120.53943}
+        - {x: 71.54498, y: -120.53943}
+        - {x: 71.54498, y: -91.53943}
+        - {x: 12.544983, y: 8.460571}
+    - name: koreankid_egypt_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 29
+        width: 64
+        height: 191
+      alignment: 9
+      pivot: {x: 0.15896988, y: 0.9416444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.174072, y: -157.85408}
+        - {x: -2.1740723, y: -179.85408}
+        - {x: 53.825928, y: -179.85408}
+        - {x: 53.825928, y: -76.85408}
+        - {x: 34.825928, y: 11.14592}
+        - {x: -8.174072, y: 11.14592}
+        - {x: -10.174072, y: 9.14592}
+    - name: koreankid_egypt_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 30
+        width: 62
+        height: 191
+      alignment: 9
+      pivot: {x: 0.8425155, y: 0.9478211}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.764038, y: 9.966171}
+        - {x: -14.235962, y: 9.966171}
+        - {x: -16.235962, y: 8.966171}
+        - {x: -52.235962, y: -120.03383}
+        - {x: -52.235962, y: -178.03383}
+        - {x: -51.235962, y: -181.03383}
+        - {x: -32.235962, y: -181.03383}
+        - {x: -24.235962, y: -179.03383}
+        - {x: -11.235962, y: -167.03383}
+        - {x: -6.235962, y: -149.03383}
+        - {x: 9.764038, y: -81.03383}
     outline: []
   spritePackingTag: 
   userData: 
