@@ -22,15 +22,20 @@ public class SongController : MonoBehaviour
     private SongData currentSong;
     private StageController stageController;
     private ViewController viewController;
+    private BoosterController boosterController;
 
     private double actualTapAmount = 0f;
     private float elapsedTime = 0f;
 
     private bool isSongPaused = false;
 
+    private float extraTimeBoosterBonus;
+
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
     private const int beforeEncoreSongConstID = 3; //TODO: this still belongs to the concert
     #endregion
+
+    public float ActualSongDuration { get; private set; }
 
     void Awake()
     {
@@ -42,8 +47,11 @@ public class SongController : MonoBehaviour
         stageController = FindObjectOfType<StageController>();
 
         viewController = FindObjectOfType<ViewController>();
+        boosterController = FindObjectOfType<BoosterController>();
 
         viewController.OnViewChange += ViewChanged;
+
+        extraTimeBoosterBonus = GameData.instance.BoosterData.ExtraTimeBoosterBonus;
     }
 
     void OnEnable()
@@ -53,20 +61,24 @@ public class SongController : MonoBehaviour
         stageController.OnEncoreButtonPressed += StartEncoreSong;
 
         tourController.RestartSong += ResetControllerState;
+        boosterController.OnBoosterActivated += HandleBoosterActivated;
     }
 
     void OnDisable()
     {
         tapController.OnTap -= HandleTap;
-        
+
         stageController.OnEncoreButtonPressed -= StartEncoreSong;
 
         tourController.RestartSong -= ResetControllerState;
+
+        boosterController.OnBoosterActivated += HandleBoosterActivated;
     }
 
     void Start()
     {
         currentSong = concertController.CurrentSongData;
+        ActualSongDuration = currentSong.duration;
         OnSongStarted(this, new SongEventArgs(currentSong, SongStatus.InProgress));
     }
 
@@ -90,6 +102,7 @@ public class SongController : MonoBehaviour
             }
             else
             {
+                ActualSongDuration = currentSong.duration;
                 if (OnSongStarted != null)
                 {
                     OnSongStarted(this, new SongEventArgs(currentSong, SongStatus.InProgress, 0, 0));
@@ -110,7 +123,7 @@ public class SongController : MonoBehaviour
 
         elapsedTime += deltaTime;
 
-        if (elapsedTime > currentSong.duration)
+        if (elapsedTime > ActualSongDuration)
         {
             FailSong();
             return;
@@ -178,7 +191,6 @@ public class SongController : MonoBehaviour
         elapsedTime -= extraTime;
     }
 
-
     //when we push the encore button
     private void StartEncoreSong()
     {
@@ -206,5 +218,13 @@ public class SongController : MonoBehaviour
     private void ViewChanged(object sender, ViewChangeEventArgs e)
     {
         HandleSongPaused(e.NewView != ViewType.STAGE);
+    }
+
+    private void HandleBoosterActivated(object sender, BoosterEventArgs e)
+    {
+        if (e.Type == BoosterType.ExtraTime && currentSong != null)
+        {
+            ActualSongDuration += extraTimeBoosterBonus;
+        }
     }
 }

@@ -2,112 +2,105 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
-public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler{ 
+public class BoosterUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
 
-    public int tokenCost = 10;
-    public bool boosterIsActive;
-    public bool boosterIsAvailable;
-    private BoosterDropZone boosterDropzone;
+    //public int tokenCost = 10;
+    //public bool boosterIsActive;
+    //public bool boosterIsAvailable;
+    //private BoosterDropZone boosterDropzone;
+
+    public BoosterType boosterType;
+
+    private BoosterController boosterController;
+    private SongController songController;
+
     private Vector3 basePosition;
 
-    bool debugBool = false;
+    public event BoosterEvent OnBeginBoosterDrag;
+    public event BoosterEvent OnEndBoosterDrag;
+
+    private CanvasGroup canvasGroup;
 
     public void Awake()
     {
-        boosterDropzone = GameObject.Find("BoosterDropZone").GetComponent<BoosterDropZone>();
+        boosterController = FindObjectOfType<BoosterController>();
+        songController = FindObjectOfType<SongController>();
+
+        //boosterDropzone = GameObject.Find("BoosterDropZone").GetComponent<BoosterDropZone>();
         //basePosition = GetComponent<RectTransform>().localPosition;
         basePosition = GetComponent<RectTransform>().anchoredPosition;
-     
-        if (boosterDropzone.tokenNumber > tokenCost)
-        {
-            boosterIsAvailable = true;
-            boosterIsActive = false;
-        }
-        else
-        {
-            boosterIsAvailable = false;
-        }
-
-
+        canvasGroup = GetComponent<CanvasGroup>();
+        //if (boosterDropzone.tokenNumber > tokenCost)
+        //{
+        //    boosterIsAvailable = true;
+        //    boosterIsActive = false;
+        //}
+        //else
+        //{
+        //    boosterIsAvailable = false;
+        //}
     }
 
-    private void DebugInfo()
+    public void OnEnable()
     {
-        Debug.Log(this.gameObject.name + ": "+ basePosition);
+        boosterController.OnBoosterStateChanged += HandleActivationRelevantEvents;
+                boosterController.OnBoosterActivated += HandleActivationRelevantEvents;
+        boosterController.OnBoosterFinished += HandleActivationRelevantEvents;
     }
 
-    public void Start()
+    private void OnDisable()
     {
-       
-    }
-
-    public void Update()
-    {
-        //Debug.Log(boosterDropzone.tokenNumber);
-        if (boosterDropzone.tokenNumber >= tokenCost && boosterIsAvailable)
-        {
-            boosterIsAvailable = true;
-        }
-        else
-        {
-            boosterIsAvailable = false;
-            GetComponent<Button>().interactable = false;
-        }
-
-        if (debugBool)
-        {
-            DebugInfo();
-            debugBool = false;
-        }
-            
-
+        boosterController.OnBoosterStateChanged -= HandleActivationRelevantEvents;
+        boosterController.OnBoosterActivated -= HandleActivationRelevantEvents;
+        boosterController.OnBoosterFinished -= HandleActivationRelevantEvents;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        debugBool = true;
-        //Debug.Log("boosteractice:"+boosterIsActive);
-        Color color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
-        boosterDropzone.setColor(color);
-        if (boosterIsAvailable && !boosterIsActive)
+        //boosterDropzone.setColor(color);
+        if (boosterController.CanActivateBooster(boosterType))
         {
             GetComponent<CanvasGroup>().blocksRaycasts = false;
+            if (OnBeginBoosterDrag != null)
+            {
+                OnBeginBoosterDrag(this, new BoosterEventArgs(boosterType));
+            }
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (boosterIsAvailable && !boosterIsActive)
-        {
-            this.transform.position = eventData.position;
-        }
+        //if (boosterIsAvailable && !boosterIsActive)
+        //{
+        this.transform.position = eventData.position;
+        //}
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Color color = new Vector4(0f, 0f, 0f, 0f);
-        boosterDropzone.setColor(color);
-        if (!boosterIsAvailable)
-        {
-            GetComponent<CanvasGroup>().blocksRaycasts = false;
-        }
-        else
-        {
-            GetComponent<CanvasGroup>().blocksRaycasts = true;
-        }
+        //boosterDropzone.setColor(color);
+        //if (!boosterIsAvailable)
+        //{
+        //    GetComponent<CanvasGroup>().blocksRaycasts = false;
+        //}
+        //else
+        //{
+        //    GetComponent<CanvasGroup>().blocksRaycasts = true;
+        //}
         //transform.localPosition = basePosition;
+        if (OnEndBoosterDrag != null)
+        {
+            OnEndBoosterDrag(this, new BoosterEventArgs(boosterType));
+        }
         gameObject.GetComponent<RectTransform>().anchoredPosition = basePosition;
-
+        canvasGroup.blocksRaycasts = true;
     }
 
-    public bool IsActive()
+    private void HandleActivationRelevantEvents(object sender, EventArgs e)
     {
-        return boosterIsActive;
-    }
-
-    public bool IsAvailable()
-    {
-        return boosterIsAvailable;
+        canvasGroup.blocksRaycasts = boosterController.CanActivateBooster(boosterType);
     }
 }

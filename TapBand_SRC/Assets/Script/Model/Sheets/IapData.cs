@@ -10,4 +10,8 @@ public class IapData
     public int tapStrengthBoost100;
     public int tapStrengthBoost500;
     public int tapStrengthBoost5000;
+
+    public int autoTapBoosterCost;
+    public int extraTimeBoosterCost;
+    public int tapStrenghtBoosterCost;
 }
