@@ -41,7 +41,7 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
-        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
+        //dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -55,7 +55,7 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
-        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
+        //dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -104,14 +104,23 @@ public class CurrencyController : MonoBehaviour
     {
         //elveszik
         currencyState.Coins = 0;
+        currencyState.FanBonusPerTour.Add(currencyState.FanFromActualTour);
+        currencyState.FanFromActualTour = 0;
 
-        double tapStrengthMultiplier = 1.2f;                                 //TODO: képlettel meghatározni a pontos értékét egy fvben
+        double tapStrengthMultiplier = CalculateTapStrengthBonus();                                 
         currencyState.TapMultiplierFromPrestige *= tapStrengthMultiplier;
 
         print("new tapStrength bonus after Prestige: "+ currencyState.TapMultiplierFromPrestige);
         
+        //for(int i = 0; i < currencyState.FanBonusPerTour.Count; i++) { print(i + ".: elem: " + currencyState.FanBonusPerTour[i]); }
 
         SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    //TODO: implement it
+    private double CalculateTapStrengthBonus()
+    {
+        return 1.2;
     }
 
     private void HandleSkillUpgrade(object sender, BandMemberSkillEventArgs e)
@@ -138,6 +147,7 @@ public class CurrencyController : MonoBehaviour
     private void HandleConcertFinished(object sender, ConcertEventArgs e)
     {
         currencyState.Fans += e.Data.fanReward;
+        currencyState.FanFromActualTour += e.Data.fanReward;
         SynchronizeRealCurrencyAndScreenCurrency();
     }
 

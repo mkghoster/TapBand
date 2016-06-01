@@ -17,6 +17,22 @@ public class CurrencyState
             tapMultiplierFromPrestige = value;
         }
     }
+
+    public double FanFromActualTour { get; set; }
+
+    private List<double> fanBonusPerTour;
+    public  List<double> FanBonusPerTour
+    {
+        get
+        {
+            if (fanBonusPerTour == null)
+                fanBonusPerTour = new List<double>();
+            
+            return fanBonusPerTour;
+        }
+        set { fanBonusPerTour = value; }
+    }
+
     public double Fans { get; set; }
     public double Coins { get; set; }
     public int Tokens { get; set; }
