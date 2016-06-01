@@ -32,7 +32,7 @@ public class HudUI : MonoBehaviour
     {
         currencyController = (CurrencyController)FindObjectOfType(typeof(CurrencyController));
         songController = (SongController)FindObjectOfType(typeof(SongController));
-      
+
         var coinObj = GameObject.Find("CoinText");
         var fanObj = GameObject.Find("FanText");
         var concertObj = GameObject.Find("ConcertText");
@@ -80,12 +80,13 @@ public class HudUI : MonoBehaviour
         {
             coinText.text = screenCoin.ToString("F0");
         }
-        if (fanChanged)
-        {
-            fanText.text = screenFan.ToString("F0");
-        }
+        //if (fanChanged)
+        //{
+        //    fanText.text = screenFan.ToString("F0");
+        //}
         if (tokenChanged)
         {
+            fanText.text = screenToken.ToString();
             // no such ui element
         }
 
@@ -104,8 +105,8 @@ public class HudUI : MonoBehaviour
             new Rect(
                 Screen.width / 4 - 25f,
                 startingVerticalPos + heightOfBar + 5f,
-                (timePassed * 5 / actualSongData.tapGoal) * (Screen.width / 2) + 50f,
-                heightOfBar), string.Format("Time: {0} / {1}", timePassed, actualSongData.duration));
+                (timePassed * 5 / songController.ActualSongDuration) * (Screen.width / 2) + 50f,
+                heightOfBar), string.Format("Time: {0} / {1}", timePassed.ToString("F2"), songController.ActualSongDuration.ToString("F2")));
 
         }
 
@@ -129,7 +130,8 @@ public class HudUI : MonoBehaviour
         screenToken = e.Token;
 
         coinText.text = screenCoin.ToString("F0");
-        fanText.text = screenFan.ToString("F0");
+        //fanText.text = screenFan.ToString("F0");
+        fanText.text = screenToken.ToString();
     }
 
     private void HandleSongProgress(object sender, SongEventArgs e)
