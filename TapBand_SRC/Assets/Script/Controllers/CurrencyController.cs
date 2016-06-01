@@ -7,10 +7,13 @@ public class CurrencyController : MonoBehaviour
     private SongController songController;
     private ConcertController concertController;
     private TourController tourController;
+    private BoosterController boosterController;
     private DailyEventController dailyEventController;
     private SkillUpgradeUI[] skillUpgradeUIs;
+    private IapData iapData;
 
     private CurrencyState currencyState;
+    private DailyEventState dailyEventState;
 
     public event CurrencyEvent OnCurrencyChanged;
     public event CurrencyEvent OnInitialized;
@@ -21,10 +24,14 @@ public class CurrencyController : MonoBehaviour
         concertController = FindObjectOfType<ConcertController>();
         tourController = FindObjectOfType<TourController>();
         dailyEventController = FindObjectOfType<DailyEventController>();
+        boosterController = FindObjectOfType<BoosterController>();
 
         skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
 
         currencyState = GameState.instance.Currency;
+        dailyEventState = GameState.instance.DailyEvent;
+
+        iapData = GameData.instance.IapData;
     }
 
     void Start()
@@ -43,6 +50,8 @@ public class CurrencyController : MonoBehaviour
 
 
 //        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
+        boosterController.OnBoosterActivated += HandleBoosterActivated;
+
 
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
@@ -57,8 +66,10 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
-
 //        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
+
+        boosterController.OnBoosterActivated -= HandleBoosterActivated;
+
 
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
@@ -71,7 +82,7 @@ public class CurrencyController : MonoBehaviour
     {
         get
         {
-            return currencyState.TapMultiplierFromPrestige; 
+            return currencyState.TapMultiplierFromPrestige;
         }
     }
 
@@ -104,7 +115,7 @@ public class CurrencyController : MonoBehaviour
         currencyState.Tokens -= price;
     }
 
-    private void OnPrestige() 
+    private void OnPrestige()
     {
         //elveszik
         currencyState.Coins = 0;
@@ -114,9 +125,14 @@ public class CurrencyController : MonoBehaviour
         double tapStrengthMultiplier = CalculateTapStrengthBonus();                                 
         currencyState.TapMultiplierFromPrestige *= tapStrengthMultiplier;
 
+<<<<<<< HEAD
         print("new tapStrength bonus after Prestige: "+ currencyState.TapMultiplierFromPrestige);
         
         //for(int i = 0; i < currencyState.FanBonusPerTour.Count; i++) { print(i + ".: elem: " + currencyState.FanBonusPerTour[i]); }
+=======
+        print("new tapStrength bonus after Prestige: " + currencyState.TapMultiplierFromPrestige);
+
+>>>>>>> e71afc4f874684a918d3bb239baffec2b5497e6b
 
         SynchronizeRealCurrencyAndScreenCurrency();
     }
@@ -192,6 +208,25 @@ public class CurrencyController : MonoBehaviour
         }
     }
 
+    private void HandleBoosterActivated(object sender, BoosterEventArgs e)
+    {
+        switch (e.Type)
+        {
+            case BoosterType.AutoTap:
+                currencyState.Tokens -= Mathf.FloorToInt(iapData.autoTapBoosterCost * dailyEventState.AutoTapBoosterPriceMultiplier);
+                break;
+            case BoosterType.ExtraTime:
+                currencyState.Tokens -= Mathf.FloorToInt(iapData.extraTimeBoosterCost * dailyEventState.ExtraTimeBoosterPriceMultiplier);
+                break;
+            case BoosterType.TapStrength:
+                currencyState.Tokens -= Mathf.FloorToInt(iapData.tapStrenghtBoosterCost * dailyEventState.TapStrengthBoosterPriceMultiplier);
+                break;
+            default:
+                throw new NotImplementedException("This booster cost is not implemented");
+
+        }
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
 
     //DEBUG CONTROLLER-----------------------------
     public void GiveCoins(double coins)

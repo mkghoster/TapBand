@@ -26,7 +26,7 @@ public class AudioManagerTapBand : AudioManager
 
     private AudioClip[] clips;
 
-    private AudioClip currentConcertEncoreLoopClip ;
+    private AudioClip currentConcertEncoreLoopClip;
 
     void Awake()
     {
@@ -58,7 +58,7 @@ public class AudioManagerTapBand : AudioManager
         {
             //it's the previous song id, need to inc
             actualIndex = CastSongIndex(concertState.LastCompletedSongID + 1);
-           
+
             //encore song : only the last bar need to fade in
             if (actualIndex == 4)
             {
@@ -66,7 +66,7 @@ public class AudioManagerTapBand : AudioManager
             }
             else
             {
-                FadeInMusicBarsUntilIndex(actualIndex+1); // actualIndex + 1 : if it's 0  it doesn't fade anything
+                FadeInMusicBarsUntilIndex(actualIndex + 1); // actualIndex + 1 : if it's 0  it doesn't fade anything
             }
         }
         else
@@ -80,13 +80,13 @@ public class AudioManagerTapBand : AudioManager
 
     void Update()
     {
-       if (concertController.CurrentSongData.isEncore  && musicSources[4].time >= musicSources[4].clip.length )
-       {
+        if (concertController.CurrentConcertData != null && concertController.CurrentSongData.isEncore && musicSources[4].time >= musicSources[4].clip.length)
+        {
             StartEncoreLoopClip();
-       }
+        }
     }
 
-    
+
     void OnEnable()
     {
         songController.OnSongFinished += EndOfSongEvent;
@@ -333,25 +333,25 @@ public class AudioManagerTapBand : AudioManager
 
         switch (randomNumber)
         {
-            case 0:          
+            case 0:
                 correctAudioClipsOrderByConcert = FirstConcertOrderType();
                 break;
-            case 1:         
+            case 1:
                 correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 2:    
+            case 2:
                 correctAudioClipsOrderByConcert = ThirdConecertOrderType();
                 break;
-            case 3:          
+            case 3:
                 correctAudioClipsOrderByConcert = FourthConcertOrderType();
                 break;
-            case 4:           
+            case 4:
                 correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 5:         
+            case 5:
                 correctAudioClipsOrderByConcert = SecondConcertOrderType();
                 break;
-            case 6:        
+            case 6:
                 correctAudioClipsOrderByConcert = FifthConcertOrderType();
                 break;
         }
@@ -362,7 +362,7 @@ public class AudioManagerTapBand : AudioManager
 
     }
 
-   
+
 
     private void SetCorrectOrderAudioClips(int[] order)
     {
@@ -374,7 +374,7 @@ public class AudioManagerTapBand : AudioManager
         }
 
         //save the current concert encore loop clip
-        currentConcertEncoreLoopClip = clips[ order[ order.Length - 1 ] + (currentConcertAudioID * 6)];
+        currentConcertEncoreLoopClip = clips[order[order.Length - 1] + (currentConcertAudioID * 6)];
     }
 
     private void ReadMusicFromResources()
@@ -394,19 +394,19 @@ public class AudioManagerTapBand : AudioManager
     //4 - Encore
 
     //music bar orders by gdd
-    
+
     private int[] FirstConcertOrderType()
     {
         float n = Random.Range(0, 2);
 
         if (n % 3 == 0)
         {
-            int[] order = { 0, 1, 2, 3, 4 , 5 };
+            int[] order = { 0, 1, 2, 3, 4, 5 };
             return order;
         }
         else if (n % 3 == 1)
         {
-            int[] order = { 1, 0, 2, 3, 4 , 5 };
+            int[] order = { 1, 0, 2, 3, 4, 5 };
             return order;
         }
         else

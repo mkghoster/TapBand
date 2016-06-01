@@ -12,6 +12,7 @@ public class TapController : MonoBehaviour
     private TapUI tapUI;
 
     private BandMemberController bandMemberController;
+    private BoosterController boosterController;
 
     //private double prestigeTapMultiplier = 1f; 
     private float spotlightTapMultiplier;
@@ -27,6 +28,7 @@ public class TapController : MonoBehaviour
         bandMemberController = FindObjectOfType<BandMemberController>();
         currencyController = FindObjectOfType<CurrencyController>();
         viewController = FindObjectOfType<ViewController>();
+        boosterController = FindObjectOfType<BoosterController>();
 
         spotlightTapMultiplier = GameData.instance.GeneralData.SpotlightTapMultiplier;
 
@@ -36,11 +38,13 @@ public class TapController : MonoBehaviour
     void OnEnable()
     {
         tapUI.OnScreenTap += HandleTap;
+        boosterController.OnAutoTap += HandleAutoTap;
     }
 
     void OnDisable()
     {
         tapUI.OnScreenTap -= HandleTap;
+        boosterController.OnAutoTap -= HandleAutoTap;
     }
 
     #region MVC bindings
@@ -91,10 +95,8 @@ public class TapController : MonoBehaviour
             tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Keyboards][i].tapStrengthBonus;
         }
 
-        if (boosterMultiplier > 0 && boosterTimeInterval > 0)
-        {
-            tapMultiplier *= boosterMultiplier;
-        }
+        tapMultiplier *= boosterController.GetTapStrengthMultiplier();
+
 
         if (isSpotlight)
         {
@@ -114,11 +116,6 @@ public class TapController : MonoBehaviour
         boosterMultiplier = multiplierValue;
     }
 
-    public void BoosterTimeInterval(float multiplierIntervalValue)
-    {
-        boosterTimeInterval = multiplierIntervalValue;
-    }
-
     public void IncDebugTapMultiplier(double multiplier)
     {
         debugTapMultiplier *= multiplier;
@@ -127,7 +124,7 @@ public class TapController : MonoBehaviour
 
     public void SetToOneDebugTapMultiplier()
     {
-        PlayerPrefsManager.SetDebugTapMultip( 1.0f );
+        PlayerPrefsManager.SetDebugTapMultip(1.0f);
     }
 
     public void ViewChanged(object sender, ViewChangeEventArgs e)
@@ -140,5 +137,10 @@ public class TapController : MonoBehaviour
         {
             tapUI.HideUI();
         }
+    }
+
+    private void HandleAutoTap(object sender, RawTapEventArgs e)
+    {
+        tapUI.AutoTap(e);
     }
 }

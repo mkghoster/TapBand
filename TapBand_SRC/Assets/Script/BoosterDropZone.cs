@@ -3,47 +3,60 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BoosterDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+public class BoosterDropZone : MonoBehaviour, IDropHandler
+{
+    private Image image;
+    private BoosterController boosterController;
 
-	public int tokenNumber=100;
-	private Image image;
-	private BoosterController boosterController;
-    //TODO token bekötés
-    //private CurrencyState currencyState;
+    private readonly Color dimColor = new Color(0.5f, 0.5f, 0.5f, 0.6f);
+    private Color normalColor = new Color(0f, 0f, 0f, 0f);
+    private BoosterItemUI[] boosterUIs;
 
-    Color defaultColor;
-    private int token;
+    public event BoosterEvent OnBoosterDropped;
 
-    public void Awake(){
-		image = GetComponent<Image> ();
+    private void Awake()
+    {
+        image = GetComponent<Image>();
         boosterController = (BoosterController)FindObjectOfType(typeof(BoosterController));
-        defaultColor = image.color;
-        //currencyState = GameState.instance.Currency;
-        //token = currencyState.Tokens;     
+        normalColor = image.color;
+        boosterUIs = FindObjectsOfType<BoosterItemUI>();
     }
 
-	public void OnPointerEnter(PointerEventData eventData){
-	}
+    private void OnEnable()
+    {
+        for (int i = 0; i < boosterUIs.Length; i++)
+        {
+            boosterUIs[i].OnBeginBoosterDrag += HandleBoosterBeginDrag;
+            boosterUIs[i].OnEndBoosterDrag += HandleBoosterEndDrag;
+        }
+    }
 
-	public void OnPointerExit(PointerEventData eventData){
-		
-	}
+    public void OnDrop(PointerEventData eventData)
+    {
+        BoosterItemUI droppedUI = eventData.pointerDrag.GetComponent<BoosterItemUI>();
+        if (droppedUI == null)
+        {
+            return;
+        }
+        BoosterType droppedBooster = droppedUI.boosterType;
 
-	public void OnDrop(PointerEventData eventData){
-		image.color = defaultColor;
-        //Debug.Log (eventData.pointerDrag.name + " was dropped to " +gameObject.name);
-        BoosterUI currentBooster = eventData.pointerDrag.GetComponent<BoosterUI> ();
-		if (currentBooster.IsAvailable()) {
-			if (currentBooster != null) {
-				tokenNumber -= currentBooster.tokenCost;
-                boosterController.HandleBoosters(currentBooster);
-                Debug.Log (tokenNumber+" tokens left");
-			}
-		} 
-	}
+        if (boosterController.CanActivateBooster(droppedBooster))
+        {
+            if (OnBoosterDropped != null)
+            {
+                OnBoosterDropped(this, new BoosterEventArgs(droppedBooster));
+            }
+        }
+    }
 
-	public void setColor(Vector4 color){
-		image.color = color;
-	}
+    private void HandleBoosterBeginDrag(object sender, BoosterEventArgs e)
+    {
+        image.color = dimColor;
+    }
+
+    private void HandleBoosterEndDrag(object sender, BoosterEventArgs e)
+    {
+        image.color = normalColor;
+    }
 
 }
