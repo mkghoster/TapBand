@@ -38,11 +38,13 @@ public class TapController : MonoBehaviour
     void OnEnable()
     {
         tapUI.OnScreenTap += HandleTap;
+        boosterController.OnAutoTap += HandleAutoTap;
     }
 
     void OnDisable()
     {
         tapUI.OnScreenTap -= HandleTap;
+        boosterController.OnAutoTap -= HandleAutoTap;
     }
 
     #region MVC bindings
@@ -135,5 +137,10 @@ public class TapController : MonoBehaviour
         {
             tapUI.HideUI();
         }
+    }
+
+    private void HandleAutoTap(object sender, RawTapEventArgs e)
+    {
+        tapUI.AutoTap(e);
     }
 }

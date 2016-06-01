@@ -10,7 +10,7 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler
 
     private readonly Color dimColor = new Color(0.5f, 0.5f, 0.5f, 0.6f);
     private Color normalColor = new Color(0f, 0f, 0f, 0f);
-    private BoosterUI[] boosterUIs;
+    private BoosterItemUI[] boosterUIs;
 
     public event BoosterEvent OnBoosterDropped;
 
@@ -19,7 +19,7 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler
         image = GetComponent<Image>();
         boosterController = (BoosterController)FindObjectOfType(typeof(BoosterController));
         normalColor = image.color;
-        boosterUIs = FindObjectsOfType<BoosterUI>();
+        boosterUIs = FindObjectsOfType<BoosterItemUI>();
     }
 
     private void OnEnable()
@@ -33,7 +33,7 @@ public class BoosterDropZone : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        BoosterUI droppedUI = eventData.pointerDrag.GetComponent<BoosterUI>();
+        BoosterItemUI droppedUI = eventData.pointerDrag.GetComponent<BoosterItemUI>();
         if (droppedUI == null)
         {
             return;

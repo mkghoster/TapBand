@@ -16,13 +16,15 @@ public class BoosterController : MonoBehaviour
     private bool isTapStrengthBoosterisActive = false;
     private bool isAutoTapActive = false;
 
-    private float boostTapStrengthUntil = 0;
-    private float autoTapUntil = 0;
+    private float tapStrengthBoostDuration = 0;
+    private float autoTapBoostDuration = 0;
 
     private SongController songController;
     private CurrencyController currencyController;
+    private ViewController viewController;
 
     private BoosterDropZone boosterDropZone;
+    private BoosterUI boosterUI;
 
     private BoosterData boosterData;
     private IapData iapData;
@@ -39,15 +41,25 @@ public class BoosterController : MonoBehaviour
     public event BoosterEvent OnBoosterFinished;
     public event BoosterEvent OnBoosterStateChanged;
 
+    private bool isPaused = false;
+
+    public event RawTapEvent OnAutoTap;
+
     void Awake()
     {
         var gameData = GameData.instance;
         boosterData = gameData.BoosterData;
         iapData = gameData.IapData;
+
+
         songController = FindObjectOfType<SongController>();
         currencyController = FindObjectOfType<CurrencyController>();
+        viewController = FindObjectOfType<ViewController>();
+
         boosterDropZone = FindObjectOfType<BoosterDropZone>();
-        tapUI = (TapUI)FindObjectOfType(typeof(TapUI));
+        tapUI = FindObjectOfType<TapUI>();
+
+        boosterUI = FindObjectOfType<BoosterUI>();
 
         autoTapInterval = 1f / boosterData.AutoTapBoosterTapsPerSecond;
 
@@ -59,6 +71,7 @@ public class BoosterController : MonoBehaviour
         boosterDropZone.OnBoosterDropped += HandleBoosterDropped;
         songController.OnSongStarted += HandleSongStarted;
         songController.OnSongFinished += HandleSongFinished;
+        viewController.OnViewChange += HandleViewChanged;
     }
 
     void OnDisable()
@@ -66,11 +79,17 @@ public class BoosterController : MonoBehaviour
         boosterDropZone.OnBoosterDropped -= HandleBoosterDropped;
         songController.OnSongStarted -= HandleSongStarted;
         songController.OnSongFinished -= HandleSongFinished;
+        viewController.OnViewChange -= HandleViewChanged;
     }
 
     void Update()
     {
-        if (isTapStrengthBoosterisActive && Time.time > boostTapStrengthUntil)
+        if (isPaused)
+        {
+            return;
+        }
+
+        if (isTapStrengthBoosterisActive && tapStrengthBoostDuration <= 0)
         {
             isTapStrengthBoosterisActive = false;
             if (OnBoosterFinished != null)
@@ -79,7 +98,7 @@ public class BoosterController : MonoBehaviour
             }
         }
 
-        if (isAutoTapActive && Time.time > autoTapUntil)
+        if (isAutoTapActive && autoTapBoostDuration <= 0)
         {
             isAutoTapActive = false;
             if (OnBoosterFinished != null)
@@ -90,12 +109,33 @@ public class BoosterController : MonoBehaviour
 
         if (isAutoTapActive)
         {
+            List<RawTapData> rawTaps = new List<RawTapData>();
+
             while (lastAutoTap < Time.time)
             {
                 lastAutoTap += autoTapInterval;
-                tapUI.AutoTap();
+                rawTaps.Add(GenerateRandomTapEventArgs());
             }
+
+            if (rawTaps.Count > 0 && OnAutoTap != null)
+            {
+                OnAutoTap(this, new RawTapEventArgs(rawTaps));
+            }
+            autoTapBoostDuration -= Time.deltaTime;
         }
+        if (isTapStrengthBoosterisActive)
+        {
+            tapStrengthBoostDuration -= Time.deltaTime;
+        }
+    }
+
+    private RawTapData GenerateRandomTapEventArgs()
+    {
+        //TODO make the correct values
+        int x = 200;
+        int y = 500;
+        Vector2 autoTapPosition = new Vector2(x, y);
+        return new RawTapData(autoTapPosition, false);
     }
 
     private void HandleBoosterDropped(object sender, BoosterEventArgs e)
@@ -105,12 +145,12 @@ public class BoosterController : MonoBehaviour
             switch (e.Type)
             {
                 case BoosterType.AutoTap:
-                    autoTapUntil = Time.time + boosterData.AutoTapBoosterDuration;
+                    tapStrengthBoostDuration = boosterData.AutoTapBoosterDuration;
                     isAutoTapActive = true;
                     lastAutoTap = Time.time;
                     break;
                 case BoosterType.TapStrength:
-                    boostTapStrengthUntil = Time.time + boosterData.AutoTapBoosterDuration;
+                    tapStrengthBoostDuration = boosterData.TapStrengthBoosterDuration;
                     isTapStrengthBoosterisActive = true;
                     break;
             }
@@ -184,5 +224,12 @@ public class BoosterController : MonoBehaviour
         {
             OnBoosterStateChanged(this, new BoosterEventArgs(BoosterType.AutoTap)); // this is not exactly good, as this is a generic event, but null would be worse.
         }
+    }
+
+    private void HandleViewChanged(object sender, ViewChangeEventArgs e)
+    {
+        bool isStage = (e.NewView == ViewType.STAGE);
+        boosterUI.SetUIVisible(isStage);
+        isPaused = !isStage;
     }
 }
