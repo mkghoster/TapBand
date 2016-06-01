@@ -4,22 +4,17 @@ using System;
 
 public class DressingRoomUI : MonoBehaviour
 {
-    private GameObject bassUI;
-    private GameObject drumsUI;
-    private GameObject guitar1UI;
-    private GameObject guitar2UI;
-    private GameObject keyboardsUI;
+    public GameObject bassUI;
+    public GameObject drumsUI;
+    public GameObject guitar1UI;
+    public GameObject guitar2UI;
+    public GameObject keyboardsUI;
 
     private CharacterType currentCharacter;
 
     void Awake()
     {
         currentCharacter = CharacterType.Bass;
-        bassUI = transform.FindChild("Bass").gameObject;
-        drumsUI = transform.FindChild("Drums").gameObject;
-        guitar1UI = transform.FindChild("Guitar1").gameObject;
-        guitar2UI = transform.FindChild("Guitar2").gameObject;
-        keyboardsUI = transform.FindChild("Keyboards").gameObject;
     }
 
     public void OnCharacterRightClick()

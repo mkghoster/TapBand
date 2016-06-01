@@ -12,11 +12,11 @@ public class TourController : MonoBehaviour
     public event RestartEvent RestartSong;
     public event OnPrestigeEvent OnPrestige;
 
-    private RestartUI restart;
+    private RestartController restart;
 
     void Awake()
     {
-        restart = FindObjectOfType<RestartUI>();
+        restart = FindObjectOfType<RestartController>();
     }
 
     void OnEnable()

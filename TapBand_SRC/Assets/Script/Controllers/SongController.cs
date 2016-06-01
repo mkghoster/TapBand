@@ -14,12 +14,14 @@ public class SongController : MonoBehaviour
 
     public event SongEvent ShowEncoreButton; // TODO: this might be a concert event
 
+    #region Private fields
     private ConcertController concertController;
 
     private TapController tapController;
     private TourController tourController;
     private SongData currentSong;
-    private EncoreButtonUI encoreButton;
+    private StageController stageController;
+    private ViewController viewController;
 
     private double actualTapAmount = 0f;
     private float elapsedTime = 0f;
@@ -28,22 +30,27 @@ public class SongController : MonoBehaviour
 
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
     private const int beforeEncoreSongConstID = 3; //TODO: this still belongs to the concert
+    #endregion
 
     void Awake()
     {
-        concertController = (ConcertController)FindObjectOfType(typeof(ConcertController));
+        concertController = FindObjectOfType<ConcertController>();
 
-        tapController = (TapController)FindObjectOfType(typeof(TapController));
-        tourController = (TourController)FindObjectOfType(typeof(TourController));
+        tapController = FindObjectOfType<TapController>();
+        tourController = FindObjectOfType<TourController>();
 
-        encoreButton = (EncoreButtonUI)FindObjectOfType(typeof(EncoreButtonUI));
+        stageController = FindObjectOfType<StageController>();
+
+        viewController = FindObjectOfType<ViewController>();
+
+        viewController.OnViewChange += ViewChanged;
     }
 
     void OnEnable()
     {
         tapController.OnTap += HandleTap;
-       
-        encoreButton.GiveEncoreButtonPressedEvent += StartEncoreSong;
+
+        stageController.OnEncoreButtonPressed += StartEncoreSong;
 
         tourController.RestartSong += ResetControllerState;
     }
@@ -52,7 +59,7 @@ public class SongController : MonoBehaviour
     {
         tapController.OnTap -= HandleTap;
         
-        encoreButton.GiveEncoreButtonPressedEvent -= StartEncoreSong;
+        stageController.OnEncoreButtonPressed -= StartEncoreSong;
 
         tourController.RestartSong -= ResetControllerState;
     }
@@ -194,5 +201,10 @@ public class SongController : MonoBehaviour
     public void HandleSongPaused(bool paused)
     {
         isSongPaused = paused;
+    }
+
+    private void ViewChanged(object sender, ViewChangeEventArgs e)
+    {
+        HandleSongPaused(e.NewView != ViewType.STAGE);
     }
 }

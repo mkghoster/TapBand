@@ -8,13 +8,20 @@ public class MerchController : MonoBehaviour
     #region Private fields
     private MerchUI merchUI;
     private CurrencyController currencyController;
+    private ViewController viewController;
+    private BackstageController backstageController;
     #endregion
 
     void Awake()
     {
-        currencyController = (CurrencyController)FindObjectOfType(typeof(CurrencyController));
+        currencyController = FindObjectOfType<CurrencyController>();
+        viewController = FindObjectOfType<ViewController>();
+        backstageController = FindObjectOfType<BackstageController>();
+
         merchUI = FindObjectOfType<MerchUI>();
         merchUI.SetController(this);
+
+        backstageController.OnMerchButtonPressed += merchUI.ShowUI;
     }
 
     void Start()
@@ -112,5 +119,10 @@ public class MerchController : MonoBehaviour
         }
 
         merchUI.UpdateMerchSlotItems();
+    }
+
+    public void OnClose()
+    {
+        viewController.EnterView(ViewType.BACKSTAGE);
     }
 }

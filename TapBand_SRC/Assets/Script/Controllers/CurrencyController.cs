@@ -41,7 +41,7 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
-        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
+//        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -55,7 +55,7 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
-        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
+//        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
