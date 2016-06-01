@@ -145,7 +145,7 @@ public class BoosterController : MonoBehaviour
             switch (e.Type)
             {
                 case BoosterType.AutoTap:
-                    tapStrengthBoostDuration = boosterData.AutoTapBoosterDuration;
+                    autoTapBoostDuration = boosterData.AutoTapBoosterDuration;
                     isAutoTapActive = true;
                     lastAutoTap = Time.time;
                     break;
