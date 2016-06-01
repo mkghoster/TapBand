@@ -22,19 +22,8 @@ public class BoosterItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         boosterController = FindObjectOfType<BoosterController>();
         songController = FindObjectOfType<SongController>();
 
-        //boosterDropzone = GameObject.Find("BoosterDropZone").GetComponent<BoosterDropZone>();
-        //basePosition = GetComponent<RectTransform>().localPosition;
         basePosition = GetComponent<RectTransform>().anchoredPosition;
         canvasGroup = GetComponent<CanvasGroup>();
-        //if (boosterDropzone.tokenNumber > tokenCost)
-        //{
-        //    boosterIsAvailable = true;
-        //    boosterIsActive = false;
-        //}
-        //else
-        //{
-        //    boosterIsAvailable = false;
-        //}
     }
 
     public void OnEnable()
@@ -67,24 +56,11 @@ public class BoosterItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        //if (boosterIsAvailable && !boosterIsActive)
-        //{
         this.transform.position = eventData.position;
-        //}
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //boosterDropzone.setColor(color);
-        //if (!boosterIsAvailable)
-        //{
-        //    GetComponent<CanvasGroup>().blocksRaycasts = false;
-        //}
-        //else
-        //{
-        //    GetComponent<CanvasGroup>().blocksRaycasts = true;
-        //}
-        //transform.localPosition = basePosition;
         if (OnEndBoosterDrag != null)
         {
             OnEndBoosterDrag(this, new BoosterEventArgs(boosterType));
