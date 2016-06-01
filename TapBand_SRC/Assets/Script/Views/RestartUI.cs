@@ -1,18 +1,39 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
-
-public delegate void NewLevelEvent();
 
 public class RestartUI : MonoBehaviour
 {
-    public event NewLevelEvent NewLevel;
+    public GameObject RestartPanel;
 
-    public GameObject restartPanel, restartButton;
+    #region Private fields
+    RestartController restartController;
+    #endregion
 
-    public void RestartLevel()
+    public void SetController(RestartController controller)
     {
-        if (NewLevel != null)
-            NewLevel();
+        restartController = controller;
+    }
+
+    public void OnRestartButtonClick()
+    {
+        HideUI();
+        restartController.OnRestartGame();
+    }
+
+    public void OnBackToGameButtonClick()
+    {
+        HideUI();
+        restartController.OnBackToGame();
+    }
+
+    public void HideUI()
+    {
+        RestartPanel.gameObject.SetActive(false);
+    }
+
+    public void ShowUI()
+    {
+        RestartPanel.gameObject.SetActive(true);
     }
 }

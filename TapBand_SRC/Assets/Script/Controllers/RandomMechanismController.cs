@@ -9,6 +9,7 @@ public enum RandomMechanismType
 
 public class RandomMechanismController : MonoBehaviour
 {
+    #region Private fields
     private float minDelay;
     private float maxDelay;
 
@@ -20,9 +21,11 @@ public class RandomMechanismController : MonoBehaviour
 
     private ConcertController concertController;
     private SongController songController;
+    private ViewController viewController;
 
     // This is a directly controlled by this controller. It will fire the correct events.
     private SpotlightController spotlightController;
+    #endregion
 
     void Awake()
     {
@@ -34,8 +37,11 @@ public class RandomMechanismController : MonoBehaviour
 
         concertController = FindObjectOfType<ConcertController>();
         songController = FindObjectOfType<SongController>();
+        viewController = FindObjectOfType<ViewController>();
 
         spotlightController = FindObjectOfType<SpotlightController>();
+
+        viewController.OnViewChange += ViewChanged;
     }
 
     void OnEnable()
@@ -131,5 +137,10 @@ public class RandomMechanismController : MonoBehaviour
     private void HandleSongStarted(object sender, SongEventArgs e)
     {
         SetPaused(false);
+    }
+
+    private void ViewChanged(object sender, ViewChangeEventArgs e)
+    {
+        SetPaused(e.NewView != ViewType.STAGE);
     }
 }

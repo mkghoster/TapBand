@@ -1,28 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DebugController : MonoBehaviour {
-
+public class DebugController : MonoBehaviour
+{
+    #region Private fields
     private SongController songController;
     private ConcertController concertController;
     private TourController tourController;
     private CurrencyController currencyController;
     private TapController tapController;
+    private DebugUI debugUI;
+    private ViewController viewController;
+    private StageController stageController;
+    #endregion
 
-	
-	void Start () {
+    void Start()
+    {
         //songController = FindObjectOfType<SongController>();
         //concertController = FindObjectOfType<ConcertController>();
         //tourController = FindObjectOfType<TourController>();
         currencyController = FindObjectOfType<CurrencyController>();
         tapController = FindObjectOfType<TapController>();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        viewController = FindObjectOfType<ViewController>();
+        stageController = FindObjectOfType<StageController>();
 
+        debugUI = FindObjectOfType<DebugUI>();
+        debugUI.SetController(this);
+
+        stageController.OnDebugButtonPressed += debugUI.ShowUI;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
 
     void OnEnable()
     {
@@ -31,7 +42,6 @@ public class DebugController : MonoBehaviour {
 
     void OnDisable()
     {
-
     }
 
     //double-al error
@@ -62,4 +72,8 @@ public class DebugController : MonoBehaviour {
         tapController.SetToOneDebugTapMultiplier();
     }
 
+    public void OnBackToGameClick()
+    {
+        viewController.EnterView(ViewType.BACKSTAGE);
+    }
 }

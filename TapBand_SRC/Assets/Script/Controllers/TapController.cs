@@ -3,29 +3,34 @@ using UnityEngine;
 
 public class TapController : MonoBehaviour
 {
+    public float boosterMultiplier = 1f;
+    public float boosterTimeInterval = 0f;
+
+    public event TapEvent OnTap;
+
+    #region Private fields
     private TapUI tapUI;
 
     private BandMemberController bandMemberController;
 
     //private double prestigeTapMultiplier = 1f; 
     private float spotlightTapMultiplier;
-    public float boosterMultiplier = 1f;
-    public float boosterTimeInterval = 0f;
-
-    public event TapEvent OnTap;
-    int i = 0;
-
     private double debugTapMultiplier;
 
     private CurrencyController currencyController;
+    private ViewController viewController;
+    #endregion
 
     void Awake()
     {
         BindWithUI();
         bandMemberController = FindObjectOfType<BandMemberController>();
         currencyController = FindObjectOfType<CurrencyController>();
+        viewController = FindObjectOfType<ViewController>();
 
         spotlightTapMultiplier = GameData.instance.GeneralData.SpotlightTapMultiplier;
+
+        viewController.OnViewChange += ViewChanged;
     }
 
     void OnEnable()
@@ -123,5 +128,17 @@ public class TapController : MonoBehaviour
     public void SetToOneDebugTapMultiplier()
     {
         PlayerPrefsManager.SetDebugTapMultip( 1.0f );
+    }
+
+    public void ViewChanged(object sender, ViewChangeEventArgs e)
+    {
+        if (e.NewView == ViewType.STAGE)
+        {
+            tapUI.ShowUI();
+        }
+        else
+        {
+            tapUI.HideUI();
+        }
     }
 }
