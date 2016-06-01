@@ -45,13 +45,10 @@ public class TapUI : MonoBehaviour
         songController.OnSongStarted += TurnOnColliderHandler;
         songController.OnSongFinished += TurnOffColliderHandler;
 
-<<<<<<< HEAD
-        //dailyEventController.OnDailyEventStarted += TurnOffColliderHandler;
-        //dailyEventController.OnDailyEventFinished += TurnOnColliderHandler;
-=======
+
 //        dailyEventController.OnDailyEventStarted += TurnOffColliderHandler;
 //        dailyEventController.OnDailyEventFinished += TurnOnColliderHandler;
->>>>>>> d3792f652464ba658e3f706a5c7e37933bc7b716
+
     }
 
     void OnDisable()
@@ -59,13 +56,10 @@ public class TapUI : MonoBehaviour
         songController.OnSongStarted -= TurnOnColliderHandler;
         songController.OnSongFinished -= TurnOffColliderHandler;
 
-<<<<<<< HEAD
-        //dailyEventController.OnDailyEventStarted -= TurnOffColliderHandler;
-        //dailyEventController.OnDailyEventFinished -= TurnOnColliderHandler;
-=======
+
 //        dailyEventController.OnDailyEventStarted -= TurnOffColliderHandler;
 //        dailyEventController.OnDailyEventFinished -= TurnOnColliderHandler;
->>>>>>> d3792f652464ba658e3f706a5c7e37933bc7b716
+
     }
 
     public void DisplayTapValueAt(RawTapData data, double value)
