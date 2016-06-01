@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: be6532d7e0bdf11468e12bc3c6848fd3
+timeCreated: 1464714317
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: drum3_cymbalR
+    21300002: drum3_hihat_HI
+    21300004: drum3_body
+    21300006: drum3_hihat_LO
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: drum3_cymbalR
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 492
+        width: 141
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -70.5, y: 17}
+        - {x: -70.5, y: -2}
+        - {x: -29.5, y: -17}
+        - {x: 70.5, y: -17}
+        - {x: 70.5, y: 16}
+        - {x: 63.5, y: 17}
+    - name: drum3_hihat_HI
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 485
+        width: 141
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 46.5, y: 16.5}
+        - {x: -47.5, y: 16.5}
+        - {x: -70.5, y: 11.5}
+        - {x: -70.5, y: -2.5}
+        - {x: -65.5, y: -3.5}
+        - {x: 70.5, y: -3.5}
+        - {x: 70.5, y: 7.5}
+        - {x: 59.5, y: 11.5}
+    - name: drum3_body
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 25
+        width: 422
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 211, y: -25.5}
+        - {x: 211, y: 52.5}
+        - {x: 198, y: 47.5}
+        - {x: 201, y: 66.5}
+        - {x: 211, y: 133.5}
+        - {x: 211, y: 166.5}
+        - {x: 202, y: 169.5}
+        - {x: 167, y: 124.5}
+        - {x: -77, y: 124.5}
+        - {x: -111, y: 109.5}
+        - {x: -109, y: 50.5}
+        - {x: -98, y: 44.5}
+        - {x: -75, y: 42.5}
+        - {x: -127, y: 34.5}
+        - {x: -130, y: 27.5}
+        - {x: -136, y: 58.5}
+        - {x: -91, y: 153.5}
+        - {x: -93, y: 170.5}
+        - {x: -105, y: 170.5}
+        - {x: -108, y: 162.5}
+        - {x: -157, y: 68.5}
+        - {x: -156, y: -88.5}
+        - {x: -211, y: -147.5}
+        - {x: -211, y: -163.5}
+        - {x: -198, y: -162.5}
+        - {x: -163, y: -170.5}
+        - {x: -133, y: -170.5}
+        - {x: -139, y: -151.5}
+        - {x: -99, y: -165.5}
+        - {x: -35, y: -160.5}
+        - {x: 8, y: -170.5}
+        - {x: 167, y: -170.5}
+        - {x: 169, y: -169.5}
+        - {x: 201, y: -77.5}
+    - name: drum3_hihat_LO
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 438
+        width: 156
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 73, y: 12}
+        - {x: -73, y: 12}
+        - {x: -73, y: 1}
+        - {x: -22, y: -13}
+        - {x: 35, y: -13}
+        - {x: 72, y: -1}
+        - {x: 74, y: 3}
+        - {x: 74, y: 10}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

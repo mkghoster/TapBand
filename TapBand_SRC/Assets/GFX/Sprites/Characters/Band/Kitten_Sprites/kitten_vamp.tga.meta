@@ -1,9 +1,21 @@
 fileFormatVersion: 2
 guid: 45359f29eacb63b4e84028304dff8b6a
-timeCreated: 1462988764
+timeCreated: 1464620909
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: kitten_vamp_hair
+    21300002: kitten_vamp_body_UP
+    21300004: kitten_vamp_body_LO
+    21300006: kitten_vamp_armR_UP
+    21300008: kitten_vamp_armL_UP
+    21300010: kitten_vamp_head
+    21300012: kitten_vamp_armR_LO
+    21300014: kitten_vamp_armL_LO
+    21300016: kitten_vamp_eyeR_closed
+    21300018: kitten_vamp_eyeL_closed
+    21300020: kitten_vamp_eyeR
+    21300022: kitten_vamp_eyeL
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,10 +39,10 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +50,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,9 +61,294 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: kitten_vamp_hair
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 552
+        width: 525
+        height: 453
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118.5, y: -146.5}
+        - {x: 177.5, y: -66.5}
+        - {x: 196.5, y: -47.5}
+        - {x: 212.5, y: -15.5}
+        - {x: 214.5, y: 8.5}
+        - {x: 214.5, y: 26.5}
+        - {x: 211.5, y: 54.5}
+        - {x: 194.5, y: 95.5}
+        - {x: 168.5, y: 146.5}
+        - {x: 137.5, y: 179.5}
+        - {x: 105.5, y: 202.5}
+        - {x: 59.5, y: 226.5}
+        - {x: 39.5, y: 226.5}
+        - {x: 39.5, y: 223.5}
+        - {x: 40.5, y: 213.5}
+        - {x: 13.5, y: 221.5}
+        - {x: -54.5, y: 225.5}
+        - {x: -139.5, y: 210.5}
+        - {x: -194.5, y: 187.5}
+        - {x: -190.5, y: 180.5}
+        - {x: -136.5, y: 168.5}
+        - {x: -166.5, y: 161.5}
+        - {x: -198.5, y: 135.5}
+        - {x: -223.5, y: 99.5}
+        - {x: -234.5, y: 89.5}
+        - {x: -261.5, y: 88.5}
+        - {x: -262.5, y: 85.5}
+        - {x: -262.5, y: 81.5}
+        - {x: -256.5, y: 68.5}
+        - {x: -216.5, y: 51.5}
+        - {x: -173.5, y: 48.5}
+        - {x: -155.5, y: 56.5}
+        - {x: -125.5, y: 46.5}
+        - {x: -91.5, y: 28.5}
+        - {x: -108.5, y: 8.5}
+        - {x: -119.5, y: -7.5}
+        - {x: -131.5, y: -25.5}
+        - {x: -151.5, y: -67.5}
+        - {x: -149.5, y: -75.5}
+        - {x: -120.5, y: -65.5}
+        - {x: -154.5, y: -119.5}
+        - {x: -152.5, y: -134.5}
+        - {x: -125.5, y: -140.5}
+        - {x: -114.5, y: -161.5}
+        - {x: -86.5, y: -182.5}
+        - {x: -58.5, y: -195.5}
+        - {x: -21.5, y: -196.5}
+        - {x: -72.5, y: -207.5}
+        - {x: -67.5, y: -216.5}
+        - {x: -33.5, y: -222.5}
+        - {x: 13.5, y: -222.5}
+        - {x: 54.5, y: -213.5}
+        - {x: 87.5, y: -195.5}
+        - {x: 107.5, y: -173.5}
+    - name: kitten_vamp_body_UP
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 558
+        width: 144
+        height: 234
+      alignment: 9
+      pivot: {x: 0.5816243, y: 0.08811103}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55.246094, y: 213.38202}
+        - {x: -83.75391, y: 213.38202}
+        - {x: -83.75391, y: 146.38202}
+        - {x: -82.75391, y: 125.38202}
+        - {x: -36.753906, y: -4.617981}
+        - {x: -23.753906, y: -20.617981}
+        - {x: 17.246094, y: -20.617981}
+        - {x: 37.246094, y: 2.382019}
+        - {x: 60.246094, y: 103.38202}
+        - {x: 60.246094, y: 152.38202}
+    - name: kitten_vamp_body_LO
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 32
+        width: 245
+        height: 473
+      alignment: 9
+      pivot: {x: 0.61091906, y: 0.9556812}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11.324829, y: -306.0372}
+        - {x: 34.32483, y: -135.0372}
+        - {x: 34.32483, y: -16.0372}
+        - {x: 33.32483, y: 10.962799}
+        - {x: 18.32483, y: 20.9628}
+        - {x: -22.67517, y: 20.9628}
+        - {x: -41.67517, y: 1.9627991}
+        - {x: -82.67517, y: -62.0372}
+        - {x: -94.67517, y: -94.0372}
+        - {x: -94.67517, y: -167.0372}
+        - {x: -61.67517, y: -379.0372}
+        - {x: -57.67517, y: -438.0372}
+        - {x: -55.67517, y: -451.0372}
+        - {x: 26.32483, y: -451.0372}
+        - {x: 34.32483, y: -450.0372}
+        - {x: 34.32483, y: -439.0372}
+        - {x: 0.3248291, y: -413.0372}
+    - name: kitten_vamp_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 354
+        width: 61
+        height: 191
+      alignment: 9
+      pivot: {x: 0.7890315, y: 0.9307714}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.86908, y: 13.222656}
+        - {x: -12.13092, y: 13.222656}
+        - {x: -33.13092, y: -37.777344}
+        - {x: -48.13092, y: -88.77734}
+        - {x: -48.13092, y: -177.77734}
+        - {x: -33.13092, y: -177.77734}
+        - {x: -29.13092, y: -173.77734}
+        - {x: 12.86908, y: -27.777344}
+    - name: kitten_vamp_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 352
+        width: 49
+        height: 195
+      alignment: 9
+      pivot: {x: 0.23613754, y: 0.92796254}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.42926, y: 14.047302}
+        - {x: -11.57074, y: 14.047302}
+        - {x: -11.57074, y: -69.9527}
+        - {x: 13.42926, y: -180.9527}
+        - {x: 37.42926, y: -180.9527}
+        - {x: 37.42926, y: -28.952698}
+        - {x: 23.42926, y: 7.0473022}
+    - name: kitten_vamp_head
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 25
+        width: 518
+        height: 527
+      alignment: 9
+      pivot: {x: 0.56, y: 0.06}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 145.92001, y: 94.380005}
+        - {x: 174.92001, y: 153.38}
+        - {x: 181.92001, y: 190.38}
+        - {x: 181.92001, y: 218.38}
+        - {x: 170.92001, y: 234.38}
+        - {x: 159.92001, y: 239.38}
+        - {x: 126.92001, y: 238.38}
+        - {x: 114.92001, y: 240.38}
+        - {x: 97.92001, y: 261.38}
+        - {x: 66.92001, y: 280.38}
+        - {x: 46.920013, y: 285.38}
+        - {x: 14.920013, y: 289.38}
+        - {x: -26.079987, y: 289.38}
+        - {x: -55.079987, y: 281.38}
+        - {x: -73.07999, y: 270.38}
+        - {x: -89.07999, y: 253.38}
+        - {x: -103.07999, y: 232.38}
+        - {x: -113.07999, y: 184.38}
+        - {x: -144.07999, y: 197.38}
+        - {x: -166.07999, y: 195.38}
+        - {x: -180.07999, y: 175.38}
+        - {x: -180.07999, y: 152.38}
+        - {x: -172.07999, y: 109.380005}
+        - {x: -159.07999, y: 73.380005}
+        - {x: -116.07999, y: 25.380005}
+        - {x: -96.07999, y: 12.380005}
+        - {x: -73.07999, y: -12.619995}
+        - {x: -69.07999, y: -18.619995}
+        - {x: 69.92001, y: -18.619995}
+        - {x: 72.92001, y: -16.619995}
+        - {x: 88.92001, y: 12.380005}
+        - {x: 114.92001, y: 55.380005}
+    - name: kitten_vamp_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 181
+        width: 23
+        height: 158
+      alignment: 9
+      pivot: {x: 0.3751778, y: 0.9593197}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: kitten_vamp_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 180
+        width: 36
+        height: 160
+      alignment: 9
+      pivot: {x: 0.76119655, y: 0.95305765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.403076, y: -92.48923}
+        - {x: -27.403076, y: -137.48923}
+        - {x: -22.403076, y: -152.48923}
+        - {x: -9.403076, y: -152.48923}
+        - {x: 8.596924, y: -97.48923}
+        - {x: 8.596924, y: 7.5107727}
+        - {x: -7.403076, y: 7.5107727}
+        - {x: -11.403076, y: 4.5107727}
+    - name: kitten_vamp_eyeR_closed
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 122
+        width: 86
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: kitten_vamp_eyeL_closed
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 122
+        width: 88
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: kitten_vamp_eyeR
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 30
+        width: 88
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 22, y: 25}
+        - {x: -22, y: 25}
+        - {x: -22, y: -2}
+        - {x: -4, y: -22}
+        - {x: 33, y: -22}
+        - {x: 36, y: -13}
+        - {x: 36, y: 18}
+    - name: kitten_vamp_eyeL
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 31
+        width: 67
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.5, y: 24}
+        - {x: -26.5, y: 15}
+        - {x: -26.5, y: -4}
+        - {x: -23.5, y: -15}
+        - {x: -16.5, y: -22}
+        - {x: 4.5, y: -22}
+        - {x: 17.5, y: -18}
+        - {x: 28.5, y: 2}
+        - {x: 32.5, y: 18}
+        - {x: 32.5, y: 24}
     outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
-  assetBundleVariant: 
+  assetBundleVariant:  

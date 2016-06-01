@@ -1,0 +1,500 @@
+fileFormatVersion: 2
+guid: 0d8074eb2244bf84dafb272464c01cc5
+timeCreated: 1464286960
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: blackguy_indian_head
+    21300002: blackguy_indian_eyeR_brow
+    21300004: blackguy_indian_eyeL_brow
+    21300006: blackguy_indian_eyeR
+    21300008: blackguy_indian_eyeL
+    21300010: blackguy_indian_eyeR_closed
+    21300012: blackguy_indian_eyeL_closed
+    21300014: blackguy_indian_armR_UP
+    21300016: blackguy_indian_armL_UP
+    21300018: blackguy_indian_body
+    21300020: blackguy_indian_armR_LO
+    21300022: blackguy_indian_armL_LO
+    21300024: blackguy_indian_stick
+    21300026: blackguy_indian_legL_UP
+    21300028: blackguy_indian_legL_LO
+    21300030: blackguy_indian_legR_UP
+    21300032: blackguy_indian_legR_LO
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: blackguy_indian_head
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 374
+        width: 581
+        height: 628
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 163.5, y: 23}
+        - {x: 164.5, y: 28}
+        - {x: 165.5, y: 38}
+        - {x: 168.5, y: 59}
+        - {x: 171.5, y: 64}
+        - {x: 171.5, y: 72}
+        - {x: 172.5, y: 81}
+        - {x: 173.5, y: 103}
+        - {x: 185.5, y: 111}
+        - {x: 195.5, y: 120}
+        - {x: 214.5, y: 139}
+        - {x: 220.5, y: 146}
+        - {x: 230.5, y: 158}
+        - {x: 240.5, y: 173}
+        - {x: 247.5, y: 185}
+        - {x: 257.5, y: 206}
+        - {x: 261.5, y: 215}
+        - {x: 265.5, y: 225}
+        - {x: 269.5, y: 236}
+        - {x: 271.5, y: 242}
+        - {x: 274.5, y: 252}
+        - {x: 277.5, y: 263}
+        - {x: 281.5, y: 279}
+        - {x: 284.5, y: 294}
+        - {x: 286.5, y: 306}
+        - {x: 288.5, y: 320}
+        - {x: 290.5, y: 339}
+        - {x: 290.5, y: 426}
+        - {x: 288.5, y: 438}
+        - {x: 284.5, y: 459}
+        - {x: 276.5, y: 478}
+        - {x: 267.5, y: 498}
+        - {x: 258.5, y: 513}
+        - {x: 247.5, y: 527}
+        - {x: 241.5, y: 534}
+        - {x: 220.5, y: 555}
+        - {x: 213.5, y: 561}
+        - {x: 205.5, y: 568}
+        - {x: 198.5, y: 573}
+        - {x: 182.5, y: 583}
+        - {x: 158.5, y: 595}
+        - {x: 139.5, y: 603}
+        - {x: 128.5, y: 607}
+        - {x: 108.5, y: 613}
+        - {x: 88.5, y: 618}
+        - {x: 78.5, y: 620}
+        - {x: 50.5, y: 624}
+        - {x: 40.5, y: 625}
+        - {x: 24.5, y: 626}
+        - {x: -12.5, y: 626}
+        - {x: -28.5, y: 625}
+        - {x: -38.5, y: 624}
+        - {x: -54.5, y: 622}
+        - {x: -71.5, y: 619}
+        - {x: -81.5, y: 617}
+        - {x: -94.5, y: 614}
+        - {x: -106.5, y: 611}
+        - {x: -115.5, y: 608}
+        - {x: -132.5, y: 602}
+        - {x: -142.5, y: 598}
+        - {x: -160.5, y: 590}
+        - {x: -165.5, y: 588}
+        - {x: -178.5, y: 581}
+        - {x: -188.5, y: 575}
+        - {x: -200.5, y: 567}
+        - {x: -208.5, y: 561}
+        - {x: -216.5, y: 554}
+        - {x: -225.5, y: 546}
+        - {x: -238.5, y: 533}
+        - {x: -246.5, y: 524}
+        - {x: -253.5, y: 516}
+        - {x: -260.5, y: 505}
+        - {x: -266.5, y: 496}
+        - {x: -275.5, y: 477}
+        - {x: -279.5, y: 467}
+        - {x: -284.5, y: 455}
+        - {x: -287.5, y: 439}
+        - {x: -289.5, y: 427}
+        - {x: -290.5, y: 418}
+        - {x: -290.5, y: 377}
+        - {x: -289.5, y: 367}
+        - {x: -288.5, y: 359}
+        - {x: -286.5, y: 344}
+        - {x: -282.5, y: 322}
+        - {x: -278.5, y: 303}
+        - {x: -272.5, y: 280}
+        - {x: -268.5, y: 266}
+        - {x: -261.5, y: 246}
+        - {x: -256.5, y: 233}
+        - {x: -248.5, y: 214}
+        - {x: -232.5, y: 181}
+        - {x: -224.5, y: 167}
+        - {x: -219.5, y: 160}
+        - {x: -212.5, y: 148}
+        - {x: -205.5, y: 138}
+        - {x: -189.5, y: 118}
+        - {x: -178.5, y: 105}
+        - {x: -156.5, y: 82}
+        - {x: -145.5, y: 72}
+        - {x: -130.5, y: 60}
+        - {x: -124.5, y: 58}
+        - {x: -117.5, y: 50}
+        - {x: -109.5, y: 41}
+        - {x: -107.5, y: 26}
+        - {x: -104.5, y: 3}
+        - {x: -103.5, y: 0}
+        - {x: 147.5, y: 0}
+        - {x: 152.5, y: 2}
+        - {x: 157.5, y: 7}
+        - {x: 160.5, y: 13}
+    - name: blackguy_indian_eyeR_brow
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 945
+        width: 98
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: 23.5}
+        - {x: -49, y: 16.5}
+        - {x: -49, y: -23.5}
+        - {x: 46, y: -23.5}
+        - {x: 49, y: -22.5}
+        - {x: 49, y: 23.5}
+    - name: blackguy_indian_eyeL_brow
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 949
+        width: 99
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.5, y: 25}
+        - {x: -49.5, y: 25}
+        - {x: -49.5, y: -20}
+        - {x: 5.5, y: -25}
+        - {x: 49.5, y: -25}
+        - {x: 49.5, y: 11}
+        - {x: 39.5, y: 20}
+    - name: blackguy_indian_eyeR
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 880
+        width: 48
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 24.5}
+        - {x: -24, y: 16.5}
+        - {x: -24, y: -15.5}
+        - {x: -20, y: -24.5}
+        - {x: 19, y: -24.5}
+        - {x: 24, y: -19.5}
+        - {x: 24, y: 16.5}
+        - {x: 21, y: 24.5}
+    - name: blackguy_indian_eyeL
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 880
+        width: 49
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 25}
+        - {x: -24.5, y: 20}
+        - {x: -24.5, y: -22}
+        - {x: -22.5, y: -26}
+        - {x: 24.5, y: -26}
+        - {x: 24.5, y: 24}
+        - {x: 22.5, y: 25}
+    - name: blackguy_indian_eyeR_closed
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 840
+        width: 54
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: blackguy_indian_eyeL_closed
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 840
+        width: 54
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: blackguy_indian_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 571
+        width: 60
+        height: 218
+      alignment: 9
+      pivot: {x: 0.6666687, y: 0.9148434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.000122, y: 18.564148}
+        - {x: -40.000122, y: 4.564148}
+        - {x: -40.000122, y: -199.43585}
+        - {x: -21.000122, y: -199.43585}
+        - {x: 19.999878, y: -35.435852}
+        - {x: 19.999878, y: 14.564148}
+        - {x: 14.999878, y: 18.564148}
+    - name: blackguy_indian_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 563
+        width: 53
+        height: 237
+      alignment: 9
+      pivot: {x: 0.47442508, y: 0.8797512}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.144531, y: 22.498962}
+        - {x: -25.144531, y: 16.498962}
+        - {x: -25.144531, y: -41.501038}
+        - {x: 7.8554688, y: -201.50104}
+        - {x: 23.855469, y: -201.50104}
+        - {x: 27.855469, y: -192.50104}
+        - {x: 27.855469, y: 16.498962}
+        - {x: 13.855469, y: 22.498962}
+    - name: blackguy_indian_body
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 39
+        width: 363
+        height: 276
+      alignment: 9
+      pivot: {x: 0.14705916, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 87.61752, y: -127}
+        - {x: 134.61752, y: -124}
+        - {x: 197.61752, y: -119}
+        - {x: 240.61752, y: -115}
+        - {x: 290.61752, y: -111}
+        - {x: 308.61752, y: -109}
+        - {x: 309.61752, y: -106}
+        - {x: 309.61752, y: 111}
+        - {x: 307.61752, y: 113}
+        - {x: 299.61752, y: 114}
+        - {x: 279.61752, y: 116}
+        - {x: 189.61752, y: 124}
+        - {x: 117.61752, y: 129}
+        - {x: 65.61752, y: 131}
+        - {x: 63.617523, y: 133}
+        - {x: 56.617523, y: 136}
+        - {x: 44.617523, y: 138}
+        - {x: -36.382477, y: 138}
+        - {x: -48.382477, y: 135}
+        - {x: -50.382477, y: 123}
+        - {x: -50.382477, y: 27}
+        - {x: -52.382477, y: 25}
+        - {x: -53.382477, y: 16}
+        - {x: -53.382477, y: -13}
+        - {x: -50.382477, y: -31}
+        - {x: -50.382477, y: -83}
+        - {x: -48.382477, y: -119}
+        - {x: -48.382477, y: -129}
+        - {x: -37.382477, y: -138}
+        - {x: 19.617523, y: -138}
+        - {x: 38.617523, y: -136}
+        - {x: 68.61752, y: -132}
+    - name: blackguy_indian_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 296
+        width: 44
+        height: 212
+      alignment: 9
+      pivot: {x: 0.34189537, y: 0.9593982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.956604, y: 7.6075745}
+        - {x: -14.043396, y: 7.6075745}
+        - {x: -14.043396, y: -182.39243}
+        - {x: 0.956604, y: -203.39243}
+        - {x: 20.956604, y: -203.39243}
+        - {x: 21.956604, y: -194.39243}
+        - {x: 28.956604, y: -174.39243}
+        - {x: 28.956604, y: -128.39243}
+    - name: blackguy_indian_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 296
+        width: 62
+        height: 212
+      alignment: 9
+      pivot: {x: 0.8506352, y: 0.9552965}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.26062, y: -43.522858}
+        - {x: 9.26062, y: 5.4771423}
+        - {x: 7.26062, y: 8.477142}
+        - {x: -5.73938, y: 8.477142}
+        - {x: -8.73938, y: 3.4771423}
+        - {x: -51.73938, y: -152.52286}
+        - {x: -47.73938, y: -160.52286}
+        - {x: -52.73938, y: -182.52286}
+        - {x: -52.73938, y: -202.52286}
+        - {x: -35.73938, y: -202.52286}
+        - {x: -25.73938, y: -189.52286}
+        - {x: -7.73938, y: -167.52286}
+        - {x: 2.26062, y: -150.52286}
+    - name: blackguy_indian_stick
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 65
+        width: 12
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: blackguy_indian_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 168
+        width: 182
+        height: 68
+      alignment: 9
+      pivot: {x: 0.103416696, y: 0.67589635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 147.17816, y: 4.0390472}
+        - {x: 29.178162, y: 22.039047}
+        - {x: -16.821838, y: 22.039047}
+        - {x: -18.821838, y: 21.039047}
+        - {x: -18.821838, y: -27.960953}
+        - {x: -13.821838, y: -35.960953}
+        - {x: 64.17816, y: -45.960953}
+        - {x: 158.17816, y: -45.960953}
+        - {x: 163.17816, y: -37.960953}
+        - {x: 163.17816, y: -7.9609528}
+        - {x: 155.17816, y: 0.03904724}
+    - name: blackguy_indian_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 159
+        width: 139
+        height: 113
+      alignment: 9
+      pivot: {x: 0.17491402, y: 0.27102175}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.31305, y: -18.625458}
+        - {x: -8.313049, y: -26.625458}
+        - {x: 81.68695, y: -30.625458}
+        - {x: 114.68695, y: -30.625458}
+        - {x: 114.68695, y: 81.37454}
+        - {x: 63.68695, y: 81.37454}
+        - {x: -21.31305, y: 49.374542}
+    - name: blackguy_indian_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 53
+        width: 182
+        height: 68
+      alignment: 9
+      pivot: {x: 0.11021541, y: 0.66983086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 145.9408, y: 3.4515}
+        - {x: 67.940796, y: 22.4515}
+        - {x: -12.059204, y: 22.4515}
+        - {x: -20.059204, y: 17.4515}
+        - {x: -20.059204, y: -24.5485}
+        - {x: 38.940796, y: -45.5485}
+        - {x: 150.9408, y: -45.5485}
+        - {x: 161.9408, y: -37.5485}
+        - {x: 161.9408, y: -8.5485}
+        - {x: 153.9408, y: -0.54850006}
+    - name: blackguy_indian_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 33
+        width: 137
+        height: 112
+      alignment: 9
+      pivot: {x: 0.1464572, y: 0.27455238}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21.935364, y: 81.25014}
+        - {x: -20.064636, y: 26.250134}
+        - {x: -20.064636, y: -29.749866}
+        - {x: 116.93536, y: -29.749866}
+        - {x: 116.93536, y: 81.25014}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

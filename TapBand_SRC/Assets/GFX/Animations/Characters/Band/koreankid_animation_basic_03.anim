@@ -115,7 +115,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -177,7 +177,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -374,7 +374,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -436,7 +436,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -564,7 +564,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -581,7 +581,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -733,7 +733,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -760,7 +760,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -820,7 +820,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
   m_FloatCurves:
   - curve:
       serializedVersion: 2
@@ -964,7 +964,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_basic_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_basic_armL_LO
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -984,7 +984,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_egypt_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_egypt_armL_LO
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -1004,7 +1004,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_incan_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_incan_armL_LO
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -1024,7 +1024,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_indian_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_indian_armL_LO
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -1044,7 +1044,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_vamp_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_vamp_armL_LO
     classID: 212
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -1922,7 +1922,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1942,7 +1942,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1962,7 +1962,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1982,7 +1982,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2002,7 +2002,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2022,7 +2022,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2042,7 +2042,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2062,7 +2062,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2082,7 +2082,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2147,7 +2147,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2212,7 +2212,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2277,7 +2277,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3207,7 +3207,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3237,7 +3237,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3267,7 +3267,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3322,7 +3322,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3377,7 +3377,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3432,7 +3432,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3477,7 +3477,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3522,7 +3522,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3567,7 +3567,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3597,7 +3597,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3627,7 +3627,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3657,7 +3657,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3722,7 +3722,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3787,7 +3787,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3852,7 +3852,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4117,7 +4117,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_basic_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_basic_armL_LO
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -4137,7 +4137,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_egypt_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_egypt_armL_LO
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -4157,7 +4157,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_incan_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_incan_armL_LO
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -4177,7 +4177,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_indian_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_indian_armL_LO
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -4197,7 +4197,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FlipX
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO/koreankid_vamp_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO/koreankid_vamp_armL_LO
     classID: 212
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -4208,7 +4208,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4218,7 +4218,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4228,7 +4228,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP/KOREANKID_armR_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP/KOREANKID_ARM_RIGHT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4328,7 +4328,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4338,7 +4338,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4348,7 +4348,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4358,7 +4358,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4368,7 +4368,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4378,7 +4378,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armR_UP
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_RIGHT_UP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4538,7 +4538,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4548,7 +4548,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4558,7 +4558,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_armL_UP/KOREANKID_armL_LO
+    path: KOREANKID_CENTER/KOREANKID_BODY/KOREANKID_ARM_LEFT_UP/KOREANKID_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:

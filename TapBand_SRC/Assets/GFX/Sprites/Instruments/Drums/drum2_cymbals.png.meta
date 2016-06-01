@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 1b10e4345c7b96142928a72b769913c6
+timeCreated: 1464716018
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: drum2_cymbalR
+    21300002: drum2_hihat_HI
+    21300004: drum2_body
+    21300006: drum2_cymbalL
+    21300008: drum2_hihat_LO
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: drum2_cymbalR
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 510
+        width: 116
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53, y: 27}
+        - {x: -55, y: 25}
+        - {x: -58, y: 15}
+        - {x: -58, y: -18}
+        - {x: -54, y: -27}
+        - {x: 58, y: -27}
+        - {x: 58, y: 21}
+        - {x: 40, y: 27}
+    - name: drum2_hihat_HI
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 560
+        width: 141
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: drum2_body
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 12
+        width: 498
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109, y: -33.5}
+        - {x: -110, y: -11.5}
+        - {x: -133, y: 2.5}
+        - {x: -94, y: 36.5}
+        - {x: -114, y: -60.5}
+        - {x: -83, y: -144.5}
+        - {x: -56, y: -196.5}
+        - {x: 83, y: -195.5}
+        - {x: 120, y: -106.5}
+        - {x: 128, y: -79.5}
+        - {x: 128, y: -60.5}
+        - {x: 122, y: -30.5}
+        - {x: 105, y: 1.5}
+        - {x: 127, y: -38.5}
+        - {x: 130, y: -62.5}
+        - {x: 190, y: -200.5}
+        - {x: 234, y: -200.5}
+        - {x: 238, y: -196.5}
+        - {x: 237, y: -178.5}
+        - {x: 249, y: -139.5}
+        - {x: 249, y: 35.5}
+        - {x: 228, y: 92.5}
+        - {x: 152, y: 121.5}
+        - {x: 144, y: 121.5}
+        - {x: 140, y: 119.5}
+        - {x: 140, y: 115.5}
+        - {x: 140, y: 132.5}
+        - {x: 157, y: 159.5}
+        - {x: -82, y: 200.5}
+        - {x: -94, y: 200.5}
+        - {x: -94, y: 194.5}
+        - {x: -249, y: 129.5}
+        - {x: -249, y: -20.5}
+        - {x: -206, y: -200.5}
+        - {x: -175, y: -200.5}
+        - {x: -120, y: -123.5}
+        - {x: -115, y: -99.5}
+        - {x: -124, y: -47.5}
+    - name: drum2_cymbalL
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 510
+        width: 139
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.5, y: 22.5}
+        - {x: -56.5, y: 6.5}
+        - {x: -62.5, y: -8.5}
+        - {x: -62.5, y: -30.5}
+        - {x: -6.5, y: -30.5}
+        - {x: 35.5, y: -23.5}
+        - {x: 58.5, y: -5.5}
+        - {x: 58.5, y: 12.5}
+        - {x: 53.5, y: 22.5}
+    - name: drum2_hihat_LO
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 528
+        width: 156
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

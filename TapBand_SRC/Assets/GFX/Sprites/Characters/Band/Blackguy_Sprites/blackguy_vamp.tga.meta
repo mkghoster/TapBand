@@ -1,0 +1,490 @@
+fileFormatVersion: 2
+guid: f0a925684e1b20246b315637969dad23
+timeCreated: 1464286867
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: blackguy_vamp_head
+    21300002: blackguy_vamp_eyeR_brow
+    21300004: blackguy_vamp_eyeL_brow
+    21300006: blackguy_vamp_eyeR
+    21300008: blackguy_vamp_eyeL
+    21300010: blackguy_vamp_eyeR_closed
+    21300012: blackguy_vamp_eyeL_closed
+    21300014: blackguy_vamp_armR_UP
+    21300016: blackguy_vamp_armL_UP
+    21300018: blackguy_vamp_body
+    21300020: blackguy_vamp_armR_LO
+    21300022: blackguy_vamp_armL_LO
+    21300024: blackguy_vamp_stick
+    21300026: blackguy_vamp_legL_UP
+    21300028: blackguy_vamp_legL_LO
+    21300030: blackguy_vamp_legR_UP
+    21300032: blackguy_vamp_legR_LO
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: blackguy_vamp_head
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 374
+        width: 528
+        height: 622
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 164, y: 66}
+        - {x: 166, y: 97}
+        - {x: 171, y: 130}
+        - {x: 178, y: 137}
+        - {x: 201, y: 169}
+        - {x: 205, y: 178}
+        - {x: 206, y: 186}
+        - {x: 218, y: 189}
+        - {x: 228, y: 206}
+        - {x: 227, y: 218}
+        - {x: 237, y: 224}
+        - {x: 246, y: 247}
+        - {x: 258, y: 264}
+        - {x: 252, y: 293}
+        - {x: 256, y: 302}
+        - {x: 258, y: 323}
+        - {x: 262, y: 327}
+        - {x: 262, y: 375}
+        - {x: 259, y: 382}
+        - {x: 253, y: 390}
+        - {x: 262, y: 402}
+        - {x: 262, y: 421}
+        - {x: 256, y: 452}
+        - {x: 245, y: 465}
+        - {x: 237, y: 489}
+        - {x: 228, y: 506}
+        - {x: 218, y: 525}
+        - {x: 204, y: 533}
+        - {x: 195, y: 546}
+        - {x: 182, y: 555}
+        - {x: 172, y: 569}
+        - {x: 148, y: 577}
+        - {x: 138, y: 586}
+        - {x: 124, y: 591}
+        - {x: 115, y: 606}
+        - {x: 106, y: 609}
+        - {x: 88, y: 609}
+        - {x: 79, y: 611}
+        - {x: 67, y: 617}
+        - {x: 46, y: 615}
+        - {x: 37, y: 622}
+        - {x: 12, y: 622}
+        - {x: 2, y: 613}
+        - {x: -7, y: 616}
+        - {x: -28, y: 616}
+        - {x: -51, y: 618}
+        - {x: -61, y: 608}
+        - {x: -73, y: 610}
+        - {x: -85, y: 606}
+        - {x: -96, y: 595}
+        - {x: -109, y: 604}
+        - {x: -124, y: 602}
+        - {x: -137, y: 593}
+        - {x: -140, y: 577}
+        - {x: -147, y: 581}
+        - {x: -166, y: 578}
+        - {x: -178, y: 562}
+        - {x: -195, y: 553}
+        - {x: -203, y: 546}
+        - {x: -215, y: 532}
+        - {x: -225, y: 524}
+        - {x: -250, y: 489}
+        - {x: -252, y: 460}
+        - {x: -259, y: 449}
+        - {x: -257, y: 437}
+        - {x: -255, y: 431}
+        - {x: -264, y: 416}
+        - {x: -264, y: 398}
+        - {x: -263, y: 392}
+        - {x: -257, y: 386}
+        - {x: -264, y: 377}
+        - {x: -264, y: 360}
+        - {x: -260, y: 352}
+        - {x: -264, y: 340}
+        - {x: -264, y: 323}
+        - {x: -257, y: 288}
+        - {x: -254, y: 278}
+        - {x: -243, y: 269}
+        - {x: -250, y: 257}
+        - {x: -251, y: 242}
+        - {x: -248, y: 235}
+        - {x: -236, y: 224}
+        - {x: -225, y: 204}
+        - {x: -214, y: 194}
+        - {x: -213, y: 183}
+        - {x: -211, y: 175}
+        - {x: -199, y: 165}
+        - {x: -198, y: 152}
+        - {x: -197, y: 146}
+        - {x: -184, y: 133}
+        - {x: -177, y: 128}
+        - {x: -177, y: 108}
+        - {x: -161, y: 97}
+        - {x: -154, y: 82}
+        - {x: -144, y: 71}
+        - {x: -132, y: 60}
+        - {x: -118, y: 43}
+        - {x: -112, y: 5}
+        - {x: -110, y: 0}
+        - {x: 139, y: 0}
+        - {x: 151, y: 9}
+        - {x: 153, y: 15}
+        - {x: 156, y: 25}
+    - name: blackguy_vamp_eyeR_brow
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 945
+        width: 98
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: 23.5}
+        - {x: -49, y: 16.5}
+        - {x: -49, y: -23.5}
+        - {x: 46, y: -23.5}
+        - {x: 49, y: -22.5}
+        - {x: 49, y: 23.5}
+    - name: blackguy_vamp_eyeL_brow
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 949
+        width: 99
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.5, y: 25}
+        - {x: -49.5, y: 25}
+        - {x: -49.5, y: -20}
+        - {x: 5.5, y: -25}
+        - {x: 49.5, y: -25}
+        - {x: 49.5, y: 11}
+        - {x: 39.5, y: 20}
+    - name: blackguy_vamp_eyeR
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 880
+        width: 48
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 24.5}
+        - {x: -24, y: 16.5}
+        - {x: -24, y: -15.5}
+        - {x: -20, y: -24.5}
+        - {x: 19, y: -24.5}
+        - {x: 24, y: -19.5}
+        - {x: 24, y: 16.5}
+        - {x: 21, y: 24.5}
+    - name: blackguy_vamp_eyeL
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 880
+        width: 49
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 25}
+        - {x: -24.5, y: 20}
+        - {x: -24.5, y: -22}
+        - {x: -22.5, y: -26}
+        - {x: 24.5, y: -26}
+        - {x: 24.5, y: 24}
+        - {x: 22.5, y: 25}
+    - name: blackguy_vamp_eyeR_closed
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 840
+        width: 54
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: blackguy_vamp_eyeL_closed
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 840
+        width: 54
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: blackguy_vamp_armR_UP
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 566
+        width: 105
+        height: 239
+      alignment: 9
+      pivot: {x: 0.66666955, y: 0.82100636}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45.000305, y: 42.77948}
+        - {x: -66.000305, y: 5.77948}
+        - {x: -66.000305, y: -194.22052}
+        - {x: -63.000305, y: -196.22052}
+        - {x: -8.000305, y: -196.22052}
+        - {x: 34.999695, y: -95.22052}
+        - {x: 34.999695, y: 22.77948}
+        - {x: 22.999695, y: 42.77948}
+    - name: blackguy_vamp_armL_UP
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 563
+        width: 95
+        height: 247
+      alignment: 9
+      pivot: {x: 0.40802902, y: 0.82584}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37.762756, y: 43.017517}
+        - {x: -37.762756, y: -44.982483}
+        - {x: -6.7627563, y: -203.98248}
+        - {x: 48.237244, y: -203.98248}
+        - {x: 56.237244, y: -192.98248}
+        - {x: 56.237244, y: 39.017517}
+        - {x: 38.237244, y: 43.017517}
+    - name: blackguy_vamp_body
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 46
+        width: 352
+        height: 263
+      alignment: 9
+      pivot: {x: 0.17943902, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84.83746, y: -128.5}
+        - {x: 99.83746, y: -127.5}
+        - {x: 128.83746, y: -125.5}
+        - {x: 141.83746, y: -124.5}
+        - {x: 165.83746, y: -122.5}
+        - {x: 188.83746, y: -120.5}
+        - {x: 220.83746, y: -117.5}
+        - {x: 250.83746, y: -114.5}
+        - {x: 278.83746, y: -111.5}
+        - {x: 287.83746, y: -110.5}
+        - {x: 288.83746, y: -109.5}
+        - {x: 288.83746, y: 110.5}
+        - {x: 287.83746, y: 113.5}
+        - {x: 264.83746, y: 115.5}
+        - {x: 242.83746, y: 117.5}
+        - {x: 219.83746, y: 119.5}
+        - {x: 171.83746, y: 123.5}
+        - {x: 146.83746, y: 125.5}
+        - {x: 119.83746, y: 127.5}
+        - {x: 105.83746, y: 128.5}
+        - {x: 89.83746, y: 129.5}
+        - {x: 71.83746, y: 130.5}
+        - {x: 49.837463, y: 131.5}
+        - {x: 14.837463, y: 131.5}
+        - {x: 13.837463, y: 130.5}
+        - {x: -20.162537, y: 130.5}
+        - {x: -21.162537, y: 131.5}
+        - {x: -62.162537, y: 131.5}
+        - {x: -63.162537, y: 130.5}
+        - {x: -63.162537, y: -131.5}
+        - {x: 28.837463, y: -131.5}
+        - {x: 49.837463, y: -130.5}
+        - {x: 50.837463, y: -129.5}
+    - name: blackguy_vamp_armR_LO
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 296
+        width: 105
+        height: 230
+      alignment: 9
+      pivot: {x: 0.7090053, y: 0.90759647}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.445557, y: 21.252808}
+        - {x: -74.44556, y: -49.747192}
+        - {x: -74.44556, y: -83.74719}
+        - {x: -70.44556, y: -92.74719}
+        - {x: -14.445557, y: -208.7472}
+        - {x: 30.554443, y: -208.7472}
+        - {x: 30.554443, y: 19.252808}
+        - {x: 28.554443, y: 21.252808}
+    - name: blackguy_vamp_armL_LO
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 296
+        width: 121
+        height: 231
+      alignment: 9
+      pivot: {x: 0.41622648, y: 0.90675336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.363403, y: 21.539978}
+        - {x: -50.363403, y: -102.46002}
+        - {x: -50.363403, y: -209.46002}
+        - {x: -21.363403, y: -209.46002}
+        - {x: 14.636597, y: -185.46002}
+        - {x: 70.6366, y: -97.46002}
+        - {x: 70.6366, y: -50.460022}
+        - {x: 26.636597, y: 21.539978}
+    - name: blackguy_vamp_stick
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 65
+        width: 12
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: blackguy_vamp_legL_UP
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 168
+        width: 182
+        height: 68
+      alignment: 9
+      pivot: {x: 0.103416696, y: 0.67589635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 147.17816, y: 4.0390472}
+        - {x: 29.178162, y: 22.039047}
+        - {x: -16.821838, y: 22.039047}
+        - {x: -18.821838, y: 21.039047}
+        - {x: -18.821838, y: -27.960953}
+        - {x: -13.821838, y: -35.960953}
+        - {x: 64.17816, y: -45.960953}
+        - {x: 158.17816, y: -45.960953}
+        - {x: 163.17816, y: -37.960953}
+        - {x: 163.17816, y: -7.9609528}
+        - {x: 155.17816, y: 0.03904724}
+    - name: blackguy_vamp_legL_LO
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 153
+        width: 139
+        height: 119
+      alignment: 9
+      pivot: {x: 0.1625915, y: 0.33037472}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 47.39978, y: 79.68541}
+        - {x: -18.60022, y: 23.68541}
+        - {x: -18.60022, y: -36.31459}
+        - {x: -8.60022, y: -38.31459}
+        - {x: 87.39978, y: -38.31459}
+        - {x: 116.39978, y: -29.31459}
+        - {x: 116.39978, y: 79.68541}
+    - name: blackguy_vamp_legR_UP
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 52
+        width: 182
+        height: 68
+      alignment: 9
+      pivot: {x: 0.11021541, y: 0.66983086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.059204, y: 22.4515}
+        - {x: -20.059204, y: -20.5485}
+        - {x: 3.940796, y: -37.5485}
+        - {x: 79.940796, y: -45.5485}
+        - {x: 161.9408, y: -45.5485}
+        - {x: 161.9408, y: 3.4515}
+        - {x: 72.940796, y: 22.4515}
+    - name: blackguy_vamp_legR_LO
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 26
+        width: 137
+        height: 119
+      alignment: 9
+      pivot: {x: 0.1464572, y: 0.32043234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 68.93536, y: 80.86855}
+        - {x: -20.064636, y: 59.868553}
+        - {x: -20.064636, y: -17.131447}
+        - {x: -11.064636, y: -24.131447}
+        - {x: 37.935364, y: -38.131447}
+        - {x: 56.935364, y: -38.131447}
+        - {x: 114.93536, y: -29.131447}
+        - {x: 116.93536, y: -27.131447}
+        - {x: 116.93536, y: 80.86855}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
