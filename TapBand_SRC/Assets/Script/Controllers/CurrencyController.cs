@@ -125,14 +125,9 @@ public class CurrencyController : MonoBehaviour
         double tapStrengthMultiplier = CalculateTapStrengthBonus();                                 
         currencyState.TapMultiplierFromPrestige *= tapStrengthMultiplier;
 
-<<<<<<< HEAD
         print("new tapStrength bonus after Prestige: "+ currencyState.TapMultiplierFromPrestige);
         
         //for(int i = 0; i < currencyState.FanBonusPerTour.Count; i++) { print(i + ".: elem: " + currencyState.FanBonusPerTour[i]); }
-=======
-        print("new tapStrength bonus after Prestige: " + currencyState.TapMultiplierFromPrestige);
-
->>>>>>> e71afc4f874684a918d3bb239baffec2b5497e6b
 
         SynchronizeRealCurrencyAndScreenCurrency();
     }
