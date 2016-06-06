@@ -6,23 +6,8 @@ public class SettingsUI : MonoBehaviour {
 
     public GameObject settingsPanel;
 
-    #region private fields
-    private SettingsController settingsController;
-    #endregion
-
-
-    void Start () {
-	
-	}
-	
-    public void SetController(SettingsController controller)
+    public void OnBackToGameButtonClick()
     {
-        this.settingsController = controller;
-    }
-
-    public void BakcToGameButtinClic()
-    {
-
         HideUI();
     }
 

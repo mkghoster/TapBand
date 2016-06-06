@@ -49,7 +49,7 @@ public class CurrencyController : MonoBehaviour
         tourController.OnPrestige += OnPrestige;
 
 
-//        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
+        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
         boosterController.OnBoosterActivated += HandleBoosterActivated;
 
 

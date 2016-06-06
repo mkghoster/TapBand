@@ -12,22 +12,18 @@ public class TapUI : MonoBehaviour
     private Collider2D _collider;
 
     private SongController songController;
-    private DailyEventController dailyEventController;
-
+    
     private GameObject canvas;
-
-    private GameObject firework;
+        
     #endregion
 
     void Awake()
     {
         _collider = GetComponent<Collider2D>();
         songController = FindObjectOfType<SongController>();
-        dailyEventController = FindObjectOfType<DailyEventController>();
         canvas = GameObject.Find("Canvas");
 
-        _collider = GetComponent<Collider2D>();
-        firework = GameObject.Find("Firework");
+        _collider = GetComponent<Collider2D>();    
     }
 
     // Update is called once per frame

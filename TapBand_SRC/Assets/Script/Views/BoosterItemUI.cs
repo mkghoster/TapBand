@@ -8,8 +8,7 @@ public class BoosterItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public BoosterType boosterType;
 
     private BoosterController boosterController;
-    private SongController songController;
-
+    
     private Vector3 basePosition;
 
     public event BoosterEvent OnBeginBoosterDrag;
@@ -20,8 +19,7 @@ public class BoosterItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void Awake()
     {
         boosterController = FindObjectOfType<BoosterController>();
-        songController = FindObjectOfType<SongController>();
-
+    
         basePosition = GetComponent<RectTransform>().anchoredPosition;
         canvasGroup = GetComponent<CanvasGroup>();
     }

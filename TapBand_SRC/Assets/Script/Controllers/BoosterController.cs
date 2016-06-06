@@ -22,6 +22,7 @@ public class BoosterController : MonoBehaviour
     private SongController songController;
     private CurrencyController currencyController;
     private ViewController viewController;
+    private DailyEventController dailyEventController;
 
     private BoosterDropZone boosterDropZone;
     private BoosterUI boosterUI;
@@ -33,7 +34,6 @@ public class BoosterController : MonoBehaviour
 
     private float lastAutoTap = 0;
     private float autoTapInterval;
-    private TapUI tapUI;
 
     private bool canActivateBoosters = false;
 
@@ -55,9 +55,9 @@ public class BoosterController : MonoBehaviour
         songController = FindObjectOfType<SongController>();
         currencyController = FindObjectOfType<CurrencyController>();
         viewController = FindObjectOfType<ViewController>();
+        dailyEventController = FindObjectOfType<DailyEventController>();
 
         boosterDropZone = FindObjectOfType<BoosterDropZone>();
-        tapUI = FindObjectOfType<TapUI>();
 
         boosterUI = FindObjectOfType<BoosterUI>();
 
@@ -69,17 +69,25 @@ public class BoosterController : MonoBehaviour
     void OnEnable()
     {
         boosterDropZone.OnBoosterDropped += HandleBoosterDropped;
+
         songController.OnSongStarted += HandleSongStarted;
         songController.OnSongFinished += HandleSongFinished;
         viewController.OnViewChange += HandleViewChanged;
+
+        dailyEventController.OnDailyEventStarted += HandleDailyEventStarted;
+        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
     }
 
     void OnDisable()
     {
         boosterDropZone.OnBoosterDropped -= HandleBoosterDropped;
+
         songController.OnSongStarted -= HandleSongStarted;
         songController.OnSongFinished -= HandleSongFinished;
         viewController.OnViewChange -= HandleViewChanged;
+
+        dailyEventController.OnDailyEventStarted -= HandleDailyEventStarted;
+        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
     }
 
     void Update()
@@ -210,6 +218,7 @@ public class BoosterController : MonoBehaviour
 
     private void HandleSongStarted(object sender, SongEventArgs e)
     {
+        isPaused = false;
         canActivateBoosters = true;
         if (OnBoosterStateChanged != null)
         {
@@ -219,11 +228,22 @@ public class BoosterController : MonoBehaviour
 
     private void HandleSongFinished(object sender, SongEventArgs e)
     {
+        isPaused = true;
         canActivateBoosters = false;
         if (OnBoosterStateChanged != null)
         {
             OnBoosterStateChanged(this, new BoosterEventArgs(BoosterType.AutoTap)); // this is not exactly good, as this is a generic event, but null would be worse.
         }
+    }
+
+    private void HandleDailyEventStarted(object sender, EventArgs e)
+    {
+        isPaused = true;
+    }
+
+    private void HandleDailyEventFinished(object sender, EventArgs e)
+    {
+        isPaused = false;
     }
 
     private void HandleViewChanged(object sender, ViewChangeEventArgs e)
