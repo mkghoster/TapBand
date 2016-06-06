@@ -190,13 +190,13 @@ public class CurrencyController : MonoBehaviour
         switch (e.Type)
         {
             case BoosterType.AutoTap:
-                currencyState.Tokens -= Mathf.FloorToInt(iapData.autoTapBoosterCost * dailyEventState.AutoTapBoosterPriceMultiplier);
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.autoTapBoosterCost) * dailyEventState.AutoTapBoosterPriceMultiplier);
                 break;
             case BoosterType.ExtraTime:
-                currencyState.Tokens -= Mathf.FloorToInt(iapData.extraTimeBoosterCost * dailyEventState.ExtraTimeBoosterPriceMultiplier);
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.extraTimeBoosterCost) * dailyEventState.ExtraTimeBoosterPriceMultiplier);
                 break;
             case BoosterType.TapStrength:
-                currencyState.Tokens -= Mathf.FloorToInt(iapData.tapStrenghtBoosterCost * dailyEventState.TapStrengthBoosterPriceMultiplier);
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.tapStrenghtBoosterCost) * dailyEventState.TapStrengthBoosterPriceMultiplier);
                 break;
             default:
                 throw new NotImplementedException("This booster cost is not implemented");

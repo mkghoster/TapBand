@@ -8,7 +8,7 @@ public class DebugUI : MonoBehaviour
     #region Private fields
     DebugController debugController;
     #endregion
-
+    
     public void SetController(DebugController controller)
     {
         debugController = controller;
