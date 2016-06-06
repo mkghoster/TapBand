@@ -14,52 +14,71 @@ public class SongController : MonoBehaviour
 
     public event SongEvent ShowEncoreButton; // TODO: this might be a concert event
 
+    #region Private fields
     private ConcertController concertController;
 
     private TapController tapController;
     private TourController tourController;
     private SongData currentSong;
-    private EncoreButtonUI encoreButton;
+    private StageController stageController;
+    private ViewController viewController;
+    private BoosterController boosterController;
 
     private double actualTapAmount = 0f;
     private float elapsedTime = 0f;
 
     private bool isSongPaused = false;
 
+    private float extraTimeBoosterBonus;
+
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
     private const int beforeEncoreSongConstID = 3; //TODO: this still belongs to the concert
+    #endregion
+
+    public float ActualSongDuration { get; private set; }
 
     void Awake()
     {
-        concertController = (ConcertController)FindObjectOfType(typeof(ConcertController));
+        concertController = FindObjectOfType<ConcertController>();
 
-        tapController = (TapController)FindObjectOfType(typeof(TapController));
-        tourController = (TourController)FindObjectOfType(typeof(TourController));
+        tapController = FindObjectOfType<TapController>();
+        tourController = FindObjectOfType<TourController>();
 
-        encoreButton = (EncoreButtonUI)FindObjectOfType(typeof(EncoreButtonUI));
+        stageController = FindObjectOfType<StageController>();
+
+        viewController = FindObjectOfType<ViewController>();
+        boosterController = FindObjectOfType<BoosterController>();
+
+        viewController.OnViewChange += ViewChanged;
+
+        extraTimeBoosterBonus = GameData.instance.BoosterData.ExtraTimeBoosterBonus;
     }
 
     void OnEnable()
     {
         tapController.OnTap += HandleTap;
-       
-        encoreButton.GiveEncoreButtonPressedEvent += StartEncoreSong;
+
+        stageController.OnEncoreButtonPressed += StartEncoreSong;
 
         tourController.RestartSong += ResetControllerState;
+        boosterController.OnBoosterActivated += HandleBoosterActivated;
     }
 
     void OnDisable()
     {
         tapController.OnTap -= HandleTap;
-        
-        encoreButton.GiveEncoreButtonPressedEvent -= StartEncoreSong;
+
+        stageController.OnEncoreButtonPressed -= StartEncoreSong;
 
         tourController.RestartSong -= ResetControllerState;
+
+        boosterController.OnBoosterActivated += HandleBoosterActivated;
     }
 
     void Start()
     {
         currentSong = concertController.CurrentSongData;
+        ActualSongDuration = currentSong.duration;
         OnSongStarted(this, new SongEventArgs(currentSong, SongStatus.InProgress));
     }
 
@@ -83,6 +102,7 @@ public class SongController : MonoBehaviour
             }
             else
             {
+                ActualSongDuration = currentSong.duration;
                 if (OnSongStarted != null)
                 {
                     OnSongStarted(this, new SongEventArgs(currentSong, SongStatus.InProgress, 0, 0));
@@ -103,7 +123,7 @@ public class SongController : MonoBehaviour
 
         elapsedTime += deltaTime;
 
-        if (elapsedTime > currentSong.duration)
+        if (elapsedTime > ActualSongDuration)
         {
             FailSong();
             return;
@@ -171,7 +191,6 @@ public class SongController : MonoBehaviour
         elapsedTime -= extraTime;
     }
 
-
     //when we push the encore button
     private void StartEncoreSong()
     {
@@ -194,5 +213,18 @@ public class SongController : MonoBehaviour
     public void HandleSongPaused(bool paused)
     {
         isSongPaused = paused;
+    }
+
+    private void ViewChanged(object sender, ViewChangeEventArgs e)
+    {
+        HandleSongPaused(e.NewView != ViewType.STAGE);
+    }
+
+    private void HandleBoosterActivated(object sender, BoosterEventArgs e)
+    {
+        if (e.Type == BoosterType.ExtraTime && currentSong != null)
+        {
+            ActualSongDuration += extraTimeBoosterBonus;
+        }
     }
 }

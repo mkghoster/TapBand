@@ -7,10 +7,13 @@ public class CurrencyController : MonoBehaviour
     private SongController songController;
     private ConcertController concertController;
     private TourController tourController;
+    private BoosterController boosterController;
     private DailyEventController dailyEventController;
     private SkillUpgradeUI[] skillUpgradeUIs;
+    private IapData iapData;
 
     private CurrencyState currencyState;
+    private DailyEventState dailyEventState;
 
     public event CurrencyEvent OnCurrencyChanged;
     public event CurrencyEvent OnInitialized;
@@ -21,10 +24,14 @@ public class CurrencyController : MonoBehaviour
         concertController = FindObjectOfType<ConcertController>();
         tourController = FindObjectOfType<TourController>();
         dailyEventController = FindObjectOfType<DailyEventController>();
+        boosterController = FindObjectOfType<BoosterController>();
 
         skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
 
         currencyState = GameState.instance.Currency;
+        dailyEventState = GameState.instance.DailyEvent;
+
+        iapData = GameData.instance.IapData;
     }
 
     void Start()
@@ -41,7 +48,11 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
-        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
+
+//        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
+        boosterController.OnBoosterActivated += HandleBoosterActivated;
+
+
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -55,7 +66,11 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
-        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
+//        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
+
+        boosterController.OnBoosterActivated -= HandleBoosterActivated;
+
+
 
         for (int i = 0; i < skillUpgradeUIs.Length; i++)
         {
@@ -67,7 +82,7 @@ public class CurrencyController : MonoBehaviour
     {
         get
         {
-            return currencyState.TapMultiplierFromPrestige; 
+            return currencyState.TapMultiplierFromPrestige;
         }
     }
 
@@ -100,18 +115,27 @@ public class CurrencyController : MonoBehaviour
         currencyState.Tokens -= price;
     }
 
-    private void OnPrestige() 
+    private void OnPrestige()
     {
         //elveszik
         currencyState.Coins = 0;
+        currencyState.FanBonusPerTour.Add(currencyState.FanFromActualTour);
+        currencyState.FanFromActualTour = 0;
 
-        double tapStrengthMultiplier = 1.2f;                                 //TODO: képlettel meghatározni a pontos értékét egy fvben
+        double tapStrengthMultiplier = CalculateTapStrengthBonus();                                 
         currencyState.TapMultiplierFromPrestige *= tapStrengthMultiplier;
 
         print("new tapStrength bonus after Prestige: "+ currencyState.TapMultiplierFromPrestige);
         
+        //for(int i = 0; i < currencyState.FanBonusPerTour.Count; i++) { print(i + ".: elem: " + currencyState.FanBonusPerTour[i]); }
 
         SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    //TODO: implement it
+    private double CalculateTapStrengthBonus()
+    {
+        return 1.2;
     }
 
     private void HandleSkillUpgrade(object sender, BandMemberSkillEventArgs e)
@@ -138,6 +162,7 @@ public class CurrencyController : MonoBehaviour
     private void HandleConcertFinished(object sender, ConcertEventArgs e)
     {
         currencyState.Fans += e.Data.fanReward;
+        currencyState.FanFromActualTour += e.Data.fanReward;
         SynchronizeRealCurrencyAndScreenCurrency();
     }
 
@@ -178,6 +203,25 @@ public class CurrencyController : MonoBehaviour
         }
     }
 
+    private void HandleBoosterActivated(object sender, BoosterEventArgs e)
+    {
+        switch (e.Type)
+        {
+            case BoosterType.AutoTap:
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.autoTapBoosterCost) * dailyEventState.AutoTapBoosterPriceMultiplier);
+                break;
+            case BoosterType.ExtraTime:
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.extraTimeBoosterCost) * dailyEventState.ExtraTimeBoosterPriceMultiplier);
+                break;
+            case BoosterType.TapStrength:
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.tapStrenghtBoosterCost) * dailyEventState.TapStrengthBoosterPriceMultiplier);
+                break;
+            default:
+                throw new NotImplementedException("This booster cost is not implemented");
+
+        }
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
 
     //DEBUG CONTROLLER-----------------------------
     public void GiveCoins(double coins)

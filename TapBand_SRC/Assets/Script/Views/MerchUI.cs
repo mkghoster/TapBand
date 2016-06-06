@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MerchUI : MonoBehaviour
 {
+    public GameObject MerchPanel;
     public GameObject MerchSlotPanel;
     public GameObject MerchScrollPanelContent;
     public GameObject MerchItemUIPrefab;
@@ -109,5 +110,21 @@ public class MerchUI : MonoBehaviour
     public bool HasFreeSlot()
     {
         return merchController.HasFreeSlot();
+    }
+
+    public void CloseButtonClick()
+    {
+        HideUI();
+        merchController.OnClose();
+    }
+
+    public void HideUI()
+    {
+        MerchPanel.gameObject.SetActive(false);
+    }
+
+    public void ShowUI()
+    {
+        MerchPanel.gameObject.SetActive(true);
     }
 }

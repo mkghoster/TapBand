@@ -51,6 +51,7 @@ public class RawGameDataLoader : IGameDataLoader
         LoadMerchSlotData(gameData.MerchSlotDataList);
 
         LoadGeneralData(gameData.GeneralData);
+        LoadIapData(gameData.IapData);
 
         LoadDroneRewardData(gameData.DroneRewardDataList);
 
@@ -58,6 +59,60 @@ public class RawGameDataLoader : IGameDataLoader
         LoadDailyStreakData(gameData.DailyStreakDataList);
 
         return gameData;
+    }
+
+    private void LoadIapData(IapData iapDataTarget)
+    {
+        currentRows = dataReader.GetRows("IAP");
+        currentSheet = "IAP";
+        int rowNum = currentRows.Count;
+        for (int i = 0; i < rowNum; i++)
+        {
+            string currentRowName = null;
+            currentRowName = LoadString(i, "Name");
+
+            switch (currentRowName)
+            {
+                case "ExtraFanMail":
+                    iapDataTarget.extraFanMailCost = LoadInt(i, "TokenCost");
+                    break;
+                case "TapStrengthBoost2":
+                    iapDataTarget.tapStrengthBoost2Cost = LoadInt(i, "TokenCost");
+                    break;
+                case "TapStrengthBoost10":
+                    iapDataTarget.tapStrengthBoost10Cost = LoadInt(i, "TokenCost");
+                    break;
+                case "TapStrengthBoost25":
+                    iapDataTarget.tapStrengthBoost25Cost = LoadInt(i, "TokenCost");
+                    break;
+                case "TapStrengthBoost100":
+                    iapDataTarget.tapStrengthBoost100Cost = LoadInt(i, "TokenCost");
+                    break;
+                case "TapStrengthBoost500":
+                    iapDataTarget.tapStrengthBoost500Cost = LoadInt(i, "TokenCost");
+                    break;
+                case "TapStrengthBoost5000":
+                    iapDataTarget.tapStrengthBoost5000Cost = LoadInt(i, "TokenCost");
+                    break;
+                case "RandomMerchLevelUp":
+                    iapDataTarget.randomMerchLevelUpCost = LoadInt(i, "TokenCost");
+                    break;
+                case "PermanentMerchHalving":
+                    iapDataTarget.permanentMerchHalving = LoadInt(i, "TokenCost");
+                    break;
+                case "TapStrengthBoosterCost":
+                    iapDataTarget.tapStrenghtBoosterCost = LoadInt(i, "TokenCost");
+                    break;
+                case "AutoTapBoosterCost":
+                    iapDataTarget.autoTapBoosterCost = LoadInt(i, "TokenCost");
+                    break;
+                case "ExtraTimeBoosterCost":
+                    iapDataTarget.extraTimeBoosterCost = LoadInt(i, "TokenCost");
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     private void LoadSongData(IList<SongData> songDataTarget)
@@ -164,32 +219,6 @@ public class RawGameDataLoader : IGameDataLoader
             merchSlotDataTarget.Add(merchSlotDataObject);
         }
     }
-
-    //private List<MerchData> LoadMerchData()
-    //{
-    //    currentSheet = "MerchData";
-    //    currentRows = dataReader.GetRows(currentSheet);
-
-    //    List<MerchData> merchDataList = new List<MerchData>();
-
-    //    int rowNum = currentRows.Count;
-    //    for (int i = 0; i < rowNum; i++)
-    //    {
-    //        MerchData merchDataObject = new MerchData();
-
-    //        TryLoadInt(i, "ID", out merchDataObject.id);
-    //        TryLoadEnum(i, "MerchType", out merchDataObject.merchType);
-    //        TryLoadInt(i, "Level", out merchDataObject.level);
-    //        TryLoadString(i, "Name", out merchDataObject.name);
-    //        TryLoadInt(i, "UpgradeCost", out merchDataObject.upgradeCost);
-    //        TryLoadInt(i, "CoinPerSecond", out merchDataObject.coinPerSecond);
-    //        TryLoadInt(i, "TimeLimit", out merchDataObject.timeLimit);
-
-    //        merchDataList.Add(merchDataObject);
-    //    }
-
-    //    return merchDataList;
-    //}
 
     private void LoadCharacterData(IList<CharacterData> skillDataTarget, string sheetName)
     {

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TapUI : MonoBehaviour
 {
+    public GameObject risingText;
+
+    public event RawTapEvent OnScreenTap;
+
+    #region Private fields
     private Collider2D _collider;
 
     private SongController songController;
@@ -12,10 +17,7 @@ public class TapUI : MonoBehaviour
     private GameObject canvas;
 
     private GameObject firework;
-
-    public GameObject risingText;
-
-    public event RawTapEvent OnScreenTap;
+    #endregion
 
     void Awake()
     {
@@ -43,8 +45,10 @@ public class TapUI : MonoBehaviour
         songController.OnSongStarted += TurnOnColliderHandler;
         songController.OnSongFinished += TurnOffColliderHandler;
 
-        dailyEventController.OnDailyEventStarted += TurnOffColliderHandler;
-        dailyEventController.OnDailyEventFinished += TurnOnColliderHandler;
+
+        //        dailyEventController.OnDailyEventStarted += TurnOffColliderHandler;
+        //        dailyEventController.OnDailyEventFinished += TurnOnColliderHandler;
+
     }
 
     void OnDisable()
@@ -52,8 +56,9 @@ public class TapUI : MonoBehaviour
         songController.OnSongStarted -= TurnOnColliderHandler;
         songController.OnSongFinished -= TurnOffColliderHandler;
 
-        dailyEventController.OnDailyEventStarted -= TurnOffColliderHandler;
-        dailyEventController.OnDailyEventFinished -= TurnOnColliderHandler;
+
+        //        dailyEventController.OnDailyEventStarted -= TurnOffColliderHandler;
+        //        dailyEventController.OnDailyEventFinished -= TurnOnColliderHandler;
     }
 
     public void DisplayTapValueAt(RawTapData data, double value)
@@ -87,22 +92,12 @@ public class TapUI : MonoBehaviour
         rising.Init();
     }
 
-    public void AutoTap()
+    public void AutoTap(RawTapEventArgs incomingEvent)
     {
-        RawTapData rawTapData = RandomTapEventArgs();
         if (OnScreenTap != null)
         {
-            OnScreenTap(this, new RawTapEventArgs(new RawTapData[] { rawTapData }));
+            OnScreenTap(this, incomingEvent);
         }
-    }
-
-    private RawTapData RandomTapEventArgs()
-    {
-        //TODO make the correct values
-        int x = 200;
-        int y = 500;
-        Vector2 autoTapPosition = new Vector2(x, y);
-        return new RawTapData(autoTapPosition, false);
     }
 
     private IList<RawTapData> CalculateTaps()
@@ -167,5 +162,15 @@ public class TapUI : MonoBehaviour
     private void TurnOffColliderHandler(object sender, EventArgs e)
     {
         _collider.enabled = false;
+    }
+
+    public void HideUI()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void ShowUI()
+    {
+        gameObject.SetActive(true);
     }
 }

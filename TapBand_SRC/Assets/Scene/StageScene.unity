@@ -85,7 +85,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &2060448183
+--- !u!1001 &1515507496
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -122,22 +122,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 474014, guid: bf61d7fec43876941bfb44078d172942, type: 2}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22473820, guid: bf61d7fec43876941bfb44078d172942, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22486714, guid: bf61d7fec43876941bfb44078d172942, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22479240, guid: bf61d7fec43876941bfb44078d172942, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22471718, guid: bf61d7fec43876941bfb44078d172942, type: 2}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

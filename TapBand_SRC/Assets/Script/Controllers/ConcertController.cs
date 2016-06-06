@@ -170,7 +170,36 @@ public class ConcertController : MonoBehaviour
 
     private void RestartConcertFromTheFirst() // TODO: wat?
     {
-        concertState.ResetToConcert(GameData.instance.ConcertDataList[0]);       
+       
+        SetTheFirstConcertAfterPrestige();
+
+    }
+
+    //TODO: meghatrozni normalisan a feltelt és a tapStrenghtet
+    private void SetTheFirstConcertAfterPrestige()
+    {
+       /* double actualTapStrength = 1.1; 
+
+        var concertDataList = GameData.instance.ConcertDataList;
+        for(int i = 0; i < GameData.instance.ConcertDataList.Count; i++)
+        {
+            print(i+".: levelRange: "+ concertDataList[i].levelRange);
+            if ( ( concertDataList[i].levelRange / 100 ) < actualTapStrength)
+            {
+                if( i  ==  0)  //ne legyen negativ
+                {
+                    i++;
+                }
+                print("i: "+i);
+                concertState.ResetToConcert(GameData.instance.ConcertDataList[i - 1]);
+                currentConcertData = GameData.instance.ConcertDataList[i - 1];
+                //break;
+            }
+        }*/
+
+        //TEMP
+        concertState.ResetToConcert(GameData.instance.ConcertDataList[0]);
+        currentConcertData = GameData.instance.ConcertDataList[0];
     }
 
     private ConcertData GetNextConcert()

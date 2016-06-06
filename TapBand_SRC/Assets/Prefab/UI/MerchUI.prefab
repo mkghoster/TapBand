@@ -63,7 +63,7 @@ GameObject:
   - 222: {fileID: 22231480}
   - 114: {fileID: 11423556}
   m_Layer: 5
-  m_Name: MerchPanel
+  m_Name: MerchUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,9 +229,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 119518}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 0}
+        m_MethodName: DisableMerchPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -239,39 +239,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -286,8 +253,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94b044862c3f74b8a34ee977b881e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timePanel: {fileID: 0}
-  qualityPanel: {fileID: 0}
+  MerchSlotPanel: {fileID: 189944}
+  MerchScrollPanelContent: {fileID: 175944}
+  MerchItemUIPrefab: {fileID: 138780, guid: 63940c916706bdf4298f5ebc22343cb9, type: 2}
+  MerchSlotItemUIPrefab: {fileID: 188198, guid: 80e18b0d368cf6f44b96ff66e02b6126,
+    type: 2}
 --- !u!114 &11430754
 MonoBehaviour:
   m_ObjectHideFlags: 1
