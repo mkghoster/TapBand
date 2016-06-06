@@ -8,7 +8,7 @@ public class DebugUI : MonoBehaviour
     #region Private fields
     DebugController debugController;
     #endregion
-    
+
     public void SetController(DebugController controller)
     {
         debugController = controller;
@@ -18,6 +18,31 @@ public class DebugUI : MonoBehaviour
     {
         HideUI();
         debugController.OnBackToGameClick();
+    }
+
+    public void AddCoinButtonClick()
+    {
+        debugController.AddCoins();
+    }
+
+    public void AddFanButtonClick()
+    {
+        debugController.AddFans();
+    }
+
+    public void AddTokenButtonClick()
+    {
+        debugController.AddTokens();
+    }
+
+    public void IncTapStrengthButtonClick()
+    {
+        debugController.IncTapStrength();
+    }
+
+    public void ResetDebugTapStrengthClick()
+    {
+        debugController.ResetDebugTapMultiplier();
     }
 
     public void HideUI()

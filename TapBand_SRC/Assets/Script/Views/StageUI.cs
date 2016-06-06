@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class StageUI : MonoBehaviour
 {
     public Button EncoreButton;
-    //public Button DebugButton;
     public GameObject StagePanel;
 
     #region Private fields
@@ -37,12 +36,6 @@ public class StageUI : MonoBehaviour
     {
         HideUI();
         stageController.SwitchToBackstage();
-    }
-
-    public void OnDebugButtonClick()
-    {
-        HideUI();
-        stageController.OnDebugClick();
     }
 
     public void HideUI()

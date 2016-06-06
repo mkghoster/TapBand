@@ -4,14 +4,18 @@ using System.Collections;
 public class DebugController : MonoBehaviour
 {
     #region Private fields
-    private SongController songController;
-    private ConcertController concertController;
-    private TourController tourController;
+    //private SongController songController;
+    //private ConcertController concertController;
+    //private TourController tourController;
     private CurrencyController currencyController;
     private TapController tapController;
     private DebugUI debugUI;
     private ViewController viewController;
-    private StageController stageController;
+    private BackstageController backstageController;
+
+    private const int tokensToAdd = 10;
+    private const int fansToAdd = 50;
+    private const int coinsToAdd = 100;
     #endregion
 
     void Start()
@@ -22,12 +26,12 @@ public class DebugController : MonoBehaviour
         currencyController = FindObjectOfType<CurrencyController>();
         tapController = FindObjectOfType<TapController>();
         viewController = FindObjectOfType<ViewController>();
-        stageController = FindObjectOfType<StageController>();
+        backstageController = FindObjectOfType<BackstageController>();
 
         debugUI = FindObjectOfType<DebugUI>();
         debugUI.SetController(this);
 
-        stageController.OnDebugButtonPressed += debugUI.ShowUI;
+        backstageController.OnDebugButtonPressed += debugUI.ShowUI;
     }
 
     // Update is called once per frame
@@ -45,19 +49,19 @@ public class DebugController : MonoBehaviour
     }
 
     //double-al error
-    public void AddCoins(int coins)
+    public void AddCoins()
     {
-        currencyController.GiveCoins(coins);
+        currencyController.GiveCoins(coinsToAdd);
     }
 
-    public void AddTokens(int tokens)
+    public void AddTokens()
     {
-        currencyController.GiveTokens(tokens);
+        currencyController.GiveTokens(tokensToAdd);
     }
 
-    public void AddFans(int fans)
+    public void AddFans()
     {
-        currencyController.GiveFans(fans);
+        currencyController.GiveFans(fansToAdd);
     }
 
     public void IncTapStrength()
@@ -67,9 +71,9 @@ public class DebugController : MonoBehaviour
         tapController.IncDebugTapMultiplier(tapMultipiler);
     }
 
-    public void SetToOneDebugTapSterngth()//TODO ezt bekötni egy gombra !!!!!
+    public void ResetDebugTapMultiplier()
     {
-        tapController.SetToOneDebugTapMultiplier();
+        tapController.ResetDebugTapMultiplier();
     }
 
     public void OnBackToGameClick()

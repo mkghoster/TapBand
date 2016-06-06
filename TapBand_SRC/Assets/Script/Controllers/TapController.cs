@@ -122,7 +122,7 @@ public class TapController : MonoBehaviour
         PlayerPrefsManager.SetDebugTapMultip((float)debugTapMultiplier);
     }
 
-    public void SetToOneDebugTapMultiplier()
+    public void ResetDebugTapMultiplier()
     {
         PlayerPrefsManager.SetDebugTapMultip(1.0f);
     }

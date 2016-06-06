@@ -5,14 +5,18 @@ using System;
 
 public class BandMemberController : MonoBehaviour
 {
+    public event BandMemberSkillEvent OnSkillUpgraded;
+
     public Dictionary<CharacterType, IList<CharacterData>> UnlockedUpgrades { get; private set; }
     public Dictionary<CharacterType, CharacterData> NextUpgrades { get; private set; }
 
     private SkillUpgradeUI[] skillUpgradeUIs;
+    
+    private CurrencyController currencyController;
 
     private EquipmentState currentEquipmentState;
     private GameData gameData;
-
+    
     public BandMemberController()
     {
         UnlockedUpgrades = new Dictionary<CharacterType, IList<CharacterData>>();
@@ -24,8 +28,10 @@ public class BandMemberController : MonoBehaviour
         gameData = GameData.instance;
         currentEquipmentState = GameState.instance.Equipment;
 
-        skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
+        currencyController = FindObjectOfType<CurrencyController>();
 
+        skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
+        
         UnlockedUpgrades[CharacterType.Bass] = new List<CharacterData>();
         UnlockedUpgrades[CharacterType.Drums] = new List<CharacterData>();
         UnlockedUpgrades[CharacterType.Guitar1] = new List<CharacterData>();
@@ -118,7 +124,7 @@ public class BandMemberController : MonoBehaviour
             skillUpgradeUIs[i].OnSkillUpgrade -= HandleSkillUpgrade;
         }
     }
-
+    
     private void HandleSkillUpgrade(object sender, BandMemberSkillEventArgs e)
     {
         UnlockedUpgrades[e.Character].Add(e.UnlockedSkill);
@@ -145,6 +151,11 @@ public class BandMemberController : MonoBehaviour
         }
 
         NextUpgrades[e.Character] = GetNextUpgrade(e.Character);
+
+        if (OnSkillUpgraded != null)
+        {
+            OnSkillUpgraded(this, e);
+        }
     }
 
     private CharacterData GetNextUpgrade(CharacterType character)
@@ -181,5 +192,14 @@ public class BandMemberController : MonoBehaviour
             }
         }
         return null;//TODO: error handling;
+    }
+
+    public bool CanBuyNextUpgrade(CharacterType bandMember)
+    {
+        if (NextUpgrades[bandMember] == null)
+        {
+            return false;
+        }
+        return currencyController.CanBuyFromCoin(NextUpgrades[bandMember].upgradeCost);
     }
 }

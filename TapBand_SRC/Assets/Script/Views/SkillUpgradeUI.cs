@@ -8,11 +8,12 @@ public class SkillUpgradeUI : MonoBehaviour
     public CharacterType bandMember;
     public event BandMemberSkillEvent OnSkillUpgrade;
 
-    private CharacterData unlockableSkill;
     private BandMemberController bandMemberController;
 
     private Text childText; //TODO: implement final ui 
     private Button button;
+
+    private GameObject uiPanel;
 
     private CurrencyController currencyController;
 
@@ -22,19 +23,12 @@ public class SkillUpgradeUI : MonoBehaviour
         childText = transform.GetComponentInChildren<Text>();
         currencyController = FindObjectOfType<CurrencyController>();
         button = GetComponent<Button>();
-    }
-
-    void Start()
-    {
-        unlockableSkill = bandMemberController.NextUpgrades[bandMember];
-        UpdateText();
-        CheckBuyable();
+        uiPanel = transform.GetChild(0).gameObject;
     }
 
     void OnEnable()
     {
         currencyController.OnCurrencyChanged += HandleCurrencyChanged;
-        CheckBuyable();
     }
 
     void OnDisable()
@@ -42,34 +36,43 @@ public class SkillUpgradeUI : MonoBehaviour
         currencyController.OnCurrencyChanged -= HandleCurrencyChanged;
     }
 
+    void Start()
+    {
+        UpdateUpgradeButton();
+    }
+
     public void OnUpgradeButtonClick()
     {
-        if (OnSkillUpgrade != null)
+        if (CheckBuyable())
         {
-            OnSkillUpgrade(this, new BandMemberSkillEventArgs(bandMember, unlockableSkill)); //TODO: check if upgrade can be initiated
+            if (OnSkillUpgrade != null)
+            {
+                OnSkillUpgrade(this, new BandMemberSkillEventArgs(bandMember, bandMemberController.NextUpgrades[bandMember])); //TODO: check if upgrade can be initiated
+            }
+            UpdateUpgradeButton();
         }
-        unlockableSkill = bandMemberController.NextUpgrades[bandMember]; // TODO: update UI (upgrading / upgraded?)
-        UpdateText();
-        CheckBuyable();
     }
 
     private void HandleCurrencyChanged(object sender, CurrencyEventArgs e)
     {
-        CheckBuyable();
+        button.interactable = CheckBuyable();
     }
 
-    private void UpdateText()
+    private void UpdateUpgradeButton()
     {
-        childText.text = String.Format("{0} Level: {1}, Cost: {2}", bandMember.ToString(), unlockableSkill.id, unlockableSkill.upgradeCost);
+        childText.text = String.Format("{0} Level: {1}, Cost: {2}", bandMember.ToString(), bandMemberController.NextUpgrades[bandMember].id, bandMemberController.NextUpgrades[bandMember].upgradeCost);
+        button.interactable = CheckBuyable();
     }
 
-    private void CheckBuyable()
+    private bool CheckBuyable()
     {
-        if (unlockableSkill == null)
-        {
-            button.interactable = false;
-            return;
-        }
-        button.interactable = currencyController.CanBuyFromCoin(unlockableSkill.upgradeCost);
+        return bandMemberController.CanBuyNextUpgrade(bandMember);
+    }
+
+    public void SetUIActive(CharacterType characterType)
+    {
+        button.interactable = CheckBuyable();
+        UpdateUpgradeButton();
+        uiPanel.SetActive(characterType == bandMember);
     }
 }

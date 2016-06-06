@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LoadAsyncScreen : MonoBehaviour {
 
@@ -16,7 +17,7 @@ public class LoadAsyncScreen : MonoBehaviour {
 	
     IEnumerator LoadLevelWithBar(int level)
     {
-        async = Application.LoadLevelAsync(level);
+        async = SceneManager.LoadSceneAsync(level);
         while (!async.isDone)
         {
             loadingBar.value = async.progress;

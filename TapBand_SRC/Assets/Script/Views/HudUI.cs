@@ -105,7 +105,7 @@ public class HudUI : MonoBehaviour
             new Rect(
                 Screen.width / 4 - 25f,
                 startingVerticalPos + heightOfBar + 5f,
-                (timePassed * 5 / songController.ActualSongDuration) * (Screen.width / 2) + 50f,
+                (timePassed / songController.ActualSongDuration) * (Screen.width / 2) + 50f,
                 heightOfBar), string.Format("Time: {0} / {1}", timePassed.ToString("F2"), songController.ActualSongDuration.ToString("F2")));
 
         }

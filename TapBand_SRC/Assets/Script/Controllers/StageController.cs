@@ -5,7 +5,6 @@ using UnityEngine;
 public class StageController : MonoBehaviour
 {
     public event Action OnEncoreButtonPressed;
-    public event Action OnDebugButtonPressed;
     public event Action OnSettingsButtonPressed;
 
     #region Private fields
@@ -65,14 +64,6 @@ public class StageController : MonoBehaviour
         if (OnEncoreButtonPressed != null)
         {
             OnEncoreButtonPressed();
-        }
-    }
-
-    public void OnDebugClick()
-    {
-        if (OnDebugButtonPressed != null)
-        {
-            OnDebugButtonPressed();
         }
     }
 
