@@ -220,6 +220,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e0390de628092f4cb490614df355e92, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &553079638 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11436630, guid: 2eb157d3eba93ae43b7ce12cc30e2d85,
+    type: 2}
+  m_PrefabInternal: {fileID: 993634761}
+  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
 --- !u!1001 &619474155
 Prefab:
   m_ObjectHideFlags: 0
@@ -339,6 +345,46 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11415524, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: bassUI
+      value: 
+      objectReference: {fileID: 1688963506}
+    - target: {fileID: 11415524, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: drumsUI
+      value: 
+      objectReference: {fileID: 1045777151}
+    - target: {fileID: 11415524, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: guitar1UI
+      value: 
+      objectReference: {fileID: 2076549177}
+    - target: {fileID: 11415524, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: guitar2UI
+      value: 
+      objectReference: {fileID: 1899521789}
+    - target: {fileID: 11415524, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: keyboardsUI
+      value: 
+      objectReference: {fileID: 553079638}
+    - target: {fileID: 159390, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: m_Name
+      value: DrumsUpgradeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 181900, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: m_Name
+      value: BassUpgradeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 163172, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: m_Name
+      value: Guitar1UpgradeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 174976, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: m_Name
+      value: Guitar2UpgradeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 164528, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
+      propertyPath: m_Name
+      value: KeyboardsUpgradeButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2eb157d3eba93ae43b7ce12cc30e2d85, type: 2}
   m_IsPrefabParent: 0
@@ -356,6 +402,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d352a63a32d77dd489e4c3a0a6e75cc3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1045777151 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11425666, guid: 2eb157d3eba93ae43b7ce12cc30e2d85,
+    type: 2}
+  m_PrefabInternal: {fileID: 993634761}
+  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
 --- !u!1001 &1066700141
 Prefab:
   m_ObjectHideFlags: 0
@@ -496,6 +548,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 692524878252c334b85c0ad17a48bdec, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1688963506 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11416548, guid: 2eb157d3eba93ae43b7ce12cc30e2d85,
+    type: 2}
+  m_PrefabInternal: {fileID: 993634761}
+  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
+--- !u!114 &1899521789 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11460170, guid: 2eb157d3eba93ae43b7ce12cc30e2d85,
+    type: 2}
+  m_PrefabInternal: {fileID: 993634761}
+  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
 --- !u!1001 &1901191225
 Prefab:
   m_ObjectHideFlags: 0
@@ -566,6 +630,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fdc47a7d0f66c4449bb4507249e411cf, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2076549177 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11496898, guid: 2eb157d3eba93ae43b7ce12cc30e2d85,
+    type: 2}
+  m_PrefabInternal: {fileID: 993634761}
+  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
 --- !u!1001 &2078383227
 Prefab:
   m_ObjectHideFlags: 0

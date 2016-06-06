@@ -4,11 +4,11 @@ using System;
 
 public class DressingRoomUI : MonoBehaviour
 {
-    public GameObject bassUI;
-    public GameObject drumsUI;
-    public GameObject guitar1UI;
-    public GameObject guitar2UI;
-    public GameObject keyboardsUI;
+    public SkillUpgradeUI bassUI;
+    public SkillUpgradeUI drumsUI;
+    public SkillUpgradeUI guitar1UI;
+    public SkillUpgradeUI guitar2UI;
+    public SkillUpgradeUI keyboardsUI;
 
     private CharacterType currentCharacter;
 
@@ -67,42 +67,16 @@ public class DressingRoomUI : MonoBehaviour
     public void OnBackstageButtonClick()
     {
         HideUI();
+        backstageController.SwitchDressingRoom(false);
     }
 
     private void SwitchCharacterPanel(CharacterType character)
     {
-        var bassUIActive = false;
-        var drumsUIActive = false;
-        var guitar1UIActive = false;
-        var guitar2UIActive = false;
-        var keyboardsUIActive = false;
-
-        switch (character)
-        {
-            case CharacterType.Bass:
-                bassUIActive = true;
-                break;
-            case CharacterType.Drums:
-                drumsUIActive = true;
-                break;
-            case CharacterType.Guitar1:
-                guitar1UIActive = true;
-                break;
-            case CharacterType.Guitar2:
-                guitar2UIActive = true;
-                break;
-            case CharacterType.Keyboards:
-                keyboardsUIActive = true;
-                break;
-            default:
-                throw new NotImplementedException("Unknown character type");
-        }
-
-        bassUI.SetActive(bassUIActive);
-        drumsUI.SetActive(drumsUIActive);
-        guitar1UI.SetActive(guitar1UIActive);
-        guitar2UI.SetActive(guitar2UIActive);
-        keyboardsUI.SetActive(keyboardsUIActive);
+        bassUI.SetUIActive(character);
+        drumsUI.SetUIActive(character);
+        guitar1UI.SetUIActive(character);
+        guitar2UI.SetUIActive(character);
+        keyboardsUI.SetUIActive(character);
 
         currentCharacter = character;
     }
