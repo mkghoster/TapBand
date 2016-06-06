@@ -97,8 +97,8 @@ public class AudioManagerTapBand : AudioManager
         tourController.OnPrestige += OnPrestigeEvent;
         tourController.RestartConcert += RestartConcertFromTour;
 
-        settingsUI.MusicVolumeChange += SetMusicVolume;
-        settingsUI.SFXVolumeChange += SetSFXVolume;
+        //settingsController.MusicVolumeChange += SetMusicVolume;
+        //settingsController.SFXVolumeChange += SetSFXVolume;
     }
 
     void OnDisable()
@@ -111,8 +111,8 @@ public class AudioManagerTapBand : AudioManager
         tourController.OnPrestige -= OnPrestigeEvent;
         tourController.RestartConcert -= RestartConcertFromTour;
 
-        settingsUI.MusicVolumeChange -= SetMusicVolume;
-        settingsUI.SFXVolumeChange -= SetSFXVolume;  //base classban nem kapta meg az eventet, csak ha idehoztam
+        //settingsController.MusicVolumeChange -= SetMusicVolume;
+        //settingsController.SFXVolumeChange -= SetSFXVolume;  //base classban nem kapta meg az eventet, csak ha idehoztam
     }
 
     #region events

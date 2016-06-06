@@ -6,6 +6,9 @@ public class StageController : MonoBehaviour
 {
     public event Action OnEncoreButtonPressed;
     public event Action OnDebugButtonPressed;
+    public event Action OnSettingsButtonPressed;
+    public event Action OnRestertButtonPressed;//??
+
 
     #region Private fields
     private StageUI stageUI;
@@ -55,6 +58,14 @@ public class StageController : MonoBehaviour
         if (OnDebugButtonPressed != null)
         {
             OnDebugButtonPressed();
+        }
+    }
+
+    public void OnSettingsClick()
+    {
+        if ( OnSettingsButtonPressed != null )
+        {
+            OnSettingsButtonPressed();
         }
     }
 
