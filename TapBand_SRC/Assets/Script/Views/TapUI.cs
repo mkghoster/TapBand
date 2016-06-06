@@ -45,14 +45,17 @@ public class TapUI : MonoBehaviour
         songController.OnSongStarted += TurnOnColliderHandler;
         songController.OnSongFinished += TurnOffColliderHandler;
 
+
         //        dailyEventController.OnDailyEventStarted += TurnOffColliderHandler;
         //        dailyEventController.OnDailyEventFinished += TurnOnColliderHandler;
+
     }
 
     void OnDisable()
     {
         songController.OnSongStarted -= TurnOnColliderHandler;
         songController.OnSongFinished -= TurnOffColliderHandler;
+
 
         //        dailyEventController.OnDailyEventStarted -= TurnOffColliderHandler;
         //        dailyEventController.OnDailyEventFinished -= TurnOnColliderHandler;
