@@ -7,14 +7,13 @@ public class StageController : MonoBehaviour
     public event Action OnEncoreButtonPressed;
     public event Action OnDebugButtonPressed;
     public event Action OnSettingsButtonPressed;
-    public event Action OnRestertButtonPressed;//??
-
 
     #region Private fields
     private StageUI stageUI;
     private SongController songController;
     private ConcertController concertController;
     private ViewController viewController;
+    private DailyEventController dailyEventController;
     #endregion
 
     void Awake()
@@ -25,11 +24,27 @@ public class StageController : MonoBehaviour
         songController = FindObjectOfType<SongController>();
         concertController = FindObjectOfType<ConcertController>();
         viewController = FindObjectOfType<ViewController>();
+        dailyEventController = FindObjectOfType<DailyEventController>();
+    }
 
+    void OnEnable()
+    {
         songController.OnSongStarted += HandleSongStarted;
         songController.OnSongFinished += HandleSongFinished;
 
         viewController.OnViewChange += ViewChanged;
+
+        dailyEventController.OnDailyEventStarted += HandleDailyEventStarted;
+    }
+
+    void OnDisable()
+    {
+        songController.OnSongStarted -= HandleSongStarted;
+        songController.OnSongFinished -= HandleSongFinished;
+
+        viewController.OnViewChange -= ViewChanged;
+
+        dailyEventController.OnDailyEventStarted -= HandleDailyEventStarted;
     }
 
     private void HandleSongStarted(object sender, SongEventArgs e)
@@ -63,7 +78,7 @@ public class StageController : MonoBehaviour
 
     public void OnSettingsClick()
     {
-        if ( OnSettingsButtonPressed != null )
+        if (OnSettingsButtonPressed != null)
         {
             OnSettingsButtonPressed();
         }
@@ -80,5 +95,10 @@ public class StageController : MonoBehaviour
         {
             stageUI.ShowUI();
         }
+    }
+
+    private void HandleDailyEventStarted(object sender, EventArgs e)
+    {
+        stageUI.HideUI();
     }
 }

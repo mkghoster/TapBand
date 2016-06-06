@@ -4,8 +4,9 @@ using UnityEngine;
 public enum ViewType
 {
     STAGE = 1,
-    BACKSTAGE,
-    CUSTOMIZATION
+    BACKSTAGE = 2,
+    CUSTOMIZATION = 3,
+    DAILY_EVENT = 4
 }
 
 public class ViewController : MonoBehaviour
@@ -16,7 +17,7 @@ public class ViewController : MonoBehaviour
     private ViewType currentView;
     #endregion
 
-    ViewType CurrentView
+    public ViewType CurrentView
     {
         get
         {

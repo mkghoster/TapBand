@@ -9,6 +9,7 @@ public class DailyEventEventArgs : EventArgs
     public DailyEventEventArgs(DailyStreakData dailyStreakReward, DailyRandomData dailyRandomReward)
     {
         DailyStreakReward = dailyStreakReward;
+        DailyRandomReward = dailyRandomReward;
     }
 
     public DailyStreakData DailyStreakReward { get; private set; }

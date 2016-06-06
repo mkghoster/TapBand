@@ -20,12 +20,16 @@ public class DailyEventController : MonoBehaviour
 
     private DailyEventUI dailyEventUI;
 
+    private ViewController viewController;
+
     public event DailyEventEvent OnDailyEventStarted;
     public event DailyEventEvent OnDailyEventFinished;
 
     void Awake()
     {
         var gameData = GameData.instance;
+
+        viewController = FindObjectOfType<ViewController>();
 
         state = GameState.instance.DailyEvent;
         resetHour = gameData.GeneralData.DailyRandomResetHour;
@@ -72,7 +76,7 @@ public class DailyEventController : MonoBehaviour
         {
             shouldTrigger = resetTime < DateTime.Now;
         }
-        if (shouldTrigger)
+        if (shouldTrigger && viewController.CurrentView == ViewType.STAGE)
         {
             shouldTrigger = false;
             shouldCheck = false;
@@ -85,21 +89,21 @@ public class DailyEventController : MonoBehaviour
         state.lastEventCompleted = DateTime.Now;
         CalculateResetTime();
         shouldCheck = true;
-        
+
         if (e.DailyRandomReward.autoTapBoosterDiscount > 0)
         {
             state.autoTapBoosterDiscount = e.DailyRandomReward.autoTapBoosterDiscount;
-            state.autoTapBoosterDiscountUntil = DateTime.Now.AddDays(1); // TODO: read time from param
+            state.autoTapBoosterDiscountUntil = resetTime; // TODO: read time from param
         }
         else if (e.DailyRandomReward.extraTimeBoosterDiscount > 0)
         {
-            state.extraTimeBoosterDiscount = e.DailyRandomReward.autoTapBoosterDiscount;
-            state.extraTimeBoosterDiscountUntil = DateTime.Now.AddDays(1); // TODO: read time from param
+            state.extraTimeBoosterDiscount = e.DailyRandomReward.extraTimeBoosterDiscount;
+            state.extraTimeBoosterDiscountUntil = resetTime; // TODO: read time from param
         }
         else if (e.DailyRandomReward.tapStrengthBoosterDiscount > 0)
         {
-            state.tapStrengthBoosterDiscount = e.DailyRandomReward.autoTapBoosterDiscount;
-            state.tapStrengthBoosterDiscountUntil = DateTime.Now.AddDays(1); // TODO: read time from param
+            state.tapStrengthBoosterDiscount = e.DailyRandomReward.tapStrengthBoosterDiscount;
+            state.tapStrengthBoosterDiscountUntil = resetTime; // TODO: read time from param
         }
 
 
@@ -107,6 +111,8 @@ public class DailyEventController : MonoBehaviour
         {
             OnDailyEventFinished(this, e);
         }
+
+        viewController.EnterView(ViewType.STAGE);
     }
 
     private void CalculateResetTime()
@@ -120,6 +126,7 @@ public class DailyEventController : MonoBehaviour
 
     private void TriggerDailyEvent()
     {
+        viewController.EnterView(ViewType.DAILY_EVENT);
         if (OnDailyEventStarted != null)
         {
             OnDailyEventStarted(this, new DailyEventEventArgs(nextReward, null));
@@ -140,8 +147,10 @@ public class DailyEventController : MonoBehaviour
     {
         var dailyRandomSelector = UnityEngine.Random.Range(0, dailyRandomTotalPossibility);
         float passedPossibility = 0;
+
         for (int i = 0; i < dailyRandomData.Count; i++)
         {
+
             var dataItem = dailyRandomData[i];
             passedPossibility += dataItem.possibility;
             if (passedPossibility >= dailyRandomSelector)
