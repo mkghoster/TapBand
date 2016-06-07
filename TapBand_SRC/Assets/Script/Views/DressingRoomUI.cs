@@ -30,6 +30,12 @@ public class DressingRoomUI : MonoBehaviour
     public void SetController(BackstageController controller)
     {
         backstageController = controller;
+
+        bassUI.SetController(controller);
+        drumsUI.SetController(controller);
+        guitar1UI.SetController(controller);
+        guitar2UI.SetController(controller);
+        keyboardsUI.SetController(controller);
     }
 
     public void OnCharacterRightClick()
@@ -90,5 +96,14 @@ public class DressingRoomUI : MonoBehaviour
     private void HideUI()
     {
         dressingRoomPanel.SetActive(false);
+    }
+
+    public void UpdateUI()
+    {
+        bassUI.UpdateUI();
+        drumsUI.UpdateUI();
+        guitar1UI.UpdateUI();
+        guitar2UI.UpdateUI();
+        keyboardsUI.UpdateUI();
     }
 }

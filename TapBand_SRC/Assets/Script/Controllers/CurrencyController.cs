@@ -9,7 +9,6 @@ public class CurrencyController : MonoBehaviour
     private TourController tourController;
     private BoosterController boosterController;
     private DailyEventController dailyEventController;
-    private SkillUpgradeUI[] skillUpgradeUIs;
     private IapData iapData;
     private BandMemberController bandMemberController;
 
@@ -28,8 +27,6 @@ public class CurrencyController : MonoBehaviour
         dailyEventController = FindObjectOfType<DailyEventController>();
         boosterController = FindObjectOfType<BoosterController>();
         bandMemberController = FindObjectOfType<BandMemberController>();
-
-        skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
 
         currencyState = GameState.instance.Currency;
         dailyEventState = GameState.instance.DailyEvent;

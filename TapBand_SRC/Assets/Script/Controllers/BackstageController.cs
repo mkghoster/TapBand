@@ -13,7 +13,8 @@ public class BackstageController : MonoBehaviour
     private DressingRoomUI dressingRoomUI;
     private ViewController viewController;
 
-    private CharacterType currentBackstageCharacter = CharacterType.Bass;
+    private BandMemberController bandMemberController;
+    private CurrencyController currencyController;
     #endregion
 
     void Awake()
@@ -24,13 +25,26 @@ public class BackstageController : MonoBehaviour
 
         viewController = FindObjectOfType<ViewController>();
 
-        viewController.OnViewChange += ViewChanged;
+        bandMemberController = FindObjectOfType<BandMemberController>();
+        currencyController = FindObjectOfType<CurrencyController>();
     }
 
     void Start()
     {
         backstageUI.SetController(this);
         dressingRoomUI.SetController(this);
+    }
+
+    void OnEnable()
+    {
+        viewController.OnViewChange += ViewChanged;
+        currencyController.OnCurrencyChanged += HandleCurrencyEvent;
+    }
+
+    void OnDisable()
+    {
+        viewController.OnViewChange -= ViewChanged;
+        currencyController.OnCurrencyChanged += HandleCurrencyEvent;
     }
 
     private void ViewChanged(object sender, ViewChangeEventArgs e)
@@ -82,5 +96,28 @@ public class BackstageController : MonoBehaviour
         {
             OnDebugButtonPressed();
         }
+    }
+
+    public CharacterData GetNextUpgrade(CharacterType character)
+    {
+        return bandMemberController.NextUpgrades[character];
+    }
+
+    public bool CanBuyNextUpgrade(CharacterType bandMember)
+    {
+        return bandMemberController.CanBuyNextUpgrade(bandMember);
+    }
+
+    public void UpdateCharacter(CharacterType bandMember)
+    {
+        if (CanBuyNextUpgrade(bandMember))
+        {
+            bandMemberController.UpgradeSkill(bandMember);
+        }
+    }
+
+    private void HandleCurrencyEvent(object sender, CurrencyEventArgs e)
+    {
+        dressingRoomUI.UpdateUI();
     }
 }

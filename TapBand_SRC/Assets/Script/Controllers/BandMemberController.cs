@@ -10,13 +10,11 @@ public class BandMemberController : MonoBehaviour
     public Dictionary<CharacterType, IList<CharacterData>> UnlockedUpgrades { get; private set; }
     public Dictionary<CharacterType, CharacterData> NextUpgrades { get; private set; }
 
-    private SkillUpgradeUI[] skillUpgradeUIs;
-    
     private CurrencyController currencyController;
 
     private EquipmentState currentEquipmentState;
     private GameData gameData;
-    
+
     public BandMemberController()
     {
         UnlockedUpgrades = new Dictionary<CharacterType, IList<CharacterData>>();
@@ -29,8 +27,6 @@ public class BandMemberController : MonoBehaviour
         currentEquipmentState = GameState.instance.Equipment;
 
         currencyController = FindObjectOfType<CurrencyController>();
-
-        skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
         
         UnlockedUpgrades[CharacterType.Bass] = new List<CharacterData>();
         UnlockedUpgrades[CharacterType.Drums] = new List<CharacterData>();
@@ -109,52 +105,37 @@ public class BandMemberController : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    public void UpgradeSkill(CharacterType character)
     {
-        for (int i = 0; i < skillUpgradeUIs.Length; i++)
-        {
-            skillUpgradeUIs[i].OnSkillUpgrade += HandleSkillUpgrade;
-        }
-    }
+        var unlockedUpgrade = NextUpgrades[character];
+        UnlockedUpgrades[character].Add(unlockedUpgrade);
 
-    void OnDisable()
-    {
-        for (int i = 0; i < skillUpgradeUIs.Length; i++)
-        {
-            skillUpgradeUIs[i].OnSkillUpgrade -= HandleSkillUpgrade;
-        }
-    }
-    
-    private void HandleSkillUpgrade(object sender, BandMemberSkillEventArgs e)
-    {
-        UnlockedUpgrades[e.Character].Add(e.UnlockedSkill);
-
-        switch (e.Character)
+        switch (character)
         {
             case CharacterType.Bass:
-                currentEquipmentState.BassEquipmentId = e.UnlockedSkill.id;
+                currentEquipmentState.BassEquipmentId = unlockedUpgrade.id;
                 break;
             case CharacterType.Drums:
-                currentEquipmentState.DrumEquipmentId = e.UnlockedSkill.id;
+                currentEquipmentState.DrumEquipmentId = unlockedUpgrade.id;
                 break;
             case CharacterType.Guitar1:
-                currentEquipmentState.Guitar1EquipmentId = e.UnlockedSkill.id;
+                currentEquipmentState.Guitar1EquipmentId = unlockedUpgrade.id;
                 break;
             case CharacterType.Guitar2:
-                currentEquipmentState.Guitar2EquipmentId = e.UnlockedSkill.id;
+                currentEquipmentState.Guitar2EquipmentId = unlockedUpgrade.id;
                 break;
             case CharacterType.Keyboards:
-                currentEquipmentState.KeyboardEquipmentId = e.UnlockedSkill.id;
+                currentEquipmentState.KeyboardEquipmentId = unlockedUpgrade.id;
                 break;
             default:
                 throw new NotImplementedException("You have added a character type, and not handled it here!");
         }
 
-        NextUpgrades[e.Character] = GetNextUpgrade(e.Character);
+        NextUpgrades[character] = GetNextUpgrade(character);
 
         if (OnSkillUpgraded != null)
         {
-            OnSkillUpgraded(this, e);
+            OnSkillUpgraded(this, new BandMemberSkillEventArgs(character, unlockedUpgrade));
         }
     }
 

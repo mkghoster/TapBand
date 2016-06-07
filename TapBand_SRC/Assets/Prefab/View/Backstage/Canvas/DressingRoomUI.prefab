@@ -75,6 +75,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22401738}
+  - 114: {fileID: 11444534}
   m_Layer: 5
   m_Name: Keyboards
   m_TagString: Untagged
@@ -167,6 +168,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22427052}
+  - 114: {fileID: 11433204}
   m_Layer: 5
   m_Name: Drums
   m_TagString: Untagged
@@ -289,7 +291,6 @@ GameObject:
   - 222: {fileID: 22295624}
   - 114: {fileID: 11422972}
   - 114: {fileID: 11476986}
-  - 114: {fileID: 11425666}
   m_Layer: 5
   m_Name: DrumsUpgradeButton
   m_TagString: Untagged
@@ -325,7 +326,6 @@ GameObject:
   - 222: {fileID: 22269720}
   - 114: {fileID: 11489708}
   - 114: {fileID: 11421314}
-  - 114: {fileID: 11496898}
   m_Layer: 5
   m_Name: Guitar1UpgradeButton
   m_TagString: Untagged
@@ -344,7 +344,6 @@ GameObject:
   - 222: {fileID: 22205310}
   - 114: {fileID: 11451048}
   - 114: {fileID: 11458472}
-  - 114: {fileID: 11436630}
   m_Layer: 5
   m_Name: KeyboardsUpgradeButton
   m_TagString: Untagged
@@ -360,6 +359,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22480204}
+  - 114: {fileID: 11422824}
   m_Layer: 5
   m_Name: Guitar1
   m_TagString: Untagged
@@ -411,7 +411,6 @@ GameObject:
   - 222: {fileID: 22219702}
   - 114: {fileID: 11414546}
   - 114: {fileID: 11438912}
-  - 114: {fileID: 11460170}
   m_Layer: 5
   m_Name: Guitar2UpgradeButton
   m_TagString: Untagged
@@ -447,7 +446,6 @@ GameObject:
   - 222: {fileID: 22260522}
   - 114: {fileID: 11465630}
   - 114: {fileID: 11447290}
-  - 114: {fileID: 11416548}
   m_Layer: 5
   m_Name: BassUpgradeButton
   m_TagString: Untagged
@@ -480,6 +478,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22413294}
+  - 114: {fileID: 11491634}
   m_Layer: 5
   m_Name: Guitar2
   m_TagString: Untagged
@@ -545,6 +544,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22441800}
+  - 114: {fileID: 11482980}
   m_Layer: 5
   m_Name: Bass
   m_TagString: Untagged
@@ -642,23 +642,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55523939588acf14391a046184c3563d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bassUI: {fileID: 11416548}
-  drumsUI: {fileID: 11425666}
-  guitar1UI: {fileID: 11496898}
-  guitar2UI: {fileID: 11460170}
-  keyboardsUI: {fileID: 11436630}
---- !u!114 &11416548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandMember: 2
+  bassUI: {fileID: 11482980}
+  drumsUI: {fileID: 11433204}
+  guitar1UI: {fileID: 11422824}
+  guitar2UI: {fileID: 11491634}
+  keyboardsUI: {fileID: 11444534}
 --- !u!114 &11421314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -698,7 +686,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11496898}
+      - m_Target: {fileID: 11422824}
         m_MethodName: OnUpgradeButtonClick
         m_Mode: 1
         m_Arguments:
@@ -711,6 +699,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11422824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bandMember: 2
+  uiPanel: {fileID: 115246}
+  upgradeButton: {fileID: 11421314}
+  upgradeButtonText: {fileID: 11427452}
 --- !u!114 &11422972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -792,18 +795,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11425666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandMember: 4
 --- !u!114 &11427452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -864,18 +855,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11436630
+--- !u!114 &11433204
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164528}
+  m_GameObject: {fileID: 131040}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bandMember: 3
+  bandMember: 1
+  uiPanel: {fileID: 123294}
+  upgradeButton: {fileID: 11476986}
+  upgradeButtonText: {fileID: 11445672}
 --- !u!114 &11438912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -915,7 +909,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11460170}
+      - m_Target: {fileID: 11491634}
         m_MethodName: OnUpgradeButtonClick
         m_Mode: 1
         m_Arguments:
@@ -955,6 +949,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11444534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bandMember: 4
+  uiPanel: {fileID: 190684}
+  upgradeButton: {fileID: 11458472}
+  upgradeButtonText: {fileID: 11449918}
 --- !u!114 &11445672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1027,7 +1036,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11416548}
+      - m_Target: {fileID: 11482980}
         m_MethodName: OnUpgradeButtonClick
         m_Mode: 1
         m_Arguments:
@@ -1232,7 +1241,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11436630}
+      - m_Target: {fileID: 11444534}
         m_MethodName: OnUpgradeButtonClick
         m_Mode: 1
         m_Arguments:
@@ -1245,18 +1254,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11460170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandMember: 1
 --- !u!114 &11460208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1528,7 +1525,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11425666}
+      - m_Target: {fileID: 11433204}
         m_MethodName: OnUpgradeButtonClick
         m_Mode: 1
         m_Arguments:
@@ -1568,6 +1565,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11482980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bandMember: 0
+  uiPanel: {fileID: 117192}
+  upgradeButton: {fileID: 11447290}
+  upgradeButtonText: {fileID: 11473934}
 --- !u!114 &11486404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1647,18 +1659,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11496898
+--- !u!114 &11491634
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163172}
+  m_GameObject: {fileID: 190046}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 549c895b94946e44ab8f8211973ea3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bandMember: 0
+  bandMember: 3
+  uiPanel: {fileID: 124036}
+  upgradeButton: {fileID: 11438912}
+  upgradeButtonText: {fileID: 11454490}
 --- !u!222 &22200916
 CanvasRenderer:
   m_ObjectHideFlags: 1
