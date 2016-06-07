@@ -14,7 +14,7 @@ public class MerchSlotItemUI : MonoBehaviour
 
     #region Private fields
     private MerchSlotState merchSlotState;
-    private MerchUI merchUI;
+    private MerchSlotUI merchSlotUI;
     #endregion
 
     void Start()
@@ -26,9 +26,9 @@ public class MerchSlotItemUI : MonoBehaviour
     {
     }
 
-    public void SetupItem(MerchUI UI, MerchSlotState state)
+    public void SetupItem(MerchSlotUI UI, MerchSlotState state)
     {
-        merchUI = UI;
+        merchSlotUI = UI;
         // MerchImage set here...
         UpdateItem(state);
     }
@@ -117,15 +117,15 @@ public class MerchSlotItemUI : MonoBehaviour
         switch (merchSlotState.Status)
         {
             case MerchSlotStatus.ACTIVE:
-                merchUI.OnCollectPressed(merchSlotState.ActiveMerchState);
+                merchSlotUI.OnCollectPressed(merchSlotState.ActiveMerchState);
                 break;
 
             case MerchSlotStatus.CLOSED:
-                merchUI.OnActivatePressed(merchSlotState);
+                merchSlotUI.OnActivatePressed(merchSlotState);
                 break;
 
             case MerchSlotStatus.COMPLETE:
-                merchUI.OnCollectPressed(merchSlotState.ActiveMerchState);
+                merchSlotUI.OnCollectPressed(merchSlotState.ActiveMerchState);
                 break;
         }
     }

@@ -7,6 +7,7 @@ public class MerchController : MonoBehaviour
 {
     #region Private fields
     private MerchUI merchUI;
+    private MerchSlotUI merchSlotUI;
     private CurrencyController currencyController;
     private ViewController viewController;
     private BackstageController backstageController;
@@ -20,6 +21,8 @@ public class MerchController : MonoBehaviour
 
         merchUI = FindObjectOfType<MerchUI>();
         merchUI.SetController(this);
+        merchSlotUI = FindObjectOfType<MerchSlotUI>();
+        merchSlotUI.SetController(this);
 
         backstageController.OnMerchButtonPressed += merchUI.ShowUI;
     }
@@ -27,13 +30,13 @@ public class MerchController : MonoBehaviour
     void Start()
     {
         merchUI.CreateMerchItems(GameState.instance.MerchStates);
-        merchUI.CreateMerchSlotItems(GameState.instance.MerchSlotStates);
+        merchSlotUI.CreateMerchSlotItems(GameState.instance.MerchSlotStates);
     }
 
     void Update()
     {
         merchUI.UpdateMerchItems();
-        merchUI.UpdateMerchSlotItems();
+        merchSlotUI.UpdateMerchSlotItems();
     }
 
     public bool HasFreeSlot()
@@ -70,7 +73,7 @@ public class MerchController : MonoBehaviour
         {
             freeSlot.ActiveMerchType = state.Type;
             merchUI.UpdateMerchItems();
-            merchUI.UpdateMerchSlotItems();
+            merchSlotUI.UpdateMerchSlotItems();
         }
     }
 
@@ -86,7 +89,7 @@ public class MerchController : MonoBehaviour
         MerchSlotState slotState = GetSlotOfMerch(state.Type);
         slotState.ActiveMerchType = MerchType.NONE;
         merchUI.UpdateMerchItems();
-        merchUI.UpdateMerchSlotItems();
+        merchSlotUI.UpdateMerchSlotItems();
     }
 
     public void OnUpgrade(MerchState state)
@@ -98,10 +101,10 @@ public class MerchController : MonoBehaviour
         state.Upgrade();
         currencyController.BuyFromCoin(state.UpgradeCost);
         merchUI.UpdateMerchItems();
-        merchUI.UpdateMerchSlotItems();
+        merchSlotUI.UpdateMerchSlotItems();
     }
 
-    public void OnActivate(MerchSlotState state)
+    public void OnActivateSlot(MerchSlotState state)
     {
         if (!state.CanActivate())
         {
@@ -118,7 +121,7 @@ public class MerchController : MonoBehaviour
             currencyController.BuyFromToken(state.TokenCost);
         }
 
-        merchUI.UpdateMerchSlotItems();
+        merchSlotUI.UpdateMerchSlotItems();
     }
 
     public void OnClose()
