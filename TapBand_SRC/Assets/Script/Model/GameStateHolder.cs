@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 public class GameStateHolder : MonoBehaviour
@@ -10,10 +10,20 @@ public class GameStateHolder : MonoBehaviour
     void Awake()
     {
         GameData.instance.TryLoadFromAssets(Application.streamingAssetsPath);
-        GameState.instance.TryLoadFromAssets(Application.persistentDataPath);
+        if (!GameState.instance.TryLoadFromAssets(Application.persistentDataPath))
+        {
+            GameState.instance.Init();
+        }
 
+        //Debug info
+        print("GameState path: "+ Application.persistentDataPath);
+
+        LoadConnectionsInGameData();
         LoadDefaults();
-		LoadConnectionsInGameData();
+
+        ConcertState concertState = GameState.instance.Concert;
+        ConcertData currentConcert = gameData.ConcertDataList.FirstOrDefault(x => x.id == concertState.CurrentConcertID);
+        concertState.CurrentSong = currentConcert.songList[concertState.CurrentSongIndex];
     }
 
     void OnDestroy()
@@ -23,25 +33,23 @@ public class GameStateHolder : MonoBehaviour
 
     private void LoadDefaults()
     {
-		if (GameState.instance.Concert.CurrentConcertID == 0) 
-		{
-			ConcertData firstConcert = GameData.instance.ConcertDataList[0];
-			GameState.instance.Concert.CurrentConcertID = firstConcert.id;
-		}
+        if (GameState.instance.Concert.CurrentConcertID == 0)
+        {
+            ConcertData firstConcert = GameData.instance.ConcertDataList[0];
+            GameState.instance.Concert.ResetToConcert(firstConcert);
+        }
     }
 
-	private void LoadConnectionsInGameData()
-	{
-		foreach (ConcertData cd in GameData.instance.ConcertDataList)
-		{
-			cd.songList = GetAllSongForConcert(cd.id);
-		}
+    private void LoadConnectionsInGameData()
+    {
+        foreach (ConcertData cd in GameData.instance.ConcertDataList)
+        {
+            cd.songList = GetAllSongsForConcert(cd.id);
+        }
+    }
 
-	}
-
-	private List<SongData> GetAllSongForConcert(int concertID)
-	{
-		return GameData.instance.SongDataList.FindAll (x => x.concertID == concertID);
-	}
-
+    private List<SongData> GetAllSongsForConcert(int concertID)
+    {
+        return GameData.instance.SongDataList.Where(x => x.concertID == concertID).ToList();
+    }
 }

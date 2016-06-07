@@ -4,56 +4,86 @@ using System;
 
 public class SpotlightController : MonoBehaviour
 {
+    public event RandomMechanismEvent OnSpotlightFinished;
 
-    private float SpotlightInterval;
-    private float SpotlightMinDelay;
-    private float SpotlightMaxDelay;
-    private float SpotlightTapMultiplier;
+    #region Private fields
+    private float spotlightInterval;
+    private float spotlightChangeInterval;
 
-    private float initSpotlightCountdown;
+    private bool isActive;
+    private float timeToLive;
+    private float timeToChange;
 
-    public SpotlightUI spotlightUI;
-    public TapController tapController;
+    private SpotlightUI spotlightUI;
 
-    public GameObject[] musicians;
+    private bool isPaused;
 
-    void Start()
+    private ViewController viewController;
+    #endregion
+
+    void Awake()
     {
-        SpotlightInterval = ReadFloat(GeneralProperties.SPOTLIGHT_INTERVAL);
-        SpotlightMinDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MIN_DELAY);
-        SpotlightMaxDelay = ReadFloat(GeneralProperties.SPOTLIGHT_MAX_DELAY);
-        SpotlightTapMultiplier = ReadFloat(GeneralProperties.SPOTLIGHT_TAP_MULTIPLIER);
+        var generalData = GameData.instance.GeneralData;
 
-        initSpotlightCountdown = CalculateAliveTime();
+        spotlightUI = FindObjectOfType<SpotlightUI>();
 
-        spotlightUI.aliveTime = SpotlightInterval;
+        viewController = FindObjectOfType<ViewController>();
 
-        tapController = FindObjectOfType<TapController>();
-        tapController.SpotlightTapMultiplier = SpotlightTapMultiplier;
+        viewController.OnViewChange += ViewChanged;
+
+        spotlightInterval = generalData.SpotlightInterval;
+        spotlightChangeInterval = generalData.SpotlightChangeInterval;
     }
 
     void Update()
     {
-        float dt = Time.deltaTime;
+        if (!isActive || isPaused)
+        {
+            return;
+        }
+        var dt = Time.deltaTime;
+        timeToLive -= dt;
+        timeToChange -= dt;
 
-        if (initSpotlightCountdown <= 0)
+        if (timeToLive <= 0)
         {
-            int indexToActivate = UnityEngine.Random.Range(0, musicians.Length);
-            spotlightUI.Activate(musicians[indexToActivate]);
-            initSpotlightCountdown = CalculateAliveTime();
-        } else
+            EndSpotlight();
+        }
+        if (timeToChange <= 0)
         {
-            initSpotlightCountdown -= dt;
+            spotlightUI.ChangeSpotlight();
+            timeToChange = spotlightChangeInterval;
+        }
+
+
+    }
+
+    public void StartSpotlight()
+    {
+        timeToLive = spotlightInterval;
+        timeToChange = spotlightChangeInterval;
+        isActive = true;
+
+        spotlightUI.ChangeSpotlight();
+    }
+
+    public void EndSpotlight()
+    {
+        isActive = false;
+        spotlightUI.DeactivateAll();
+        if (OnSpotlightFinished != null)
+        {
+            OnSpotlightFinished(this, new RandomMechanismEventArgs(RandomMechanismType.Spotlight));
         }
     }
 
-    private float CalculateAliveTime()
+    public void SetPaused(bool paused)
     {
-        return UnityEngine.Random.Range(SpotlightMinDelay, SpotlightMaxDelay);
+        isPaused = paused;
     }
 
-    private float ReadFloat(string name)
+    private void ViewChanged(object sender, ViewChangeEventArgs e)
     {
-        return Convert.ToSingle(GameData.instance.FindGeneralDataByName(name).value);
+        SetPaused(e.NewView != ViewType.STAGE);
     }
 }

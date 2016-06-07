@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
-public class TourController : MonoBehaviour {
+public delegate void RestartEvent();
+public delegate void OnPrestigeEvent();
 
-    public delegate void RestartEvent();
+public class TourController : MonoBehaviour
+{
     public event RestartEvent RestartConcert;
     public event RestartEvent RestartSong;
-    public delegate void OnPrestigeEvent(TourData tour);
     public event OnPrestigeEvent OnPrestige;
 
-    private RestartUI restart;
-    private HudUI hud;
+    private RestartController restart;
 
     void Awake()
     {
-        restart = FindObjectOfType<RestartUI>();
-        hud = FindObjectOfType<HudUI>();
+        restart = FindObjectOfType<RestartController>();
     }
 
     void OnEnable()
@@ -29,22 +29,20 @@ public class TourController : MonoBehaviour {
         restart.NewLevel -= UpgradeLevel;
     }
 
+    //TODO: rename
     private void UpgradeLevel()
     {
-        if (RestartConcert != null)RestartConcert();
-        if (RestartSong != null) RestartSong();
-        if (OnPrestige != null)
+        if (RestartConcert != null)
         {
-            int fans = GameState.instance.Currency.Fans;
-            foreach (TourData tourData in GameData.instance.TourDataList)
-            {
-                if (fans > tourData.minFanCount)
-                {
-                    OnPrestige(tourData);
-                    break;
-                }
-            }
-            
+            RestartConcert();
         }
+        if (RestartSong != null)
+        {
+            RestartSong();
+        }
+        if (OnPrestige != null)     //TODO: Reward átbeszélse
+        {
+            OnPrestige();
+        }       
     }
 }

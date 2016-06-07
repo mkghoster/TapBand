@@ -1,115 +1,233 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class CurrencyController : MonoBehaviour {
-
-	private SongController songController;
-	private ConcertController concertController;
+public class CurrencyController : MonoBehaviour
+{
+    private SongController songController;
+    private ConcertController concertController;
     private TourController tourController;
-    private MerchController merchController;
-    private EquipmentController equipmentController;
+    private BoosterController boosterController;
+    private DailyEventController dailyEventController;
+    private IapData iapData;
+    private BandMemberController bandMemberController;
 
-    private HudUI hudUI;
 
     private CurrencyState currencyState;
+    private DailyEventState dailyEventState;
+
+    public event CurrencyEvent OnCurrencyChanged;
+    public event CurrencyEvent OnInitialized;
 
     void Awake()
     {
-		songController = (SongController)FindObjectOfType (typeof(SongController));
-		concertController = (ConcertController)FindObjectOfType (typeof(ConcertController));
-        tourController = (TourController)FindObjectOfType(typeof(TourController));
-        merchController = (MerchController)FindObjectOfType(typeof(MerchController));
-        equipmentController = (EquipmentController)FindObjectOfType(typeof(EquipmentController));
-        hudUI = (HudUI)FindObjectOfType(typeof(HudUI));
+        songController = FindObjectOfType<SongController>();
+        concertController = FindObjectOfType<ConcertController>();
+        tourController = FindObjectOfType<TourController>();
+        dailyEventController = FindObjectOfType<DailyEventController>();
+        boosterController = FindObjectOfType<BoosterController>();
+        bandMemberController = FindObjectOfType<BandMemberController>();
 
         currencyState = GameState.instance.Currency;
+        dailyEventState = GameState.instance.DailyEvent;
+
+        iapData = GameData.instance.IapData;
+    }
+
+    void Start()
+    {
+        if (OnInitialized != null)
+        {
+            OnInitialized(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens));
+        }
     }
 
     void OnEnable()
     {
-		songController.GiveRewardOfSong += AddCoins;
-		concertController.GiveCoinRewardOfConcert += AddCoins;
-		concertController.GiveFanRewardOfConcert += AddFans;
+        songController.OnSongFinished += HandleSongFinished;
+        concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
-        merchController.MerchTransaction += MerchTransaction;
-        merchController.CoinTransaction += AddCoins;
-        equipmentController.EquipmentTransaction += EquipmentTransaction;
-        merchController.CanBuy += CanBuy;
-        hudUI.NewCoin += Coins;
-		hudUI.NewFans += Fans;
+        dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
+        boosterController.OnBoosterActivated += HandleBoosterActivated;
+
+        bandMemberController.OnSkillUpgraded += HandleSkillUpgrade;
     }
 
     void OnDisable()
     {
-		songController.GiveRewardOfSong -= AddCoins;
-		concertController.GiveCoinRewardOfConcert -= AddCoins;
-		concertController.GiveFanRewardOfConcert -= AddFans;
+        songController.OnSongFinished -= HandleSongFinished;
+        concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
-        merchController.MerchTransaction -= MerchTransaction;
-        merchController.CoinTransaction -= AddCoins;
-        equipmentController.EquipmentTransaction -= EquipmentTransaction;
-        merchController.CanBuy -= CanBuy;
-        hudUI.NewCoin -= Coins;
-		hudUI.NewFans -= Fans;
+        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
+
+        boosterController.OnBoosterActivated -= HandleBoosterActivated;
+
+        bandMemberController.OnSkillUpgraded += HandleSkillUpgrade;
     }
 
-    private void OnPrestige(TourData tour)
+    public double TapMultiplierFromPrestige
     {
+        get
+        {
+            return currencyState.TapMultiplierFromPrestige;
+        }
+    }
+
+    public bool CanBuyFromCoin(double price)
+    {
+        return currencyState.Coins >= price;
+    }
+
+    public bool CanBuyFromToken(int price)
+    {
+        return currencyState.Tokens >= price;
+    }
+
+    public void BuyFromCoin(double price)
+    {
+        if (!CanBuyFromCoin(price))
+        {
+            return;
+        }
+        currencyState.Coins -= price;
+    }
+
+    public void BuyFromToken(int price)
+    {
+        if (!CanBuyFromToken(price))
+        {
+            return;
+        }
+        // TODO: should request confirmation
+        currencyState.Tokens -= price;
+    }
+
+    private void OnPrestige()
+    {
+        //elveszik
         currencyState.Coins = 0;
-        currencyState.Fans = 0;
-        currencyState.AddTapMultiplier(tour.tapStrengthMultiplier);
+        currencyState.FanBonusPerTour.Add(currencyState.FanFromActualTour);
+        currencyState.FanFromActualTour = 0;
 
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        double tapStrengthMultiplier = CalculateTapStrengthBonus();
+        currencyState.TapMultiplierFromPrestige *= tapStrengthMultiplier;
+
+        print("new tapStrength bonus after Prestige: " + currencyState.TapMultiplierFromPrestige);
+
+        //for(int i = 0; i < currencyState.FanBonusPerTour.Count; i++) { print(i + ".: elem: " + currencyState.FanBonusPerTour[i]); }
+
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void EquipmentTransaction(EquipmentData equipment)
+    //TODO: implement it
+    private double CalculateTapStrengthBonus()
     {
-        currencyState.Coins -= equipment.upgradeCost;
-        currencyState.AddTapMultiplier(equipment.tapMultiplier);
-
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        return 1.2;
     }
 
-    private void MerchTransaction(MerchData merch)
+    private void HandleSkillUpgrade(object sender, BandMemberSkillEventArgs e)
     {
-        currencyState.Coins -= merch.upgradeCost;
+        currencyState.Coins -= e.UnlockedSkill.upgradeCost;
 
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private void AddCoins(int coins)
+    private void HandleSongFinished(object sender, SongEventArgs e)
     {
-        currencyState.Coins += coins;
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        if (e.Status == SongStatus.Successful)
+        {
+            AddCoins(e.Data.coinReward);
+        }
     }
 
-    private void AddFans(int fans)
-	{
-        currencyState.Fans += fans;
-        currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+    public void AddCoins(double coins)
+    {
+        currencyState.Coins += Math.Floor(coins); // Currencies are using doubles
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    private void HandleConcertFinished(object sender, ConcertEventArgs e)
+    {
+        currencyState.Fans += e.Data.fanReward;
+        currencyState.FanFromActualTour += e.Data.fanReward;
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
     private void AddTokens(int tokens)
     {
         currencyState.Tokens += tokens;
+        SynchronizeRealCurrencyAndScreenCurrency();
     }
 
-    private bool CanBuy(int price)
+    public void SynchronizeRealCurrencyAndScreenCurrency()
     {
-        return currencyState.Coins >= price;
+        if (OnCurrencyChanged != null)
+        {
+            OnCurrencyChanged(this, new CurrencyEventArgs(currencyState.Coins, currencyState.Fans, currencyState.Tokens));
+        }
     }
 
-    private string Coins()
+    private void HandleDailyEventFinished(object sender, DailyEventEventArgs e)
     {
-        // Temporal solution for test purposes
-        return currencyState.ScreenCoins.ToString();
+        if (e.DailyStreakReward.tokenAmount > 0)
+        {
+            AddTokens(e.DailyStreakReward.tokenAmount);
+        }
+        else
+        {
+            var coinReward = concertController.CurrentConcertData.rewardBase * e.DailyStreakReward.coinMultiplier;
+            AddCoins(coinReward);
+        }
+
+        if (e.DailyRandomReward.tokenAmount > 0)
+        {
+            AddTokens(e.DailyRandomReward.tokenAmount);
+        }
+        else if (e.DailyRandomReward.coinMultiplier > 0)
+        {
+            var coinReward = concertController.CurrentConcertData.rewardBase * e.DailyRandomReward.coinMultiplier;
+            AddCoins(coinReward);
+        }
     }
 
-	private string Fans()
-	{
-		// Temporal solution for test purposes
-		return currencyState.ScreenFans.ToString();
-	}
+    private void HandleBoosterActivated(object sender, BoosterEventArgs e)
+    {
+        switch (e.Type)
+        {
+            case BoosterType.AutoTap:
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.autoTapBoosterCost) * dailyEventState.AutoTapBoosterPriceMultiplier);
+                break;
+            case BoosterType.ExtraTime:
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.extraTimeBoosterCost) * dailyEventState.ExtraTimeBoosterPriceMultiplier);
+                break;
+            case BoosterType.TapStrength:
+                currencyState.Tokens -= Mathf.FloorToInt(((float)iapData.tapStrenghtBoosterCost) * dailyEventState.TapStrengthBoosterPriceMultiplier);
+                break;
+            default:
+                throw new NotImplementedException("This booster cost is not implemented");
+
+        }
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    //DEBUG CONTROLLER-----------------------------
+    public void GiveCoins(double coins)
+    {
+        currencyState.Coins += coins;
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    public void GiveFans(double fans)
+    {
+        currencyState.Fans += fans;
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
+
+    public void GiveTokens(int tokens)
+    {
+        currencyState.Tokens += tokens;
+        SynchronizeRealCurrencyAndScreenCurrency();
+    }
 }

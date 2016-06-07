@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour {
      };
 
 
-    protected SettingsUI settingsUI;
+    protected SettingsController settingsController;
     protected float musicVolume;
     protected float sfxVolume;
 
@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour {
         PoolsManager.RegisterPool(audioPool); //register pool if you want to use extention method Despawn
         audioPool.Initialize();
 
-        settingsUI = (SettingsUI)GameObject.FindObjectOfType(typeof(SettingsUI));
+        settingsController = GameObject.FindObjectOfType<SettingsController>();
 
         //musicVolume = PlayerPrefsManager.GetMusicVolume();
         //sfxVolume = PlayerPrefsManager.GetSFXVolume();

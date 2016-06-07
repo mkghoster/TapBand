@@ -1,35 +1,39 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class RestartUI : MonoBehaviour {
+public class RestartUI : MonoBehaviour
+{
+    public GameObject RestartPanel;
 
-    public delegate void NewLevelEvent();
-    public event NewLevelEvent NewLevel;
+    #region Private fields
+    RestartController restartController;
+    #endregion
 
-    public delegate TourData TourEvent();
-    public event TourEvent CurrentTour;
-
-    public GameObject restartPanel, restartButton;
-    
-	public void RestartLevel()
-	{
-        if (NewLevel != null)
-            NewLevel();
+    public void SetController(RestartController controller)
+    {
+        restartController = controller;
     }
 
-    void OnGUI()
+    public void OnRestartButtonClick()
     {
-        if (restartPanel.activeInHierarchy)
-        {
-            Button btn = restartButton.GetComponent<Button>();
+        HideUI();
+        restartController.OnRestartGame();
+    }
 
-            if (CurrentTour != null)
-            {
-                TourData tour = CurrentTour();
-                btn.transform.Find("Text").GetComponent<Text>().text = "Restart with " + GameState.instance.Currency.Fans + " fans";
-            }
+    public void OnBackToGameButtonClick()
+    {
+        HideUI();
+        restartController.OnBackToGame();
+    }
 
-        }
+    public void HideUI()
+    {
+        RestartPanel.gameObject.SetActive(false);
+    }
+
+    public void ShowUI()
+    {
+        RestartPanel.gameObject.SetActive(true);
     }
 }

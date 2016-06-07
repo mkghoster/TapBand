@@ -4,51 +4,14 @@ using QuickPool;
 
 public class SpotlightUI : MonoBehaviour
 {
-
-    [System.NonSerialized]
-    public float aliveTime;
-
     private GameObject[] spotlights;
-    private float passedTime;
-    private bool isActive;
-    private Pool spotlightEmitterPool;
-    private GameObject lastEmitter;
+    private int lastSpotlight;
 
     void Start()
     {
-        spotlightEmitterPool = PoolsManager.Instance["SpotlightParticleEmitter"];
-        lastEmitter = null;
         spotlights = GameObject.FindGameObjectsWithTag(Tags.SPOTLIGHT);
+        lastSpotlight = -1;
         DeactivateAll();
-        passedTime = 0f;
-        isActive = false;
-    }
-
-    void OnDisable()
-    {
-        spotlightEmitterPool.DespawnAll();
-    }
-
-    void Update()
-    {
-        if (isActive)
-        {
-            if (passedTime <= 0)
-            {
-                isActive = false;
-                DeactivateAll();
-
-                if (lastEmitter != null)
-                {
-                    spotlightEmitterPool.Despawn(lastEmitter);
-                }
-                lastEmitter = spotlightEmitterPool.Spawn(Vector3.zero, Quaternion.identity);
-            }
-            else
-            {
-                passedTime -= Time.deltaTime;
-            }
-        }
     }
 
     public void DeactivateAll()
@@ -57,22 +20,21 @@ public class SpotlightUI : MonoBehaviour
         {
             obj.SetActive(false);
         }
+        lastSpotlight = -1;
     }
 
-    public void Activate(GameObject musician)
+    public void ChangeSpotlight()
     {
-        foreach (GameObject obj in spotlights)
+        var nextSpotlight = lastSpotlight;
+        while (nextSpotlight == lastSpotlight)
         {
-            if (musician.name == obj.name)
-            {
-                isActive = true;
-                obj.SetActive(true);
-                passedTime = aliveTime;
-            }
-            else
-            {
-                obj.SetActive(false);
-            }
+            nextSpotlight = Random.Range(0, spotlights.Length);
         }
+        if (lastSpotlight >= 0)
+        {
+            spotlights[lastSpotlight].SetActive(false);
+        }
+        spotlights[nextSpotlight].SetActive(true);
+        lastSpotlight = nextSpotlight;
     }
 }

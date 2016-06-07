@@ -3,26 +3,48 @@ using UnityEngine;
 
 public class TapController : MonoBehaviour
 {
+    public float boosterMultiplier = 1f;
+    public float boosterTimeInterval = 0f;
+
+    public event TapEvent OnTap;
+
+    #region Private fields
     private TapUI tapUI;
 
-    public float SpotlightTapMultiplier;
+    private BandMemberController bandMemberController;
+    private BoosterController boosterController;
 
-    public delegate void TapEvent(float value);
-    public event TapEvent OnTap;
+    //private double prestigeTapMultiplier = 1f; 
+    private float spotlightTapMultiplier;
+    private double debugTapMultiplier;
+
+    private CurrencyController currencyController;
+    private ViewController viewController;
+    #endregion
 
     void Awake()
     {
         BindWithUI();
+        bandMemberController = FindObjectOfType<BandMemberController>();
+        currencyController = FindObjectOfType<CurrencyController>();
+        viewController = FindObjectOfType<ViewController>();
+        boosterController = FindObjectOfType<BoosterController>();
+
+        spotlightTapMultiplier = GameData.instance.GeneralData.SpotlightTapMultiplier;
+
+        viewController.OnViewChange += ViewChanged;
     }
 
     void OnEnable()
     {
-        tapUI.OnTap += HandleTap;
+        tapUI.OnScreenTap += HandleTap;
+        boosterController.OnAutoTap += HandleAutoTap;
     }
 
     void OnDisable()
     {
-        tapUI.OnTap -= HandleTap;
+        tapUI.OnScreenTap -= HandleTap;
+        boosterController.OnAutoTap -= HandleAutoTap;
     }
 
     #region MVC bindings
@@ -32,39 +54,93 @@ public class TapController : MonoBehaviour
     }
     #endregion
 
-    private void HandleTap(TapArgs args)
+    private void HandleTap(object sender, RawTapEventArgs e)
     {
-        IterateOverPositions(args.positions, false);
-        IterateOverPositions(args.spotlightPositions, true);
-    }
-
-    private void IterateOverPositions(ICollection<Vector2> positions, bool special)
-    {
-        foreach (Vector2 position in positions)
+        for (int i = 0; i < e.Taps.Count; i++)
         {
-            float tapValue = CalculateTapValue(position, special);
-            tapUI.DisplayTapValueAt(position, (ulong)tapValue, special);
+            double tapValue = CalculateTapValue(e.Taps[i].position, e.Taps[i].isSpotlight);
+            tapUI.DisplayTapValueAt(e.Taps[i], tapValue);
 
             if (OnTap != null)
             {
-                OnTap(tapValue);
+                OnTap(this, new TapEventArgs(tapValue));
             }
         }
     }
 
-    private float CalculateTapValue(Vector2 position, bool special)
+    private double CalculateTapValue(Vector2 position, bool isSpotlight)
     {
-        float tapMultiplier = GameState.instance.Currency.TapMultipliersProduct;
-        // we should rename this parameter to isSpotlight, if there will be no other special cases
-        if (special)
+        //double tapMultiplier = 1;
+        debugTapMultiplier = (double)PlayerPrefsManager.GetDebugTapMultip();
+        double tapMultiplier = 1 * debugTapMultiplier;  //DEBUG
+
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Bass].Count; i++)
         {
-            tapMultiplier *= DefaultOrSelf(SpotlightTapMultiplier);
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Bass][i].tapStrengthBonus;
         }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Drums].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Drums][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Guitar1].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Guitar1][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Guitar2].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Guitar2][i].tapStrengthBonus;
+        }
+        for (int i = 0; i < bandMemberController.UnlockedUpgrades[CharacterType.Keyboards].Count; i++)
+        {
+            tapMultiplier *= bandMemberController.UnlockedUpgrades[CharacterType.Keyboards][i].tapStrengthBonus;
+        }
+
+        tapMultiplier *= boosterController.GetTapStrengthMultiplier();
+
+
+        if (isSpotlight)
+        {
+            tapMultiplier *= spotlightTapMultiplier;
+        }
+
+        //tapMultiplier *= boosterMultiplier;
+        //print("currencyController.TapMultiplierFromPrestige;: "+ currencyController.TapMultiplierFromPrestige);
+        tapMultiplier *= currencyController.TapMultiplierFromPrestige;
+
+
         return tapMultiplier;
     }
 
-    private float DefaultOrSelf(float f)
+    public void BoosterMultiplier(float multiplierValue)
     {
-        return f == 0.0f ? 1.0f : f;
+        boosterMultiplier = multiplierValue;
+    }
+
+    public void IncDebugTapMultiplier(double multiplier)
+    {
+        debugTapMultiplier *= multiplier;
+        PlayerPrefsManager.SetDebugTapMultip((float)debugTapMultiplier);
+    }
+
+    public void ResetDebugTapMultiplier()
+    {
+        PlayerPrefsManager.SetDebugTapMultip(1.0f);
+    }
+
+    public void ViewChanged(object sender, ViewChangeEventArgs e)
+    {
+        if (e.NewView == ViewType.STAGE)
+        {
+            tapUI.ShowUI();
+        }
+        else
+        {
+            tapUI.HideUI();
+        }
+    }
+
+    private void HandleAutoTap(object sender, RawTapEventArgs e)
+    {
+        tapUI.AutoTap(e);
     }
 }

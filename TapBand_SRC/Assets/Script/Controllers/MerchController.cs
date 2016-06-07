@@ -1,149 +1,131 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 
-public class MerchController : MonoBehaviour {
-
-    private float currentTime;
-
-    public delegate void MerchTransactionEvent(MerchData merch);
-    public event MerchTransactionEvent MerchTransaction;
-    public delegate void CoinTransactionEvent(int coins);
-    public event CoinTransactionEvent CoinTransaction;
-    public delegate bool CanBuyEvent(int price);
-    public event CanBuyEvent CanBuy;
-
+public class MerchController : MonoBehaviour
+{
+    #region Private fields
     private MerchUI merchUI;
-    
+    private MerchSlotUI merchSlotUI;
+    private CurrencyController currencyController;
+    private ViewController viewController;
+    private BackstageController backstageController;
+    #endregion
+
     void Awake()
     {
-        merchUI = (MerchUI)FindObjectOfType(typeof(MerchUI));
+        currencyController = FindObjectOfType<CurrencyController>();
+        viewController = FindObjectOfType<ViewController>();
+        backstageController = FindObjectOfType<BackstageController>();
+
+        merchUI = FindObjectOfType<MerchUI>();
+        merchUI.SetController(this);
+        merchSlotUI = FindObjectOfType<MerchSlotUI>();
+        merchSlotUI.SetController(this);
+
+        backstageController.OnMerchButtonPressed += merchUI.ShowUI;
     }
 
     void Start()
     {
-        if (GameState.instance.Merch.CurrentTimeMerch != null)
-        {
-            int diffInSeconds = (int)(DateTime.Now - GameState.instance.Merch.LastOnlineDate).TotalSeconds;
-            int timeLimit = GameState.instance.Merch.CurrentTimeMerch.timeLimit;
-            if (diffInSeconds > timeLimit)
-            {
-                CollectMoney(timeLimit);
-            }
-            else
-            {
-                CollectMoney(diffInSeconds);
-            }
-        }
+        merchUI.CreateMerchItems(GameState.instance.MerchStates);
+        merchSlotUI.CreateMerchSlotItems(GameState.instance.MerchSlotStates);
     }
 
     void Update()
     {
-        TickSecondsAndCollectMoney();
+        merchUI.UpdateMerchItems();
+        merchSlotUI.UpdateMerchSlotItems();
     }
 
-    private void TickSecondsAndCollectMoney()
+    public bool HasFreeSlot()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime >= 1f)
-        {
-            currentTime = 0f;
-            CollectMoney(1);
-        }
+        return GetFirstFreeSlot() != null;
     }
 
-    private void CollectMoney(int forSeconds)
+    public MerchSlotState GetFirstFreeSlot()
     {
-        if (CoinTransaction != null)
+        for (int i = 0; i < GameState.instance.MerchSlotStates.Count; i++)
         {
-            if (GameState.instance.Merch.CurrentQualityMerch != null)
+            if (GameState.instance.MerchSlotStates[i].Status == MerchSlotStatus.EMPTY)
             {
-                CoinTransaction(GameState.instance.Merch.CurrentQualityMerch.coinPerSecond * forSeconds);
+                return GameState.instance.MerchSlotStates[i];
             }
         }
+        return null;
     }
 
-    void OnEnable()
+    public MerchSlotState GetSlotOfMerch(MerchType type)
     {
-        merchUI.CurrentQualityMerchData += CurrentQualityMerchData;
-        merchUI.NextQualityMerchData += NextQualityMerchData;
-        merchUI.CurrentTimeMerchData += CurrentTimeMerchData;
-        merchUI.NextTimeMerchData += NextTimeMerchData;
-        merchUI.BuyQualityMerch += BuyQualityMerch;
-        merchUI.BuyTimeMerch += BuyTimeMerch;
-        merchUI.CanBuy += CanBuyItem;
+        return GameState.instance.MerchSlotStates.FirstOrDefault(c => c.ActiveMerchType == type);
     }
 
-    void OnDisable()
+    public void OnStart(MerchState state)
     {
-        merchUI.CurrentQualityMerchData -= CurrentQualityMerchData;
-        merchUI.NextQualityMerchData -= NextQualityMerchData;
-        merchUI.CurrentTimeMerchData -= CurrentTimeMerchData;
-        merchUI.NextTimeMerchData -= NextTimeMerchData;
-        merchUI.BuyQualityMerch -= BuyQualityMerch;
-        merchUI.BuyTimeMerch -= BuyTimeMerch;
-        merchUI.CanBuy -= CanBuyItem;
-
-        // save last online date
-        GameState.instance.Merch.LastOnlineDate = DateTime.Now;
-    }
-
-    private MerchData CurrentQualityMerchData()
-    {
-        return GameState.instance.Merch.CurrentQualityMerch;
-    }
-
-    private MerchData NextQualityMerchData()
-    {
-        if (GameState.instance.Merch.CurrentQualityMerch == null)
+        MerchSlotState freeSlot = GetFirstFreeSlot();
+        if (freeSlot == null)
         {
-            return GameData.instance.MerchDataList.Find(x => x.merchType == MerchType.QUALITY); // finds the first
+            return;
         }
-
-        MerchData nextMerch = ListUtils.NextOf(GameData.instance.MerchDataList, CurrentQualityMerchData());
-        return nextMerch.merchType == MerchType.QUALITY ? nextMerch : null;
-    }
-
-    private MerchData CurrentTimeMerchData()
-    {
-        return GameState.instance.Merch.CurrentTimeMerch;
-    }
-
-    private MerchData NextTimeMerchData()
-    {
-        if (GameState.instance.Merch.CurrentTimeMerch == null)
+        state.Start();
+        if (state.Started)
         {
-            return GameData.instance.MerchDataList.Find(x => x.merchType == MerchType.TIME); // finds the first
-        }
-        MerchData nextMerch = ListUtils.NextOf(GameData.instance.MerchDataList, CurrentTimeMerchData());
-        return nextMerch.merchType == MerchType.TIME ? nextMerch : null;
-    }
-
-    private void BuyQualityMerch(MerchData data)
-    {
-        if (MerchTransaction != null)
-        {
-            MerchTransaction(data);
-            GameState.instance.Merch.QualityMerchId = data.id;
+            freeSlot.ActiveMerchType = state.Type;
+            merchUI.UpdateMerchItems();
+            merchSlotUI.UpdateMerchSlotItems();
         }
     }
 
-    private void BuyTimeMerch(MerchData data)
+    public void OnCollect(MerchState state)
     {
-        if (MerchTransaction != null)
+        if (!state.CanCollect())
         {
-            MerchTransaction(data);
-            GameState.instance.Merch.TimeMerchId = data.id;
+            return;
         }
+        currencyController.BuyFromToken(state.TokenToFinish);
+        currencyController.AddCoins(state.CollectibleCoins);
+        state.ResetTimer();
+        MerchSlotState slotState = GetSlotOfMerch(state.Type);
+        slotState.ActiveMerchType = MerchType.NONE;
+        merchUI.UpdateMerchItems();
+        merchSlotUI.UpdateMerchSlotItems();
     }
 
-
-    private bool CanBuyItem(int price)
+    public void OnUpgrade(MerchState state)
     {
-        if (CanBuy != null)
+        if (!state.CanUpgrade())
         {
-            return CanBuy(price);
+            return;
         }
-        return false;
+        state.Upgrade();
+        currencyController.BuyFromCoin(state.UpgradeCost);
+        merchUI.UpdateMerchItems();
+        merchSlotUI.UpdateMerchSlotItems();
+    }
+
+    public void OnActivateSlot(MerchSlotState state)
+    {
+        if (!state.CanActivate())
+        {
+            return;
+        }
+        state.Activate();
+
+        if (state.CoinCost > 0)
+        {
+            currencyController.BuyFromCoin(state.CoinCost);
+        }
+        else
+        {
+            currencyController.BuyFromToken(state.TokenCost);
+        }
+
+        merchSlotUI.UpdateMerchSlotItems();
+    }
+
+    public void OnClose()
+    {
+        viewController.EnterView(ViewType.BACKSTAGE);
     }
 }

@@ -1,93 +1,96 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class MerchUI : MonoBehaviour {
+public class MerchUI : MonoBehaviour
+{
+    public GameObject MerchPanel;
+    public GameObject MerchScrollPanelContent;
+    public GameObject MerchItemUIPrefab;
 
-    public delegate MerchData MerchDataEvent();
-    public event MerchDataEvent CurrentQualityMerchData;
-    public event MerchDataEvent NextQualityMerchData;
-    public event MerchDataEvent CurrentTimeMerchData;
-    public event MerchDataEvent NextTimeMerchData;
+    #region Private fields
+    private List<MerchItemUI> merchItems;
+    MerchController merchController;
+    #endregion
 
-    public delegate void BuyMerchEvent(MerchData data);
-    public event BuyMerchEvent BuyQualityMerch;
-    public event BuyMerchEvent BuyTimeMerch;
-
-    public delegate bool CanBuyEvent(int price);
-    public event CanBuyEvent CanBuy;
-
-    public GameObject timePanel, qualityPanel;
-
-    void OnGUI()
+    void Awake()
     {
-        RefreshPanel(timePanel, CurrentTimeMerchData, NextTimeMerchData, BuyTimeMerch);
-        RefreshPanel(qualityPanel, CurrentQualityMerchData, NextQualityMerchData, BuyQualityMerch);
+        merchItems = new List<MerchItemUI>();
     }
-    
-    private void RefreshPanel(GameObject panel, MerchDataEvent currentData, MerchDataEvent nextData,
-                              BuyMerchEvent buy)
+
+    void Start()
     {
-        if (currentData != null)
+    }
+
+    void Update()
+    {
+    }
+
+    public void SetController(MerchController controller)
+    {
+        merchController = controller;
+    }
+
+    public void CreateMerchItems(IList<MerchState> merchStates)
+    {
+        MerchScrollPanelContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, merchStates.Count * 100 + 10);
+        for (int i = 0; i < merchStates.Count; i++)
         {
-            MerchData merchData = currentData();
-            if (merchData != null)
-            {
-                GetTextComponentOfChild(panel, "CurrentLevelHolder").text = merchData.level.ToString();
-                GetTextComponentOfChild(panel, "CurrentNameHolder").text = merchData.name;
-                GetTextComponentOfChild(panel, "CurrentPropertiesHolder").text = MerchPropertiesToShow(merchData);
-            }
-        }
-
-        GetButtonComponentOfChild(panel, "BuyButton").interactable = false;
-
-        if (nextData != null)
-        {
-            MerchData nextMerchData = nextData();
-            if (nextMerchData != null)
-            {
-                GetButtonTextComponentOfChild(panel, "BuyButton").text = "Buy " + nextMerchData.name + " (" + nextMerchData.upgradeCost + " coin)";
-                GetTextComponentOfChild(panel, "NextMerchProperties").text = "It'll give " + MerchPropertiesToShow(nextMerchData);
-
-                if (CanBuy != null)
-                {
-                    Button buyButton = GetButtonComponentOfChild(panel, "BuyButton");
-                    buyButton.interactable = CanBuy(nextMerchData.upgradeCost);
-                    // FIXME: temporary solution
-                    buyButton.onClick.RemoveAllListeners();
-                    buyButton.onClick.AddListener(() => buy(nextMerchData));
-                }
-            }
-
+            merchItems.Add(CreateMerchItem(merchStates[i]));
         }
     }
 
-    private string MerchPropertiesToShow(MerchData merchData)
+    private MerchItemUI CreateMerchItem(MerchState merchState)
     {
-        string ret = "";
-        if (merchData.coinPerSecond != 0)
+        GameObject gameObject = Instantiate<GameObject>(MerchItemUIPrefab);
+        gameObject.transform.SetParent(MerchScrollPanelContent.transform, false);
+        MerchItemUI itemUI = gameObject.GetComponent<MerchItemUI>();
+        itemUI.SetupItem(this, merchState);
+        return itemUI;
+    }
+
+    public void UpdateMerchItems()
+    {
+        for (int i = 0; i < merchItems.Count; i++)
         {
-            ret += merchData.coinPerSecond + " coin per sec ";
+            merchItems[i].UpdateItem();
         }
-        if (merchData.timeLimit != 0)
-        {
-            ret += merchData.timeLimit + " sec ";
-        }
-        return ret;
     }
 
-    private Text GetTextComponentOfChild(GameObject parent, string childName)
+    public void OnStartPressed(MerchState state)
     {
-        return parent.transform.Find(childName).gameObject.GetComponent<Text>();
+        merchController.OnStart(state);
     }
 
-    private Button GetButtonComponentOfChild(GameObject parent, string childName)
+    public void OnCollectPressed(MerchState state)
     {
-        return parent.transform.Find(childName).gameObject.GetComponent<Button>();
+        merchController.OnCollect(state);
     }
 
-    private Text GetButtonTextComponentOfChild(GameObject parent, string childName)
+    public void OnUpgradePressed(MerchState state)
     {
-        return GetButtonComponentOfChild(parent, childName).transform.Find("Text").GetComponent<Text>();
+        merchController.OnUpgrade(state);
+    }
+
+    public bool HasFreeSlot()
+    {
+        return merchController.HasFreeSlot();
+    }
+
+    public void CloseButtonClick()
+    {
+        HideUI();
+        merchController.OnClose();
+    }
+
+    public void HideUI()
+    {
+        MerchPanel.gameObject.SetActive(false);
+    }
+
+    public void ShowUI()
+    {
+        MerchPanel.gameObject.SetActive(true);
     }
 }

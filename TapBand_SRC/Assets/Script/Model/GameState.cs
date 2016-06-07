@@ -4,9 +4,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
-[System.Serializable]
-public class GameState : LoadableData {
+[Serializable]
+public class GameState : LoadableData
+{
 
     #region Singleton access
     private static GameState _instance;
@@ -24,83 +26,36 @@ public class GameState : LoadableData {
 
     private GameState()
     {
-        currencyState = new CurrencyState();
-        merchState = new MerchState();
-        concertState = new ConcertState();
-        equipmentState = new EquipmentState();
+        Currency = new CurrencyState();
+        MerchStates = new List<MerchState>();
+        MerchSlotStates = new List<MerchSlotState>();
+        Concert = new ConcertState();
+        Equipment = new EquipmentState();
+        DailyEvent = new DailyEventState();
     }
     #endregion
 
-    private CurrencyState currencyState;
-    private MerchState merchState;
-    private ConcertState concertState;
-    private EquipmentState equipmentState;
-
-    
-    public CurrencyState Currency
-    {
-        get
-        {
-            return currencyState;
-        }
-
-        set
-        {
-            currencyState = value;
-        }
-    }
-
-    public MerchState Merch
-    {
-        get
-        {
-            return merchState;
-        }
-
-        set
-        {
-            merchState = value;
-        }
-    }
-
-	public ConcertState Concert
-	{
-		get
-		{
-			return concertState;
-		}
-		
-		set
-		{
-			concertState = value;
-		}
-	}
-
-    public EquipmentState Equipment
-    {
-        get
-        {
-            return equipmentState;
-        }
-
-        set
-        {
-            equipmentState = value;
-        }
-    }
+    public CurrencyState Currency { get; private set; }
+    public IList<MerchState> MerchStates { get; private set; }
+    public IList<MerchSlotState> MerchSlotStates { get; private set; }
+    public ConcertState Concert { get; private set; }
+    public EquipmentState Equipment { get; private set; }
+    public DailyEventState DailyEvent { get; private set; }
 
     #region Overridden functions for loading/saving
     protected override void LoadData(MemoryStream ms)
     {
         IFormatter formatter = new BinaryFormatter();
-        GameState gd = (GameState)formatter.Deserialize(ms);
-        
-        this.currencyState = gd.currencyState == null ? new CurrencyState() : gd.currencyState;
-        this.merchState = gd.merchState == null ? new MerchState() : gd.merchState;
-		this.concertState = gd.concertState == null ? new ConcertState() : gd.concertState;
-        this.equipmentState = gd.equipmentState == null ? new EquipmentState() : gd.equipmentState;
+        GameState gs = (GameState)formatter.Deserialize(ms);
 
-        this.currencyState.SynchronizeRealCurrencyAndScreenCurrency();
+        Currency = gs.Currency == null ? new CurrencyState() : gs.Currency;
+        MerchStates = gs.MerchStates == null ? new List<MerchState>() : gs.MerchStates;
+        MerchSlotStates = gs.MerchSlotStates == null ? new List<MerchSlotState>() : gs.MerchSlotStates;
+        Concert = gs.Concert == null ? new ConcertState() : gs.Concert;
+        Equipment = gs.Equipment == null ? new EquipmentState() : gs.Equipment;
+        DailyEvent = gs.DailyEvent == null ? new DailyEventState() : gs.DailyEvent;
+
+        Init();
     }
 
     public override string GetFileName()
@@ -108,4 +63,31 @@ public class GameState : LoadableData {
         return "gamestate";
     }
     #endregion
+
+    public void Init()
+    {
+        if (MerchStates.Count == 0)
+        {
+            for (int i = 1; i <= (int)MerchType.NUM_OF_MERCH_TYPES; i++)
+            {
+                MerchStates.Add(new MerchState((MerchType)i));
+            }
+        }
+        if (MerchSlotStates.Count == 0)
+        {
+            for (int i = 1; i <= 4; i++)
+            {
+                MerchSlotStates.Add(new MerchSlotState(i));
+            }
+        }
+
+        for (int i = 0; i < MerchStates.Count; i++)
+        {
+            MerchStates[i].Init();
+        }
+        for (int i = 0; i < MerchSlotStates.Count; i++)
+        {
+            MerchSlotStates[i].Init();
+        }
+    }
 }
