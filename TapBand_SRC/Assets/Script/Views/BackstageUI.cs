@@ -33,6 +33,12 @@ public class BackstageUI : MonoBehaviour
         backstageController.OnPrestigeClick();
     }
 
+    public void OnDressingRoomButtonClick()
+    {
+        HideUI();
+        backstageController.SwitchDressingRoom(true);
+    }
+
     public void HideUI()
     {
         BackstagePanel.gameObject.SetActive(false);
@@ -41,5 +47,11 @@ public class BackstageUI : MonoBehaviour
     public void ShowUI()
     {
         BackstagePanel.gameObject.SetActive(true);
+    }
+
+    public void OnDebugButtonClick()
+    {
+        HideUI();
+        backstageController.OnDebugClick();
     }
 }

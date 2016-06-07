@@ -9,8 +9,9 @@ public class CurrencyController : MonoBehaviour
     private TourController tourController;
     private BoosterController boosterController;
     private DailyEventController dailyEventController;
-    private SkillUpgradeUI[] skillUpgradeUIs;
     private IapData iapData;
+    private BandMemberController bandMemberController;
+
 
     private CurrencyState currencyState;
     private DailyEventState dailyEventState;
@@ -25,8 +26,7 @@ public class CurrencyController : MonoBehaviour
         tourController = FindObjectOfType<TourController>();
         dailyEventController = FindObjectOfType<DailyEventController>();
         boosterController = FindObjectOfType<BoosterController>();
-
-        skillUpgradeUIs = FindObjectsOfType<SkillUpgradeUI>();
+        bandMemberController = FindObjectOfType<BandMemberController>();
 
         currencyState = GameState.instance.Currency;
         dailyEventState = GameState.instance.DailyEvent;
@@ -48,16 +48,10 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished += HandleConcertFinished;
         tourController.OnPrestige += OnPrestige;
 
-
         dailyEventController.OnDailyEventFinished += HandleDailyEventFinished;
         boosterController.OnBoosterActivated += HandleBoosterActivated;
 
-
-
-        for (int i = 0; i < skillUpgradeUIs.Length; i++)
-        {
-            skillUpgradeUIs[i].OnSkillUpgrade += HandleSkillUpgrade;
-        }
+        bandMemberController.OnSkillUpgraded += HandleSkillUpgrade;
     }
 
     void OnDisable()
@@ -66,16 +60,11 @@ public class CurrencyController : MonoBehaviour
         concertController.OnConcertFinished -= HandleConcertFinished;
         tourController.OnPrestige -= OnPrestige;
 
-//        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
+        dailyEventController.OnDailyEventFinished -= HandleDailyEventFinished;
 
         boosterController.OnBoosterActivated -= HandleBoosterActivated;
 
-
-
-        for (int i = 0; i < skillUpgradeUIs.Length; i++)
-        {
-            skillUpgradeUIs[i].OnSkillUpgrade -= HandleSkillUpgrade;
-        }
+        bandMemberController.OnSkillUpgraded += HandleSkillUpgrade;
     }
 
     public double TapMultiplierFromPrestige
@@ -122,11 +111,11 @@ public class CurrencyController : MonoBehaviour
         currencyState.FanBonusPerTour.Add(currencyState.FanFromActualTour);
         currencyState.FanFromActualTour = 0;
 
-        double tapStrengthMultiplier = CalculateTapStrengthBonus();                                 
+        double tapStrengthMultiplier = CalculateTapStrengthBonus();
         currencyState.TapMultiplierFromPrestige *= tapStrengthMultiplier;
 
-        print("new tapStrength bonus after Prestige: "+ currencyState.TapMultiplierFromPrestige);
-        
+        print("new tapStrength bonus after Prestige: " + currencyState.TapMultiplierFromPrestige);
+
         //for(int i = 0; i < currencyState.FanBonusPerTour.Count; i++) { print(i + ".: elem: " + currencyState.FanBonusPerTour[i]); }
 
         SynchronizeRealCurrencyAndScreenCurrency();

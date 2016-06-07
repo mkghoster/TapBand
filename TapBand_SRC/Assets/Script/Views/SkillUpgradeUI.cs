@@ -6,70 +6,38 @@ using System;
 public class SkillUpgradeUI : MonoBehaviour
 {
     public CharacterType bandMember;
-    public event BandMemberSkillEvent OnSkillUpgrade;
 
-    private CharacterData unlockableSkill;
-    private BandMemberController bandMemberController;
+    public GameObject uiPanel;
+    public Button upgradeButton;
+    public Text upgradeButtonText;
 
-    private Text childText; //TODO: implement final ui 
-    private Button button;
+    private BackstageController backstageController;
 
-    private CurrencyController currencyController;
-
-    void Awake()
+    public void SetController(BackstageController controller)
     {
-        bandMemberController = FindObjectOfType<BandMemberController>();
-        childText = transform.GetComponentInChildren<Text>();
-        currencyController = FindObjectOfType<CurrencyController>();
-        button = GetComponent<Button>();
-    }
-
-    void Start()
-    {
-        unlockableSkill = bandMemberController.NextUpgrades[bandMember];
-        UpdateText();
-        CheckBuyable();
-    }
-
-    void OnEnable()
-    {
-        currencyController.OnCurrencyChanged += HandleCurrencyChanged;
-        CheckBuyable();
-    }
-
-    void OnDisable()
-    {
-        currencyController.OnCurrencyChanged -= HandleCurrencyChanged;
+        backstageController = controller;
     }
 
     public void OnUpgradeButtonClick()
     {
-        if (OnSkillUpgrade != null)
-        {
-            OnSkillUpgrade(this, new BandMemberSkillEventArgs(bandMember, unlockableSkill)); //TODO: check if upgrade can be initiated
-        }
-        unlockableSkill = bandMemberController.NextUpgrades[bandMember]; // TODO: update UI (upgrading / upgraded?)
-        UpdateText();
-        CheckBuyable();
+        backstageController.UpdateCharacter(bandMember);        
     }
 
-    private void HandleCurrencyChanged(object sender, CurrencyEventArgs e)
+    public void UpdateUI()
     {
-        CheckBuyable();
+        upgradeButton.interactable = CheckBuyable();
+        var nextUpgrade = backstageController.GetNextUpgrade(bandMember);
+        upgradeButtonText.text = String.Format("{0} Level: {1}, Cost: {2}", bandMember.ToString(), nextUpgrade.id, nextUpgrade.upgradeCost);
     }
 
-    private void UpdateText()
+    private bool CheckBuyable()
     {
-        childText.text = String.Format("{0} Level: {1}, Cost: {2}", bandMember.ToString(), unlockableSkill.id, unlockableSkill.upgradeCost);
+        return backstageController.CanBuyNextUpgrade(bandMember);
     }
 
-    private void CheckBuyable()
+    public void SetUIActive(CharacterType characterType)
     {
-        if (unlockableSkill == null)
-        {
-            button.interactable = false;
-            return;
-        }
-        button.interactable = currencyController.CanBuyFromCoin(unlockableSkill.upgradeCost);
+        UpdateUI();
+        uiPanel.SetActive(characterType == bandMember);
     }
 }

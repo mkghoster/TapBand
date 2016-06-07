@@ -4,15 +4,17 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
     public Transform backstageTransform;
-    public Transform dressingRoomTransform; // TODO: ezeket kikeresni / hardcodeolni / prefabba rakni
+    public Transform dressingRoomTransform;
 
     #region Private fields
     private ViewController viewController;
+    private Transform mainCamera;
     #endregion
 
     public void Awake()
     {
         viewController = FindObjectOfType<ViewController>();
+        mainCamera = transform.FindChild("MainCamera");
         viewController.OnViewChange += ViewChanged;
     }
 
@@ -37,16 +39,16 @@ public class CameraController : MonoBehaviour
 
     public void FocusToBackstage()
     {
-        transform.position = new Vector3(backstageTransform.position.x, backstageTransform.position.y, transform.position.z);
+        mainCamera.position = new Vector3(backstageTransform.position.x, backstageTransform.position.y, mainCamera.position.z);
     }
 
     public void FocusToDressingRoom()
     {
-        transform.position = new Vector3(dressingRoomTransform.position.x, dressingRoomTransform.position.y, transform.position.z);
+        mainCamera.position = new Vector3(dressingRoomTransform.position.x, dressingRoomTransform.position.y, mainCamera.position.z);
     }
 
     public void FocusToStage()
     {
-        transform.position = new Vector3(0, 0, transform.position.z);
+        mainCamera.position = new Vector3(0, 0, mainCamera.position.z);
     }
 }

@@ -4,17 +4,38 @@ using System;
 
 public class DressingRoomUI : MonoBehaviour
 {
-    public GameObject bassUI;
-    public GameObject drumsUI;
-    public GameObject guitar1UI;
-    public GameObject guitar2UI;
-    public GameObject keyboardsUI;
+    public SkillUpgradeUI bassUI;
+    public SkillUpgradeUI drumsUI;
+    public SkillUpgradeUI guitar1UI;
+    public SkillUpgradeUI guitar2UI;
+    public SkillUpgradeUI keyboardsUI;
 
     private CharacterType currentCharacter;
+
+    private GameObject dressingRoomPanel;
+
+    private BackstageController backstageController;
 
     void Awake()
     {
         currentCharacter = CharacterType.Bass;
+        dressingRoomPanel = transform.GetChild(0).gameObject;
+    }
+
+    void Start()
+    {
+        dressingRoomPanel.SetActive(false);
+    }
+
+    public void SetController(BackstageController controller)
+    {
+        backstageController = controller;
+
+        bassUI.SetController(controller);
+        drumsUI.SetController(controller);
+        guitar1UI.SetController(controller);
+        guitar2UI.SetController(controller);
+        keyboardsUI.SetController(controller);
     }
 
     public void OnCharacterRightClick()
@@ -30,7 +51,7 @@ public class DressingRoomUI : MonoBehaviour
             currentIndex = 4;
         }
 
-        SwitchCharacter((CharacterType)currentIndex);
+        SwitchCharacterPanel((CharacterType)currentIndex);
     }
 
     public void OnCharacterLeftClick()
@@ -46,38 +67,43 @@ public class DressingRoomUI : MonoBehaviour
             currentIndex = 4;
         }
 
-        SwitchCharacter((CharacterType)currentIndex);
+        SwitchCharacterPanel((CharacterType)currentIndex);
     }
 
-    private void SwitchCharacter(CharacterType switchTo)
+    public void OnBackstageButtonClick()
     {
-        SetCharacterPanelActive(currentCharacter, false);
-
-        currentCharacter = switchTo;
-        SetCharacterPanelActive(switchTo, true);
+        HideUI();
+        backstageController.SwitchDressingRoom(false);
     }
 
-    private void SetCharacterPanelActive(CharacterType character, bool isActive)
+    private void SwitchCharacterPanel(CharacterType character)
     {
-        switch (character)
-        {
-            case CharacterType.Bass:
-                bassUI.SetActive(isActive);
-                break;
-            case CharacterType.Drums:
-                drumsUI.SetActive(isActive);
-                break;
-            case CharacterType.Guitar1:
-                guitar1UI.SetActive(isActive);
-                break;
-            case CharacterType.Guitar2:
-                guitar2UI.SetActive(isActive);
-                break;
-            case CharacterType.Keyboards:
-                keyboardsUI.SetActive(isActive);
-                break;
-            default:
-                throw new NotImplementedException("Unknown character type");
-        }
+        bassUI.SetUIActive(character);
+        drumsUI.SetUIActive(character);
+        guitar1UI.SetUIActive(character);
+        guitar2UI.SetUIActive(character);
+        keyboardsUI.SetUIActive(character);
+
+        currentCharacter = character;
+    }
+
+    public void ShowUI()
+    {
+        SwitchCharacterPanel(currentCharacter);
+        dressingRoomPanel.SetActive(true);
+    }
+
+    private void HideUI()
+    {
+        dressingRoomPanel.SetActive(false);
+    }
+
+    public void UpdateUI()
+    {
+        bassUI.UpdateUI();
+        drumsUI.UpdateUI();
+        guitar1UI.UpdateUI();
+        guitar2UI.UpdateUI();
+        keyboardsUI.UpdateUI();
     }
 }
