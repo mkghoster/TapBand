@@ -58,8 +58,48 @@ AnimationClip:
         tangentMode: 0
       - time: 1
         value: {x: 0, y: 0, z: 333.9618}
-        inSlope: {x: 0, y: 0, z: -571.8467}
-        outSlope: {x: 0, y: 0, z: -571.8467}
+        inSlope: {x: 0, y: 0, z: -355.9718}
+        outSlope: {x: 0, y: 0, z: -355.9718}
+        tangentMode: 0
+      - time: 1.1666666
+        value: {x: 0, y: 0, z: 310.6123}
+        inSlope: {x: 0, y: 0, z: 367.2821}
+        outSlope: {x: 0, y: 0, z: 367.2821}
+        tangentMode: 0
+      - time: 1.2333333
+        value: {x: 0, y: 0, z: 368.9231}
+        inSlope: {x: 0, y: 0, z: 445.23508}
+        outSlope: {x: 0, y: 0, z: 445.23508}
+        tangentMode: 0
+      - time: 1.4333334
+        value: {x: 0, y: 0, z: 372.0849}
+        inSlope: {x: 0, y: 0, z: -278.01907}
+        outSlope: {x: 0, y: 0, z: -278.01907}
+        tangentMode: 0
+      - time: 1.5
+        value: {x: 0, y: 0, z: 333.9618}
+        inSlope: {x: 0, y: 0, z: -355.97202}
+        outSlope: {x: 0, y: 0, z: -355.97202}
+        tangentMode: 0
+      - time: 1.6666667
+        value: {x: 0, y: 0, z: 310.6123}
+        inSlope: {x: 0, y: 0, z: 367.28293}
+        outSlope: {x: 0, y: 0, z: 367.28293}
+        tangentMode: 0
+      - time: 1.7333333
+        value: {x: 0, y: 0, z: 368.9231}
+        inSlope: {x: 0, y: 0, z: 445.23587}
+        outSlope: {x: 0, y: 0, z: 445.23587}
+        tangentMode: 0
+      - time: 1.9333334
+        value: {x: 0, y: 0, z: 372.0849}
+        inSlope: {x: 0, y: 0, z: -278.01907}
+        outSlope: {x: 0, y: 0, z: -278.01907}
+        tangentMode: 0
+      - time: 2
+        value: {x: 0, y: 0, z: 333.9618}
+        inSlope: {x: 0, y: 0, z: -571.84717}
+        outSlope: {x: 0, y: 0, z: -571.84717}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -110,13 +150,397 @@ AnimationClip:
         tangentMode: 0
       - time: 1
         value: {x: 0, y: 0, z: 101.2036}
-        inSlope: {x: 0, y: 0, z: 1053.4681}
-        outSlope: {x: 0, y: 0, z: 1053.4681}
+        inSlope: {x: 0, y: 0, z: 682.7053}
+        outSlope: {x: 0, y: 0, z: 682.7053}
+        tangentMode: 0
+      - time: 1.1666666
+        value: {x: 0, y: 0, z: 153.194}
+        inSlope: {x: 0, y: 0, z: -681.4743}
+        outSlope: {x: 0, y: 0, z: -681.4743}
+        tangentMode: 0
+      - time: 1.2333333
+        value: {x: 0, y: 0, z: 41.5345}
+        inSlope: {x: 0, y: 0, z: -863.8508}
+        outSlope: {x: 0, y: 0, z: -863.8508}
+        tangentMode: 0
+      - time: 1.4333334
+        value: {x: 0, y: 0, z: 30.972399}
+        inSlope: {x: 0, y: 0, z: 500.32925}
+        outSlope: {x: 0, y: 0, z: 500.32925}
+        tangentMode: 0
+      - time: 1.5
+        value: {x: 0, y: 0, z: 101.2036}
+        inSlope: {x: 0, y: 0, z: 682.7056}
+        outSlope: {x: 0, y: 0, z: 682.7056}
+        tangentMode: 0
+      - time: 1.6666667
+        value: {x: 0, y: 0, z: 153.194}
+        inSlope: {x: 0, y: 0, z: -681.4759}
+        outSlope: {x: 0, y: 0, z: -681.4759}
+        tangentMode: 0
+      - time: 1.7333333
+        value: {x: 0, y: 0, z: 41.5345}
+        inSlope: {x: 0, y: 0, z: -863.8523}
+        outSlope: {x: 0, y: 0, z: -863.8523}
+        tangentMode: 0
+      - time: 1.9333334
+        value: {x: 0, y: 0, z: 30.972399}
+        inSlope: {x: 0, y: 0, z: 500.32925}
+        outSlope: {x: 0, y: 0, z: 500.32925}
+        tangentMode: 0
+      - time: 2
+        value: {x: 0, y: 0, z: 101.2036}
+        inSlope: {x: 0, y: 0, z: 1053.469}
+        outSlope: {x: 0, y: 0, z: 1053.469}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP/KITTEN_ARM_RIGHT_LO
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0.2712}
+        inSlope: {x: 0, y: 0, z: 6.809571}
+        outSlope: {x: 0, y: 0, z: 6.809571}
+        tangentMode: 0
+      - time: 0.23333333
+        value: {x: 0, y: 0, z: 1.8600999}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.46666667
+        value: {x: 0, y: 0, z: 0.2712}
+        inSlope: {x: 0, y: 0, z: -6.541952}
+        outSlope: {x: 0, y: 0, z: -6.541952}
+        tangentMode: 0
+      - time: 0.76666665
+        value: {x: 0, y: 0, z: -1.6111}
+        inSlope: {x: 0, y: 0, z: 0.896333}
+        outSlope: {x: 0, y: 0, z: 0.896333}
+        tangentMode: 0
+      - time: 1
+        value: {x: 0, y: 0, z: 0.2712}
+        inSlope: {x: 0, y: 0, z: 7.438285}
+        outSlope: {x: 0, y: 0, z: 7.438285}
+        tangentMode: 0
+      - time: 1.2333333
+        value: {x: 0, y: 0, z: 1.8600999}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.4666667
+        value: {x: 0, y: 0, z: 0.2712}
+        inSlope: {x: 0, y: 0, z: -6.541952}
+        outSlope: {x: 0, y: 0, z: -6.541952}
+        tangentMode: 0
+      - time: 1.7666667
+        value: {x: 0, y: 0, z: -1.6111}
+        inSlope: {x: 0, y: 0, z: 0.89633274}
+        outSlope: {x: 0, y: 0, z: 0.89633274}
+        tangentMode: 0
+      - time: 2
+        value: {x: 0, y: 0, z: 0.2712}
+        inSlope: {x: 0, y: 0, z: 8.066999}
+        outSlope: {x: 0, y: 0, z: 8.066999}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 15.735399}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.16666667
+        value: {x: 0, y: 0, z: 15.735399}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: 0, y: 0, z: 15.735399}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: -0.3214}
+        inSlope: {x: 0, y: 0, z: -23.93057}
+        outSlope: {x: 0, y: 0, z: -23.93057}
+        tangentMode: 0
+      - time: 0.23333333
+        value: {x: 0, y: 0, z: -5.9052}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.46666667
+        value: {x: 0, y: 0, z: -0.3214}
+        inSlope: {x: 0, y: 0, z: 19.430286}
+        outSlope: {x: 0, y: 0, z: 19.430286}
+        tangentMode: 0
+      - time: 0.76666665
+        value: {x: 0, y: 0, z: 4.1576}
+        inSlope: {x: 0, y: 0, z: -2.132856}
+        outSlope: {x: 0, y: 0, z: -2.132856}
+        tangentMode: 0
+      - time: 1
+        value: {x: 0, y: 0, z: -0.3214}
+        inSlope: {x: 0, y: 0, z: -21.56314}
+        outSlope: {x: 0, y: 0, z: -21.56314}
+        tangentMode: 0
+      - time: 1.2333333
+        value: {x: 0, y: 0, z: -5.9052}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.4666667
+        value: {x: 0, y: 0, z: -0.3214}
+        inSlope: {x: 0, y: 0, z: 19.430286}
+        outSlope: {x: 0, y: 0, z: 19.430286}
+        tangentMode: 0
+      - time: 1.7666667
+        value: {x: 0, y: 0, z: 4.1576}
+        inSlope: {x: 0, y: 0, z: -2.1328554}
+        outSlope: {x: 0, y: 0, z: -2.1328554}
+        tangentMode: 0
+      - time: 2
+        value: {x: 0, y: 0, z: -0.3214}
+        inSlope: {x: 0, y: 0, z: -19.195713}
+        outSlope: {x: 0, y: 0, z: -19.195713}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: -0.1678}
+        inSlope: {x: 0, y: 0, z: 40.924496}
+        outSlope: {x: -0, y: -0, z: 48.964104}
+        tangentMode: 0
+      - time: 0.16666667
+        value: {x: 0, y: 0, z: 7.992884}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.4
+        value: {x: 0, y: 0, z: -3.5930457}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.6666667
+        value: {x: 0, y: 0, z: 8.06553}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.9
+        value: {x: 0, y: 0, z: -3.544615}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: 0, y: 0, z: -0.1678}
+        inSlope: {x: 0, y: 0, z: 33.768143}
+        outSlope: {x: -0, y: -0, z: 48.964115}
+        tangentMode: 0
+      - time: 1.1666666
+        value: {x: 0, y: 0, z: 7.992884}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.4
+        value: {x: 0, y: 0, z: -3.5930457}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.6666667
+        value: {x: 0, y: 0, z: 8.06553}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.9
+        value: {x: 0, y: 0, z: -3.544615}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: 0, y: 0, z: -0.1678}
+        inSlope: {x: 0, y: 0, z: 33.768143}
+        outSlope: {x: -0, y: -0, z: -0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0.148}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.16666667
+        value: {x: 0, y: 0, z: 1.6767273}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.33333334
+        value: {x: 0, y: 0, z: 0.1253708}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.5
+        value: {x: 0, y: 0, z: 1.6714517}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.6666667
+        value: {x: 0, y: 0, z: 0.11962378}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.8333333
+        value: {x: 0, y: 0, z: 1.6687131}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: 0, y: 0, z: 0.148}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.1666666
+        value: {x: 0, y: 0, z: 1.6767273}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.3333334
+        value: {x: 0, y: 0, z: 0.1253708}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.5
+        value: {x: 0, y: 0, z: 1.6714517}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.6666667
+        value: {x: 0, y: 0, z: 0.11962378}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.8333333
+        value: {x: 0, y: 0, z: 1.6687131}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: 0, y: 0, z: 0.148}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: -0.31399998}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0.369}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: -0.52639997}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 18.4321}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 90.9663}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0.6537}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0.309}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_SHADOW
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -163,15 +587,1187 @@ AnimationClip:
         tangentMode: 0
       - time: 1
         value: {x: -0.39500052, y: -1.7110004, z: -1}
-        inSlope: {x: 0.0000053644185, y: 0.000003576279, z: 0}
-        outSlope: {x: 0.0000053644185, y: 0.000003576279, z: 0}
+        inSlope: {x: 0.0000019669533, y: 0.0000017881395, z: 0}
+        outSlope: {x: 0.0000019669533, y: 0.0000017881395, z: 0}
+        tangentMode: 0
+      - time: 1.1666666
+        value: {x: -0.39500076, y: -1.7110004, z: -1}
+        inSlope: {x: -0.0000020563593, y: -0.0000017881379, z: 0}
+        outSlope: {x: -0.0000020563593, y: -0.0000017881379, z: 0}
+        tangentMode: 0
+      - time: 1.2333333
+        value: {x: -0.39500093, y: -1.7110007, z: -1}
+        inSlope: {x: -0.0000011920918, y: -0.0000017881379, z: 0}
+        outSlope: {x: -0.0000011920918, y: -0.0000017881379, z: 0}
+        tangentMode: 0
+      - time: 1.4333334
+        value: {x: -0.39500087, y: -1.7110007, z: -1}
+        inSlope: {x: 0.0000028312231, y: 0.000001788141, z: 0}
+        outSlope: {x: 0.0000028312231, y: 0.000001788141, z: 0}
+        tangentMode: 0
+      - time: 1.5
+        value: {x: -0.39500052, y: -1.7110004, z: -1}
+        inSlope: {x: 0.000001966956, y: 0.000001788141, z: 0}
+        outSlope: {x: 0.000001966956, y: 0.000001788141, z: 0}
+        tangentMode: 0
+      - time: 1.6666667
+        value: {x: -0.39500076, y: -1.7110004, z: -1}
+        inSlope: {x: -0.0000020563612, y: -0.000001788141, z: 0}
+        outSlope: {x: -0.0000020563612, y: -0.000001788141, z: 0}
+        tangentMode: 0
+      - time: 1.7333333
+        value: {x: -0.39500093, y: -1.7110007, z: -1}
+        inSlope: {x: -0.0000011920941, y: -0.000001788141, z: 0}
+        outSlope: {x: -0.0000011920941, y: -0.000001788141, z: 0}
+        tangentMode: 0
+      - time: 1.9333334
+        value: {x: -0.39500087, y: -1.7110007, z: -1}
+        inSlope: {x: 0.0000028312231, y: 0.000001788141, z: 0}
+        outSlope: {x: 0.0000028312231, y: 0.000001788141, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: -0.39500052, y: -1.7110004, z: -1}
+        inSlope: {x: 0.000005364423, y: 0.000003576282, z: 0}
+        outSlope: {x: 0.000005364423, y: 0.000003576282, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP/KITTEN_ARM_RIGHT_LO
-  m_ScaleCurves: []
-  m_FloatCurves: []
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 4.5, z: -1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: 0, y: 4.5, z: -1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.2, y: 2.4, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: -0.2, y: 2.4, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: -0, y: -0, z: -0}
+        tangentMode: 0
+      - time: 2
+        value: {x: -0.2, y: 2.4, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 2.6, z: -2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.26666668
+        value: {x: 0.01117188, y: 2.6, z: -2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.5
+        value: {x: -0.006241302, y: 2.6, z: -2}
+        inSlope: {x: -0.0170372, y: 0, z: 0}
+        outSlope: {x: -0.0170372, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.8333333
+        value: {x: 0.0072765397, y: 2.6, z: -2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: 0, y: 2.6, z: -2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.2666667
+        value: {x: 0.01117188, y: 2.6, z: -2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.5
+        value: {x: -0.006241302, y: 2.6, z: -2}
+        inSlope: {x: -0.017037192, y: 0, z: 0}
+        outSlope: {x: -0.017037192, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.8333333
+        value: {x: 0.0072765397, y: 2.6, z: -2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: -0.00023909454, y: 2.6, z: -2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 4.5, z: 0}
+        inSlope: {x: -1.0500039, y: 0, z: 0}
+        outSlope: {x: -1.0500039, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 1.5, y: 0, z: 0}
+        outSlope: {x: 1.5, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: -4.5, z: 0}
+        inSlope: {x: 10.2, y: 0, z: 0}
+        outSlope: {x: 10.2, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: -7.0500007, y: 0, z: 0}
+        outSlope: {x: -7.0500007, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.472, y: 1.9850001, z: 1}
+        inSlope: {x: 6.87, y: 0, z: 0}
+        outSlope: {x: 6.87, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.28400004, y: -1.7280002, z: -3}
+        inSlope: {x: 5.1899114, y: 0, z: 0}
+        outSlope: {x: 5.1899114, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.798, y: 1.987, z: -2}
+        inSlope: {x: -3.7799995, y: 0, z: 0}
+        outSlope: {x: -3.7799995, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.030000001, y: 0.52, z: -2}
+        inSlope: {x: 3.4499996, y: 0, z: 0}
+        outSlope: {x: 3.4499996, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.79, y: 0, z: 0}
+        inSlope: {x: -1.5000199, y: 0, z: 0}
+        outSlope: {x: -1.5000199, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.12, y: -4.44, z: 2}
+        inSlope: {x: 8.099999, y: 0, z: 0}
+        outSlope: {x: 8.099999, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_SHADOW
+  m_ScaleCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.3, y: 1.3, z: 1.3}
+        inSlope: {x: 0.00000071525574, y: 0.00000071525574, z: 0}
+        outSlope: {x: 0.00000071525574, y: 0.00000071525574, z: 0}
+        tangentMode: 0
+      - time: 0.16666667
+        value: {x: 1.3000001, y: 1.3000001, z: 1.3}
+        inSlope: {x: 0.00000032511625, y: 0.00000032511625, z: 0}
+        outSlope: {x: 0.00000032511625, y: 0.00000032511625, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: 1.3, y: 1.3, z: 1.3}
+        inSlope: {x: -0.00000006502325, y: -0.00000006502325, z: 0}
+        outSlope: {x: -0.00000006502325, y: -0.00000006502325, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0.10990834, y: -0.104364395, z: 0}
+        outSlope: {x: 0.10990834, y: -0.104364395, z: 0}
+        tangentMode: 0
+      - time: 0.16666667
+        value: {x: 1.018318, y: 0.98260593, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.33333334
+        value: {x: 0.99602073, y: 1.0032749, z: 1}
+        inSlope: {x: -0.03410196, y: 0.028104361, z: 0}
+        outSlope: {x: -0.03410196, y: 0.028104361, z: 0}
+        tangentMode: 0
+      - time: 0.5
+        value: {x: 1.0069507, y: 0.99197406, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.6666667
+        value: {x: 0.9960291, y: 1.0041455, z: 1}
+        inSlope: {x: -0.008906381, y: 0.009213025, z: 0}
+        outSlope: {x: -0.008906381, y: 0.009213025, z: 0}
+        tangentMode: 0
+      - time: 0.93333334
+        value: {x: 1.0087537, y: 0.9895848, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: -0.010698251, y: 0.025931772, z: 0}
+        outSlope: {x: -0.010698251, y: 0.025931772, z: 0}
+        tangentMode: 0
+      - time: 1.1666666
+        value: {x: 1.018318, y: 0.98260593, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.3333334
+        value: {x: 0.99602073, y: 1.0032749, z: 1}
+        inSlope: {x: -0.034101926, y: 0.028104328, z: 0}
+        outSlope: {x: -0.034101926, y: 0.028104328, z: 0}
+        tangentMode: 0
+      - time: 1.5
+        value: {x: 1.0069507, y: 0.99197406, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.6666667
+        value: {x: 0.9960291, y: 1.0041455, z: 1}
+        inSlope: {x: -0.00890637, y: 0.00921301, z: 0}
+        outSlope: {x: -0.00890637, y: 0.00921301, z: 0}
+        tangentMode: 0
+      - time: 1.9333334
+        value: {x: 1.0087537, y: 0.9895848, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: -0.13130498, y: 0.1562281, z: 0}
+        outSlope: {x: -0.13130498, y: 0.1562281, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: Infinity, y: 0, z: 0}
+        outSlope: {x: Infinity, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.5
+        value: {x: -1, y: 1, z: 1}
+        inSlope: {x: Infinity, y: 0, z: 0}
+        outSlope: {x: Infinity, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.2
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: Infinity, y: 0, z: 0}
+        outSlope: {x: Infinity, y: 0, z: 0}
+        tangentMode: 0
+      - time: 2
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: Infinity, y: 0, z: 0}
+        outSlope: {x: Infinity, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_BASIC/kitten_basic_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_BASIC/kitten_basic_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_BASIC/kitten_basic_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_BASIC/kitten_basic_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3000001
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_EGYPT/kitten_egypt_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3000001
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_EGYPT/kitten_egypt_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3000001
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_EGYPT/kitten_egypt_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3000001
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_EGYPT/kitten_egypt_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INCAN/kitten_incan_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INCAN/kitten_incan_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INCAN/kitten_incan_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INCAN/kitten_incan_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INDIAN/kitten_indian_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INDIAN/kitten_indian_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INDIAN/kitten_indian_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INDIAN/kitten_indian_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_VAMP/kitten_vamp_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_VAMP/kitten_vamp_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_VAMP/kitten_vamp_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_VAMP/kitten_vamp_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 30
   m_WrapMode: 0
@@ -181,6 +1777,72 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - path: 3398988932
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2001048266
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3694229373
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4230475703
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1910018442
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1805330393
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 437764261
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 945146474
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2029250567
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1198294969
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3610527961
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3382806206
       attribute: 1
       script: {fileID: 0}
       classID: 4
@@ -198,13 +1860,235 @@ AnimationClip:
       classID: 4
       customType: 14
       isPPtrCurve: 0
+    - path: 1910018442
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 3392787344
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 302603279
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 2001048266
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 1198294969
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2001048266
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 302603279
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1204370995
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3183870800
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3522738754
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3100219739
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1846058214
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 121225215
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3576539872
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 790796163
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3632812221
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 579300830
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3534677717
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3147810252
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1289912384
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 634626905
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2056681411
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2157529760
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 21519490
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4215759329
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1225715165
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 541052612
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3392787344
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 302603279
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1198294969
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 3694229373
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 4230475703
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 1805330393
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 437764261
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 945146474
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 3610527961
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 3382806206
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -268,6 +2152,46 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
+      - time: 1.1666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.6666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.9333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -319,6 +2243,46 @@ AnimationClip:
         outSlope: 0
         tangentMode: 10
       - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.1666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.6666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.9333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
         value: 0
         inSlope: 0
         outSlope: 0
@@ -375,8 +2339,48 @@ AnimationClip:
         tangentMode: 10
       - time: 1
         value: 333.9618
-        inSlope: -571.8467
-        outSlope: -571.8467
+        inSlope: -355.9718
+        outSlope: -355.9718
+        tangentMode: 10
+      - time: 1.1666666
+        value: 310.6123
+        inSlope: 367.2821
+        outSlope: 367.2821
+        tangentMode: 10
+      - time: 1.2333333
+        value: 368.9231
+        inSlope: 445.23508
+        outSlope: 445.23508
+        tangentMode: 10
+      - time: 1.4333334
+        value: 372.0849
+        inSlope: -278.01907
+        outSlope: -278.01907
+        tangentMode: 10
+      - time: 1.5
+        value: 333.9618
+        inSlope: -355.97202
+        outSlope: -355.97202
+        tangentMode: 10
+      - time: 1.6666667
+        value: 310.6123
+        inSlope: 367.28293
+        outSlope: 367.28293
+        tangentMode: 10
+      - time: 1.7333333
+        value: 368.9231
+        inSlope: 445.23587
+        outSlope: 445.23587
+        tangentMode: 10
+      - time: 1.9333334
+        value: 372.0849
+        inSlope: -278.01907
+        outSlope: -278.01907
+        tangentMode: 10
+      - time: 2
+        value: 333.9618
+        inSlope: -571.84717
+        outSlope: -571.84717
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -429,6 +2433,46 @@ AnimationClip:
         outSlope: 0
         tangentMode: 10
       - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.1666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.6666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.9333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
         value: 0
         inSlope: 0
         outSlope: 0
@@ -488,6 +2532,46 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
+      - time: 1.1666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.6666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.9333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -540,8 +2624,48 @@ AnimationClip:
         tangentMode: 10
       - time: 1
         value: 101.2036
-        inSlope: 1053.4681
-        outSlope: 1053.4681
+        inSlope: 682.7053
+        outSlope: 682.7053
+        tangentMode: 10
+      - time: 1.1666666
+        value: 153.194
+        inSlope: -681.4743
+        outSlope: -681.4743
+        tangentMode: 10
+      - time: 1.2333333
+        value: 41.5345
+        inSlope: -863.8508
+        outSlope: -863.8508
+        tangentMode: 10
+      - time: 1.4333334
+        value: 30.972399
+        inSlope: 500.32925
+        outSlope: 500.32925
+        tangentMode: 10
+      - time: 1.5
+        value: 101.2036
+        inSlope: 682.7056
+        outSlope: 682.7056
+        tangentMode: 10
+      - time: 1.6666667
+        value: 153.194
+        inSlope: -681.4759
+        outSlope: -681.4759
+        tangentMode: 10
+      - time: 1.7333333
+        value: 41.5345
+        inSlope: -863.8523
+        outSlope: -863.8523
+        tangentMode: 10
+      - time: 1.9333334
+        value: 30.972399
+        inSlope: 500.32925
+        outSlope: 500.32925
+        tangentMode: 10
+      - time: 2
+        value: 101.2036
+        inSlope: 1053.469
+        outSlope: 1053.469
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -595,8 +2719,48 @@ AnimationClip:
         tangentMode: 10
       - time: 1
         value: -0.39500052
-        inSlope: 0.0000053644185
-        outSlope: 0.0000053644185
+        inSlope: 0.0000019669533
+        outSlope: 0.0000019669533
+        tangentMode: 10
+      - time: 1.1666666
+        value: -0.39500076
+        inSlope: -0.0000020563593
+        outSlope: -0.0000020563593
+        tangentMode: 10
+      - time: 1.2333333
+        value: -0.39500093
+        inSlope: -0.0000011920918
+        outSlope: -0.0000011920918
+        tangentMode: 10
+      - time: 1.4333334
+        value: -0.39500087
+        inSlope: 0.0000028312231
+        outSlope: 0.0000028312231
+        tangentMode: 10
+      - time: 1.5
+        value: -0.39500052
+        inSlope: 0.000001966956
+        outSlope: 0.000001966956
+        tangentMode: 10
+      - time: 1.6666667
+        value: -0.39500076
+        inSlope: -0.0000020563612
+        outSlope: -0.0000020563612
+        tangentMode: 10
+      - time: 1.7333333
+        value: -0.39500093
+        inSlope: -0.0000011920941
+        outSlope: -0.0000011920941
+        tangentMode: 10
+      - time: 1.9333334
+        value: -0.39500087
+        inSlope: 0.0000028312231
+        outSlope: 0.0000028312231
+        tangentMode: 10
+      - time: 2
+        value: -0.39500052
+        inSlope: 0.000005364423
+        outSlope: 0.000005364423
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -650,8 +2814,48 @@ AnimationClip:
         tangentMode: 10
       - time: 1
         value: -1.7110004
-        inSlope: 0.000003576279
-        outSlope: 0.000003576279
+        inSlope: 0.0000017881395
+        outSlope: 0.0000017881395
+        tangentMode: 10
+      - time: 1.1666666
+        value: -1.7110004
+        inSlope: -0.0000017881379
+        outSlope: -0.0000017881379
+        tangentMode: 10
+      - time: 1.2333333
+        value: -1.7110007
+        inSlope: -0.0000017881379
+        outSlope: -0.0000017881379
+        tangentMode: 10
+      - time: 1.4333334
+        value: -1.7110007
+        inSlope: 0.000001788141
+        outSlope: 0.000001788141
+        tangentMode: 10
+      - time: 1.5
+        value: -1.7110004
+        inSlope: 0.000001788141
+        outSlope: 0.000001788141
+        tangentMode: 10
+      - time: 1.6666667
+        value: -1.7110004
+        inSlope: -0.000001788141
+        outSlope: -0.000001788141
+        tangentMode: 10
+      - time: 1.7333333
+        value: -1.7110007
+        inSlope: -0.000001788141
+        outSlope: -0.000001788141
+        tangentMode: 10
+      - time: 1.9333334
+        value: -1.7110007
+        inSlope: 0.000001788141
+        outSlope: 0.000001788141
+        tangentMode: 10
+      - time: 2
+        value: -1.7110004
+        inSlope: 0.000003576282
+        outSlope: 0.000003576282
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -708,11 +2912,2831 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
+      - time: 1.1666666
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4333334
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.5
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.6666667
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7333333
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.9333334
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
     path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP/KITTEN_ARM_RIGHT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.23333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.46666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.76666665
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.23333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.46666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.76666665
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.2712
+        inSlope: 6.809571
+        outSlope: 6.809571
+        tangentMode: 10
+      - time: 0.23333333
+        value: 1.8600999
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.46666667
+        value: 0.2712
+        inSlope: -6.541952
+        outSlope: -6.541952
+        tangentMode: 10
+      - time: 0.76666665
+        value: -1.6111
+        inSlope: 0.896333
+        outSlope: 0.896333
+        tangentMode: 10
+      - time: 1
+        value: 0.2712
+        inSlope: 7.438285
+        outSlope: 7.438285
+        tangentMode: 10
+      - time: 1.2333333
+        value: 1.8600999
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4666667
+        value: 0.2712
+        inSlope: -6.541952
+        outSlope: -6.541952
+        tangentMode: 10
+      - time: 1.7666667
+        value: -1.6111
+        inSlope: 0.89633274
+        outSlope: 0.89633274
+        tangentMode: 10
+      - time: 2
+        value: 0.2712
+        inSlope: 8.066999
+        outSlope: 8.066999
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 15.735399
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.16666667
+        value: 15.735399
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 15.735399
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.3
+        inSlope: 0.00000071525574
+        outSlope: 0.00000071525574
+        tangentMode: 10
+      - time: 0.16666667
+        value: 1.3000001
+        inSlope: 0.00000032511625
+        outSlope: 0.00000032511625
+        tangentMode: 10
+      - time: 2
+        value: 1.3
+        inSlope: -0.00000006502325
+        outSlope: -0.00000006502325
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.3
+        inSlope: 0.00000071525574
+        outSlope: 0.00000071525574
+        tangentMode: 10
+      - time: 0.16666667
+        value: 1.3000001
+        inSlope: 0.00000032511625
+        outSlope: 0.00000032511625
+        tangentMode: 10
+      - time: 2
+        value: 1.3
+        inSlope: -0.00000006502325
+        outSlope: -0.00000006502325
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.16666667
+        value: 1.3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 1.3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.23333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.46666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.76666665
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.23333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.46666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.76666665
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.7666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0.3214
+        inSlope: -23.93057
+        outSlope: -23.93057
+        tangentMode: 10
+      - time: 0.23333333
+        value: -5.9052
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.46666667
+        value: -0.3214
+        inSlope: 19.430286
+        outSlope: 19.430286
+        tangentMode: 10
+      - time: 0.76666665
+        value: 4.1576
+        inSlope: -2.132856
+        outSlope: -2.132856
+        tangentMode: 10
+      - time: 1
+        value: -0.3214
+        inSlope: -21.56314
+        outSlope: -21.56314
+        tangentMode: 10
+      - time: 1.2333333
+        value: -5.9052
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.4666667
+        value: -0.3214
+        inSlope: 19.430286
+        outSlope: 19.430286
+        tangentMode: 10
+      - time: 1.7666667
+        value: 4.1576
+        inSlope: -2.1328554
+        outSlope: -2.1328554
+        tangentMode: 10
+      - time: 2
+        value: -0.3214
+        inSlope: -19.195713
+        outSlope: -19.195713
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 4.5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 4.5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0.1678
+        inSlope: 40.924496
+        outSlope: 48.964104
+        tangentMode: 21
+      - time: 0.16666667
+        value: 7.992884
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.4
+        value: -3.5930457
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.6666667
+        value: 8.06553
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.9
+        value: -3.544615
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: -0.1678
+        inSlope: 33.768143
+        outSlope: 48.964115
+        tangentMode: 21
+      - time: 1.1666666
+        value: 7.992884
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.4
+        value: -3.5930457
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.6666667
+        value: 8.06553
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.9
+        value: -3.544615
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2
+        value: -0.1678
+        inSlope: 33.768143
+        outSlope: -0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0.2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: -0.2
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 2
+        value: -0.2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 2.4
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 2.4
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 2
+        value: 2.4
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 2
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.148
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.16666667
+        value: 1.6767273
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.33333334
+        value: 0.1253708
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.5
+        value: 1.6714517
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.6666667
+        value: 0.11962378
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.8333333
+        value: 1.6687131
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 0.148
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.1666666
+        value: 1.6767273
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.3333334
+        value: 0.1253708
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.5
+        value: 1.6714517
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.6666667
+        value: 0.11962378
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.8333333
+        value: 1.6687131
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2
+        value: 0.148
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.26666668
+        value: 0.01117188
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.5
+        value: -0.006241302
+        inSlope: -0.0170372
+        outSlope: -0.0170372
+        tangentMode: 10
+      - time: 0.8333333
+        value: 0.0072765397
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.2666667
+        value: 0.01117188
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.5
+        value: -0.006241302
+        inSlope: -0.017037192
+        outSlope: -0.017037192
+        tangentMode: 10
+      - time: 1.8333333
+        value: 0.0072765397
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2
+        value: -0.00023909454
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 2.6
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 2.6
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2
+        value: 2.6
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: -2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: -2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0.10990834
+        outSlope: 0.10990834
+        tangentMode: 10
+      - time: 0.16666667
+        value: 1.018318
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.33333334
+        value: 0.99602073
+        inSlope: -0.03410196
+        outSlope: -0.03410196
+        tangentMode: 10
+      - time: 0.5
+        value: 1.0069507
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.6666667
+        value: 0.9960291
+        inSlope: -0.008906381
+        outSlope: -0.008906381
+        tangentMode: 10
+      - time: 0.93333334
+        value: 1.0087537
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 1
+        inSlope: -0.010698251
+        outSlope: -0.010698251
+        tangentMode: 10
+      - time: 1.1666666
+        value: 1.018318
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.3333334
+        value: 0.99602073
+        inSlope: -0.034101926
+        outSlope: -0.034101926
+        tangentMode: 10
+      - time: 1.5
+        value: 1.0069507
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.6666667
+        value: 0.9960291
+        inSlope: -0.00890637
+        outSlope: -0.00890637
+        tangentMode: 10
+      - time: 1.9333334
+        value: 1.0087537
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2
+        value: 1
+        inSlope: -0.13130498
+        outSlope: -0.13130498
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -0.104364395
+        outSlope: -0.104364395
+        tangentMode: 10
+      - time: 0.16666667
+        value: 0.98260593
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.33333334
+        value: 1.0032749
+        inSlope: 0.028104361
+        outSlope: 0.028104361
+        tangentMode: 10
+      - time: 0.5
+        value: 0.99197406
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.6666667
+        value: 1.0041455
+        inSlope: 0.009213025
+        outSlope: 0.009213025
+        tangentMode: 10
+      - time: 0.93333334
+        value: 0.9895848
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 1
+        inSlope: 0.025931772
+        outSlope: 0.025931772
+        tangentMode: 10
+      - time: 1.1666666
+        value: 0.98260593
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.3333334
+        value: 1.0032749
+        inSlope: 0.028104328
+        outSlope: 0.028104328
+        tangentMode: 10
+      - time: 1.5
+        value: 0.99197406
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.6666667
+        value: 1.0041455
+        inSlope: 0.00921301
+        outSlope: 0.00921301
+        tangentMode: 10
+      - time: 1.9333334
+        value: 0.9895848
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2
+        value: 1
+        inSlope: 0.1562281
+        outSlope: 0.1562281
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.5
+        value: -1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.2
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 2
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_BASIC/kitten_basic_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_BASIC/kitten_basic_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_BASIC/kitten_basic_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_BASIC/kitten_basic_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3000001
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_EGYPT/kitten_egypt_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3000001
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_EGYPT/kitten_egypt_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3000001
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_EGYPT/kitten_egypt_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3000001
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_EGYPT/kitten_egypt_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INCAN/kitten_incan_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INCAN/kitten_incan_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INCAN/kitten_incan_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INCAN/kitten_incan_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INDIAN/kitten_indian_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INDIAN/kitten_indian_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INDIAN/kitten_indian_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_INDIAN/kitten_indian_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_VAMP/kitten_vamp_eyeR
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_VAMP/kitten_vamp_eyeL
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_VAMP/kitten_vamp_eyeR_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.4
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.6
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.1
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.3
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HEAD_VAMP/kitten_vamp_eyeL_closed
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: -1.0500039
+        outSlope: -1.0500039
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 4.5
+        inSlope: -2.3999975
+        outSlope: -2.3999975
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0.31399998
+        inSlope: -257.43896
+        outSlope: -257.43896
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.369
+        inSlope: 116.69549
+        outSlope: 116.69549
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 1.5
+        outSlope: 1.5
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 16.35
+        outSlope: 16.35
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 10.2
+        outSlope: 10.2
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -4.5
+        inSlope: -4.0499997
+        outSlope: -4.0499997
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: -7.0500007
+        outSlope: -7.0500007
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 6.449998
+        outSlope: 6.449998
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0.52639997
+        inSlope: -179.478
+        outSlope: -179.478
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 18.4321
+        inSlope: 427.51642
+        outSlope: 427.51642
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.472
+        inSlope: 6.87
+        outSlope: 6.87
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.9850001
+        inSlope: 10.124999
+        outSlope: 10.124999
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.28400004
+        inSlope: 5.1899114
+        outSlope: 5.1899114
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -1.7280002
+        inSlope: -9.330031
+        outSlope: -9.330031
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 90.9663
+        inSlope: -270.58502
+        outSlope: -270.58502
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0.798
+        inSlope: -3.7799995
+        outSlope: -3.7799995
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.987
+        inSlope: 4.844999
+        outSlope: 4.844999
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.030000001
+        inSlope: 3.4499996
+        outSlope: 3.4499996
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.52
+        inSlope: 7.9499993
+        outSlope: 7.9499993
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.79
+        inSlope: -1.5000199
+        outSlope: -1.5000199
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: -5.250002
+        outSlope: -5.250002
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.6537
+        inSlope: 169.329
+        outSlope: 169.329
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: KITTEN_SHADOW
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: KITTEN_SHADOW
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.309
+        inSlope: 82.64099
+        outSlope: 82.64099
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: KITTEN_SHADOW
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0.12
+        inSlope: 8.099999
+        outSlope: 8.099999
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: KITTEN_SHADOW
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -4.44
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: KITTEN_SHADOW
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: KITTEN_SHADOW
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -723,7 +5747,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -733,7 +5757,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -743,7 +5767,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -752,8 +5776,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP/KITTEN_ARM_RIGHT_LO
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -763,7 +5787,227 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP/KITTEN_ARM_RIGHT_LO
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP/KITTEN_ARM_LEFT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_LEFT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_BODY_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_LO
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -774,6 +6018,146 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
     path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP/KITTEN_ARM_RIGHT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP/KITTEN_ARM_RIGHT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP/KITTEN_ARM_RIGHT_LO
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_SHADOW
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_SHADOW
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_SHADOW
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_ARM_RIGHT_UP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_HEAD/KITTEN_HAIR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: KITTEN_CENTER/KITTEN_LEGS_CENTER/KITTEN_BODY_UP/KITTEN_INSTRUMENT/KITTEN_GUITAR_CENTER
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
