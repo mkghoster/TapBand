@@ -3,15 +3,15 @@ using System.Collections;
 
 public class BackgroundChange : MonoBehaviour {
 
+    #region private fields
     private ConcertController concertController;
     private TourController tourController;
 
-    public GameObject[] backgrounds;
-
-    private int numberOfBackgrounds;
-    private SpriteRenderer spriteRenderer;
-
+    private GameObject[] backgrounds;
     private BackgroundType actualBackgroundID;
+
+    private SpriteRenderer spriteRenderer;
+    #endregion
 
     void OnEnable()
     {
@@ -30,6 +30,8 @@ public class BackgroundChange : MonoBehaviour {
         tourController = FindObjectOfType<TourController>();
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        ReadBackgroundFromFolder();
     }
 	
     void Start()
@@ -37,6 +39,17 @@ public class BackgroundChange : MonoBehaviour {
         actualBackgroundID = concertController.CurrentConcertData.background;
         spriteRenderer.sprite = backgrounds[(int)actualBackgroundID].GetComponent<SpriteRenderer>().sprite;
     }
+
+    private void ReadBackgroundFromFolder()
+    {
+        var array = Resources.LoadAll("Background", typeof(GameObject));
+        backgrounds = new GameObject[array.Length];
+        for (int i = 0; i < array.Length; i++)
+        {
+            backgrounds[i] = array[i] as GameObject;
+        }
+    }
+
 
     private void ChangeBackground(object sender, ConcertEventArgs e)
     {
