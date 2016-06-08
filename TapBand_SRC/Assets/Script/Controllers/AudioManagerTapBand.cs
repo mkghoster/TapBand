@@ -16,6 +16,8 @@ public class AudioManagerTapBand : AudioManager
     private SongController songController;
     private ConcertController concertController;
     private TourController tourController;
+    private ViewController viewController;
+
     private ConcertState concertState;
 
     //index for Concert and MusicBars
@@ -32,6 +34,7 @@ public class AudioManagerTapBand : AudioManager
         songController = (SongController)GameObject.FindObjectOfType(typeof(SongController));
         concertController = (ConcertController)GameObject.FindObjectOfType(typeof(ConcertController));
         tourController = (TourController)GameObject.FindObjectOfType(typeof(TourController));
+        viewController = GameObject.FindObjectOfType<ViewController>();
 
         musicSources = new AudioSource[numberOfMusicBars];
 
@@ -97,6 +100,7 @@ public class AudioManagerTapBand : AudioManager
         tourController.RestartConcert += RestartConcertFromTour;
 
         settingsController.OnChangeSettingsToggle += MuteOnOfSound;
+        viewController.OnViewChange += StopMusicByViewChange;
     }
 
     void OnDisable()
@@ -110,6 +114,7 @@ public class AudioManagerTapBand : AudioManager
         tourController.RestartConcert -= RestartConcertFromTour;
 
         settingsController.OnChangeSettingsToggle -= MuteOnOfSound;
+        viewController.OnViewChange -= StopMusicByViewChange;
     }
 
     #region events
@@ -165,7 +170,7 @@ public class AudioManagerTapBand : AudioManager
         StartNewConcert();
     }
 
-    protected void MuteOnOfSound(object sender, SettingsEventArgs e)
+    void MuteOnOfSound(object sender, SettingsEventArgs e)
     {
         if (e.Music)
         {
@@ -189,6 +194,27 @@ public class AudioManagerTapBand : AudioManager
         {          
             sfxVolume = 0.0f;
             PlayerPrefsManager.SetSFXToggle(false);
+        }
+    }
+
+    private void StopMusicByViewChange(object sender, ViewChangeEventArgs e)
+    {
+        switch (e.NewView)
+        {
+            case ViewType.STAGE:
+                //legyen tanc
+                ContinueMusicBars();
+                break;
+            case ViewType.BACKSTAGE:
+                //stop music
+                PauseMusicBars();
+                break;
+            case ViewType.DAILY_EVENT:
+                //stop music
+                break;
+            case ViewType.CUSTOMIZATION:
+                //stop music
+                break;
         }
     }
 
@@ -306,6 +332,31 @@ public class AudioManagerTapBand : AudioManager
 
     }
 
+    void PauseMusicBars()
+    {
+        if (actualIndex == 4)
+            musicSources[actualIndex].Pause();
+        else
+        {
+            for (int i = 0; i <= actualIndex; i++)
+            {
+                musicSources[i].Pause();
+            }
+        }
+    }
+
+    void ContinueMusicBars()
+    {
+        if (actualIndex == 4)
+            musicSources[actualIndex].Play();
+        else
+        {
+            for (int i = 0; i <= actualIndex; i++)
+            {
+                musicSources[i].Play();
+            }
+        }
+    }
 
 
     //find && mute
