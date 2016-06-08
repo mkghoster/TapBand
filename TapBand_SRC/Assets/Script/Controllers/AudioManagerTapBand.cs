@@ -3,12 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-//TODO: - settingsUI: eventek folyamatosan jönnek (akkor is ha nem állítom a csúszkát )  --> más megoldás? (ezért volt az encore song közben mindegyik sáv maxon szólt)   
-//  - cast indexet utilsba átemelni és mindenhova azt hívni ne helyit!!!!
-
-
 public class AudioManagerTapBand : AudioManager
 {
+    #region private fields
     private string musicSoruceGameObjectPath = "AudioManager/MusicSources";
     private const int numberOfMusicBars = 5;
 
@@ -27,6 +24,8 @@ public class AudioManagerTapBand : AudioManager
     private AudioClip[] clips;
 
     private AudioClip currentConcertEncoreLoopClip;
+
+    #endregion
 
     void Awake()
     {
@@ -97,8 +96,7 @@ public class AudioManagerTapBand : AudioManager
         tourController.OnPrestige += OnPrestigeEvent;
         tourController.RestartConcert += RestartConcertFromTour;
 
-        //settingsController.MusicVolumeChange += SetMusicVolume;
-        //settingsController.SFXVolumeChange += SetSFXVolume;
+        settingsController.OnChangeSettingsToggle += MuteOnOfSound;
     }
 
     void OnDisable()
@@ -111,8 +109,7 @@ public class AudioManagerTapBand : AudioManager
         tourController.OnPrestige -= OnPrestigeEvent;
         tourController.RestartConcert -= RestartConcertFromTour;
 
-        //settingsController.MusicVolumeChange -= SetMusicVolume;
-        //settingsController.SFXVolumeChange -= SetSFXVolume;  //base classban nem kapta meg az eventet, csak ha idehoztam
+        settingsController.OnChangeSettingsToggle -= MuteOnOfSound;
     }
 
     #region events
@@ -162,26 +159,37 @@ public class AudioManagerTapBand : AudioManager
         StartNewConcert();
     }
 
-    //Nem kapott OnPrestigeEventet a torubol ha az első concerten nyomtunk ismét restart-ot
+    //Nem kapott OnPrestigeEventet a torubol ha az első concerten nyomtunk ismét restart-ot-----------???
     void RestartConcertFromTour()
     {
         StartNewConcert();
     }
 
-    //Change to actual music bars volume
-    void SetMusicVolume(float volume)
+    protected void MuteOnOfSound(object sender, SettingsEventArgs e)
     {
-        musicVolume = volume;
-        if (actualIndex == 4)
-            musicSources[actualIndex].volume = musicVolume;
+        if (e.Music)
+        {
+            musicVolume = 1.0f;
+            SetMusicVolume(musicVolume);
+            PlayerPrefsManager.SetMusicToggle(true);            
+        }
         else
         {
-            for (int i = 0; i <= actualIndex; i++)
-            {
-                musicSources[i].volume = musicVolume;
-            }
+            musicVolume = 0.0f;
+            SetMusicVolume(musicVolume);
+            PlayerPrefsManager.SetMusicToggle(false);
         }
 
+        if (e.Sfx)
+        {
+            sfxVolume = 1.0f;
+            PlayerPrefsManager.SetSFXToggle(true);
+        }
+        else
+        {          
+            sfxVolume = 0.0f;
+            PlayerPrefsManager.SetSFXToggle(false);
+        }
     }
 
     #endregion
@@ -239,10 +247,18 @@ public class AudioManagerTapBand : AudioManager
     //called when: game start, fail/succes concert
     void FadeInMusicBarsUntilIndex(int index)
     {
-        for (int i = 0; i <= index; i++)
+        if(index == 0)
         {
-            FadeClip(musicSources[i], FadeState.FadeIn);
+            FadeClip(musicSources[0], FadeState.FadeIn);
         }
+        else
+        {
+            for (int i = 0; i < index; i++)
+            {
+                FadeClip(musicSources[i], FadeState.FadeIn);
+            }
+        }
+        
     }
 
     //Play and Fade In encore
@@ -274,6 +290,23 @@ public class AudioManagerTapBand : AudioManager
         }
     }
 
+    //Change to actual music bars volume
+    void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        if (actualIndex == 4)
+            musicSources[actualIndex].volume = musicVolume;
+        else
+        {
+            for (int i = 0; i <= actualIndex; i++)
+            {
+                musicSources[i].volume = musicVolume;
+            }
+        }
+
+    }
+
+
 
     //find && mute
     void GetAllChildMusicSource()
@@ -299,18 +332,6 @@ public class AudioManagerTapBand : AudioManager
     {
         yield return new WaitForSeconds(base.fadeDuration);
     }
-
-
-    /*void TestBars()
-  {
-      print("-----------------");
-      for (int i = 0; i < musicSources.Length; i++)
-      {
-          //print(i+":  "+musicSources[i].isPlaying);
-          print(i + ":  " + musicSources[i].volume);
-      }
-      print("*******************");
-  }*/
 
     #region Concert mix order
 

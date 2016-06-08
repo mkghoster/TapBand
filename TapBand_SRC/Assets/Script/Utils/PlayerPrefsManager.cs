@@ -3,27 +3,34 @@ using System.Collections;
 
 public class PlayerPrefsManager : MonoBehaviour
 {
-
-
-    public static void SetMusicVolume(float volume)
+    public static void SetMusicToggle(bool value)
     {
-        PlayerPrefs.SetFloat(PlayerPrefsConsts.MUSIC_VOLUME_KEY, Mathf.Clamp(volume, 0.0f, 1.0f));
+        if (value)
+            PlayerPrefs.SetInt(PlayerPrefsConsts.MUSIC_TOGGLE, 1);
+        else
+            PlayerPrefs.SetInt(PlayerPrefsConsts.MUSIC_TOGGLE, 0);
     }
 
-    public static float GetMusicVolume()
+    public static bool GetMusicToggle()
     {
-        return PlayerPrefs.GetFloat(PlayerPrefsConsts.MUSIC_VOLUME_KEY, 0.5f);
+        return PlayerPrefs.GetInt(PlayerPrefsConsts.MUSIC_TOGGLE, 0) == 0 ? false : true;
     }
 
-    public static void SetSFXVolume(float volume)
+    public static void SetSFXToggle(bool value)
     {
-        PlayerPrefs.SetFloat(PlayerPrefsConsts.SFX_VOLUME_KEY, Mathf.Clamp(volume, 0.0f, 1.0f));
+        if (value)
+            PlayerPrefs.SetInt(PlayerPrefsConsts.SFX_TOGGLE, 1);
+        else
+            PlayerPrefs.SetInt(PlayerPrefsConsts.SFX_TOGGLE, 0);
     }
 
-    public static float GetSFXVolume()
+    public static bool GetSFXToggle()
     {
-        return PlayerPrefs.GetFloat(PlayerPrefsConsts.SFX_VOLUME_KEY, 0.5f);
+        return PlayerPrefs.GetInt(PlayerPrefsConsts.SFX_TOGGLE, 0) == 0 ? false : true;
     }
+
+
+    //*********
 
     //TODO: átrakni ezt a gamestate-be
     public static void SetEncoreSongTry(bool value)

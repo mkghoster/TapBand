@@ -7,6 +7,7 @@ public class BackstageController : MonoBehaviour
     public event Action OnMerchButtonPressed;
     public event Action OnPrestigeButtonPressed;
     public event Action OnDebugButtonPressed;
+    public event Action OnSettingsButtonPressed;
 
     #region Private fields
     private BackstageUI backstageUI;
@@ -87,6 +88,14 @@ public class BackstageController : MonoBehaviour
         {
             viewController.EnterView(ViewType.BACKSTAGE);
             backstageUI.ShowUI();
+        }
+    }
+
+    public void OnSettingsClick()
+    {
+        if(OnSettingsButtonPressed != null)
+        {
+            OnSettingsButtonPressed();
         }
     }
 

@@ -39,6 +39,12 @@ public class BackstageUI : MonoBehaviour
         backstageController.SwitchDressingRoom(true);
     }
 
+    public void OnSettingsButtonClick()
+    {
+        HideUI();
+        backstageController.OnSettingsClick();
+    }
+
     public void HideUI()
     {
         BackstagePanel.gameObject.SetActive(false);

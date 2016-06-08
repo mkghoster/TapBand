@@ -1,38 +1,29 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
-//public class SettingsUI : MonoBehaviour {
 public class SettingsController : MonoBehaviour
 {
-    //public delegate void SoundVolumeChangeEvent(float volume); ------- értesíteni az AudioManagert arról h némítva lett csak ennyi 
-    //public event SoundVolumeChangeEvent MusicVolumeChange;
-    //public event SoundVolumeChangeEvent SFXVolumeChange;
-
-    //public Slider musicSlider;
-    //public Slider sfxSlider;
-
-
-
     #region private fields
     private float defaultMusicVolume = 0.5f;
     private float defaultSFXVolume   = 0.5f;
     private ViewController viewController;
-    private StageController stageController;
+    private BackstageController backstageController;
     private SettingsUI settingsUI;
     #endregion
+
+    public event SettingsEvent OnChangeSettingsToggle;
+
+
+
+
     void Start () {
-
-        //get listeners to the volume change
-        //musicSlider.onValueChanged.AddListener(delegate { MusicValueChangeCheck(); });
-        //sfxSlider.onValueChanged.AddListener(delegate { SFXValueChangeCheck(); });
-
         viewController = GameObject.FindObjectOfType<ViewController>();
-        stageController = GameObject.FindObjectOfType<StageController>();
+        backstageController = GameObject.FindObjectOfType<BackstageController>();
         settingsUI = GameObject.FindObjectOfType<SettingsUI>();
 
-        stageController.OnSettingsButtonPressed += settingsUI.ShowUI;
+        backstageController.OnSettingsButtonPressed += settingsUI.ShowUI;
         //Init volumes from preferences
+       
         //musicSlider.value = PlayerPrefsManager.GetMusicVolume();
         //sfxSlider.value = PlayerPrefsManager.GetSFXVolume();
     }
@@ -75,6 +66,17 @@ public class SettingsController : MonoBehaviour
             sfxSlider.value = defaultSFXVolume;
         }
     }*/
+
+    public void OnPressToggle(bool musicToggle, bool sfxToogle)
+    {
+        if (OnChangeSettingsToggle != null)
+        {
+            OnChangeSettingsToggle(this, new SettingsEventArgs(musicToggle, sfxToogle));
+        }
+    }
+
+   
+    
 
     public void OnBackToGameClick()
     {

@@ -739,6 +739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 164312}
+  sfxToggle: {fileID: 11475650}
+  musicToggle: {fileID: 11469446}
 --- !u!222 &22207640
 CanvasRenderer:
   m_ObjectHideFlags: 1

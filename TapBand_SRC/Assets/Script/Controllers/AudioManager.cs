@@ -42,10 +42,16 @@ public class AudioManager : MonoBehaviour {
 
         settingsController = GameObject.FindObjectOfType<SettingsController>();
 
-        //musicVolume = PlayerPrefsManager.GetMusicVolume();
-        //sfxVolume = PlayerPrefsManager.GetSFXVolume();
-        musicVolume = PlayerPrefs.GetFloat("music_volume", 0.5f);
-        sfxVolume = PlayerPrefs.GetFloat("sfx_volume", 0.5f);
+        if (PlayerPrefsManager.GetMusicToggle())
+            musicVolume = 1.0f;
+        else
+            musicVolume = 0.0f;
+
+        if (PlayerPrefsManager.GetSFXToggle())
+            sfxVolume = 1.0f;
+        else
+            sfxVolume = 0.0f;
+
     }
 
 
@@ -60,7 +66,7 @@ public class AudioManager : MonoBehaviour {
 
         //if it's not a loop sound, then the reference doesn't matter
         return null;
-            
+           
     }
 
    
@@ -142,6 +148,9 @@ public class AudioManager : MonoBehaviour {
     {
         sfxVolume = volume;
     }
+
+
+   
 
 
 
