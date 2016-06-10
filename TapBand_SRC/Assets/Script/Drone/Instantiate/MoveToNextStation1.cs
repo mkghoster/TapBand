@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveToNextStation : MonoBehaviour {
+public class MoveToNextStation1 : MonoBehaviour {
     public GameObject Drone;
     public GameObject DroneMover;
     public GameObject BoxCollider;
@@ -11,7 +11,7 @@ public class MoveToNextStation : MonoBehaviour {
     public BoxCollider boxcol;
     public float LerpTime=20.0f;// = 10f;
     private float currentLerpTime = 0.0f;
-    DroneHandler StationChoserScript;
+    DroneHandler1 StationChoserScript;
     public Animator animator;
 
     const int STATE_IDLE = 0;
@@ -24,7 +24,7 @@ public class MoveToNextStation : MonoBehaviour {
     //-----------------------------------------------------------------------------------------------------------
 	void Update () {
 
-        StationChoserScript = Drone.GetComponent<DroneHandler>();
+        StationChoserScript = Drone.GetComponent<DroneHandler1>();
         int numStations = Stations.childCount;
         Vector3[] stations = new Vector3[numStations];
         for (int i = 0; i < numStations; ++i)
@@ -49,7 +49,7 @@ public class MoveToNextStation : MonoBehaviour {
         BoxCollider.SetActive(false);
         if (currentLerpTime >= LerpTime-19.0f)
         {
-            changeState(STATE_IDLE);
+            //changeState(STATE_IDLE);
             BoxCollider.SetActive(true);
             StartCoroutine(Levitating());
             currentLerpTime = 0;

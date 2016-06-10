@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DroneCaller : MonoBehaviour {
+public class DroneCaller1 : MonoBehaviour {
 
     public GameObject Drone;
     //public GameObject DroneMover;

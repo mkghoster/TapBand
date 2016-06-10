@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DroneHandler : MonoBehaviour {
+public class DroneHandler1 : MonoBehaviour {
     public GameObject Drone;
     public GameObject DroneMover;
     //MoveToNextStation ColliderScript;
