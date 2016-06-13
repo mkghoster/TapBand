@@ -26,7 +26,8 @@ public class AudioManagerTapBand : AudioManager
     private AudioClip[] clips;
 
     private AudioClip currentConcertEncoreLoopClip;
-
+    private AudioClip currentConcertFirstClip;
+    private bool needToPlayEncoeLoop;
     #endregion
 
     void Awake()
@@ -76,14 +77,13 @@ public class AudioManagerTapBand : AudioManager
             FadeInMusicBarsUntilIndex(concertState.LastCompletedSongID);
         }
 
-
-
     }
 
     void Update()
     {
-        if (concertController.CurrentConcertData != null && concertController.CurrentSongData.isEncore && musicSources[4].time >= musicSources[4].clip.length)
+        if (concertController.CurrentConcertData != null && concertController.CurrentSongData.isEncore && musicSources[4].time >= musicSources[4].clip.length && !needToPlayEncoeLoop)
         {
+            needToPlayEncoeLoop = true;
             StartEncoreLoopClip();
         }
     }
@@ -155,6 +155,10 @@ public class AudioManagerTapBand : AudioManager
     //concert fail
     void RestartConcert(object sender, ConcertEventArgs e)
     {
+        //switch back from encore loop clip
+        musicSources[0].clip = currentConcertFirstClip;
+        needToPlayEncoeLoop = false;
+
         StartPrevConcert();
     }
 
@@ -296,10 +300,16 @@ public class AudioManagerTapBand : AudioManager
 
     private void StartEncoreLoopClip()
     {
-        musicSources[4].Stop();
-        musicSources[0].volume = base.musicVolume;
-        musicSources[0].Play();
-        musicSources[0].loop = true;
+        if (needToPlayEncoeLoop)
+        {
+            musicSources[4].Stop();
+            musicSources[4].volume = 0.0f;
+            musicSources[0].volume = base.musicVolume;
+            musicSources[0].Play();
+            musicSources[0].loop = true;
+        }
+       
+        
     }
 
 
@@ -447,6 +457,7 @@ public class AudioManagerTapBand : AudioManager
 
         //save the current concert encore loop clip
         currentConcertEncoreLoopClip = clips[order[order.Length - 1] + (currentConcertAudioID * 6)];
+        currentConcertFirstClip = musicSources[0].clip;
     }
 
     private void ReadMusicFromResources()

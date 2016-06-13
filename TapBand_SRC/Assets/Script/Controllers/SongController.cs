@@ -12,7 +12,8 @@ public class SongController : MonoBehaviour
     // Event to notify the world about the current song progress
     public event SongEvent OnSongProgress;
 
-    public event SongEvent ShowEncoreButton; // TODO: this might be a concert event
+    //public event SongEvent ShowEncoreButton; // TODO: this might be a concert event
+    //public event SongEvent HideEncoreButton;
 
     #region Private fields
     private ConcertController concertController;
@@ -32,7 +33,7 @@ public class SongController : MonoBehaviour
     private float extraTimeBoosterBonus;
 
     // 3 because of currentsong always contains the previous song. We need the 4. song, ant it's previous is the 3.
-    private const int beforeEncoreSongConstID = 3; //TODO: this still belongs to the concert
+    //private const int beforeEncoreSongConstID = 3; //TODO: this still belongs to the concert
     #endregion
 
     public float ActualSongDuration { get; private set; }
@@ -58,7 +59,7 @@ public class SongController : MonoBehaviour
     {
         tapController.OnTap += HandleTap;
 
-        stageController.OnEncoreButtonPressed += StartEncoreSong;
+        //stageController.OnEncoreButtonPressed += StartEncoreSong;
 
         tourController.RestartSong += ResetControllerState;
         boosterController.OnBoosterActivated += HandleBoosterActivated;
@@ -68,7 +69,7 @@ public class SongController : MonoBehaviour
     {
         tapController.OnTap -= HandleTap;
 
-        stageController.OnEncoreButtonPressed -= StartEncoreSong;
+        //stageController.OnEncoreButtonPressed -= StartEncoreSong;
 
         tourController.RestartSong -= ResetControllerState;
 
@@ -153,15 +154,16 @@ public class SongController : MonoBehaviour
 
             //last song before encore
             //TODO: this should be in it's own handler
-            if (CastSongIndex(currentSong.id) == beforeEncoreSongConstID && currentSong.tapGoal < actualTapAmount)
+            //if (CastSongIndex(currentSong.id) == beforeEncoreSongConstID && currentSong.tapGoal < actualTapAmount)
+            if ( currentSong.tapGoal < actualTapAmount)
             {
                 //if there was already a try
                 if (PlayerPrefsManager.GetEncoreSongTry())
                 {
-                    if (ShowEncoreButton != null)
+                   /* if (ShowEncoreButton != null)
                     {
                         ShowEncoreButton(null, null);
-                    }
+                    }*/
                 }
                 else
                 {
@@ -204,11 +206,11 @@ public class SongController : MonoBehaviour
         ResetControllerState();
     }
 
-    private int CastSongIndex(int songID)
+    /*private int CastSongIndex(int songID)
     {
         int newID = (songID - 1) % 5;
         return newID;
-    }
+    }*/
 
     public void HandleSongPaused(bool paused)
     {

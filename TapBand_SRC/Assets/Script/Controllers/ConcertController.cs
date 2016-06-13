@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ConcertController : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class ConcertController : MonoBehaviour
 
     private SongController songController;
     private TourController tourController;
+    private StageController stageController;
+
 
     public event ConcertEvent OnConcertRestart;
 
@@ -15,6 +18,12 @@ public class ConcertController : MonoBehaviour
 
     private ConcertData currentConcertData;
     private ConcertState concertState;
+
+    public event Action ShowEncoreButton;
+    public event Action HideEncoreButton;
+
+
+    private const int beforeEncoreSongConstID = 4;
 
     public SongData CurrentSongData
     {
@@ -32,7 +41,7 @@ public class ConcertController : MonoBehaviour
         }
     }
 
-    public bool HasTriedEncore
+    public bool HasTriedEncore//------------------ kell e???
     {
         get
         {
@@ -52,6 +61,7 @@ public class ConcertController : MonoBehaviour
     {
         songController = (SongController)FindObjectOfType(typeof(SongController));
         tourController = (TourController)FindObjectOfType(typeof(TourController));
+        stageController = (StageController)FindObjectOfType(typeof(StageController));
 
         concertState = GameState.instance.Concert;
         var concertDataList = GameData.instance.ConcertDataList;
@@ -70,18 +80,96 @@ public class ConcertController : MonoBehaviour
         songController.OnSongFinished += HandleSongFinished;
 
         tourController.RestartConcert += RestartConcertFromTheFirst;
+
+        stageController.OnEncoreButtonPressed += HandleEncoreButtonPressed;
     }
     void OnDisable()
     {
         songController.OnSongFinished -= HandleSongFinished;
 
         tourController.RestartConcert -= RestartConcertFromTheFirst;
+
+        stageController.OnEncoreButtonPressed -= HandleEncoreButtonPressed;
     }
 
     void Start()
     {
         concertState.CurrentSong = currentConcertData.songList[concertState.CurrentSongIndex];
+
+        if (concertState.HasTriedEncore && CastSongIndex( CurrentSongData.id ) == beforeEncoreSongConstID)
+        {
+            if (ShowEncoreButton != null)
+            {
+                ShowEncoreButton();
+            }
+        }
+        else
+        {
+            if (HideEncoreButton != null)
+            {
+                HideEncoreButton();
+            }
+        }
     }
+
+
+    private void HandleEncoreButtonPressed()
+    {
+        //eldinítani az encoert
+
+
+        //elrejteni az encort gombot
+        if(HideEncoreButton != null)
+        {
+            HideEncoreButton();
+        }
+    }
+
+    private void ActivateEncoreButton() //TODO: rename
+    {
+        if(  CastSongIndex( CurrentSongData.id ) == beforeEncoreSongConstID  &&  concertState.HasTriedEncore )
+        {
+            if(ShowEncoreButton != null)
+            {
+                ShowEncoreButton();
+            }
+        }
+
+        //last song before encore
+        //TODO: this should be in it's own handler
+        /*if (CastSongIndex(currentSong.id) == beforeEncoreSongConstID && currentSong.tapGoal < actualTapAmount)
+        {
+            //if there was already a try
+            //if (PlayerPrefsManager.GetEncoreSongTry())
+            if (GameState.instance.Concert.HasTriedEncore)
+            {
+                if (ShowEncoreButton != null)
+                {
+                    ShowEncoreButton(this, null);
+                }
+            }
+            else
+            {
+                //PlayerPrefsManager.SetEncoreSongTry(true);
+                GameState.instance.Concert.HasTriedEncore = true;
+                if (currentSong.isEncore)
+                {
+                    //PlayerPrefsManager.SetEncoreSongTry(false);
+                    GameState.instance.Concert.HasTriedEncore = false;
+                }
+
+                ResetControllerState();
+            }
+        }*/
+        //if()  ha encore, 
+
+
+    }
+
+   /* private void DeactivateEncoreButton()
+    {
+        //alapjáraton elindulásnál megvuzsglni h kell e mutatni
+    }*/
 
     private void HandleSongFinished(object sender, SongEventArgs e)
     {
@@ -103,6 +191,8 @@ public class ConcertController : MonoBehaviour
             }
             else
             {
+                ActivateEncoreButton();
+
                 SongData nextSongData = GetNextSong(); // Ha itt null van, az para, rossz a táblázat. TODO: kéne kezelni
                 concertState.LastCompletedSongID = e.Data.id;
 
@@ -113,7 +203,7 @@ public class ConcertController : MonoBehaviour
                     //TODO: pre-encore sequence (probably an event)
                     StartCoroutine(SetNextSongDelayed(START_ENCORE_DELAY, nextSongData));
                     concertState.HasTriedEncore = true;
-                    PlayerPrefsManager.SetEncoreSongTry(true);
+                    //PlayerPrefsManager.SetEncoreSongTry(true);
                 }
                 else
                 {
@@ -216,5 +306,11 @@ public class ConcertController : MonoBehaviour
             }
         }
         return currentConcertData; // if for some reason we couldn't find the next one, return the current one
+    }
+
+    private int CastSongIndex(int songID)
+    {
+        int newID = (songID - 1) % 5;
+        return newID;
     }
 }

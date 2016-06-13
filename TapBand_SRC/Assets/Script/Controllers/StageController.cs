@@ -30,6 +30,9 @@ public class StageController : MonoBehaviour
         songController.OnSongStarted += HandleSongStarted;
         songController.OnSongFinished += HandleSongFinished;
 
+        concertController.ShowEncoreButton += ShowEncoreButton;
+        concertController.HideEncoreButton += HideEncoreButton;
+
         viewController.OnViewChange += ViewChanged;
 
         dailyEventController.OnDailyEventStarted += HandleDailyEventStarted;
@@ -39,6 +42,9 @@ public class StageController : MonoBehaviour
     {
         songController.OnSongStarted -= HandleSongStarted;
         songController.OnSongFinished -= HandleSongFinished;
+
+        concertController.ShowEncoreButton -= ShowEncoreButton;
+        concertController.HideEncoreButton -= HideEncoreButton;
 
         viewController.OnViewChange -= ViewChanged;
 
@@ -65,6 +71,18 @@ public class StageController : MonoBehaviour
             OnEncoreButtonPressed();
         }
     }
+
+
+    private void ShowEncoreButton()
+    {
+        stageUI.ActivateEncoreButton();
+    }
+
+    private void HideEncoreButton()
+    {
+        stageUI.DeactivateEncoreButton();
+    }
+
 
     public void SwitchToBackstage()
     {

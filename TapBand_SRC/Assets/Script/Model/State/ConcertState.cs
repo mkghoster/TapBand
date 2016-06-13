@@ -40,6 +40,6 @@ public class ConcertState
         LastCompletedSongID = -1;
         CurrentSongIndex = 0;
         currentSong = concertData.songList[0];
-        HasTriedEncore = false;
+        HasTriedEncore = false; //---------------------- ez így nem biztos h jó
     }
 }
